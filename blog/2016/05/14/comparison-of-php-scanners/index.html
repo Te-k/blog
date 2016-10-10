@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Comparison of php scanners &middot; Tek</title>
+
+  
+  <link rel="stylesheet" href="https://www.randhome.io/css/poole.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.randhome.io/touch-icon-144-precomposed.png">
+  <link href="https://www.randhome.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="php,scanner,wordpress,malware,joomla,drupal">
+  
+</head>
+<body class="layout-reverse">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1><a href="https://www.randhome.io/">Te(k|ch) blog</a></h1>
+      <p class="lead">Funny security stuff</p>
+    </div>
+    <img src="/img/avatar.jpg"/>
+    <br/>
+
+    <ul class="sidebar-nav">
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/privacy/">#privacy</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/references/">#references</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/about/">#whoami</a></li>
+      
+    </ul>
+
+    <br/>
+
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/Te-k"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="https://twitter.com/tenacioustek"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      <a href="https://www.randhome.io/index.xml" type="application/rss+xml"><i class="fa fa-rss-square fa-3x"></i></a>
+      </li>
+    </ul>
+
+    
+
+    <div class="sidebar-copyright">
+        <p>
+       <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/media/cc.png" /></a>
+        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Comparison of php scanners</h1>
+    <span class="post-date">May 14, 2016 &middot; 4 minute read
+    
+    <br/>
+    <a class="label" href="https://www.randhome.io/categories/malware">malware</a><a class="label" href="https://www.randhome.io/categories/tools">tools</a><a class="label" href="https://www.randhome.io/categories/php">php</a>
+    </span>
+    
+
+<p>Hi there!</p>
+
+<p>I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.</p>
+
+<h2 id="clamav">ClamAV</h2>
+
+<p><center><img src="/media/clamav.png" alt="clamav logo" /></center></p>
+
+<p><a href="https://www.clamav.net/">ClamAV</a> is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux. It has a complex signature format with many open signature provided by the community (more than 3 700 000 according to wikipedia). And the good news, is that <a href="http://blog.clamav.net/2015/06/clamav-099b-meets-yara.html">it supports Yara</a> since last year!</p>
+
+<p>It is possible to convert some of the clamav signature to Yara thanks to <a href="https://github.com/Te-k/analyst-scripts/blob/master/tools/clamav_to_yara.py">the nice script</a> published in the Malware Analyst Cookbook by Michael Ligh, Steven Adair, Blake Hartstein, Matthew Richard :</p>
+
+<pre><code class="language-bash">sigtool -u main.cvd
+python clamav_to_yara.py -f main.ndb -o main.yara
+</code></pre>
+
+<p>Clamav has several signatures related to php backdoors, like this nice one in daily.ldb (logical signatures in .ldb files are not converted by the previous script):</p>
+
+<pre><code class="language-sql">Php.Malware.Mailbot-45;Engine:51-255,Target:7;0&amp;1;6563686F207068705F6F732E{-35}275D2830393837363534333231292E;6563686F207068705F6F732E{-35}275D2832323232323232323232292E
+</code></pre>
+
+<p>Shortly explained, this signature is a logical clamav signature with a format NAME;INFOS;CONDITION;PATTERN1;PATTERN2&hellip;</p>
+
+<ul>
+<li>The infos contains information on the clamav engine needed to read this signature and the type of target file (7 is ASCII file)</li>
+<li>The condition here is <em>0&amp;1</em> so both patterns should be present for the signature to match.</li>
+<li>Patterns are in hexadecimal format and {-XX} means that at most XX characters are not considered in the pattern. Apparently signatures on ascii files are case insensitive.</li>
+</ul>
+
+<p>So we can convert this signature to the following yara signature</p>
+
+<pre><code class="language-perl">rule php_malware_mailbot_45 {
+    strings:
+        $a = /echo php_os\..{,35}'\]\(0987654321\)\./ nocase
+        $b = /echo php_os\..{,35}'\]\(2222222222\)\./ nocase
+
+    condition:
+        all of them
+}
+</code></pre>
+
+<h2 id="linux-malware-detect">linux-malware-detect</h2>
+
+<p><a href="https://github.com/rfxn/linux-malware-detect">Linux Malware Detect</a> uses signatures extracted from Clamav and other tools to detect malware, mainly based on md5 hashes of malicious files (and thus not very reliable). The tool was not updated since 2013 apparently, and according to the documentation it contained 8,908 MD5 / 1,914 signatures.</p>
+
+<h2 id="php-malware-finder">php-malware-finder</h2>
+
+<p><a href="https://github.com/nbs-system/php-malware-finder">php-malware-finder</a> is a tool developed by <a href="https://www.nbs-system.com/">NBS System</a> based on <a href="https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/phpmalwarefinder">a simple shell script</a> which rely mainly on Yara signatures to detect malicious files.</p>
+
+<p>This tool has some <a href="https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/php.yar">nice rules</a> for instance for detecting obfuscated php:</p>
+
+<pre><code class="language-perl">rule ObfuscatedPhp
+{
+    strings:
+        $eval = /(&lt;\?php|[;{}])[ \t]*@?(eval|preg_replace|system|assert|passthru|(pcntl_)?exec|win_shell_execute|call_user_func(_array)?)\s*\(/ nocase  // ;eval( &lt;- this is dodgy
+        $b374k = &quot;'ev'.'al'&quot;
+        $align = /(\$\w+=[^;]*)*;\$\w+=@?\$\w+\(/  //b374k
+        $weevely3 = /\$\w=\$[a-zA-Z]\('',\$\w\);\$\w\(\);/  // weevely3 launcher
+        $c99_launcher = /;\$\w+\(\$\w+(,\s?\$\w+)+\);/  // http://bartblaze.blogspot.fr/2015/03/c99shell-not-dead.html
+        $variable_variable = /\${\$[0-9a-zA-z]+}/
+        $too_many_chr = /(chr\([\d]+\)\.){5}/  // concatenation of more than two `chr()`
+        $concat = /(\$[^\n\r]+\.){5}/  // concatenation of more than 5 words
+        $var_as_func = /\$_(GET|POST|COOKIE|REQUEST)\s*\[[^\]]+\]\s*\(/
+        $gif = /^GIF89/
+    condition:
+        any of them and not IsWhitelisted
+}
+</code></pre>
+
+<p>The problem is that there is only generic methods (nothing designed for specific sample) so it misses a lot of samples (many basic webshells for instance), and some methods (like Dodgy php) are generating a lot of false positive.</p>
+
+<h2 id="php-malware-scanner">php-malware-scanner</h2>
+
+<p><a href="https://github.com/planet-work/php-malware-scanner">php-malware-scanner</a> has been developed by the french company <a href="https://www.planet-work.com/">planet-work</a> likely to clean their own hosted websites and the result is pretty good.</p>
+
+<p>Their idea was too make a score with different parameters often identified in malicious php files, here is a short list as example :</p>
+
+<ul>
+<li>MANY_GLOBALS : Contains $GLOBALS many times (+20)</li>
+<li>MD5_VAR : contains a MD5 variable (+2)</li>
+<li>VERY_LONG_LINE_EARLY : the file has a first ver long line (+10)</li>
+<li>HAS_BASE64DECODE : has a function base64_decode() or str_rot13()</li>
+</ul>
+
+<p>This approach is nice, but the problem is that the code is real mess with a long list of if/else. Have a look:</p>
+
+<pre><code class="language-python">if re.compile('.*=\s*&quot;http://[a-z0-9].*&quot;;').match(l) or re.compile(&quot;.*=\s*'http:.*';&quot;).match(l) :
+    if not 'simpletest.org' in l and not 'facebook.com' in l:
+	has_var_http = True
+if has_var_http and ('curl_exec' in l or 'xxxxxxxxxx' in l) and line_num &lt; 20:
+    score.append(('CURL_HTTP' ,''))
+if line_num &lt; line_early and 'call_user_func' in l:
+    score.append(('HAS_CALL_FUNC_EARLY','line %i' % line_num))
+if 'agent' in l.lower() and 'google' in l.lower():
+    score.append(('UA_GOOGLE',''))
+</code></pre>
+
+<p>And even though they have added few signature directly in the code (hurrr), there are really few of them and the tool is often missing easy to detect samples. The following basic shell added to a legitimate php file would go undetected for instance:</p>
+
+<pre><code class="language-php">&lt;?php @preg_replace('/(.*)/e', @$_POST['abcdef'], '');
+</code></pre>
+
+<p>Here is an example of result by this tool (you should add a &ndash;minscore option, 10 seems to be a good value):</p>
+
+<pre><code class="language-json">{
+        &quot;score&quot;: 15,
+        &quot;filename&quot;: &quot;/home/etienne/perso/fun/new-caffe/./public/wp-includes/images/crystal/epsg8vpeff.php&quot;,
+        &quot;cleanup&quot;: false,
+        &quot;details&quot;: [
+            {
+                &quot;score&quot;: 5,
+                &quot;details&quot;: &quot;&quot;,
+                &quot;rule&quot;: &quot;UA_GOOGLE&quot;,
+                &quot;description&quot;: &quot;V\u00e9rifie le User-Agent contre Google&quot;
+            },
+            {
+                &quot;score&quot;: 10,
+                &quot;details&quot;: &quot;line 1&quot;,
+                &quot;rule&quot;: &quot;VERY_LONG_LINE_EARLY&quot;,
+                &quot;description&quot;: &quot;Contient une ligne de plus de 3000 caract\u00e8res en d\u00e9but de fichier&quot;
+            },
+            {
+                &quot;score&quot;: 0,
+                &quot;details&quot;: &quot;1 lines&quot;,
+                &quot;rule&quot;: &quot;FEW_LINES&quot;,
+                &quot;description&quot;: &quot;Contient peu de lignes&quot;
+            }
+        ],
+        &quot;mtime&quot;: 1463402470.307976,
+        &quot;ctime&quot;: 1463402470.307976
+    }
+</code></pre>
+
+<h2 id="comparison">Comparison</h2>
+
+<p>I have tested these tools on a wordpress website which has 38 different malicious files (mainly simple backdoors but also mass mailers or other malicious files).</p>
+
+<p><center><img src="/media/doctor1.jpg" alt="Doctor" /></center></p>
+
+<p>Here are the results:</p>
+
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th align="center">True Positive</th>
+<th align="right">False Positive</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Linux Malware Detect</td>
+<td align="center">4 / 39</td>
+<td align="right">0</td>
+</tr>
+
+<tr>
+<td>ClamAV (default)</td>
+<td align="center">4 / 39</td>
+<td align="right">0</td>
+</tr>
+
+<tr>
+<td>php-malware-finder</td>
+<td align="center">28 / 39</td>
+<td align="right">126</td>
+</tr>
+
+<tr>
+<td>php-malware-scanner (minscore 10)</td>
+<td align="center">10 / 39</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>So nothing is perfect, likely something to do to improve these results.</p>
+
+<p>Hasta Luego!</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="https://www.randhome.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Te(k|ch) blog</title>
+    <link>https://www.randhome.io/categories/tools/</link>
+    <description>Recent content in Tools on Te(k|ch) blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate>
+    <atom:link href="https://www.randhome.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Comparison of php scanners</title>
+      <link>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</link>
+      <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
+      <description>
+
+&lt;p&gt;Hi there!&lt;/p&gt;
+
+&lt;p&gt;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&lt;/p&gt;
+
+&lt;h2 id=&#34;clamav&#34;&gt;ClamAV&lt;/h2&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://www.randhome.io/media/clamav.png&#34; alt=&#34;clamav logo&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.clamav.net/&#34;&gt;ClamAV&lt;/a&gt; is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux. It has a complex signature format with many open signature provided by the community (more than 3 700 000 according to wikipedia). And the good news, is that &lt;a href=&#34;http://blog.clamav.net/2015/06/clamav-099b-meets-yara.html&#34;&gt;it supports Yara&lt;/a&gt; since last year!&lt;/p&gt;
+
+&lt;p&gt;It is possible to convert some of the clamav signature to Yara thanks to &lt;a href=&#34;https://github.com/Te-k/analyst-scripts/blob/master/tools/clamav_to_yara.py&#34;&gt;the nice script&lt;/a&gt; published in the Malware Analyst Cookbook by Michael Ligh, Steven Adair, Blake Hartstein, Matthew Richard :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sigtool -u main.cvd
+python clamav_to_yara.py -f main.ndb -o main.yara
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clamav has several signatures related to php backdoors, like this nice one in daily.ldb (logical signatures in .ldb files are not converted by the previous script):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;Php.Malware.Mailbot-45;Engine:51-255,Target:7;0&amp;amp;1;6563686F207068705F6F732E{-35}275D2830393837363534333231292E;6563686F207068705F6F732E{-35}275D2832323232323232323232292E
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Shortly explained, this signature is a logical clamav signature with a format NAME;INFOS;CONDITION;PATTERN1;PATTERN2&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The infos contains information on the clamav engine needed to read this signature and the type of target file (7 is ASCII file)&lt;/li&gt;
+&lt;li&gt;The condition here is &lt;em&gt;0&amp;amp;1&lt;/em&gt; so both patterns should be present for the signature to match.&lt;/li&gt;
+&lt;li&gt;Patterns are in hexadecimal format and {-XX} means that at most XX characters are not considered in the pattern. Apparently signatures on ascii files are case insensitive.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So we can convert this signature to the following yara signature&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;rule php_malware_mailbot_45 {
+    strings:
+        $a = /echo php_os\..{,35}&#39;\]\(0987654321\)\./ nocase
+        $b = /echo php_os\..{,35}&#39;\]\(2222222222\)\./ nocase
+
+    condition:
+        all of them
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;linux-malware-detect&#34;&gt;linux-malware-detect&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rfxn/linux-malware-detect&#34;&gt;Linux Malware Detect&lt;/a&gt; uses signatures extracted from Clamav and other tools to detect malware, mainly based on md5 hashes of malicious files (and thus not very reliable). The tool was not updated since 2013 apparently, and according to the documentation it contained 8,908 MD5 / 1,914 signatures.&lt;/p&gt;
+
+&lt;h2 id=&#34;php-malware-finder&#34;&gt;php-malware-finder&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/nbs-system/php-malware-finder&#34;&gt;php-malware-finder&lt;/a&gt; is a tool developed by &lt;a href=&#34;https://www.nbs-system.com/&#34;&gt;NBS System&lt;/a&gt; based on &lt;a href=&#34;https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/phpmalwarefinder&#34;&gt;a simple shell script&lt;/a&gt; which rely mainly on Yara signatures to detect malicious files.&lt;/p&gt;
+
+&lt;p&gt;This tool has some &lt;a href=&#34;https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/php.yar&#34;&gt;nice rules&lt;/a&gt; for instance for detecting obfuscated php:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;rule ObfuscatedPhp
+{
+    strings:
+        $eval = /(&amp;lt;\?php|[;{}])[ \t]*@?(eval|preg_replace|system|assert|passthru|(pcntl_)?exec|win_shell_execute|call_user_func(_array)?)\s*\(/ nocase  // ;eval( &amp;lt;- this is dodgy
+        $b374k = &amp;quot;&#39;ev&#39;.&#39;al&#39;&amp;quot;
+        $align = /(\$\w+=[^;]*)*;\$\w+=@?\$\w+\(/  //b374k
+        $weevely3 = /\$\w=\$[a-zA-Z]\(&#39;&#39;,\$\w\);\$\w\(\);/  // weevely3 launcher
+        $c99_launcher = /;\$\w+\(\$\w+(,\s?\$\w+)+\);/  // http://bartblaze.blogspot.fr/2015/03/c99shell-not-dead.html
+        $variable_variable = /\${\$[0-9a-zA-z]+}/
+        $too_many_chr = /(chr\([\d]+\)\.){5}/  // concatenation of more than two `chr()`
+        $concat = /(\$[^\n\r]+\.){5}/  // concatenation of more than 5 words
+        $var_as_func = /\$_(GET|POST|COOKIE|REQUEST)\s*\[[^\]]+\]\s*\(/
+        $gif = /^GIF89/
+    condition:
+        any of them and not IsWhitelisted
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The problem is that there is only generic methods (nothing designed for specific sample) so it misses a lot of samples (many basic webshells for instance), and some methods (like Dodgy php) are generating a lot of false positive.&lt;/p&gt;
+
+&lt;h2 id=&#34;php-malware-scanner&#34;&gt;php-malware-scanner&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/planet-work/php-malware-scanner&#34;&gt;php-malware-scanner&lt;/a&gt; has been developed by the french company &lt;a href=&#34;https://www.planet-work.com/&#34;&gt;planet-work&lt;/a&gt; likely to clean their own hosted websites and the result is pretty good.&lt;/p&gt;
+
+&lt;p&gt;Their idea was too make a score with different parameters often identified in malicious php files, here is a short list as example :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MANY_GLOBALS : Contains $GLOBALS many times (+20)&lt;/li&gt;
+&lt;li&gt;MD5_VAR : contains a MD5 variable (+2)&lt;/li&gt;
+&lt;li&gt;VERY_LONG_LINE_EARLY : the file has a first ver long line (+10)&lt;/li&gt;
+&lt;li&gt;HAS_BASE64DECODE : has a function base64_decode() or str_rot13()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This approach is nice, but the problem is that the code is real mess with a long list of if/else. Have a look:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if re.compile(&#39;.*=\s*&amp;quot;http://[a-z0-9].*&amp;quot;;&#39;).match(l) or re.compile(&amp;quot;.*=\s*&#39;http:.*&#39;;&amp;quot;).match(l) :
+    if not &#39;simpletest.org&#39; in l and not &#39;facebook.com&#39; in l:
+	has_var_http = True
+if has_var_http and (&#39;curl_exec&#39; in l or &#39;xxxxxxxxxx&#39; in l) and line_num &amp;lt; 20:
+    score.append((&#39;CURL_HTTP&#39; ,&#39;&#39;))
+if line_num &amp;lt; line_early and &#39;call_user_func&#39; in l:
+    score.append((&#39;HAS_CALL_FUNC_EARLY&#39;,&#39;line %i&#39; % line_num))
+if &#39;agent&#39; in l.lower() and &#39;google&#39; in l.lower():
+    score.append((&#39;UA_GOOGLE&#39;,&#39;&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And even though they have added few signature directly in the code (hurrr), there are really few of them and the tool is often missing easy to detect samples. The following basic shell added to a legitimate php file would go undetected for instance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php @preg_replace(&#39;/(.*)/e&#39;, @$_POST[&#39;abcdef&#39;], &#39;&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is an example of result by this tool (you should add a &amp;ndash;minscore option, 10 seems to be a good value):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+        &amp;quot;score&amp;quot;: 15,
+        &amp;quot;filename&amp;quot;: &amp;quot;/home/etienne/perso/fun/new-caffe/./public/wp-includes/images/crystal/epsg8vpeff.php&amp;quot;,
+        &amp;quot;cleanup&amp;quot;: false,
+        &amp;quot;details&amp;quot;: [
+            {
+                &amp;quot;score&amp;quot;: 5,
+                &amp;quot;details&amp;quot;: &amp;quot;&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;UA_GOOGLE&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;V\u00e9rifie le User-Agent contre Google&amp;quot;
+            },
+            {
+                &amp;quot;score&amp;quot;: 10,
+                &amp;quot;details&amp;quot;: &amp;quot;line 1&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;VERY_LONG_LINE_EARLY&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;Contient une ligne de plus de 3000 caract\u00e8res en d\u00e9but de fichier&amp;quot;
+            },
+            {
+                &amp;quot;score&amp;quot;: 0,
+                &amp;quot;details&amp;quot;: &amp;quot;1 lines&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;FEW_LINES&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;Contient peu de lignes&amp;quot;
+            }
+        ],
+        &amp;quot;mtime&amp;quot;: 1463402470.307976,
+        &amp;quot;ctime&amp;quot;: 1463402470.307976
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;comparison&#34;&gt;Comparison&lt;/h2&gt;
+
+&lt;p&gt;I have tested these tools on a wordpress website which has 38 different malicious files (mainly simple backdoors but also mass mailers or other malicious files).&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://www.randhome.io/media/doctor1.jpg&#34; alt=&#34;Doctor&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are the results:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;True Positive&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;False Positive&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Linux Malware Detect&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;4 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ClamAV (default)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;4 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;php-malware-finder&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;28 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;126&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;php-malware-scanner (minscore 10)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;10 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;So nothing is perfect, likely something to do to improve these results.&lt;/p&gt;
+
+&lt;p&gt;Hasta Luego!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

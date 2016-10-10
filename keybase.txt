@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/tekkk
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://te-k.github.io
+  * I am tekkk (https://keybase.io/tekkk) on keybase.
+  * I have a public key ASAxurfjiAkDdpJOUYDFrvng5LRqFnBezupbp638b9Szawo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010187664e2d2fe1249480e984e6116909e9d038c46a931ca4cf5cb55a1e562df04c0a",
+            "host": "keybase.io",
+            "kid": "012031bab7e388090376924e5180c5aef9e0e4b46a16705eceea5ba7adfc6fd4b36b0a",
+            "uid": "ed43ec7d8c180f9c2746383b592c2e19",
+            "username": "tekkk"
+        },
+        "service": {
+            "hostname": "te-k.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.16"
+    },
+    "ctime": 1470178484,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1470178610,
+        "hash": "5a72b4440dc6a3461a42ac0c0a5fd50d973a57cb655a59d0045e86760e2ccbfed1a96fa752b537a7ec11dfaef61f3e65a55bc9abd76956a7c1cc9c27d31210bf",
+        "seqno": 555236
+    },
+    "prev": "20479182a2769c788fab011d75fb826ec26596511db95d50885818d05bb600e5",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgMbq344gJA3aSTlGAxa754OS0ahZwXs7qW6et/G/Us2sKp3BheWxvYWTFAvN7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxODc2NjRlMmQyZmUxMjQ5NDgwZTk4NGU2MTE2OTA5ZTlkMDM4YzQ2YTkzMWNhNGNmNWNiNTVhMWU1NjJkZjA0YzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMzFiYWI3ZTM4ODA5MDM3NjkyNGU1MTgwYzVhZWY5ZTBlNGI0NmExNjcwNWVjZWVhNWJhN2FkZmM2ZmQ0YjM2YjBhIiwidWlkIjoiZWQ0M2VjN2Q4YzE4MGY5YzI3NDYzODNiNTkyYzJlMTkiLCJ1c2VybmFtZSI6InRla2trIn0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJ0ZS1rLmdpdGh1Yi5pbyIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjE2In0sImN0aW1lIjoxNDcwMTc4NDg0LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NzAxNzg2MTAsImhhc2giOiI1YTcyYjQ0NDBkYzZhMzQ2MWE0MmFjMGMwYTVmZDUwZDk3M2E1N2NiNjU1YTU5ZDAwNDVlODY3NjBlMmNjYmZlZDFhOTZmYTc1MmI1MzdhN2VjMTFkZmFlZjYxZjNlNjVhNTViYzlhYmQ3Njk1NmE3YzFjYzljMjdkMzEyMTBiZiIsInNlcW5vIjo1NTUyMzZ9LCJwcmV2IjoiMjA0NzkxODJhMjc2OWM3ODhmYWIwMTFkNzVmYjgyNmVjMjY1OTY1MTFkYjk1ZDUwODg1ODE4ZDA1YmI2MDBlNSIsInNlcW5vIjo4LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQBjqtpWrjJrD615idyYfui5y9q/IAd2BJcB0kWtBiqYMUzjNQ+tRwroIZPTC3LKHGEoGdflUHcjSHNW2jPjaOgeoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCDtuFJ4Tx75z+hHzYfEIhYHbBdA0ZjoDYFe3+ltAxw1oqN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tekkk
+
+==================================================================

