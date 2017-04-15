@@ -21,7 +21,7 @@
 
 &lt;p&gt;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&lt;/p&gt;
 
-&lt;h2 id=&#34;clamav&#34;&gt;ClamAV&lt;/h2&gt;
+&lt;h2 id=&#34;clamav:90efb3b273830260aeb725b3431180e9&#34;&gt;ClamAV&lt;/h2&gt;
 
 &lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://www.randhome.io/media/clamav.png&#34; alt=&#34;clamav logo&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
 
@@ -58,11 +58,11 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;linux-malware-detect&#34;&gt;linux-malware-detect&lt;/h2&gt;
+&lt;h2 id=&#34;linux-malware-detect:90efb3b273830260aeb725b3431180e9&#34;&gt;linux-malware-detect&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/rfxn/linux-malware-detect&#34;&gt;Linux Malware Detect&lt;/a&gt; uses signatures extracted from Clamav and other tools to detect malware, mainly based on md5 hashes of malicious files (and thus not very reliable). The tool was not updated since 2013 apparently, and according to the documentation it contained 8,908 MD5 / 1,914 signatures.&lt;/p&gt;
 
-&lt;h2 id=&#34;php-malware-finder&#34;&gt;php-malware-finder&lt;/h2&gt;
+&lt;h2 id=&#34;php-malware-finder:90efb3b273830260aeb725b3431180e9&#34;&gt;php-malware-finder&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/nbs-system/php-malware-finder&#34;&gt;php-malware-finder&lt;/a&gt; is a tool developed by &lt;a href=&#34;https://www.nbs-system.com/&#34;&gt;NBS System&lt;/a&gt; based on &lt;a href=&#34;https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/phpmalwarefinder&#34;&gt;a simple shell script&lt;/a&gt; which rely mainly on Yara signatures to detect malicious files.&lt;/p&gt;
 
@@ -88,7 +88,7 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 
 &lt;p&gt;The problem is that there is only generic methods (nothing designed for specific sample) so it misses a lot of samples (many basic webshells for instance), and some methods (like Dodgy php) are generating a lot of false positive.&lt;/p&gt;
 
-&lt;h2 id=&#34;php-malware-scanner&#34;&gt;php-malware-scanner&lt;/h2&gt;
+&lt;h2 id=&#34;php-malware-scanner:90efb3b273830260aeb725b3431180e9&#34;&gt;php-malware-scanner&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/planet-work/php-malware-scanner&#34;&gt;php-malware-scanner&lt;/a&gt; has been developed by the french company &lt;a href=&#34;https://www.planet-work.com/&#34;&gt;planet-work&lt;/a&gt; likely to clean their own hosted websites and the result is pretty good.&lt;/p&gt;
 
@@ -150,7 +150,7 @@ if &#39;agent&#39; in l.lower() and &#39;google&#39; in l.lower():
     }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;comparison&#34;&gt;Comparison&lt;/h2&gt;
+&lt;h2 id=&#34;comparison:90efb3b273830260aeb725b3431180e9&#34;&gt;Comparison&lt;/h2&gt;
 
 &lt;p&gt;I have tested these tools on a wordpress website which has 38 different malicious files (mainly simple backdoors but also mass mailers or other malicious files).&lt;/p&gt;
 

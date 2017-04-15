@@ -21,7 +21,7 @@
 
 &lt;p&gt;I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this &lt;a href=&#34;http://www.r2d3.us/visual-intro-to-machine-learning-part-1/&#34;&gt;awesome article&lt;/a&gt; or &lt;a href=&#34;https://redshiftzero.github.io/2015/08/29/Manipulation-and-Machine-Learning/&#34;&gt;this one&lt;/a&gt;. This article was largely inspired by &lt;a href=&#34;https://blog.socialcops.com/engineering/machine-learning-python&#34;&gt;this one which analyze the Titanic data&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;machine-learning-and-classification&#34;&gt;Machine Learning and Classification&lt;/h2&gt;
+&lt;h2 id=&#34;machine-learning-and-classification:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Machine Learning and Classification&lt;/h2&gt;
 
 &lt;p&gt;So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions. There are many different applications, in our case we will consider using machine learning algorithm to classify binaries between legitimate and malicious binaries. This idea is &lt;a href=&#34;http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;amp;arnumber=924286&amp;amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D924286&#34;&gt;not&lt;/a&gt; &lt;a href=&#34;http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;amp;arnumber=1297538&amp;amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D1297538&#34;&gt;new&lt;/a&gt; and Adobe has even released a tool called &lt;a href=&#34;https://github.com/adobe-security/Malware-classifier&#34;&gt;Adobe Malware Classifier&lt;/a&gt; at &lt;a href=&#34;https://www.blackhat.com/html/webcast/webcast-2012-polymorphicmalware.html&#34;&gt;Black Hat 2012&lt;/a&gt; but it will be a nice exercice to see how to use machine learning.&lt;/p&gt;
 
@@ -48,7 +48,7 @@
 &lt;/figure&gt;
 
 
-&lt;h2 id=&#34;feature-extraction-from-binaries&#34;&gt;Feature Extraction from binaries&lt;/h2&gt;
+&lt;h2 id=&#34;feature-extraction-from-binaries:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Feature Extraction from binaries&lt;/h2&gt;
 
 &lt;p&gt;As I said earlier, machine learning only uses integer or float data as features for detection, but it is not a big deal as most &lt;a href=&#34;https://manalyzer.org/report/1e27184759cc4099c0da73b152408281&#34;&gt;PE parameters&lt;/a&gt; are integers (field size, addresses, parameters&amp;hellip;). So I extracted all the PE parameters I could by using pefile, and considered especially the one that are relevant for identifying malware, like the entropy of section for packer detection. As we can only have a fix list of feature (and not one per section), I extracted the Mean, Minimum and Maximum of entropy for sections and resources.&lt;/p&gt;
 
@@ -67,7 +67,7 @@
 
 &lt;p&gt;And here we are with a large CSV file (138048 lines) ready for playing!&lt;/p&gt;
 
-&lt;h2 id=&#34;feature-selection&#34;&gt;Feature Selection&lt;/h2&gt;
+&lt;h2 id=&#34;feature-selection:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Feature Selection&lt;/h2&gt;
 
 &lt;p&gt;The idea of feature selection is to reduce the 54 features extracted to a smaller set of feature which are the most relevant for differentiating legitimate binaries from malware.&lt;/p&gt;
 
@@ -177,7 +177,7 @@ In [3]: for f in range(nb_features):
       11. feature DllCharacteristics (0.018640)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;selection-of-the-classification-algorithm&#34;&gt;Selection of the Classification Algorithm&lt;/h2&gt;
+&lt;h2 id=&#34;selection-of-the-classification-algorithm:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Selection of the Classification Algorithm&lt;/h2&gt;
 
 &lt;p&gt;The best classification algorithm depends on many parameters and some of them (like SVM) have a lot of different parameters and can be difficult to correctly configure. So I used a simple option: I tested some of them with default parameters and selected the best one (I removed SVM because it does not handle well dataset with many features):&lt;/p&gt;
 
@@ -225,7 +225,7 @@ Winner algorithm is RandomForest with a 99.351684 % success
 
 &lt;p&gt;The whole code for feature selection and algorithm test is available &lt;a href=&#34;https://github.com/Te-k/malware-classification/blob/master/learning.py&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;reuse-the-algorithm&#34;&gt;Reuse the algorithm&lt;/h2&gt;
+&lt;h2 id=&#34;reuse-the-algorithm:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Reuse the algorithm&lt;/h2&gt;
 
 &lt;p&gt;So now we want to reuse this algorithms for detection, we can just save the object and the feature list :&lt;/p&gt;
 
@@ -249,7 +249,7 @@ The file a9ea61c5ae7eab02c63955336a7c7efe is legitimate
 The file 9c5c27494c28ed0b14853b346b113145 is malicious
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;why-it-s-not-enough&#34;&gt;Why it&amp;rsquo;s not enough?&lt;/h2&gt;
+&lt;h2 id=&#34;why-it-s-not-enough:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Why it&amp;rsquo;s not enough?&lt;/h2&gt;
 
 &lt;p&gt;First, a bit of vocabulary for measuring IDS accuracy (taken from &lt;a href=&#34;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&#34;&gt;Wikipedia&lt;/a&gt;):&lt;/p&gt;
 
@@ -275,7 +275,7 @@ The file 9c5c27494c28ed0b14853b346b113145 is malicious
 
 &lt;p&gt;If we take our example, a standard Windows 7 install has around 15000 binary files (it seems to be very different depending on the version, but let&amp;rsquo;s say 15000), which means that in average 97 files would be detected incorrectly as malicious. And that&amp;rsquo;s a bad antivirus.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:97ad8feb5a1df3c1e8f583b33ab354cb&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;So it was a fun example of machine learning utilization. I like how Pandas and Scikit make machine learning easy to use in python (and Scikit is really well explained and documented!). I was really surprised to have such good results without any effort for configuring the algorithm specifically for this context, and it shows that the Adobe tool is not as good as I thought.&lt;/p&gt;
 

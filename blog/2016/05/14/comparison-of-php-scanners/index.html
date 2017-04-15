@@ -96,7 +96,7 @@
 
 <p>I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.</p>
 
-<h2 id="clamav">ClamAV</h2>
+<h2 id="clamav:90efb3b273830260aeb725b3431180e9">ClamAV</h2>
 
 <p><center><img src="/media/clamav.png" alt="clamav logo" /></center></p>
 
@@ -133,11 +133,11 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 }
 </code></pre>
 
-<h2 id="linux-malware-detect">linux-malware-detect</h2>
+<h2 id="linux-malware-detect:90efb3b273830260aeb725b3431180e9">linux-malware-detect</h2>
 
 <p><a href="https://github.com/rfxn/linux-malware-detect">Linux Malware Detect</a> uses signatures extracted from Clamav and other tools to detect malware, mainly based on md5 hashes of malicious files (and thus not very reliable). The tool was not updated since 2013 apparently, and according to the documentation it contained 8,908 MD5 / 1,914 signatures.</p>
 
-<h2 id="php-malware-finder">php-malware-finder</h2>
+<h2 id="php-malware-finder:90efb3b273830260aeb725b3431180e9">php-malware-finder</h2>
 
 <p><a href="https://github.com/nbs-system/php-malware-finder">php-malware-finder</a> is a tool developed by <a href="https://www.nbs-system.com/">NBS System</a> based on <a href="https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/phpmalwarefinder">a simple shell script</a> which rely mainly on Yara signatures to detect malicious files.</p>
 
@@ -163,7 +163,7 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 
 <p>The problem is that there is only generic methods (nothing designed for specific sample) so it misses a lot of samples (many basic webshells for instance), and some methods (like Dodgy php) are generating a lot of false positive.</p>
 
-<h2 id="php-malware-scanner">php-malware-scanner</h2>
+<h2 id="php-malware-scanner:90efb3b273830260aeb725b3431180e9">php-malware-scanner</h2>
 
 <p><a href="https://github.com/planet-work/php-malware-scanner">php-malware-scanner</a> has been developed by the french company <a href="https://www.planet-work.com/">planet-work</a> likely to clean their own hosted websites and the result is pretty good.</p>
 
@@ -225,7 +225,7 @@ if 'agent' in l.lower() and 'google' in l.lower():
     }
 </code></pre>
 
-<h2 id="comparison">Comparison</h2>
+<h2 id="comparison:90efb3b273830260aeb725b3431180e9">Comparison</h2>
 
 <p>I have tested these tools on a wordpress website which has 38 different malicious files (mainly simple backdoors but also mass mailers or other malicious files).</p>
 

