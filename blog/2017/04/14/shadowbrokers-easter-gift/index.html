@@ -85,7 +85,7 @@
 <div class="content container">
   <div class="post">
     <h1 class="post-title">ShadowBrokers Easter Gift</h1>
-    <span class="post-date">Apr 14, 2017 &middot; 6 minute read
+    <span class="post-date">Apr 14, 2017 &middot; 7 minute read
     
     <br/>
     <a class="label" href="https://www.randhome.io/categories/malware">malware</a>
@@ -103,6 +103,9 @@
 </ul>
 
 <p>Thanks to <a href="https://twitter.com/x0rz">@x0rz</a> you can find all these files <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation">on github</a>. I have summarized here the information I have seen on twitter, and some notes from my tests. You should definitely follow  <a href="https://twitter.com/hackerfantastic">@hackerfantastic</a>, <a href="https://twitter.com/x0rz">@x0rz</a>, <a href="https://twitter.com/GossiTheDog">Kevin Beaumont</a>, <a href="https://twitter.com/botherder">nex</a> on Twitter to get more update.</p>
+
+<p><strong>April 15th Update</strong>: So Microsoft published <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">a statement</a> saying that all the vulnerabilities are already fixed in recent Windows version, most of them with <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">MS17-010</a> in March. So it seems that everyone (including me) was a bit quick with conclusions yesterday. It is still surprising to see 3 major vulnerabilities related to ShadowBrokers fixed at the same time in March, which may mean that NSA actually disclosed these vulnerabilities to Microsoft (there is no credits in the Bulletin).
+This annoucement reduce the risk of this publication but there are still a lot of interesting information in this publication, attacks on SWIFT being one of them, but also better knowledge on tools and implants used by NSA (and many of them are still not analyzed fully). It can have an important impact on NSA operations by &ldquo;burning&rdquo; these tools, but it can also allow to link NSA operations to more attacks (published or yet to be published) and get a better insight on their strategies and objectives.</p>
 
 <h2 id="oddjob:84bca1cb2ae373c8007ebd362081b655">Oddjob</h2>
 
@@ -188,28 +191,32 @@ uJbNpF-_bJGuCdr_iAocOkWYbvpugHQqQ
 
 <h2 id="windows:84bca1cb2ae373c8007ebd362081b655">Windows</h2>
 
-<p><a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/tree/master/windows">Lot of stuff here</a></p>
+<p><a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/tree/master/windows">Lot of stuff here</a>, see the <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">Microsoft answer about the exploits</a></p>
+
+<h3 id="fuzzbunch:84bca1cb2ae373c8007ebd362081b655">Fuzzbunch</h3>
+
+<p>Fuzzbunch is the internal exploit framework developed by the NSA like metasploit but in python.</p>
 
 <h3 id="exploits:84bca1cb2ae373c8007ebd362081b655">Exploits</h3>
 
 <p><a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/tree/master/windows/exploits">Exploit directory</a>, every exploits comes with an xml describing options and targets:</p>
 
 <ul>
-<li>EASYBEE : exploit for <a href="http://www.altn.com/Products/MDaemon-Email-Server-Windows/WorldClient-WebMail-MDaemon/">MDaemon WorldClient</a> (Web interface for MDaemon email server) and <a href="http://www.altn.com/Products/MDaemon-Email-Server-Windows/MDaemon-Remote-Administration/">MDaemon WebAdmin</a> (remote administration tool for MDaemon servers)</li>
-<li>EASYPI : exploit for <a href="https://en.wikipedia.org/wiki/Cc:Mail">Lotus CC:Mail</a> for windows NT/2000/XP/2003</li>
-<li>ECLIPSEDWING : exploit for <a href="https://technet.microsoft.com/en-us/library/security/ms08-067.aspx">MS08-67</a> (remote code execution in Windows RPC) for Windows 2000/XP/2003</li>
-<li>EDUCATEDSCHOLAR : exploit for <a href="https://technet.microsoft.com/en-us/library/security/ms09-050.aspx">MS09-050</a> (remote code execution in SMBv2) on Windows Vista and 2008.</li>
-<li>EMERALDTHREAD : remote code execution through SMB or NBT on Windows XP / 2003. No information on the exploit, 0day?</li>
-<li>EMPHASISMINE : exploit in Lotus Domino through IMAP, maybe 0day (<a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Emphasismine-3.4.0.0.xml">xml file</a>)</li>
-<li>ENGLISHMANSDENTIST : apparently local code execution on Outlook by email (according to <a href="https://twitter.com/GossiTheDog/status/852892375248760834">@GossiTheDog/</a> it could be through Outlook rules but I have not found anything confirming it). Possible 0-day. It is interesting to see that the exploit is language dependent and that only English/German/Korea and Chinese are proposed.</li>
-<li>ERRATICGOPHER : remote code execution through RPC in XP and 2003, possible 0 day. (<a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Erraticgopher-1.0.1.0.xml">xml</a>)</li>
-<li>ESKIMOROLL : Kerberos exploit targeting 2000/2003/2008 servers, <a href="https://technet.microsoft.com/en-us/library/security/ms14-068.aspx">MS14-068</a> according to <a href="https://twitter.com/gentilkiwi/status/852928424960241664">@gentilkiwi</a>, dated back in 2011&hellip;</li>
-<li>ESTEEMAUDIT : remote code execution in RDP targeting XP and 2003, potential 0day, according to <a href="https://twitter.com/GossiTheDog/status/852899188065136642">@GossiTheDog</a> it exploits SmartCard authentication</li>
-<li><strong>ETERNALROMANCE</strong> : this one is the big one, 0day remote code execution on Windows XP/2003/Vista/2008 using SMB (h/t <a href="https://twitter.com/hackerfantastic/status/852872904865959936">@hackerfantastic</a>)</li>
-<li>ETERNALSYNERGY : remote code execution in SMB targeting <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Eternalsynergy-1.0.1.0.xml">Windows 8 and 2012</a>, potential 0day. According to <a href="https://twitter.com/hackerfantastic/status/852999174631170048">@hackerfantastic</a> and <a href="https://twitter.com/botherder/status/852999491569537024">nex</a> the exploit is not working on Windows 10 (does not mean it is not vulnerable)</li>
-<li>EWOKFRENZY : remote code execution pre-auth on Lotus Domino version 6.5.4 and 7.0.2 through IMAP, potential 0day (it seems to be old versions, last one is <a href="https://www-01.ibm.com/support/docview.wss?uid=swg27010592">9.0.1</a>)</li>
-<li>EXPLODINGCAN : remote code execution on IIS6 on Windows 2003 through PROPFIND bug, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7269">CVE-2017-7269</a>. Exploited in the wild in July/August 2016. Public exploit already <a href="https://www.exploit-db.com/exploits/41738/">available</a>, thanks <a href="https://twitter.com/GossiTheDog/status/852892375248760834">@GossiTheDog</a></li>
-<li>ZIPPYBEER : only <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Zippybeer-1.0.2.py">python exploit</a>, it seems to be an authenticated remote code execution in SMB, no information on the versions vulnerable, potential 0day</li>
+<li><strong>EASYBEE</strong> : exploit for <a href="http://www.altn.com/Products/MDaemon-Email-Server-Windows/WorldClient-WebMail-MDaemon/">MDaemon WorldClient</a> (Web interface for MDaemon email server) and <a href="http://www.altn.com/Products/MDaemon-Email-Server-Windows/MDaemon-Remote-Administration/">MDaemon WebAdmin</a> (remote administration tool for MDaemon servers)</li>
+<li><strong>EASYPI</strong> : exploit for <a href="https://en.wikipedia.org/wiki/Cc:Mail">Lotus CC:Mail</a> for windows NT/2000/XP/2003</li>
+<li><strong>ECLIPSEDWING</strong> : exploit for <a href="https://technet.microsoft.com/en-us/library/security/ms08-067.aspx">MS08-67</a> (remote code execution in Windows RPC) for Windows 2000/XP/2003</li>
+<li><strong>EDUCATEDSCHOLAR</strong> : exploit for <a href="https://technet.microsoft.com/en-us/library/security/ms09-050.aspx">MS09-050</a> (remote code execution in SMBv2) on Windows Vista and 2008.</li>
+<li><strong>EMERALDTHREAD</strong> : remote code execution through SMB or NBT on Windows XP / 2003. Fixed by <a href="https://technet.microsoft.com/en-us/library/security/ms10-061.aspx">MS10-061</a></li>
+<li><strong>EMPHASISMINE</strong> : exploit in Lotus Domino through IMAP, maybe 0day (<a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Emphasismine-3.4.0.0.xml">xml file</a>)</li>
+<li><strong>ENGLISHMANSDENTIST</strong> : likely local code execution on Outlook by email using a vulnerability in the <a href="https://twitter.com/HaifeiLi/status/853069371756773376">TNEF format</a>. It is interesting to see that the exploit is language dependent and that only English/German/Korea and Chinese are proposed. Microsoft <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">said in a statement</a> that as supported plarforms are not vulnerablem they won&rsquo;t fix this vulnerability.</li>
+<li><strong>ERRATICGOPHER</strong> : remote code execution through RPC in XP and 2003, <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">fixed before Vista release</a>. (<a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Erraticgopher-1.0.1.0.xml">xml</a>)</li>
+<li><strong>ESKIMOROLL</strong> : Kerberos exploit targeting 2000/2003/2008 servers, <a href="https://technet.microsoft.com/en-us/library/security/ms14-068.aspx">MS14-068</a> according to <a href="https://twitter.com/gentilkiwi/status/852928424960241664">@gentilkiwi</a> and <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">Microsoft</a>, binary timestamp is in 2011&hellip;</li>
+<li><strong>ESTEEMAUDIT</strong> : remote code execution in RDP targeting XP and 2003, 0day that <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">won&rsquo;t be fixed by Microsoft</a> because it only affect outdated platforms</li>
+<li><strong>ETERNALROMANCE</strong> : remote code execution on Windows XP/2003/Vista/2008 using SMB fixed by <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">MS17-010</a></li>
+<li><strong>ETERNALSYNERGY</strong> : remote code execution in SMB targeting <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Eternalsynergy-1.0.1.0.xml">Windows 8 and 2012</a>, fixed by <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">MS17-010</a></li>
+<li><strong>EWOKFRENZY</strong> : remote code execution pre-auth on Lotus Domino version 6.5.4 and 7.0.2 through IMAP, potential 0day (it seems to be old versions, last one is <a href="https://www-01.ibm.com/support/docview.wss?uid=swg27010592">9.0.1</a>)</li>
+<li><strong>EXPLODINGCAN</strong> : remote code execution on IIS6 on Windows 2003 through PROPFIND bug, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7269">CVE-2017-7269</a>. Exploited in the wild in July/August 2016. Public exploit already <a href="https://www.exploit-db.com/exploits/41738/">available</a>, thanks <a href="https://twitter.com/GossiTheDog/status/852892375248760834">@GossiTheDog</a>. As only plaforms not supported anymore by Microsoft are vulnerable, it <a href="https://blogs.technet.microsoft.com/msrc/2017/04/14/protecting-customers-and-evaluating-risk/">won&rsquo;t be fixed</a></li>
+<li><strong>ZIPPYBEER</strong> : only <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/blob/master/windows/exploits/Zippybeer-1.0.2.py">python exploit</a>, it seems to be an authenticated remote code execution in SMB, no information on the versions vulnerable, potential 0day</li>
 </ul>
 
 <h3 id="specials:84bca1cb2ae373c8007ebd362081b655">Specials</h3>
@@ -217,8 +224,28 @@ uJbNpF-_bJGuCdr_iAocOkWYbvpugHQqQ
 <p>Dunno what is special <a href="https://github.com/x0rz/EQGRP_Lost_in_Translation/tree/master/windows/specials">there</a>, but lot of exploits involved:</p>
 
 <ul>
-<li><strong>ETERNALBLUE</strong> : SMB remote code execution on Windows XP/2003/Vista/2008/7, confirmed 0 day by <a href="https://twitter.com/hackerfantastic/status/852902728892375042">@hackerfantastic</a>, here is <a href="https://twitter.com/hackerfantastic/status/852958717746315264">a nice video showing the exploit</a> by <a href="https://twitter.com/hackerfantastic">@hackerfantastic/</a></li>
-<li><strong>ETERNALCHAMPION</strong> : another SAM remote code execution on Windows XP/2003/Vista/2008/7, confirmed 0day by <a href="https://twitter.com/Balgan/status/853023595227906048">@Balgan</a></li>
+<li><strong>ETERNALBLUE</strong> : SMB remote code execution on Windows XP/2003/Vista/2008/7, <del>confirmed 0 day</del> fixed by <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">MS17-010</a>. Here is <a href="https://twitter.com/hackerfantastic/status/852958717746315264">a nice video showing the exploit</a> by <a href="https://twitter.com/hackerfantastic">@hackerfantastic/</a>. Conformed working <a href="https://twitter.com/rikvduijn/status/852889267357593600">on Win7x86</a>.</li>
+<li><strong>ETERNALCHAMPION</strong> : another SMB remote code execution on Windows XP/2003/Vista/2008/7, <del>confirmed 0day</del> fixed by <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0146">CVE-2017-0146</a> &amp; <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0147">CVE-2017-0147</a></li>
+</ul>
+
+<h2 id="touches:84bca1cb2ae373c8007ebd362081b655">Touches</h2>
+
+<p>This folder seems to gather utilities :</p>
+
+<ul>
+<li><strong>ARCHITOUCH</strong> : seems to be a test of SMB connection to get</li>
+<li><strong>DOMAINTOUCH</strong> : something related to SMB</li>
+<li><strong>ECLIPSEDWINGTOUCH</strong> : Scan a server for MS08-076 SMB vulnerabilities</li>
+<li><strong>EDUCATEDSCHOLARTOUCH</strong> : Scan for a EDUCATEDSCHOLAR SMB vulnerability <a href="https://technet.microsoft.com/en-us/library/security/ms09-050.aspx">MS09-050</a></li>
+</ul>
+
+<h2 id="lib:84bca1cb2ae373c8007ebd362081b655">lib</h2>
+
+<p>This directory includes dlls which are used by many other tools:</p>
+
+<ul>
+<li>coli-0.dll : coli stands for COmmand LIne</li>
+<li>tibe-2.dll : SMB networking wrapper (used by EternalRomance)</li>
 </ul>
 
 <h2 id="what-should-i-do:84bca1cb2ae373c8007ebd362081b655">What should I do?</h2>
@@ -233,7 +260,7 @@ uJbNpF-_bJGuCdr_iAocOkWYbvpugHQqQ
 <li>Lotus CC:Mail</li>
 </ul>
 
-<p>If you have Windows systems running, you should shut them down for a couple of weeks and follow updates by Microsoft. If you like risks, you should at list block RPC/SMB and RDP ports on all your systems. See <a href="https://support.microsoft.com/en-us/help/2696547/how-to-enable-and-disable-smbv1,-smbv2,-and-smbv3-in-windows-vista,-windows-server-2008,-windows-7,-windows-server-2008-r2,-windows-8,-and-windows-server-2012">here</a> how to disable SMB on your system (h/t <a href="https://twitter.com/msuiche">@msuiche</a>)</p>
+<p>If you have Windows systems running, just PATCH EVERYTHING !</p>
 
 <h2 id="articles:84bca1cb2ae373c8007ebd362081b655">Articles</h2>
 
