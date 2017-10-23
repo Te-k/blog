@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Te(k|ch) blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Apr 2017 22:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Oct 2017 00:00:00 -0400</lastBuildDate>
     
 	<atom:link href="https://www.randhome.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Gmail Advanced Protection</title>
+      <link>https://www.randhome.io/blog/2017/10/23/gmail-advanced-protection/</link>
+      <pubDate>Mon, 23 Oct 2017 00:00:00 -0400</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2017/10/23/gmail-advanced-protection/</guid>
+      <description>Last week, Google has added a new set of security features in Gmail called &amp;ldquo;Advanced Protection&amp;rdquo;, specifically for high-risk users. It was widely covered by medias (Wired, The Verge or Reuters) and quickly started a debate whether Google is the most secure email provider on the planet or if ProtonMail can compete. The main point here to me (and it has been said by many other people everywhere) is whether you trust Google to keep your data or not, depending on your threat model and your opinion about privacy.</description>
+    </item>
     
     <item>
       <title>Let&#39;s Talk About FlexiSpy</title>
