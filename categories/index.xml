@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Te(k|ch) blog</title>
+    <title>Categories on Tek&#39;s blog</title>
     <link>https://www.randhome.io/categories/</link>
-    <description>Recent content in Categories on Te(k|ch) blog</description>
+    <description>Recent content in Categories on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -52,15 +52,6 @@
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
       
       <guid>https://www.randhome.io/categories/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Security</title>
-      <link>https://www.randhome.io/categories/security/</link>
-      <pubDate>Mon, 23 Oct 2017 00:00:00 -0400</pubDate>
-      
-      <guid>https://www.randhome.io/categories/security/</guid>
       <description></description>
     </item>
     

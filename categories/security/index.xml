@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Security on Te(k|ch) blog</title>
+    <title>Security on Tek&#39;s blog</title>
     <link>https://www.randhome.io/categories/security/</link>
-    <description>Recent content in Security on Te(k|ch) blog</description>
+    <description>Recent content in Security on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Oct 2017 00:00:00 -0400</lastBuildDate>

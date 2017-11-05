@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.20.2" />
+
+  <title>New converter Clamav to Yara rules &middot; Te(k|ch) blog</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="https://www.randhome.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/references/">#references</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/">#whoami</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>New converter Clamav to Yara rules</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>15 Aug 2016, 23:22</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Pushed by VirusTotal, Yara has become the standard for malware signature. Yara rules are now used to <a href="https://github.com/nbs-system/php-malware-finder">find php malwares</a>, detect <a href="https://github.com/Yara-Rules/rules/blob/master/Antidebug_AntiVM/antidebug_antivm.yar">anti-VM tricks</a> or <a href="https://github.com/Yara-Rules/rules/tree/master/Packers">packers</a>.</p>
+
+<p>I <a href="http://te-k.github.io/blog/2016/05/14/comparison-of-php-scanners/">already spoke</a> about a converter of ClamAV rules to Yara from the Malware Analyst Cookbook, and I recently discovered that <a href="https://twitter.com/JusticeRage">Ivan Kwiatkowski</a> had published a <a href="https://github.com/JusticeRage/Manalyze/blob/master/bin/yara_rules/parse_clamav.py">new and more powerful converter</a> in his work on <a href="https://manalyzer.org/">Manalyzer</a>. Let&rsquo;s speak quickly about how it works.</p>
+
+<h2 id="clamav-signatures">ClamAV signatures</h2>
+
+<p>In its default package, ClamAV has three signature files:</p>
+
+<ul>
+<li><strong>main.cvd</strong> (main ClamAV virus database file)</li>
+<li><strong>daily.cvd</strong> (daily update file for ClamAV virus databases)</li>
+<li><strong>bytecode.cvd</strong> (signatures to detect bytecode in files)</li>
+</ul>
+
+<p>You can download them easily from their repository :</p>
+
+<pre><code class="language-bash">wget http://database.clamav.net/main.cvd http://database.clamav.net/daily.cvd http://database.clamav.net/bytecode.cvd
+</code></pre>
+
+<p>If you have clamav intalled, you can update it with <em>freshclam</em> and get the files from /var/lib/clamav)</p>
+
+<p>These files are packed (a gzipped tar file exactly) you can easily unpack them with sigtool (<em>sigtool -u FILE</em>), and in fact contains many different signature files :</p>
+
+<ul>
+<li><strong>Bytecode signatures</strong> (.cbc) : these files are processing routines compiled to bytecode then interpreted and executed by ClamAV (ref <a href="http://blog.clamav.net/2014/11/brief-re-introduction-to-clamav.html">here</a> and <a href="http://blog.clamav.net/2014_11_01_archive.html">here</a>)</li>
+<li><strong>CVD</strong> : signatures based on container metadata used to detect malware contained in other files (often ZIP or RAR archives). You can base the signature on the file namz size or position. Exemple:</li>
+</ul>
+
+<pre><code>Email.Trojan.Toa-2:CL_TYPE_ZIP:*:(?i)shipment.{0,50}\.exe\.doc$:*:*:*:*:*:
+</code></pre>
+
+<ul>
+<li><p><strong>Hash-based signatures</strong> (.hdb and .hdu for MD5, .hsb and hsu for SHA1 and SHA256). Exemple :</p>
+
+<pre><code>93720c4b6449e1dc562e3453c584c3e8:912296:Win.Trojan.Agent-1393459
+</code></pre></li>
+
+<li><p><strong>Icon signatures</strong> (.idb): uses a fuzzy hash algorithm to detect known icons. These signature can then be used from logical signatures</p></li>
+
+<li><p><strong>PE section based signatures</strong> (.mdb and .mdu) : signatures based on the hash of PE sections</p></li>
+
+<li><p><strong>Logical Signatures</strong> (.ldb and .ldu) : these are the basis of ClamAV so let&rsquo;s take a closer look</p></li>
+</ul>
+
+<p>Several other files are added to these signatures :</p>
+
+<ul>
+<li>Trusted and revoked certificates (.crb) : information about certificates to check PE signatures</li>
+<li>Whitelists of files (.fp and .sfp) : hash of whitelisted files</li>
+<li>Whitelists of signatures (.ign and .ign2) : signatures listed here are ignored by ClamAV</li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/">Openssh backdoor used on compromised Linux servers</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/">ShadowBrokers Easter Gift</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://www.randhome.io/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+
