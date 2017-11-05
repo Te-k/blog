@@ -20,6 +20,15 @@
     </item>
     
     <item>
+      <title>Google</title>
+      <link>https://www.randhome.io/categories/google/</link>
+      <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
+      
+      <guid>https://www.randhome.io/categories/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Linux</title>
       <link>https://www.randhome.io/categories/linux/</link>
       <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
@@ -52,6 +61,15 @@
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
       
       <guid>https://www.randhome.io/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://www.randhome.io/categories/security/</link>
+      <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
+      
+      <guid>https://www.randhome.io/categories/security/</guid>
       <description></description>
     </item>
     
