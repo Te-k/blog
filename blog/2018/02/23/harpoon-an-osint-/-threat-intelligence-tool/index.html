@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta property="og:title" content=" Harpoon: an OSINT / Threat Intelligence tool &middot;  Tek&#39;s blog" />
+<meta property="og:site_name" content="Tek&#39;s blog" />
+<meta property="og:url" content="https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/" />
+
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2018-02-23T00:00:00-05:00" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@http://twitter.com/tenacioustek" />
+    <meta name="twitter:creator" content="@http://twitter.com/tenacioustek" />
+    <meta name="twitter:title" content="Harpoon: an OSINT / Threat Intelligence tool" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/" />
+
+
+<title> Harpoon: an OSINT / Threat Intelligence tool &middot;  Tek&#39;s blog</title>
+
+
+    <meta name="description" content="" />
+
+
+<meta name="p:domain_verify" content="fc173d84e3a4de948ed4bda2908afd3e"/>
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+
+
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.randhome.io/css/pure-min.css">
+
+
+    <link rel="stylesheet" href="https://www.randhome.io/css/grids-responsive-min.css">
+
+<link rel="stylesheet" href="https://www.randhome.io/css/crisp.css">
+<link rel="stylesheet" href="https://www.randhome.io/css/rrssb.css">
+<link rel="stylesheet" href="https://www.randhome.io/css/highlight/sunburst.css">
+
+
+
+
+
+
+
+<link rel="canonical" href="https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/" />
+
+
+    
+
+
+    </head>
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-6">
+            <div class="header">
+    <div class="title">
+        <h1><a href="https://www.randhome.io/">Tek&#39;s blog</a></h1>
+        <p class="lead">Random Security Stuff</p>
+        
+    </div>
+    <div class="logo">
+        
+        
+            
+                <a id="logo" href="https://www.randhome.io/"><img src="/avatar2.png" alt="Tek&#39;s blog" /></a>
+            
+        
+    </div>
+
+    <ul class="sidebar-menu">
+        
+            <li class="sidebar-menu-item"><a href="https://www.randhome.io/references/">#references</a></li>
+        
+            <li class="sidebar-menu-item"><a href="https://www.randhome.io/about/">#whoami</a></li>
+        
+    </ul>
+
+    <div id="follow-icons">
+        
+        <a href="http://twitter.com/tenacioustek" target="_blank" rel="me"><i class="fa fa-twitter-square fa-3x"></i></a>
+        
+        <a href="http://github.com/Te-k" target="_blank" rel="me"><i class="fa fa-github-square fa-3x"></i></a>
+        
+        
+        
+        <a href="https://keybase.io/tekkk" target="_blank"><i class="fa fa-key fa-3x"></i></a>
+        <a href="https://www.randhome.io/index.xml" type="application/rss+xml"><i class="fa fa-rss-square fa-3x"></i></a>
+    </div>
+
+    
+        <div class="cc">
+            
+            
+            
+            
+            
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+            
+        </div>
+    
+</div>
+
+        </div>
+        <div class="content pure-u-1 pure-u-md-5-6">
+            <div class="article singlepage" id="" class="post">
+                <div class="post-stamp">
+                    <h1 class="post-title">Harpoon: an OSINT / Threat Intelligence tool</h1>
+                    <span class="post-date">Feb 23, 2018 &middot; 12 minute read</span>
+                    
+                        <span class="taglist">
+                            <a class="label" href="https://www.randhome.io/categories/osint">osint</a> <a class="label" href="https://www.randhome.io/categories/tools">tools</a> 
+                        </span>
+                    
+
+                    <span class="taglist">
+                    
+                    </span>
+                </div>
+                
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<p><strong>Harpoon</strong> is a tool to automate threat intelligence and open source intelligence tasks. Python 3 only and plugin based, the idea is to have one plugin per platform or task. The code is on <a href="https://github.com/Te-k/harpoon">github</a>, feel free to open <a href="https://github.com/Te-k/harpoon/issues">issues</a> and propose <a href="https://github.com/Te-k/harpoon/pulls">Pull Requests</a>.</p>
+
+<p>Install and config:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links
+npm install -g phantomjs
+harpoon config -u
+harpoon config
+</pre></div>
+
+<p>Then check how to use every module with <code>harpoon help MODULE</code></p>
+
+<h2 id="harpoon">Harpoon ?</h2>
+
+<p>For the past year and a half I have been pretty busy doing threat intelligence and open source intelligence on several malware operations. Threat Intelligence mainly relies on passive DNS/malware databases on one side, and databases on malicious activity on the other side, the objective is to map an attack infrastructure and if possible link it with other malicious activities. Some of these platforms are accessible to everyone (like <a href="https://otx.alienvault.com/">OTX</a> or <a href="https://www.robtex.com/">RobTex</a>) while others are commercial with or without free access (like <a href="https://www.virustotal.com/">VirusTotal</a> or <a href="https://community.riskiq.com/">Passive Total</a>). In the end, a large part of this activity is about looking for information in different platforms. Many people have tried to create a platform centralizing information from other platforms, but we always end up having yet another platform to consider during the research.</p>
+
+<p>
+<figure >
+    
+        <img src="/media/harpoon/xkcd927.png" />
+    
+    
+</figure>
+
+<strong>New standards problem totally applies to Threat Intelligence (<a href="https://xkcd.com/927/">xkcd 927</a>)</strong></p>
+
+<p>Open Source Intelligence (aka OSINT) on the other side is way more diverse. Of course there are some interesting platforms (like <a href="http://spyonweb.com/">SpyOnWeb</a>) but you may also have to do research in social media, cache platforms and many other random tasks depending where your investigation leads you.</p>
+
+<p>In all that, a large number of tasks are completely manual and it sucks.
+At first, I tried to create <a href="https://github.com/Te-k/analyst-scripts">random python scripts</a> to automate some of these tasks but it became quickly a mess : too many scripts, some in python 2 some in python 3, some using config files and some getting API key in parameters&hellip; After a while, I started to organize these scripts as modules for a tool called <strong>Harpoon</strong> and after some month of using it, I think it is time to make it open source to see if it can help other people.</p>
+
+<p>Some notes on the principles behind this tool :</p>
+
+<ul>
+<li>Python 3 only, python 2 is dead, I am not even trying to support it</li>
+<li>Many osint tools try to gather as much information as possible from a indicator (domain or email) without really any interest on where it comes from. Harpoon does not follow this philosophy, it mostly allows to realise a single task per command (with a couple of more general commmands using several tools). I think it is really important during an investigation to understand where an information come from and how reliable it is.</li>
+<li>In many cases, I also wanted to explore APIs to see what was possible with them, and I ended up rewriting some libraries (like <a href="https://github.com/Te-k/spyonweb">spyonweb</a>) just because I wanted to understand exactly what it did and how. So I reinvented the wheel many times and I am totally fine with it.</li>
+<li>Harpoon is organized in subcommands that are easy to implement, these commands rely on internal or external libraries. These commands also use a single configuration file that you need to complete manually when an API key is needed.</li>
+<li>This tool is not perfect, it only does what I needed to automate, it is likely buggy and has a long list of <a href="https://github.com/Te-k/harpoon/issues">things</a> I would like to implement one day (but it may never happen). Feel free to open <a href="https://github.com/Te-k/harpoon/issues">issues</a> or propose <a href="https://github.com/Te-k/harpoon/pulls">pull requests</a>.</li>
+</ul>
+
+<p>This post will be boring, mainly because I try to be as exhaustive as I can to complete the limited existing documentation about the tool. Feel free to jump to the sections you are interested to read</p>
+
+<h2 id="install">Install</h2>
+
+<p><strong>TL;DR:</strong></p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links
+npm install -g phantomjs
+harpoon config -u
+harpoon config
+</pre></div>
+
+<p>Boring yet mandatory part: how to install Harpoon. I have tried to package it as much as possible through pip (with the great help of <a href="https://twitter.com/cybersteez">@cybersteez</a>) so everything should be installable just with <code>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links</code></p>
+
+<p>The main challenge with the packaging is that many libraries I have written are hosted on github and not in Pypi (yet?), so the package should install them at the same time. Alternately, you can install everything from <code>requirements.txt</code> after you cloned the repository (<code>pip install -r requirements.txt</code>).</p>
+
+<p>If you want to use the screenshot module (to take screenshot of a website), you need to install it through npm : <code>npm install -g phantomjs</code></p>
+
+<p>Now harpoon should be installed, you can check if it works with <code>harpoon help ip</code> for instance. Then you need to install files needed by Harpoon and configure it. To install files needed (for now, mainly the <a href="https://dev.maxmind.com/geoip/geoip2/geolite2/">MaxMind GeoIP</a> database), you just need to run <code>harpoon config -u</code> and wait. Finally, you need to configure the tool, mainly by providing the API keys of platforms you can/want to use. For this, just run <code>harpoon config</code>, it will copy the empty config file and open it with vim so that you can provide the given keys. If you don&rsquo;t have them, just let the key empty and harpoon will avoid using the platform when possible. You can see the list of configured module with <code>harpoon config -c</code>. On my current system, it gives :</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>Configuration check:
+-hibp            -&gt; OK
+-twitter         -&gt; OK
+-misp            -&gt; FAILED
+-robtex          -&gt; OK
+-totalhash       -&gt; OK
+-pt              -&gt; OK
+-asn             -&gt; OK
+-otx             -&gt; OK
+-bitly           -&gt; OK
+-vt              -&gt; OK
+-screenshot      -&gt; OK
+-dns             -&gt; OK
+-safebrowsing    -&gt; OK
+-threatgrid      -&gt; OK
+-help            -&gt; OK
+-shodan          -&gt; OK
+-greynoise       -&gt; OK
+-crtsh           -&gt; OK
+-domain          -&gt; OK
+-pgp             -&gt; OK
+-github          -&gt; OK
+-malshare        -&gt; OK
+-config          -&gt; OK
+-hunter          -&gt; OK
+-hybrid          -&gt; OK
+-cache           -&gt; OK
+-spyonweb        -&gt; OK
+-telegram        -&gt; FAILED
+-fullcontact     -&gt; OK
+-ip              -&gt; OK
+-censys          -&gt; OK
+-googl           -&gt; OK
+</pre></div>
+
+<p>All the files needed by Harpoon (including config file) are installed in <code>~/.config/harpoon</code>.</p>
+
+<h2 id="features">Features</h2>
+
+<p>It is hard to describe the features without just listing the modules because I almost created a new command for every task I needed to automate. Let&rsquo;s try to organize in categories with examples :</p>
+
+<ul>
+<li><strong>Threat Intelligence platforms</strong> : <a href="https://virustotal.com/">Virus Total</a>, <a href="https://community.riskiq.com/">Passive Total</a>, <a href="https://www.hybrid-analysis.com/">Hybrid Analysis</a>, <a href="https://otx.alienvault.com/">Alien Vault OTX</a>, <a href="https://www.shodan.io/">Shodan</a>, <a href="https://censys.io/">Censys</a>, <a href="https://www.robtex.com/">RobTex</a>, <a href="https://www.cisco.com/c/en/us/products/security/threat-grid/index.html">ThreatGrid</a>, <a href="https://greynoise.io/">GreyNoise</a>, <a href="https://totalhash.cymru.com/">TotalHash</a>, <a href="http://www.misp-project.org/">MISP</a>, <a href="http://malshare.com/">MalShare</a></li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon otx <span style="color: #666666">-</span>s cdnverify<span style="color: #666666">.</span>net
+No analysis on this <span style="color: #007020">file</span>
+Listed <span style="color: #007020; font-weight: bold">in</span> <span style="color: #40a070">1</span> pulses
+	<span style="color: #666666">-</span>Sofacy targeting Romanian Embassy
+		Sofacy targeting the embassy of Romania <span style="color: #007020; font-weight: bold">in</span> Moscow <span style="color: #666666">-</span>  Email Subject: Upcoming Defense events February <span style="color: #40a070">2018</span>
+		Created: <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">08</span>T11:<span style="color: #40a070">50</span>:<span style="color: #40a070">07.652000</span>
+		References: https:<span style="color: #666666">//</span>twitter<span style="color: #666666">.</span>com<span style="color: #666666">/</span>ClearskySec<span style="color: #666666">/</span>status<span style="color: #666666">/</span><span style="color: #40a070">960924755355369472</span>
+		<span style="color: #007020">id</span>: <span style="color: #40a070">5</span>a7c396f6db26d7636273c44
+URL <span style="color: #007020">list</span>:
+	[<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T19:<span style="color: #40a070">12</span>:<span style="color: #40a070">50</span>] https:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> on IP <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+	[<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">02</span>T18:<span style="color: #40a070">44</span>:<span style="color: #40a070">09</span>] http:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> on IP <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+</pre></div>
+
+<ul>
+<li>On top of that, I have implemented some higher level commands to gather information from all these platforms with <strong>ip</strong> and <strong>domain</strong>. These commands search for interesting information from almost all the plugins configured:</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon domain intel cdnverify<span style="color: #666666">.</span>net
+<span style="color: #60a0b0; font-style: italic">###################### cdnverify.net ###################</span>
+[<span style="color: #666666">+</span>] Downloading OTX information<span style="color: #666666">....</span>
+[<span style="color: #666666">+</span>] Downloading Robtex information<span style="color: #666666">....</span>
+[<span style="color: #666666">+</span>] Downloading Passive Total information<span style="color: #666666">....</span>
+[<span style="color: #666666">+</span>] Downloading VT information<span style="color: #666666">....</span>
+<span style="color: #666666">-----------------</span> Intelligence Report
+OTX:
+ <span style="color: #666666">-</span>Sofacy targeting Romanian Embassy (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">08</span> <span style="color: #666666">-</span> https:<span style="color: #666666">//</span>otx<span style="color: #666666">.</span>alienvault<span style="color: #666666">.</span>com<span style="color: #666666">/</span>pulse<span style="color: #666666">/</span><span style="color: #40a070">5</span>a7c396f6db26d7636273c44)
+PT: Nothing found<span style="border: 1px solid #FF0000">!</span>
+<span style="color: #666666">-----------------</span> Malware
+[PT (Emerging Threats (Proofpoint))] <span style="color: #40a070">36524</span>c90ca1fac2102e7653dfadb31b2 <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">04</span>
+<span style="color: #666666">-----------------</span> Urls
+[VT] http:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> <span style="color: #666666">-</span>  <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">15</span>
+[VT] https:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> <span style="color: #666666">-</span>  <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">09</span>
+[OTX] https:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> <span style="color: #666666">-</span> <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>
+[OTX] http:<span style="color: #666666">//</span>cdnverify<span style="color: #666666">.</span>net<span style="color: #666666">/</span> <span style="color: #666666">-</span> <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">02</span>
+<span style="color: #666666">-----------------</span> Passive DNS
+[<span style="color: #666666">+</span>] <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>                            (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">07</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">07</span>)(PT)
+[<span style="color: #666666">+</span>] <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>                            (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">04</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">04</span>)(VT)
+[<span style="color: #666666">+</span>] <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>                            (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">02</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>)(Robtex)
+[<span style="color: #666666">+</span>] <span style="color: #40a070">208.91</span><span style="color: #666666">.</span><span style="color: #40a070">197.91</span>                            (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">01</span><span style="color: #666666">-</span><span style="color: #40a070">31</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">01</span><span style="color: #666666">-</span><span style="color: #40a070">31</span>)(PT)
+</pre></div>
+
+<ul>
+<li><strong>Network information</strong> : the commands <strong>ip</strong>, <strong>dns</strong> and <strong>asn</strong> provide basic information about an IP, domain or ASN number (location, dns resolutions or information on the ASN). Nothing fancy but it helps all the time</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon ip info <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+MaxMind: Located <span style="color: #007020; font-weight: bold">in</span> Roubaix, France
+MaxMind: ASN16276, OVH SAS
+ASN <span style="color: #40a070">16276</span> <span style="color: #666666">-</span> OVH, FR (<span style="color: #007020">range</span> <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">0.0</span><span style="color: #666666">/</span><span style="color: #40a070">16</span>)
+
+Censys:		https:<span style="color: #666666">//</span>censys<span style="color: #666666">.</span>io<span style="color: #666666">/</span>ipv4<span style="color: #666666">/</span><span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+Shodan:		https:<span style="color: #666666">//</span>www<span style="color: #666666">.</span>shodan<span style="color: #666666">.</span>io<span style="color: #666666">/</span>host<span style="color: #666666">/</span><span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+IP Info:	http:<span style="color: #666666">//</span>ipinfo<span style="color: #666666">.</span>io<span style="color: #666666">/</span><span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+BGP HE:		https:<span style="color: #666666">//</span>bgp<span style="color: #666666">.</span>he<span style="color: #666666">.</span>net<span style="color: #666666">/</span>ip<span style="color: #666666">/</span><span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+IP Location:	https:<span style="color: #666666">//</span>www<span style="color: #666666">.</span>iplocation<span style="color: #666666">.</span>net<span style="color: #666666">/</span><span style="border: 1px solid #FF0000">?</span>query<span style="color: #666666">=</span><span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
+</pre></div>
+
+<ul>
+<li><strong>Social media</strong> : more than researching in social media platforms (not sure the API is the best way to do that), I find saving everything from a social media quickly really helpful during an investigation (i.e. before Twitter deletes Russian trolls). Same idea with the <strong>screenshot</strong> command which take a screenshot of a website.</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon twitter <span style="color: #666666">-</span>s realDonaldTrump <span style="color: #666666">&gt;</span> <span style="color: #555555; font-weight: bold">@realDonaldTrump</span>
+</pre></div>
+
+<ul>
+<li><strong>URL shorteners</strong> : I have also implemented commands for bit.ly and goo.gl url shorteners, the idea is to be able to get as much data as possible from the API</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon bitly <span style="color: #666666">-</span>H <span style="color: #40a070">2</span>oh6Nrj
+<span style="color: #666666">--------------------</span> <span style="color: #60add5">Bit</span><span style="color: #666666">.</span>ly <span style="color: #60add5">Link</span> infos <span style="color: #666666">-------------------</span>
+<span style="color: #60a0b0; font-style: italic"># INFO</span>
+<span style="color: #517918">Link</span>: <span style="color: #517918">http</span>:<span style="color: #235388">//</span>bit<span style="color: #666666">.</span>ly<span style="color: #666666">/</span><span style="color: #40a070">2</span>oh6Nrj		<span style="color: #517918">Metrics</span>: <span style="color: #517918">http</span>:<span style="color: #235388">//</span>bit<span style="color: #666666">.</span>ly<span style="color: #666666">/</span><span style="color: #40a070">2</span>oh6Nrj<span style="color: #666666">+</span>
+<span style="color: #60add5">Expanded</span> <span style="color: #517918">url</span>: <span style="color: #517918">https</span>:<span style="color: #235388">//ooni</span><span style="color: #666666">.</span>torproject<span style="color: #666666">.</span>org<span style="color: #666666">/</span>post<span style="color: #666666">/</span>mining<span style="color: #666666">-</span>ooni<span style="color: #666666">-</span>data<span style="color: #666666">/</span>
+<span style="color: #60add5">Creation</span> <span style="color: #517918">Date</span>: <span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">19</span> <span style="color: #40a070">00</span>:<span style="color: #40a070">15</span>:<span style="color: #40a070">03</span>
+<span style="color: #60add5">Aggregate</span> <span style="color: #517918">link</span>: <span style="color: #517918">http</span>:<span style="color: #235388">//</span>bit<span style="color: #666666">.</span>ly<span style="color: #666666">/</span><span style="color: #40a070">2</span><span style="color: #60add5">E6V2dF</span>
+<span style="color: #40a070">2</span> bitly redirect to this url
+
+<span style="color: #60a0b0; font-style: italic"># LINK  INFO</span>
+<span style="color: #517918">original_url</span>: <span style="color: #517918">https</span>:<span style="color: #235388">//ooni</span><span style="color: #666666">.</span>torproject<span style="color: #666666">.</span>org<span style="color: #666666">/</span>post<span style="color: #666666">/</span>mining<span style="color: #666666">-</span>ooni<span style="color: #666666">-</span>data<span style="color: #666666">/</span>
+<span style="color: #517918">canonical_url</span>: <span style="color: #517918">https</span>:<span style="color: #235388">//ooni</span><span style="color: #666666">.</span>torproject<span style="color: #666666">.</span>org<span style="color: #666666">/</span>post<span style="color: #666666">/</span>mining<span style="color: #666666">-</span>ooni<span style="color: #666666">-</span>data<span style="color: #666666">/</span>
+<span style="color: #517918">html_title</span>: <span style="color: #60add5">OONI</span> <span style="color: #666666">-</span> I have hands, how can I mine <span style="color: #60add5">OONI</span> data?
+<span style="color: #517918">aggregate_link</span>: <span style="color: #517918">http</span>:<span style="color: #235388">//</span>bit<span style="color: #666666">.</span>ly<span style="color: #666666">/</span><span style="color: #40a070">2</span><span style="color: #60add5">E6V2dF</span>
+<span style="color: #517918">indexed</span>: <span style="color: #40a070">1519017306</span>
+
+<span style="color: #60a0b0; font-style: italic"># USERS</span>
+<span style="color: #517918">User</span>: <span style="color: #40a070">2</span>oh6Nrj
+<span style="color: #60add5">Invalid</span> user!
+
+<span style="color: #60a0b0; font-style: italic"># CLICKS</span>
+<span style="color: #40a070">0</span> clicks on this link
+
+<span style="color: #60a0b0; font-style: italic"># COUNTRIES</span>
+
+<span style="color: #60a0b0; font-style: italic"># REFERRERS</span>
+</pre></div>
+
+<ul>
+<li>And then, there are other commands I implemented because I wanted to see what I could get with some APIs. For instance, there is a command for <strong>github</strong> to search in github repos, or <strong>pgp</strong> to search for keys. One command I like particularly is the <strong>cache</strong> command which check for the existence of a web page in different cache platforms.</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon cache <span style="color: #517918">https</span>:<span style="color: #235388">//</span>citizenlab<span style="color: #666666">.</span>ca<span style="color: #666666">/</span><span style="color: #40a070">2016</span><span style="color: #666666">/</span><span style="color: #40a070">11</span><span style="color: #666666">/</span>parliament<span style="color: #666666">-</span>keyboy<span style="color: #666666">/</span>
+<span style="color: #517918">Google</span>: <span style="color: #60add5">FOUND</span> <span style="color: #517918">https</span>:<span style="color: #235388">//</span>webcache<span style="color: #666666">.</span>googleusercontent<span style="color: #666666">.</span>com<span style="color: #666666">/</span>search?q<span style="color: #666666">=</span>cache<span style="color: #666666">%</span><span style="color: #40a070">3</span><span style="color: #60add5">Ahttps</span><span style="color: #666666">%</span><span style="color: #40a070">3</span>A<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fcitizenlab</span><span style="color: #666666">.</span>ca<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F2016</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F11</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fparliament</span><span style="color: #666666">-</span>keyboy<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">&amp;</span>strip<span style="color: #666666">=</span><span style="color: #40a070">0</span><span style="color: #666666">&amp;</span>num<span style="color: #666666">=</span><span style="color: #40a070">1</span><span style="color: #666666">&amp;</span>vwsrc<span style="color: #666666">=</span><span style="color: #40a070">1</span> (<span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">05</span> <span style="color: #40a070">20</span>:<span style="color: #40a070">02</span>:<span style="color: #40a070">18</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>)
+<span style="color: #517918">Yandex</span>: <span style="color: #60add5">FOUND</span> <span style="color: #517918">https</span>:<span style="color: #235388">//</span>hghltd<span style="color: #666666">.</span>yandex<span style="color: #666666">.</span>net<span style="color: #666666">/</span>yandbtm?fmode<span style="color: #666666">=</span>inject<span style="color: #666666">&amp;</span>url<span style="color: #666666">=</span>https<span style="color: #666666">%</span><span style="color: #40a070">3</span>A<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fcitizenlab</span><span style="color: #666666">.</span>ca<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F2016</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F11</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fparliament</span><span style="color: #666666">-</span>keyboy<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">&amp;</span>tld<span style="color: #666666">=</span>ru<span style="color: #666666">&amp;</span>lang<span style="color: #666666">=</span>en<span style="color: #666666">&amp;</span>la<span style="color: #666666">=</span><span style="color: #40a070">1518660992</span><span style="color: #666666">&amp;</span>tm<span style="color: #666666">=</span><span style="color: #40a070">1519019381</span><span style="color: #666666">&amp;</span>text<span style="color: #666666">=</span>https<span style="color: #666666">%</span><span style="color: #40a070">3</span>A<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fcitizenlab</span><span style="color: #666666">.</span>ca<span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F2016</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">F11</span><span style="color: #666666">%</span><span style="color: #40a070">2</span><span style="color: #60add5">Fparliament</span><span style="color: #666666">-</span>keyboy<span style="color: #666666">%</span><span style="color: #40a070">2</span>F<span style="color: #666666">&amp;</span>l10n<span style="color: #666666">=</span>ru<span style="color: #666666">&amp;</span>mime<span style="color: #666666">=</span>html<span style="color: #666666">&amp;</span>sign<span style="color: #666666">=</span>ef543d285bc848b89e51b5a654f7f6aa<span style="color: #666666">&amp;</span>keyno<span style="color: #666666">=</span><span style="color: #40a070">0</span>
+<span style="color: #60add5">Archive</span><span style="color: #666666">.</span>is: <span style="color: #60add5">NOT</span> <span style="color: #60add5">FOUND</span>
+<span style="color: #60add5">Archive</span><span style="color: #666666">.</span>org: <span style="color: #60add5">FOUND</span>
+<span style="color: #666666">-</span><span style="color: #40a070">2018</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">03</span> <span style="color: #40a070">10</span>:<span style="color: #40a070">05</span>:<span style="color: #40a070">03</span>: <span style="color: #517918">http</span>:<span style="color: #235388">//</span>web<span style="color: #666666">.</span>archive<span style="color: #666666">.</span>org<span style="color: #666666">/</span>web<span style="color: #666666">/</span><span style="color: #40a070">20180203100503</span><span style="color: #666666">/</span><span style="color: #517918">https</span>:<span style="color: #235388">//</span>citizenlab<span style="color: #666666">.</span>ca<span style="color: #666666">/</span><span style="color: #40a070">2016</span><span style="color: #666666">/</span><span style="color: #40a070">11</span><span style="color: #666666">/</span>parliament<span style="color: #666666">-</span>keyboy<span style="color: #666666">/</span>
+<span style="color: #517918">Bing</span>: <span style="color: #60add5">FOUND</span> <span style="color: #517918">http</span>:<span style="color: #235388">//</span>cc<span style="color: #666666">.</span>bingj<span style="color: #666666">.</span>com<span style="color: #666666">/</span>cache<span style="color: #666666">.</span>aspx?d<span style="color: #666666">=</span><span style="color: #40a070">5023416941477933</span><span style="color: #666666">&amp;</span>w<span style="color: #666666">=</span>p_fS69zzGSfsYoCCryqQAHXJ09tpPdBB (<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">17</span> <span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>)
+</pre></div>
+
+<ul>
+<li>Last but not least, the <strong>help</strong> commands gives (hopefully) detailed information on any command :</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon help ip
+<span style="color: #60a0b0; font-style: italic"># IP</span>
+
+Gathers information on an IP address
+
+Get information on an IP:
+
+harpoon ip info <span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+MaxMind: Located <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">None</span>, United States
+MaxMind: ASN21928, T<span style="color: #666666">-</span>Mobile USA, Inc<span style="color: #666666">.</span>
+ASN <span style="color: #40a070">21928</span> <span style="color: #666666">-</span> T<span style="color: #666666">-</span>MOBILE<span style="color: #666666">-</span>AS21928 <span style="color: #666666">-</span> T<span style="color: #666666">-</span>Mobile USA, Inc<span style="color: #666666">.</span>, US (<span style="color: #007020">range</span> <span style="color: #40a070">172.32</span><span style="color: #666666">.</span><span style="color: #40a070">0.0</span><span style="color: #666666">/</span><span style="color: #40a070">11</span>)
+
+Censys:     https:<span style="color: #666666">//</span>censys<span style="color: #666666">.</span>io<span style="color: #666666">/</span>ipv4<span style="color: #666666">/</span><span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+Shodan:     https:<span style="color: #666666">//</span>www<span style="color: #666666">.</span>shodan<span style="color: #666666">.</span>io<span style="color: #666666">/</span>host<span style="color: #666666">/</span><span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+IP Info:    http:<span style="color: #666666">//</span>ipinfo<span style="color: #666666">.</span>io<span style="color: #666666">/</span><span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+BGP HE:     https:<span style="color: #666666">//</span>bgp<span style="color: #666666">.</span>he<span style="color: #666666">.</span>net<span style="color: #666666">/</span>ip<span style="color: #666666">/</span><span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+IP Location:    https:<span style="color: #666666">//</span>www<span style="color: #666666">.</span>iplocation<span style="color: #666666">.</span>net<span style="color: #666666">/</span><span style="border: 1px solid #FF0000">?</span>query<span style="color: #666666">=</span><span style="color: #40a070">172.34</span><span style="color: #666666">.</span><span style="color: #40a070">127.2</span>
+
+<span style="color: #666666">*</span> Get intelligence information on an IP: harpoon ip intel IP
+</pre></div>
+
+<h2 id="harpoontools">harpoontools</h2>
+
+<p>At some point, I got sick of using <code>harpoon XXX</code> for some commands I was using all the time. So I created a repository <a href="https://github.com/Te-k/harpoontools">harpoontools</a> that install commands using Harpoon features. You can install it through <code>pip install git+ssh://git@github.com/Te-k/harpoontools</code></p>
+
+<p>For now I have only implemented <strong>ipinfo</strong>, <strong>asninfo</strong> and <strong>dns</strong> :</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> cat ips <span style="color: #666666">|</span> ipinfo
+<span style="color: #40a070">66.249</span><span style="color: #666666">.</span><span style="color: #40a070">66.6</span> ; ASN15169 ; Google LLC ; Mountain View ; United States
+<span style="color: #40a070">184.105</span><span style="color: #666666">.</span><span style="color: #40a070">139.116</span> ; ASN6939 ; Hurricane Electric, Inc<span style="color: #666666">.</span> ; Fremont ; United States
+<span style="color: #40a070">184.105</span><span style="color: #666666">.</span><span style="color: #40a070">247.206</span> ; ASN6939 ; Hurricane Electric, Inc<span style="color: #666666">.</span> ; Salt Lake City ; United States
+</pre></div>
+
+<h2 id="example">Example</h2>
+
+<p>It is hard to give a real-life example of Harpoon as it is helpful for different types of investigations, but let&rsquo;s try with the recent Palo Alto report about <a href="https://researchcenter.paloaltonetworks.com/2018/01/unit42-vermin-quasar-rat-custom-malware-used-ukraine/">Quasar RAT</a> and focus on the domain <code>akamaicdn[.]ru</code>.</p>
+
+<p>First let&rsquo;s check what is the actual DNS resolution :</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon  dns akamaicdn[<span style="color: #666666">.</span>]ru
+<span style="color: #60a0b0; font-style: italic"># A</span>
+No A entry
+
+<span style="color: #60a0b0; font-style: italic"># AAAA</span>
+No AAAA entry configured
+
+<span style="color: #60a0b0; font-style: italic"># NS</span>
+ns2<span style="color: #666666">.</span>reg<span style="color: #666666">.</span>ru<span style="color: #666666">.</span> <span style="color: #666666">-</span> <span style="color: #40a070">176.99</span><span style="color: #666666">.</span><span style="color: #40a070">13.12</span> <span style="color: #666666">-</span> ASN197695 Domain names registrar REG<span style="color: #666666">.</span>RU, Ltd <span style="color: #666666">-</span> <span style="color: #007020">None</span> Russia
+ns1<span style="color: #666666">.</span>reg<span style="color: #666666">.</span>ru<span style="color: #666666">.</span> <span style="color: #666666">-</span> <span style="color: #40a070">176.99</span><span style="color: #666666">.</span><span style="color: #40a070">13.15</span> <span style="color: #666666">-</span> ASN197695 Domain names registrar REG<span style="color: #666666">.</span>RU, Ltd <span style="color: #666666">-</span> <span style="color: #007020">None</span> Russia
+
+<span style="color: #60a0b0; font-style: italic"># MX:</span>
+No MX entry configured
+
+<span style="color: #60a0b0; font-style: italic"># SOA</span>
+NS: ns1<span style="color: #666666">.</span>reg<span style="color: #666666">.</span>ru<span style="color: #666666">.</span>
+Owner: hostmaster<span style="color: #666666">.</span>ns1<span style="color: #555555; font-weight: bold">@reg.ru</span>
+
+<span style="color: #60a0b0; font-style: italic"># TXT:</span>
+No TXT entry configured
+</pre></div>
+
+<p>No A entry, I guess the operation stopped. Let&rsquo;s see if we can get any older IP with robtex:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon robtex domain akamaicdn<span style="color: #666666">.</span>ru
+Passive DNS info:
+[<span style="color: #666666">+</span>] A	<span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span>	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
+[<span style="color: #666666">+</span>] NS	ns1<span style="color: #666666">.</span>expired<span style="color: #666666">.</span>r01<span style="color: #666666">.</span>ru	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
+[<span style="color: #666666">+</span>] A	<span style="color: #40a070">109.70</span><span style="color: #666666">.</span><span style="color: #40a070">26.37</span>	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
+[<span style="color: #666666">+</span>] NS	ns2<span style="color: #666666">.</span>expired<span style="color: #666666">.</span>r01<span style="color: #666666">.</span>ru	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
+[<span style="color: #666666">+</span>] MX	nomail<span style="color: #666666">.</span>nic<span style="color: #666666">.</span>ru	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
+</pre></div>
+
+<p>Let&rsquo;s check where are these IPs:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> ipinfo <span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span> <span style="color: #40a070">109.70</span><span style="color: #666666">.</span><span style="color: #40a070">26.37</span>
+<span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span> ; ASN48287 ; Jsc ru<span style="color: #666666">-</span>center ; Moscow ; Russia
+<span style="color: #40a070">109.70</span><span style="color: #666666">.</span><span style="color: #40a070">26.37</span> ; ASN48287 ; Jsc ru<span style="color: #666666">-</span>center ; <span style="color: #007020">None</span> ; Russia
+</pre></div>
+
+<p>We can check if certificates were created for this domain with crt.sh :</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon crtsh <span style="color: #666666">-</span>d akamaicdn<span style="color: #666666">.</span>ru
+Certificates
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">02</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">09</span><span style="color: #666666">-</span><span style="color: #40a070">03</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	B05CB0F1425FBFA7E9407C777C6B4DC0E3F7F1B6
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">21</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">08</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">7</span>B9F1F8A2F7211C332C60EBFDB6CF739DF7D2A3A
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">01</span><span style="color: #666666">-</span><span style="color: #40a070">22</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">07</span><span style="color: #666666">-</span><span style="color: #40a070">30</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	D372B140802DA627BD0745B447A9E3A48B2FBD15
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">01</span><span style="color: #666666">-</span><span style="color: #40a070">19</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">07</span><span style="color: #666666">-</span><span style="color: #40a070">23</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">3868</span>C466BC8D131B2EB6B65CD7B20E7FFB255C51
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">12</span><span style="color: #666666">-</span><span style="color: #40a070">05</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">06</span><span style="color: #666666">-</span><span style="color: #40a070">04</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	BBEBA7914A4287C8BDDCD81510A327D33E6476F5
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">12</span><span style="color: #666666">-</span><span style="color: #40a070">05</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">06</span><span style="color: #666666">-</span><span style="color: #40a070">04</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	F0F0A0D02A8E16B3A261382D75B8C96393A16264
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">27</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">06</span><span style="color: #666666">-</span><span style="color: #40a070">04</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	E285191C82EA0F5FD23EF4688A62E5772F4584D4
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">23</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">28</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">7</span>F40B0D369700BFC27C2AD2EB858D8DF4955624D
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">21</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">28</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	EDE5454F23BBC7BFBA17F2E293D7FBDD1266B260
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">10</span><span style="color: #666666">-</span><span style="color: #40a070">23</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">04</span><span style="color: #666666">-</span><span style="color: #40a070">30</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">68</span>D504FAEB6AF1DDA50062B16CBFB46AAD490171
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">10</span><span style="color: #666666">-</span><span style="color: #40a070">23</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">04</span><span style="color: #666666">-</span><span style="color: #40a070">30</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2</span>F2231766F8432343B579DB21ECF829CB171E481
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">10</span><span style="color: #666666">-</span><span style="color: #40a070">23</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">04</span><span style="color: #666666">-</span><span style="color: #40a070">30</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	B11FCBEAD0A2D174C661D8095A0693955FC62A99
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">09</span><span style="color: #666666">-</span><span style="color: #40a070">12</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">19</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">62578</span>BABE0AFFE15ABE3FBD68A6EE8EF76AB556A
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">18</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">20</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">5630</span>B82083D14B0D5202FEAC7566971ECA41BBDC
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">18</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">20</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	D5A7B4CC6DF2340E8F547E3CC0A17163A81FD51A
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">500</span>DA087F038AEB5A37D9F60638332DBA8368BA2
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">05</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">06</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	C54AEC0DA67F1B12A134C6B997EE93DFA0EEE4F2
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">04</span><span style="color: #666666">-</span><span style="color: #40a070">11</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">10</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	E746CD3581198237D3D26F8A80FF71BAD88D1544
+sni11878<span style="color: #666666">.</span>cloudflaressl<span style="color: #666666">.</span>com	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">18</span>T00:<span style="color: #40a070">00</span>:<span style="color: #40a070">00</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">08</span><span style="color: #666666">-</span><span style="color: #40a070">21</span>T23:<span style="color: #40a070">59</span>:<span style="color: #40a070">59</span><span style="color: #666666">+</span><span style="color: #40a070">00</span>:<span style="color: #40a070">00</span>	<span style="color: #40a070">451608653</span>F741F079CC52569F7FAFB8C5B1F8855
+</pre></div>
+
+<p>So apparently they used Cloudfare to host this domain. We likely have a partial view of passive DNS information due to Robtex limitations, but let&rsquo;s check if OTX knows anything about the IP address <code>194.85.61.76</code>:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon otx <span style="color: #666666">-</span>s <span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span>
+No analysis on this <span style="color: #007020">file</span>
+Listed <span style="color: #007020; font-weight: bold">in</span> <span style="color: #40a070">5</span> pulses
+	<span style="color: #666666">-</span>BadRabbit<span style="color: #666666">-</span>Ransomware <span style="color: #666666">-</span> A Modified Version of NotPetya
+
+		Created: <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">03</span>T17:<span style="color: #40a070">58</span>:<span style="color: #40a070">14.502000</span>
+		References:
+		<span style="color: #007020">id</span>: <span style="color: #40a070">59</span>fcae36f0c4a216de3560ea
+	<span style="color: #666666">-</span>Blueliv Chasing cybercrime: Vawtrak v2 IOCs
+		Vawtrak <span style="color: #007020; font-weight: bold">is</span> a serious threat <span style="color: #007020; font-weight: bold">for</span> the finance sector <span style="color: #007020; font-weight: bold">and</span> <span style="color: #007020; font-weight: bold">is</span> predicted to be the <span style="color: #007020">next</span> major banking Trojan<span style="color: #666666">.</span> Blueliv<span style="color: #4070a0">&#39;s investigation into Vawtrak v2 has revealed new information to piece together a more complete view of the Vawtrak banking Trojan and the cybercriminal groups behind it than we&#39;</span>ve seen before<span style="color: #666666">.</span> The report also provides real infection data <span style="color: #007020; font-weight: bold">and</span> Indicators of Compromise (IoCs) that readers can <span style="color: #007020">input</span> into their existing security solutions to enhance their protection<span style="color: #666666">.</span> Here <span style="color: #007020; font-weight: bold">is</span> the full <span style="color: #007020">list</span> of Vawtrak <span style="color: #007020; font-weight: bold">and</span> Moskalvzapoe IOCs discovered <span style="color: #007020; font-weight: bold">as</span> part of the Blueliv analysis<span style="color: #666666">.</span>
+		Created: <span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">09</span><span style="color: #666666">-</span><span style="color: #40a070">12</span>T17:<span style="color: #40a070">36</span>:<span style="color: #40a070">18.734000</span>
+		References: https:<span style="color: #666666">//</span>community<span style="color: #666666">.</span>blueliv<span style="color: #666666">.</span>com<span style="color: #666666">/</span><span style="color: #60a0b0; font-style: italic">#/s/57d6d33d82df41127d7a6ca4, https://www.sophos.com/en-us/medialibrary/PDFs/technical%20papers/sophos-vawtrak-v2-sahin-wyke.pdf?la=en</span>
+		<span style="color: #007020">id</span>: <span style="color: #40a070">57</span>d6e794aa954c115b68a85f
+	<span style="color: #666666">-</span>Ursnif CnC
+
+		Created: <span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">17</span>T00:<span style="color: #40a070">35</span>:<span style="color: #40a070">04.809000</span>
+		References:
+		<span style="color: #007020">id</span>: <span style="color: #40a070">56</span>c3c03867db8c12501745c6
+	<span style="color: #666666">-</span>Angler EK Network IOC
+		Angler EK Network IOC observed <span style="color: #007020; font-weight: bold">in</span> the past year<span style="color: #666666">.</span>
+		Created: <span style="color: #40a070">2016</span><span style="color: #666666">-</span><span style="color: #40a070">02</span><span style="color: #666666">-</span><span style="color: #40a070">17</span>T15:<span style="color: #40a070">25</span>:<span style="color: #40a070">35.814000</span>
+		References:
+		<span style="color: #007020">id</span>: <span style="color: #40a070">56</span>c490f067db8c1250175b9d
+	<span style="color: #666666">-</span>Chinese Government Website Compromised, Leads to Angler
+		Despite a recent takedown targeting the Angler Exploit Kit (EK), it<span style="color: #4070a0">&#39;s back to business as usual for kit operators. On 30-October-2015, ThreatLabZ noticed a compromised Chinese government website that led to the Angler Exploit Kit with an end payload of Cryptowall 3.0. This compromise does not appear targeted and the compromised site was cleaned up within 24 hours. We have noticed some recent changes to Angler, as well as the inclusion of newer Flash exploits. A set of indicators for this compromise is at the end of this post.</span>
+		Created: <span style="color: #40a070">2015</span><span style="color: #666666">-</span><span style="color: #40a070">11</span><span style="color: #666666">-</span><span style="color: #40a070">03</span>T19:<span style="color: #40a070">21</span>:<span style="color: #40a070">57.947000</span>
+		References: http:<span style="color: #666666">//</span>research<span style="color: #666666">.</span>zscaler<span style="color: #666666">.</span>com<span style="color: #666666">/</span><span style="color: #40a070">2015</span><span style="color: #666666">/</span><span style="color: #40a070">11</span><span style="color: #666666">/</span>chinese<span style="color: #666666">-</span>government<span style="color: #666666">-</span>website<span style="color: #666666">-</span>compromised<span style="color: #666666">.</span>html
+		<span style="color: #007020">id</span>: <span style="color: #40a070">563909554637</span>f2388aaf2311
+Passive DNS:
+[SNIP]
+</pre></div>
+
+<h2 id="create-a-new-command">Create a new command</h2>
+
+<p>Harpoon is a plugin-based tool, so it is pretty easy to add new features just by creating new plugins. To do so, you need to create a new file in harpoon/commands and implement a class inheriting the Command class. Let&rsquo;s say we would like to implement a ping command (which would not be really helpful), we could create the following <code>ping.py</code> file :</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">os</span>
+<span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">harpoon.commands.base</span> <span style="color: #007020; font-weight: bold">import</span> Command
+
+
+<span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">CommandPing</span>(Command):
+    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #4070a0; font-style: italic">    # Ping</span>
+
+<span style="color: #4070a0; font-style: italic">    Here put the help in markdown format</span>
+<span style="color: #4070a0; font-style: italic">    &quot;&quot;&quot;</span>
+    name <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;ping&quot;</span>
+    decription <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;Ping command&quot;</span>
+
+    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">add_arguments</span>(<span style="color: #007020">self</span>, parser):
+        <span style="color: #60a0b0; font-style: italic"># Here add arguments to the parser (which is an argparse parser)</span>
+        parser<span style="color: #666666">.</span>add_arguments(<span style="color: #4070a0">&#39;IP&#39;</span>, help<span style="color: #666666">=</span><span style="color: #4070a0">&#39;IP to ping&#39;</span>)
+        <span style="color: #60a0b0; font-style: italic"># It is nice to save the parser to call help later if needed</span>
+        <span style="color: #007020">self</span><span style="color: #666666">.</span>parser <span style="color: #666666">=</span> parser
+
+    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">run</span>(<span style="color: #007020">self</span>, conf, args, plugins):
+        <span style="color: #60a0b0; font-style: italic"># here, implements the actual task</span>
+        <span style="color: #60a0b0; font-style: italic"># args contains the arguments received from the parser</span>
+        os<span style="color: #666666">.</span>system(<span style="color: #4070a0">&quot;ping -c 1 &quot;</span> <span style="color: #666666">+</span> args<span style="color: #666666">.</span>IP)
+</pre></div>
+
+<p>That&rsquo;s all folks, feel free to play with it and open <a href="https://github.com/Te-k/harpoon/issues">issues</a> and create <a href="https://github.com/Te-k/harpoon/pulls">pull requests</a>. You can also ping me on <a href="https://twitter.com/tenacioustek">Twitter</a>.</p>
+
+                
+                    
+                
+                
+
+                
+
+
+            </div>
+        </div>
+    </body>
+</html>
+

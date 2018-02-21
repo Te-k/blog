@@ -6,116 +6,116 @@
     <description>Recent content on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2018 17:08:02 -0500</lastBuildDate>
-    
+    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate>
+
 	<atom:link href="https://www.randhome.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+
+
     <item>
       <title>Another PE tool</title>
       <link>https://www.randhome.io/blog/2018/02/04/another-pe-tool/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2018/02/04/another-pe-tool/</guid>
       <description>Analyzing PE files is a basic task in reverse engineering in order to understand their structure, look for anything interesting before going more in depth into the reverse engineering in itself. There are countless tools to do that, on Windows I use PeStudio, PEView and Resource Hacker. But most of the time I want to have a first view of the file before starting my Virtual Machine, so I was looking for a CLI tool on Linux.</description>
     </item>
-    
+
     <item>
       <title>Google Advanced Protection</title>
       <link>https://www.randhome.io/blog/2017/11/05/google-advanced-protection/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2017/11/05/google-advanced-protection/</guid>
       <description>Last week, Google has added a new set of security features in Gmail called &amp;ldquo;Advanced Protection&amp;rdquo;, specifically for high-risk users. It was widely covered the media (Wired, The Verge or Reuters) and quickly started a debate about whether Google is the most secure email provider on the planet or if ProtonMail can compete. The main point here to me (and it has been said by many other people everywhere) is whether you trust Google to keep your data or not, depending on your threat model and your opinion about privacy.</description>
     </item>
-    
+
     <item>
       <title>Let&#39;s Talk About FlexiSpy</title>
       <link>https://www.randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</link>
       <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</guid>
       <description>Introduction: I started this blog post to explain the context of FlexiSpy leaks and show some information I have found during my analysis. This information is incomplete and there is still plenty analysis of source code or binaries to be done. I have uploaded the source code and binaries on github so that everyone can help with it. I will try to report in this articles the publications I have seen on it, but feel free to ping me on Twitter if you see new information or have any question.</description>
     </item>
-    
+
     <item>
       <title>ShadowBrokers Easter Gift</title>
       <link>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</link>
       <pubDate>Fri, 14 Apr 2017 17:05:37 -0400</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</guid>
       <description>UPDATE IN PROGRESS
 So the Shadow Brokers finally published some Windows tools, apparently from the NSA toolkit. There are 3 different directories :
  ODDJOB : dropper which download and launch an encrypted payload (with builder and instruction to install the C2 server) SWIFT : information on operations targeting SWIFT networks Windows attack tools  Thanks to @x0rz you can find all these files on github. I have summarized here the information I have seen on twitter, and some notes from my tests.</description>
     </item>
-    
+
     <item>
       <title>#privacy</title>
       <link>https://www.randhome.io/privacy/</link>
       <pubDate>Mon, 15 Aug 2016 21:21:05 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/privacy/</guid>
       <description>There are now more and more privacy abuse everywhere, so even though we feel it, it&amp;rsquo;s often hard to understand the daily privacy demolition. To help me, I started a list of privacy abuse cases here (likely out of date, I have considered only cases by commercial companies for now, if you see additional cases, poke me on Twitter)
 2016  2016/08/06 The Internet of Dildos Is Watching You : Connected sextoys sending intensity settings and temperature to the manufacturer in real-time 2016/08/03 Comcast: ISPs should be able to sell your Web history to advertisers (Comcast only asked to the Federal Communications Commission, it&amp;rsquo;s apparently not done yet) 2016/08/02 Battery Status readout as a privacy risk 2016/07/21 France orders Microsoft to stop collecting excessive user data : MS started to process information an all the apps downloaded and installed by a user and the time spent on each one (linked to an email account now) 2016/05/04 Google given access to healthcare data of up to 1.</description>
     </item>
-    
+
     <item>
       <title>Openssh backdoor used on compromised Linux servers</title>
       <link>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</link>
       <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
       <description>Olà,
 Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
  Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
-    
+
     <item>
       <title>Machine learning for malware detection</title>
       <link>https://www.randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</link>
       <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</guid>
       <description>Plop,
 I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this awesome article or this one. This article was largely inspired by this one which analyze the Titanic data.
 Machine Learning and Classification So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions.</description>
     </item>
-    
+
     <item>
       <title>Comparison of php scanners</title>
       <link>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
       <description>Hi there!
 I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.
-ClamAV 
+ClamAV
 ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
     </item>
-    
+
     <item>
       <title>#references</title>
       <link>https://www.randhome.io/references/</link>
       <pubDate>Thu, 05 May 2016 01:07:16 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/references/</guid>
       <description>Here is a list of references regarding security topics and hacktivism:
 Political Organizations Here are several awesome organization regarding online freedom:
  EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
  Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites  Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
     </item>
-    
+
     <item>
       <title>#whoami</title>
       <link>https://www.randhome.io/about/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      
+
       <guid>https://www.randhome.io/about/</guid>
       <description>Hi there! I&amp;rsquo;m a security enthusiastic self-named &amp;ldquo;Tek&amp;rdquo; especially interested in the impact of technology over human rights and freedom. You will find in this blog random security stuff likely related to attacks by governments against their citizen but also funny stuff found here and there.
  You can contact me at tek AT randhome DOT io using my public GPG key
 You can find me on IRC:
  on freenode on #laquadrature as [Tek] on OFTC on #tor as [Tek]  </description>
     </item>
-    
+
   </channel>
 </rss>

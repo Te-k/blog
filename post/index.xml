@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2018 17:08:02 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://www.randhome.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Harpoon: an OSINT / Threat Intelligence tool</title>
+      <link>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>
+      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. Python 3 only and plugin based, the idea is to have one plugin per platform or task. The code is on github, feel free to open issues and propose Pull Requests.
+Install and config:
+pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config  Then check how to use every module with harpoon help MODULE</description>
+    </item>
     
     <item>
       <title>Another PE tool</title>
