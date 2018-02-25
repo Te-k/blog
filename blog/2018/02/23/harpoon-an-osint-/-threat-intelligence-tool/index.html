@@ -130,7 +130,7 @@
 
 <h2 id="tl-dr">TL;DR</h2>
 
-<p><strong>Harpoon</strong> is a tool to automate threat intelligence and open source intelligence tasks. Python 3 only and plugin based, the idea is to have one plugin per platform or task. The code is on <a href="https://github.com/Te-k/harpoon">github</a>, feel free to open <a href="https://github.com/Te-k/harpoon/issues">issues</a> and propose <a href="https://github.com/Te-k/harpoon/pulls">Pull Requests</a>.</p>
+<p><strong>Harpoon</strong> is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on <a href="https://github.com/Te-k/harpoon" target="_blank">Github</a>, feel free to open <a href="https://github.com/Te-k/harpoon/issues" target="_blank">issues</a> and propose <a href="https://github.com/Te-k/harpoon/pulls" target="_blank">Pull Requests</a>.</p>
 
 <p>Install and config:</p>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links
@@ -143,9 +143,10 @@ harpoon config
 
 <h2 id="harpoon">Harpoon ?</h2>
 
-<p>For the past year and a half I have been pretty busy doing threat intelligence and open source intelligence on several malware operations. Threat Intelligence mainly relies on passive DNS/malware databases on one side, and databases on malicious activity on the other side, the objective is to map an attack infrastructure and if possible link it with other malicious activities. Some of these platforms are accessible to everyone (like <a href="https://otx.alienvault.com/">OTX</a> or <a href="https://www.robtex.com/">RobTex</a>) while others are commercial with or without free access (like <a href="https://www.virustotal.com/">VirusTotal</a> or <a href="https://community.riskiq.com/">Passive Total</a>). In the end, a large part of this activity is about looking for information in different platforms. Many people have tried to create a platform centralizing information from other platforms, but we always end up having yet another platform to consider during the research.</p>
+<p>For the past year and a half I have been pretty busy doing threat intelligence and open source intelligence on several malware operations. Threat Intelligence mainly relies on passive DNS/malware databases on one side, and databases on malicious activity on the other side. The objective is to map an attack&rsquo;s infrastructure and if possible link it with other malicious activities. Some threat intelligence platforms are accessible to everyone (like <a href="https://otx.alienvault.com/" target="_blank">OTX</a> or <a href="https://www.robtex.com/" target="_blank">RobTex</a>) while others are commercial with or without free access (like <a href="https://www.virustotal.com/" target="_blank">VirusTotal</a> or <a href="https://community.riskiq.com/" target="_blank">PassiveTotal</a>). In the end, a large part of this activity is about looking for information in different platforms. Many people have tried to create a platform centralizing information from other platforms, but we always end up having yet another platform to consider during the research.</p>
 
-<p>
+<p><center>
+
 <figure >
     
         <img src="/media/harpoon/xkcd927.png" />
@@ -153,21 +154,22 @@ harpoon config
     
 </figure>
 
-<strong>New standards problem totally applies to Threat Intelligence (<a href="https://xkcd.com/927/">xkcd 927</a>)</strong></p>
+<strong>New standards problem totally applies to Threat Intelligence (<a href="https://xkcd.com/927/">xkcd 927</a>)</strong>
+</center></p>
 
-<p>Open Source Intelligence (aka OSINT) on the other side is way more diverse. Of course there are some interesting platforms (like <a href="http://spyonweb.com/">SpyOnWeb</a>) but you may also have to do research in social media, cache platforms and many other random tasks depending where your investigation leads you.</p>
+<p>Open Source Intelligence (aka OSINT) on the other side is way more diverse. The objective is to get as much information as possible on someone or a group of people using any data source openly accessible on Internet. Of course there are some interesting platforms (like <a href="http://spyonweb.com/" target="_blank">SpyOnWeb</a>) but you may also have to do research in social media, cache platforms and many other random tasks depending where your investigation leads you.</p>
 
 <p>In all that, a large number of tasks are completely manual and it sucks.
-At first, I tried to create <a href="https://github.com/Te-k/analyst-scripts">random python scripts</a> to automate some of these tasks but it became quickly a mess : too many scripts, some in python 2 some in python 3, some using config files and some getting API key in parameters&hellip; After a while, I started to organize these scripts as modules for a tool called <strong>Harpoon</strong> and after some month of using it, I think it is time to make it open source to see if it can help other people.</p>
+At first, I tried to create <a href="https://github.com/Te-k/analyst-scripts" target="_blank">random python scripts</a> to automate some of these tasks but it became quickly a mess : too many scripts, some in python 2 some in python 3, some using config files and some getting API key in parameters&hellip; After a while, I started to organize these scripts as modules for a tool called <strong>Harpoon</strong> and after some months of using it, I think it is time to make it open source to see if it can help other people.</p>
 
 <p>Some notes on the principles behind this tool :</p>
 
 <ul>
 <li>Python 3 only, python 2 is dead, I am not even trying to support it</li>
-<li>Many osint tools try to gather as much information as possible from a indicator (domain or email) without really any interest on where it comes from. Harpoon does not follow this philosophy, it mostly allows to realise a single task per command (with a couple of more general commmands using several tools). I think it is really important during an investigation to understand where an information come from and how reliable it is.</li>
-<li>In many cases, I also wanted to explore APIs to see what was possible with them, and I ended up rewriting some libraries (like <a href="https://github.com/Te-k/spyonweb">spyonweb</a>) just because I wanted to understand exactly what it did and how. So I reinvented the wheel many times and I am totally fine with it.</li>
-<li>Harpoon is organized in subcommands that are easy to implement, these commands rely on internal or external libraries. These commands also use a single configuration file that you need to complete manually when an API key is needed.</li>
-<li>This tool is not perfect, it only does what I needed to automate, it is likely buggy and has a long list of <a href="https://github.com/Te-k/harpoon/issues">things</a> I would like to implement one day (but it may never happen). Feel free to open <a href="https://github.com/Te-k/harpoon/issues">issues</a> or propose <a href="https://github.com/Te-k/harpoon/pulls">pull requests</a>.</li>
+<li>Many OSINT tools try to gather as much information as possible from an indicator (domain or email) without really any interest on where it comes from. Harpoon does not follow this philosophy. It mostly allows you to realise a single task per command (with a couple of more general commmands using several tools). I think it is really important during an investigation to understand where an information comes from and how reliable it is.</li>
+<li>In many cases, I also wanted to explore APIs to see what was possible with them, and I ended up rewriting some libraries (like <a href="https://github.com/Te-k/spyonweb" target="_blank">SpyOnWeb</a>) just because I wanted to understand exactly what it did and how. So I reinvented the wheel many times and I am totally fine with it.</li>
+<li>Harpoon is organized into subcommands that are easy to implement, these commands rely on internal or external libraries. These commands also use a single configuration file that you need to complete manually when an API key is needed.</li>
+<li>This tool is not perfect, it only does what I needed to automate, it is likely buggy and has a long list of <a href="https://github.com/Te-k/harpoon/issues" target="_blank">things</a> I would like to implement one day (but it may never happen). Feel free to open <a href="https://github.com/Te-k/harpoon/issues" target="_blank">issues</a> or propose <a href="https://github.com/Te-k/harpoon/pulls" target="_blank">Pull Requests</a>.</li>
 </ul>
 
 <p>This post will be boring, mainly because I try to be as exhaustive as I can to complete the limited existing documentation about the tool. Feel free to jump to the sections you are interested to read</p>
@@ -181,13 +183,13 @@ harpoon config -u
 harpoon config
 </pre></div>
 
-<p>Boring yet mandatory part: how to install Harpoon. I have tried to package it as much as possible through pip (with the great help of <a href="https://twitter.com/cybersteez">@cybersteez</a>) so everything should be installable just with <code>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links</code></p>
+<p>Boring yet mandatory part: how to install Harpoon. I have tried to package it as much as possible through pip (with the great help of <a href="https://twitter.com/cybersteez" target="_blank">@cybersteez</a>) so everything should be installable just with <code>pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links</code></p>
 
 <p>The main challenge with the packaging is that many libraries I have written are hosted on github and not in Pypi (yet?), so the package should install them at the same time. Alternately, you can install everything from <code>requirements.txt</code> after you cloned the repository (<code>pip install -r requirements.txt</code>).</p>
 
-<p>If you want to use the screenshot module (to take screenshot of a website), you need to install it through npm : <code>npm install -g phantomjs</code></p>
+<p>If you want to use the screenshot module (to take a screenshot of a website), you need to install it through npm : <code>npm install -g phantomjs</code></p>
 
-<p>Now harpoon should be installed, you can check if it works with <code>harpoon help ip</code> for instance. Then you need to install files needed by Harpoon and configure it. To install files needed (for now, mainly the <a href="https://dev.maxmind.com/geoip/geoip2/geolite2/">MaxMind GeoIP</a> database), you just need to run <code>harpoon config -u</code> and wait. Finally, you need to configure the tool, mainly by providing the API keys of platforms you can/want to use. For this, just run <code>harpoon config</code>, it will copy the empty config file and open it with vim so that you can provide the given keys. If you don&rsquo;t have them, just let the key empty and harpoon will avoid using the platform when possible. You can see the list of configured module with <code>harpoon config -c</code>. On my current system, it gives :</p>
+<p>Now harpoon should be installed, you can check if it works with <code>harpoon help ip</code> for instance. Then you need to install files needed by Harpoon and configure it. To install files needed (for now, mainly the <a href="https://dev.maxmind.com/geoip/geoip2/geolite2/">MaxMind GeoIP</a> database), you just need to run <code>harpoon config -u</code> and wait. Finally, you need to configure the tool, mainly by providing the API keys of platforms you can/want to use. For this, just run <code>harpoon config</code>, it will copy the empty config file and open it with vim so that you can provide the given keys. If you don&rsquo;t have them, just leave the key empty and harpoon will avoid using the platform when possible. You can see the list of configured module with <code>harpoon config -c</code>. On my current system, it gives :</p>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>Configuration check:
 -hibp            -&gt; OK
 -twitter         -&gt; OK
@@ -230,7 +232,7 @@ harpoon config
 <p>It is hard to describe the features without just listing the modules because I almost created a new command for every task I needed to automate. Let&rsquo;s try to organize in categories with examples :</p>
 
 <ul>
-<li><strong>Threat Intelligence platforms</strong> : <a href="https://virustotal.com/">Virus Total</a>, <a href="https://community.riskiq.com/">Passive Total</a>, <a href="https://www.hybrid-analysis.com/">Hybrid Analysis</a>, <a href="https://otx.alienvault.com/">Alien Vault OTX</a>, <a href="https://www.shodan.io/">Shodan</a>, <a href="https://censys.io/">Censys</a>, <a href="https://www.robtex.com/">RobTex</a>, <a href="https://www.cisco.com/c/en/us/products/security/threat-grid/index.html">ThreatGrid</a>, <a href="https://greynoise.io/">GreyNoise</a>, <a href="https://totalhash.cymru.com/">TotalHash</a>, <a href="http://www.misp-project.org/">MISP</a>, <a href="http://malshare.com/">MalShare</a></li>
+<li><strong>Threat Intelligence platforms</strong> : <a href="https://virustotal.com/" target="_blank">Virus Total</a>, <a href="https://community.riskiq.com/" target="_blank">Passive Total</a>, <a href="https://www.hybrid-analysis.com/" target="_blank">Hybrid Analysis</a>, <a href="https://otx.alienvault.com/" target="_blank">AlienVault OTX</a>, <a href="https://www.shodan.io/" target="_blank">Shodan</a>, <a href="https://censys.io/" target="_blank">Censys</a>, <a href="https://www.robtex.com/" target="_blank">RobTex</a>, <a href="https://www.cisco.com/c/en/us/products/security/threat-grid/index.html" target="_blank">ThreatGrid</a>, <a href="https://greynoise.io/" target="_blank">GreyNoise</a>, <a href="https://totalhash.cymru.com/" target="_blank">TotalHash</a>, <a href="http://www.misp-project.org/" target="_blank">MISP</a>, <a href="http://malshare.com/" target="_blank">MalShare</a>:</li>
 </ul>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon otx <span style="color: #666666">-</span>s cdnverify<span style="color: #666666">.</span>net
 No analysis on this <span style="color: #007020">file</span>
@@ -246,7 +248,7 @@ URL <span style="color: #007020">list</span>:
 </pre></div>
 
 <ul>
-<li>On top of that, I have implemented some higher level commands to gather information from all these platforms with <strong>ip</strong> and <strong>domain</strong>. These commands search for interesting information from almost all the plugins configured:</li>
+<li>On top of that, I have implemented some higher level commands to gather information from all these platforms with <strong>ip</strong> and <strong>domain</strong>. These commands search for interesting information from almost all the configured plugins:</li>
 </ul>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon domain intel cdnverify<span style="color: #666666">.</span>net
 <span style="color: #60a0b0; font-style: italic">###################### cdnverify.net ###################</span>
@@ -273,7 +275,7 @@ PT: Nothing found<span style="border: 1px solid #FF0000">!</span>
 </pre></div>
 
 <ul>
-<li><strong>Network information</strong> : the commands <strong>ip</strong>, <strong>dns</strong> and <strong>asn</strong> provide basic information about an IP, domain or ASN number (location, dns resolutions or information on the ASN). Nothing fancy but it helps all the time</li>
+<li><strong>Network information</strong> : the commands <strong>ip</strong>, <strong>dns</strong> and <strong>asn</strong> provide basic information about an IP, domain or ASN number (location, dns resolutions or information on the ASN). Nothing fancy but it helps all the time:</li>
 </ul>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon ip info <span style="color: #40a070">151.80</span><span style="color: #666666">.</span><span style="color: #40a070">74.167</span>
 MaxMind: Located <span style="color: #007020; font-weight: bold">in</span> Roubaix, France
@@ -288,13 +290,13 @@ IP Location:	https:<span style="color: #666666">//</span>www<span style="color: 
 </pre></div>
 
 <ul>
-<li><strong>Social media</strong> : more than researching in social media platforms (not sure the API is the best way to do that), I find saving everything from a social media quickly really helpful during an investigation (i.e. before Twitter deletes Russian trolls). Same idea with the <strong>screenshot</strong> command which take a screenshot of a website.</li>
+<li><strong>Social media</strong> : when researching in social media platforms (not sure the API is the best way to do that), I find that saving everything from a social media account quickly is really helpful during an investigation (i.e. before Twitter deletes Russian trolls). Same idea with the <strong>screenshot</strong> command which take a screenshot of a website. For now, only Twitter and Telegram exists:</li>
 </ul>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon twitter <span style="color: #666666">-</span>s realDonaldTrump <span style="color: #666666">&gt;</span> <span style="color: #555555; font-weight: bold">@realDonaldTrump</span>
 </pre></div>
 
 <ul>
-<li><strong>URL shorteners</strong> : I have also implemented commands for bit.ly and goo.gl url shorteners, the idea is to be able to get as much data as possible from the API</li>
+<li><strong>URL shorteners</strong> : I have also implemented commands for bit.ly and goo.gl url shorteners, the idea is to be able to get as much data as possible from the API:</li>
 </ul>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon bitly <span style="color: #666666">-</span>H <span style="color: #40a070">2</span>oh6Nrj
 <span style="color: #666666">--------------------</span> <span style="color: #60add5">Bit</span><span style="color: #666666">.</span>ly <span style="color: #60add5">Link</span> infos <span style="color: #666666">-------------------</span>
@@ -362,7 +364,7 @@ IP Location:    https:<span style="color: #666666">//</span>www<span style="colo
 
 <h2 id="harpoontools">harpoontools</h2>
 
-<p>At some point, I got sick of using <code>harpoon XXX</code> for some commands I was using all the time. So I created a repository <a href="https://github.com/Te-k/harpoontools">harpoontools</a> that install commands using Harpoon features. You can install it through <code>pip install git+ssh://git@github.com/Te-k/harpoontools</code></p>
+<p>At some point, I got sick of using <code>harpoon XXX</code> for some commands I was using all the time. So I created a repository <a href="https://github.com/Te-k/harpoontools" target="_blank">harpoontools</a> that installs commands using Harpoon features. You can install it through <code>pip install git+ssh://git@github.com/Te-k/harpoontools</code></p>
 
 <p>For now I have only implemented <strong>ipinfo</strong>, <strong>asninfo</strong> and <strong>dns</strong> :</p>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> cat ips <span style="color: #666666">|</span> ipinfo
@@ -373,7 +375,7 @@ IP Location:    https:<span style="color: #666666">//</span>www<span style="colo
 
 <h2 id="example">Example</h2>
 
-<p>It is hard to give a real-life example of Harpoon as it is helpful for different types of investigations, but let&rsquo;s try with the recent Palo Alto report about <a href="https://researchcenter.paloaltonetworks.com/2018/01/unit42-vermin-quasar-rat-custom-malware-used-ukraine/">Quasar RAT</a> and focus on the domain <code>akamaicdn[.]ru</code>.</p>
+<p>It is hard to give a real-life example of Harpoon as it is helpful for different types of investigations, but let&rsquo;s try with the recent Palo Alto report about <a href="https://researchcenter.paloaltonetworks.com/2018/01/unit42-vermin-quasar-rat-custom-malware-used-ukraine/" target="_blank">Quasar RAT</a> and focus on the domain <code>akamaicdn[.]ru</code>.</p>
 
 <p>First let&rsquo;s check what is the actual DNS resolution :</p>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> harpoon  dns akamaicdn[<span style="color: #666666">.</span>]ru
@@ -408,7 +410,7 @@ Passive DNS info:
 [<span style="color: #666666">+</span>] MX	nomail<span style="color: #666666">.</span>nic<span style="color: #666666">.</span>ru	(<span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span> <span style="color: #666666">-&gt;</span> <span style="color: #40a070">2017</span><span style="color: #666666">-</span><span style="color: #40a070">03</span><span style="color: #666666">-</span><span style="color: #40a070">16</span>T14:<span style="color: #40a070">55</span>:<span style="color: #40a070">12</span>)
 </pre></div>
 
-<p>Let&rsquo;s check where are these IPs:</p>
+<p>Let&rsquo;s check where these IPs are:</p>
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="border: 1px solid #FF0000">$</span> ipinfo <span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span> <span style="color: #40a070">109.70</span><span style="color: #666666">.</span><span style="color: #40a070">26.37</span>
 <span style="color: #40a070">194.85</span><span style="color: #666666">.</span><span style="color: #40a070">61.76</span> ; ASN48287 ; Jsc ru<span style="color: #666666">-</span>center ; Moscow ; Russia
 <span style="color: #40a070">109.70</span><span style="color: #666666">.</span><span style="color: #40a070">26.37</span> ; ASN48287 ; Jsc ru<span style="color: #666666">-</span>center ; <span style="color: #007020">None</span> ; Russia
@@ -499,7 +501,9 @@ Passive DNS:
         os<span style="color: #666666">.</span>system(<span style="color: #4070a0">&quot;ping -c 1 &quot;</span> <span style="color: #666666">+</span> args<span style="color: #666666">.</span>IP)
 </pre></div>
 
-<p>That&rsquo;s all folks, feel free to play with it and open <a href="https://github.com/Te-k/harpoon/issues">issues</a> and create <a href="https://github.com/Te-k/harpoon/pulls">pull requests</a>. You can also ping me on <a href="https://twitter.com/tenacioustek">Twitter</a>.</p>
+<p>That&rsquo;s all folks, feel free to play with it and open <a href="https://github.com/Te-k/harpoon/issues" target="_blank">issues</a> and submit <a href="https://github.com/Te-k/harpoon/pulls" target="_blank">pull requests</a>. You can also ping me on <a href="https://twitter.com/tenacioustek" target="_blank">Twitter</a>.</p>
+
+<p>Thanks to <a href="https://twitter.com/0xStarcat" target="_blank">Starcat</a> for the feedback on the blog post! Most of this text was written while listening to Amanda Palmer singing <a href="https://www.youtube.com/watch?v=uAk93YZgTts" target="_blank">No Surprises</a>.</p>
 
                 
                     
