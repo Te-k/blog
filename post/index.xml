@@ -19,7 +19,7 @@
       <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
       <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
-pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config  Then check how to use every module with harpoon help MODULE</description>
+pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
     
     <item>
@@ -50,17 +50,6 @@ pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm
     </item>
     
     <item>
-      <title>ShadowBrokers Easter Gift</title>
-      <link>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</link>
-      <pubDate>Fri, 14 Apr 2017 17:05:37 -0400</pubDate>
-      
-      <guid>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</guid>
-      <description>UPDATE IN PROGRESS
-So the Shadow Brokers finally published some Windows tools, apparently from the NSA toolkit. There are 3 different directories :
- ODDJOB : dropper which download and launch an encrypted payload (with builder and instruction to install the C2 server) SWIFT : information on operations targeting SWIFT networks Windows attack tools  Thanks to @x0rz you can find all these files on github. I have summarized here the information I have seen on twitter, and some notes from my tests.</description>
-    </item>
-    
-    <item>
       <title>Openssh backdoor used on compromised Linux servers</title>
       <link>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</link>
       <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
@@ -68,7 +57,8 @@ So the Shadow Brokers finally published some Windows tools, apparently from the 
       <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
       <description>Olà,
 Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
- Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
+   
+Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
     
     <item>

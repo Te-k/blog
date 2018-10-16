@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tek&#39;s blog</title>
+    <title>Homepage on Tek&#39;s blog</title>
     <link>https://www.randhome.io/</link>
-    <description>Recent content on Tek&#39;s blog</description>
+    <description>Recent content in Homepage on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 29 Apr 2016 14:51:26 +0200</lastBuildDate>
     
 	<atom:link href="https://www.randhome.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,7 +19,7 @@
       <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
       <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
-pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config  Then check how to use every module with harpoon help MODULE</description>
+pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
     
     <item>
@@ -50,17 +50,6 @@ pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm
     </item>
     
     <item>
-      <title>ShadowBrokers Easter Gift</title>
-      <link>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</link>
-      <pubDate>Fri, 14 Apr 2017 17:05:37 -0400</pubDate>
-      
-      <guid>https://www.randhome.io/blog/2017/04/14/shadowbrokers-easter-gift/</guid>
-      <description>UPDATE IN PROGRESS
-So the Shadow Brokers finally published some Windows tools, apparently from the NSA toolkit. There are 3 different directories :
- ODDJOB : dropper which download and launch an encrypted payload (with builder and instruction to install the C2 server) SWIFT : information on operations targeting SWIFT networks Windows attack tools  Thanks to @x0rz you can find all these files on github. I have summarized here the information I have seen on twitter, and some notes from my tests.</description>
-    </item>
-    
-    <item>
       <title>#privacy</title>
       <link>https://www.randhome.io/privacy/</link>
       <pubDate>Mon, 15 Aug 2016 21:21:05 +0200</pubDate>
@@ -78,7 +67,8 @@ So the Shadow Brokers finally published some Windows tools, apparently from the 
       <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
       <description>Olà,
 Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
- Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
+   
+Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
     
     <item>
@@ -117,15 +107,36 @@ Political Organizations Here are several awesome organization regarding online f
     </item>
     
     <item>
+      <title>Resources</title>
+      <link>https://www.randhome.io/resources/</link>
+      <pubDate>Thu, 05 May 2016 01:07:16 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/resources/</guid>
+      <description>Here is a list of helpful resources regarding digital security.
+The following guides are the main reference regarding digital security :
+ Surveillance Self-Defense by EFF Security In a Box by Tacticla Tech  I also like the following websites or documents :
+ My Shadow is a good educational resource regarding privacy Motherboard published The Motherboard Guide to Not Getting Hacked in 2017 Privacy Tools gather a long list tools and platforms protecting your privacy Digital Self-Defense in the Timeof Trump contains interesting datasheet about digital security  </description>
+    </item>
+    
+    <item>
       <title>#whoami</title>
       <link>https://www.randhome.io/about/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
       
       <guid>https://www.randhome.io/about/</guid>
       <description>Hi there! I&amp;rsquo;m a security enthusiastic self-named &amp;ldquo;Tek&amp;rdquo; especially interested in the impact of technology over human rights and freedom. You will find in this blog random security stuff likely related to attacks by governments against their citizen but also funny stuff found here and there.
- You can contact me at tek AT randhome DOT io using my public GPG key
+  You can contact me at tek AT randhome DOT io using my public GPG key
 You can find me on IRC:
  on freenode on #laquadrature as [Tek] on OFTC on #tor as [Tek]  </description>
+    </item>
+    
+    <item>
+      <title>#whoami</title>
+      <link>https://www.randhome.io/projects/</link>
+      <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/projects/</guid>
+      <description></description>
     </item>
     
   </channel>

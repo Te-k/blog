@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Tek" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
+    <title>Google Chrome vous mélange les pinceaux</title>
+    <meta name="generator" content="Hugo 0.49" />
+    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+
+    
+    
+    
+    
+    <link rel="canonical" href="https://www.randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/" />
+  </head>
+
+  <body>
+    <div id="wrap">
+      
+      <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://www.randhome.io/"><i class="fa fa-home"></i></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="/post/">BLOG</a></li>
+                    
+                        <li><a href="/resources/">RESSOURCES</a></li>
+                    
+                
+                <li class="lang-switcher dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" lang="fr"><span class="lang"> <i class="fa fa-language"></i> FR </span></a>
+                     <ul class="dropdown-menu">
+                         
+                            
+                                
+                                <li><a href="/en" lang="en" class="no-translation">EN</a></li>
+                                
+                            
+                                
+                            
+                        
+                     </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h2>
+            <strong><a href="https://www.randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/">Google Chrome vous mélange les pinceaux</a></strong>
+          </h2>
+        </div>
+        <div class="blog-title">
+          <h4>
+              October 8, 2018  &middot; 4 minutes de lecture 
+            &nbsp;&nbsp;
+            
+            <span class="taglist">
+                
+                    <a class="label label-success" href="https://www.randhome.io/categories/s%C3%A9curit%C3%A9">sécurité</a>
+                
+            </span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+<p>Vous en avez peut-être entendu parler récemment, Chrome a effectué un changement dans la gestion des logins qui faut <a href="https://gizmodo.com/google-chrome-is-now-quietly-forcing-you-to-log-in-here-1829265681">beaucoup</a> <a href="https://blog.cryptographyengineering.com/2018/09/23/why-im-leaving-chrome/">de bruit</a>. Voici un petit résumé du problème.</p>
+
+<h2 id="chrome-et-ses-deux-authentifications">Chrome et ses deux authentifications</h2>
+
+<p>Depuis quelques années, Chrome embarque une fonctionnalité permettant de logger votre session Google dans Chrome, ce qui permet de synchroniser vos sessions Chrome (extensions, marque-pages, mots de passe etc.) entre plusieurs ordinateurs ou smartphones. Bien sur, cela donne également nettement plus d&rsquo;informations personnelles à Google.</p>
+
+<p>Il y a donc au final deux facons de se logger dans son compte Google avec Chrome :</p>
+
+<ul>
+<li>En se loggant sur mail.google.com directement, dans ce cas-là aucune information sur votre navigateur n&rsquo;es partagée avec google</li>
+<li>En se loggant dans l&rsquo;interface de Chrome directement, ce qui synchronise toutes les données.</li>
+</ul>
+
+<p>Et pendant longtemps ces deux facons de se logger impliquaient une différence claire dans l&rsquo;interface de Chrome.</p>
+
+<p>
+<figure>
+    
+        <img src="/media/chrome/normal_login.png" height="400" />
+    
+    
+</figure>
+
+<strong>Connexion dans Google</strong></p>
+
+<p>
+<figure>
+    
+        <img src="/media/chrome/chrome_login.png" height="300" />
+    
+    
+</figure>
+
+<strong>Connexion dans Chrome</strong></p>
+
+<p>Depuis fin september, Google a opéré un changement majeur et discret, puisque se logger dans Gmail vous logge directement dans Chrome. Ici par exemple, j&rsquo;ai juste visité mail.google.com et entré mon login, mot de passe et clé temporaire, et me voici loggé dans Chrome :</p>
+
+<p><center>
+
+<figure>
+    
+        <img src="/media/chrome/chrome-logged.png" height="400" />
+    
+    
+</figure>
+
+</center></p>
+
+<p>Cela ne synchronise pas directement toutes vos données avec Google, mais vous êtes à un mauvais clic de le faire : il suffit de cliquer sur le bouton &ldquo;Synchroniser en tant que &hellip;&rdquo; pour que Chrome envoie toutes vos données aux serveurs de Google :</p>
+
+<p><center>
+
+<figure>
+    
+        <img src="/media/chrome/synchro.png" height="350" />
+    
+    
+</figure>
+
+</center></p>
+
+<p>Ce changement implique également que supprimer toutes vos données de navigation (Cookies etc.) ne supprime plus les cookies des domaines Google. Par exemple ici sur mon Windows 7, après avoir effacé toutes les données de navigation, il reste tous les cookies des domaines Google :</p>
+
+<p><center>
+
+<figure>
+    
+        <img src="/media/chrome/cookies.png" height="400" />
+    
+    
+</figure>
+
+</center></p>
+
+<p>De fait, Google peut maintenant suivre votre navigation, y compris une fois que vous avez supprimé toutes les données, puisque les cookies de Google restent.</p>
+
+<h2 id="abus-de-position-dominante">Abus de position dominante ?</h2>
+
+<p>Ce changement pose un problème majeur de confiance dans les développements futurs de Chrome. Depuis le lancement du projet, Chrome a été présenté et concu comme un navigateur permettant de lutter contre la domination de Microsoft avec Internet Explorer et donc de permettre une accès plus direct aux services de Google et d&rsquo;avoir un impact sur la standardisation du web. Le projet en lui-même ne générait pas de revenu directement mais permettait à des millions de personnes d&rsquo;utiliser les services Google.</p>
+
+<p>Cette modification récente laisse entrevoir un changement de position de Google qui commence à utiliser la position dominante de Chrome pour pousser les utilisateurs à partager plus de données mais également favoriser le tracage des utilisateurs par les services de Google. Ca contrevient à une règle majeure : Chrome ne devrait pas agir différement avec les sites de Google qu&rsquo;avec les autres sites.</p>
+
+<p>Cela laisse donc craindre des changements futurs problématiques pour Chrome. Et si Google reproduit la même facon de faire, cela se fera sans information aux utilisateurs et avec une interface ne permettant pas de comprendre clairement les changements en cours.</p>
+
+<h2 id="que-faire">Que faire ?</h2>
+
+<h3 id="changer-de-navigateur">Changer de navigateur</h3>
+
+<p>Pour beaucoup d&rsquo;utilisateurs, cela a été une raison suffisante pour change de navigateur. Pour cela, vous avez deux options : <a href="https://www.chromium.org/chromium-projects">Chromium</a> ou <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>.</p>
+
+<p>Sous Linux, la plupart des distributions proposent Chromium directement dans le gestionnaire de package. Sous Windows ou Mac, il est plus compliqué d&rsquo;avoir Chromium, la seule solution étant de télécharger la dernière version non-stable <a href="https://chromium.woolyss.com/download/fr/">ici</a>, ce qui est problématique car la version non-stable contient pas mal de nouvelles fonctionnalités non-testées et donc contenant pas mal de bugs.</p>
+
+<p>Pour Firefox, il est facilement téléchargeable sous <a href="https://www.mozilla.org/en-US/firefox/new/">Windows ou Mac OS</a>. Firefox était réputé pour être lent mais la version 57 sortie l&rsquo;année dernière a considérablement amélioré sa vitesse de chargement. Il est aujourd&rsquo;hui très rapide et en développement actif par Mozilla.</p>
+
+<h3 id="configurer-correctement-chrome">Configurer correctement Chrome</h3>
+
+<p>La seconde option consiste à désactiver cette nouvelle fonctionnalité dans les options de Chrome. Pour cela, allez sur la page <a href="chrome://flags/#account-consistency">chrome://flags/#account-consistency</a>, et désactivez la fonctionnalité appelée &ldquo;Identity consistency between browser and cookie jar&rdquo; :</p>
+
+
+<figure>
+    
+        <img src="/media/chrome/config.png" />
+    
+    
+</figure>
+
+
+<p>Il vous suffit ensuite de redémarrer votre navigateur.</p>
+
+<p>N&rsquo;hésitez pas à me contacter sur <a href="https://twitter.com/tektenace">Twitter</a> si vous avez des questions.</p>
+
+              
+            </div>
+          </div>
+          <hr>
+        
+
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+        
+            <p class="text-muted">
+                
+                    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+                
+                Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a>
+                
+                    
+                    
+                    
+                
+            </p>
+        
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://www.randhome.io/js/jquery-1.11.3.min.js"></script>
+
+<script src="https://www.randhome.io/js/bootstrap-3.3.7.min.js"></script>
+<script src="https://www.randhome.io/js/docs.min.js"></script>
+<script src="https://www.randhome.io/js/main.js"></script>
+
+<script src="https://www.randhome.io/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+  </body>
+</html>

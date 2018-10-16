@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tek&#39;s blog</title>
+    <link>https://www.randhome.io/fr/post/</link>
+    <description>Recent content in Posts on Tek&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Oct 2018 00:00:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.randhome.io/fr/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google Chrome vous mélange les pinceaux</title>
+      <link>https://www.randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</link>
+      <pubDate>Mon, 08 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://www.randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</guid>
+      <description>Vous en avez peut-être entendu parler récemment, Chrome a effectué un changement dans la gestion des logins qui faut beaucoup de bruit. Voici un petit résumé du problème.
+Chrome et ses deux authentifications Depuis quelques années, Chrome embarque une fonctionnalité permettant de logger votre session Google dans Chrome, ce qui permet de synchroniser vos sessions Chrome (extensions, marque-pages, mots de passe etc.) entre plusieurs ordinateurs ou smartphones. Bien sur, cela donne également nettement plus d&amp;rsquo;informations personnelles à Google.</description>
+    </item>
+    
+    <item>
+      <title>Blog en Français</title>
+      <link>https://www.randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://www.randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</guid>
+      <description>Bonjour à tous,
+Après mon récent retour en France, j&amp;rsquo;ai décidé de passer ce blog en multilingue Anglais et Français, ce qui a également donné lieu a un petit redesign du blog (basé sur le thème Hugo sustain). L&amp;rsquo;objectif est de parler un peu plus des aspects politiques des technologies mais également de fournir des ressources sur la sécurité et la vie privée accessibles en Français.
+N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
+    </item>
+    
+  </channel>
+</rss>

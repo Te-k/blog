@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Tek&#39;s blog</title>
+    <link>https://www.randhome.io/fr/categories/</link>
+    <description>Recent content in Categories on Tek&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.randhome.io/fr/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog</title>
+      <link>https://www.randhome.io/fr/categories/blog/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://www.randhome.io/fr/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sécurité</title>
+      <link>https://www.randhome.io/fr/categories/s%C3%A9curit%C3%A9/</link>
+      <pubDate>Mon, 08 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>https://www.randhome.io/fr/categories/s%C3%A9curit%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
