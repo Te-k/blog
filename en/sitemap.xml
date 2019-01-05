@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</loc>
+    <loc>https://www.randhome.io/blog/2019/01/05/2019-osint-guide/</loc>
+    <lastmod>2019-01-05T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-threat-intelligence-tool/</loc>
     <lastmod>2018-02-23T00:00:00-05:00</lastmod>
   </url>
   
@@ -154,7 +159,7 @@
   
   <url>
     <loc>https://www.randhome.io/categories/osint/</loc>
-    <lastmod>2018-02-23T00:00:00-05:00</lastmod>
+    <lastmod>2019-01-05T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,7 +171,7 @@
   
   <url>
     <loc>https://www.randhome.io/post/</loc>
-    <lastmod>2018-02-23T00:00:00-05:00</lastmod>
+    <lastmod>2019-01-05T00:00:00+02:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"

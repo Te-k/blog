@@ -12,11 +12,21 @@
     
     
     <item>
+      <title>2019 OSINT Guide</title>
+      <link>https://www.randhome.io/blog/2019/01/05/2019-osint-guide/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2019/01/05/2019-osint-guide/</guid>
+      <description>I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks
+Methodology The classic OSINT methodology you will find everywhere is strait-forward:</description>
+    </item>
+    
+    <item>
       <title>Harpoon: an OSINT / Threat Intelligence tool</title>
-      <link>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>
+      <link>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-threat-intelligence-tool/</link>
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
-      <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
+      <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-threat-intelligence-tool/</guid>
       <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
 pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
