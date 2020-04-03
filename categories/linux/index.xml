@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Tek&#39;s blog</title>
+    <title>linux on Tek&#39;s blog</title>
     <link>https://www.randhome.io/categories/linux/</link>
-    <description>Recent content in Linux on Tek&#39;s blog</description>
+    <description>Recent content in linux on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Aug 2016 14:53:42 +0200</lastBuildDate>
@@ -19,7 +19,6 @@
       <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
       <description>Olà,
 Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
-   
 Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
     

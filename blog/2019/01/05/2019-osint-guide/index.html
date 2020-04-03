@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
     <title>2019 OSINT Guide</title>
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.68.2" />
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -92,76 +92,50 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              
-
-<p>I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks</p>
-
+              <p>I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks</p>
 <h1 id="methodology">Methodology</h1>
-
 <p>The classic OSINT methodology you will find everywhere is strait-forward:</p>
-
 <ul>
 <li>Define requirements: What are you looking for?</li>
 <li>Retrieve data</li>
 <li>Analyze the information gathered</li>
 <li>Pivoting &amp; Reporting: Either define new requirements by pivoting on data just gathered or end the investigation and write the report.</li>
 </ul>
-
 <p>This methodology is pretty intuitive and may not help much, but I think it is still important to go back to it regularly, and take the time to make an interation of the loop. Very often during investigations, we get lost into the amount of data gathered, and it is hard to have a view of what direction should the investigation take. In that case, I think it is helpful to take a break and go back to step 3 and 4: analyze and summarize what you have found, list what could help you pivoting and define new (or more precise) questions that still need answers.</p>
-
-<p><center>
-<figure>
+<figure class="center">
     <img src="/media/osint/charlie-red-string.jpg" width="400"/> 
 </figure>
 
-</center></p>
-
 <p>The other advices I would give are:</p>
-
 <ul>
 <li><strong>Never give up:</strong> there will be a time where you have the feeling you have explored all the possibilities to get information. Don&rsquo;t give-up. Take a break (an hour, or a day doing something else), then analyze your data once again and try to see them with a different perspective. Is there a new piece of information you could pivot on? What if you asked the wrong questions at first? Justin Seitz recently wrote <a href="https://medium.com/@hunchly/osint-tenacity-hunchly-89727adc471a">a blog post</a> about tenacity giving a couple of examples where tenacity paid off.</li>
 <li><strong>Keep Evidences:</strong> Information disappear online very quickly. Imagine you do a single opsec mistake, like clicking on a like on a tweet or the person you are reseaching start to be suspicious, suddently all the social media accounts and websites can disappear from one day to the other. So keep evidences: screenshots, archives, web archives (more information later) or anything else that works for you.</li>
 <li><strong>Timelines are good:</strong> in forensic, timeline and pivoting on events happening in the same time is key. It is definitely not as important in OSINT but still a very interesting tool to organize your data. When was the website created? When was the FB account created? When was the last blog post done? Having all this in a table often give me a good view of what I am looking for.</li>
 </ul>
-
 <p>Then there are two other methods I find useful. The first one are flowcharts to describe the workflow to search for more information based on a type of data (like an email). The best one I have seen are the one done by Michael Bazzell at <a href="https://inteltechniques.com/blog/2018/03/06/updated-osint-flowcharts/">IntelTechniques.com</a>. For instance here is Michael Bazzell workflow when researching  information on an email address:</p>
-
-<p><center>
-<figure>
-    <img src="/media/osint/workflow_email.png" width="500"/> 
+<figure class="center">
+    <img src="/media/osint/workflow_email.png"
+         alt="Email OSINT WorkFlow by Michael Bazzell" width="500"/> <figcaption>
+            <p>Email OSINT WorkFlow by Michael Bazzell</p>
+        </figcaption>
 </figure>
 
-<i>Email OSINT WorkFlow by Michael Bazzell</i>
-</center></p>
-
 <p>After some time, I think it is a good idea to start developing your own investigation workflow and slowly improve it over time with new tricks you find.</p>
-
 <p>The last methodology I would recommend for long investigations is the <a href="https://en.wikipedia.org/wiki/Analysis_of_competing_hypotheses">Analysis of Competing Hypotheses</a>. This methodology was developed by the CIA in the 70&rsquo;s to help analyst remove bias from their analysis and carefully assess the different hypotheses. Bear in mind that it is a heavy and time-consuming tool, but if you are lost into a year long investigation, sometimes it is good to have a process helping you carefully evaluate your hypotheses.</p>
-
 <h1 id="prepare-your-system">Prepare Your System</h1>
-
 <p>Before jumping into the investigation, there are a couple of operational security aspects you should consider in order to avoid alerting the people you are researching about. Visiting an obscure personal website could give your IP address and hence your location to your target, using your personal social media account could lead to a click on a like by mistake. etc.</p>
-
 <p>I follow the following rules when doing my investigations:</p>
-
 <ul>
 <li><strong>Use a commercial VPN or Tor</strong> for all connections from your investigation browser. Most commercial VPNs provide servers in different countries and Tor allows you to <a href="https://www.wikihow.com/Set-a-Specific-Country-in-a-Tor-Browser">choose the exit node country</a> so I try to choose a country that would not raise a flag in that context (US for an investigation on a US organisation etc.).</li>
 <li>Do all the scans and crawling tasks from a cheap VPS that has <em>no link</em> with you.</li>
 <li>Use social media accounts dedicated to investigation and created under a fake name.</li>
 </ul>
-
 <p>With all this done, you can now investigate as late in the night as you want, it is pretty unlikely that people will be able to identify who is looking for them.</p>
-
 <h1 id="tooling">Tooling</h1>
-
 <p>The question of tool is always a curious one in infosec, nothing bother me more than people listing endless list of tools in their CV and not skills they have. So let me say it clearly: <strong>tools does not matter, it is what you do with tools that matter</strong>. If you don&rsquo;t know what you are doing, tools won&rsquo;t help you, they will just give you a long list of data that you won&rsquo;t be able to understand or assess. Test tools, read their code, create your own tools etc, but be sure that you understand what they do.</p>
-
 <p>The corollary of that is that there is not perfect toolkit. The best toolkit is the one you know, like and master. But let me tell you what I use and what other tools may be of interest to you.</p>
-
 <h2 id="chrome-and-plugins">Chrome and Plugins</h2>
-
 <p>I use Chrome as my investigation browser, mostly because Hunchly is only available for Chrome (see after). I add to it some helpful plugins:</p>
-
 <ul>
 <li><a href="https://chrome.google.com/webstore/detail/archiveis-button/cgjpabpjaocpgppajkeplhbipbdippdm">archive.is Button</a> allows to quickly save a webpage in archive.is (more about this later)</li>
 <li><a href="https://chrome.google.com/webstore/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak">Wayback Machine</a> to search for archived page in the archive.org Wayback machine</li>
@@ -169,82 +143,55 @@
 <li><a href="https://chrome.google.com/webstore/detail/exif-viewer/mmbhfeiddhndihdjeganjggkmjapkffm">EXIF Viewer</a> allows to quickly view EXIF data in images</li>
 <li><a href="https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg">FireShot</a> to take screenshot quickly</li>
 </ul>
-
 <h2 id="hunchly">Hunchly</h2>
-
 <p>I recently started to use <a href="https://hunch.ly/">Hunchly</a> and it is a great tool. Hunchly is a Chrome extensions that allows to save, tag and search all the web data you find during investigation. Basically, you just have to click on &ldquo;Capture&rdquo; in the extension when you start an investigation, and Hunchly will save all the webpages you visit in a database, allowing you to add notes and tags to them.</p>
-
 <p>It costs USD130 / year, which is not that much considering how helpful it is.</p>
-
-<p><center>
-<figure>
-    <img src="/media/osint/hunchly.png" width="600"/> 
+<figure class="center">
+    <img src="/media/osint/hunchly.png"
+         alt="Screenshot of the Hunchly Dashboard" width="600"/> <figcaption>
+            <p>Screenshot of the Hunchly Dashboard</p>
+        </figcaption>
 </figure>
-
-<i>Screenshot of the Hunchly Dashboard</i>
-</center></p>
 
 <h2 id="maltego">Maltego</h2>
-
-<p><a href="https://www.paterva.com/web7/buy/maltego-clients/maltego.php">Maltego</a> is more a threat intelligence tool than an OSINT tool and has many limitations, but a graph is often the best way to represent and analyze investigation data and Maltego is good for that. Basically Maltego offer an GUI to represent graphs, and transforms to find new data in the graph (for instance, domains linked to an IP address from a Passive DNS database). It is a bit <a href="https://www.paterva.com/web7/quote.php">expensive</a> (USD999 / year the first year, then USD499 / year for renewal) and may only be worth it if you are also doing threat intelligence or a lot of infrastructure analysis. You can also use the <a href="https://www.paterva.com/web7/community/community.php">Maltego Community Edition</a> which limit the utilization of transform and the size of graph, but it should be largely enough for small investigations.</p>
-
-<p><center>
-<figure>
-    <img src="/media/osint/maltego.jpg" width="600"/> 
+<p><a href="https://www.maltego.com/">Maltego</a> is more a threat intelligence tool than an OSINT tool and has many limitations, but a graph is often the best way to represent and analyze investigation data and Maltego is good for that. Basically Maltego offer an GUI to represent graphs, and transforms to find new data in the graph (for instance, domains linked to an IP address from a Passive DNS database). It is a bit <a href="https://www.maltego.com/pricing-plans/">expensive</a> (USD999 / year the first year, then USD499 / year for renewal) and may only be worth it if you are also doing threat intelligence or a lot of infrastructure analysis. You can also use the <a href="https://www.maltego.com/products/">Maltego Community Edition</a> which limit the utilization of transform and the size of graph, but it should be largely enough for small investigations.</p>
+<figure class="center">
+    <img src="/media/osint/maltego.jpg"
+         alt="Screenshot of Maltego (source: Paterva)" width="600"/> <figcaption>
+            <p>Screenshot of Maltego (source: Paterva)</p>
+        </figcaption>
 </figure>
 
-<i>Screenshot of Maltego (source: Paterva)</i>
-</center></p>
-
 <h2 id="harpoon">Harpoon</h2>
-
 <p>I have developed a command-line tool called <a href="https://github.com/Te-k/harpoon">Harpoon</a> (see the blog post <a href="https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/">here</a> for more details). It started as a threat Intelligence tool but I have added many commands for OSINT. It is working with python3 on Linux (but MacOS and Windows should work too) and open source.</p>
-
 <p>For instance, you can use Harpoon to search for a PGP key on key servers:</p>
-
 <pre><code>$ harpoon pgp search tek@randhome.io
 [+] 0xDCB55433A1EA7CAB  2016-05-30      Tek__ tek@randhome.io
-</code></pre>
-
-<p>There is a long list of <a href="https://github.com/Te-k/harpoon">plugins</a>, feel free to suggest or develop more or to create <a href="https://github.com/Te-k/harpoon/issues">issues</a> for new interesting features.</p>
-
+</code></pre><p>There is a long list of <a href="https://github.com/Te-k/harpoon">plugins</a>, feel free to suggest or develop more or to create <a href="https://github.com/Te-k/harpoon/issues">issues</a> for new interesting features.</p>
 <h2 id="python">Python</h2>
-
 <p>Very often, you will end up with specific data gathering and visualization tasks that cannot be done easily with any tool. In that case, you will have to write your own code. I use python for that, any modern programming language would work equaly, but I like the flexibility of python and the huge number of libraries available.</p>
-
 <p>Justin Seitz (the author of Hunchly) is a reference on python and OSINT, and you should definitely have a look at his blog <a href="http://www.automatingosint.com/blog/">Automating OSINT</a> and his book <a href="https://nostarch.com/blackhatpython">Black Hat Python</a></p>
-
 <h2 id="you-may-also-like">You may also like</h2>
-
 <p>There are many other tools for OSINT of course, but I find them less useful in my everyday work. Here are some tools you may want to check still, they are interesting and well done but do not really fit into my habits:</p>
-
 <ul>
 <li><a href="https://www.spiderfoot.net/">SpiderFoot</a> is a reconnaissance tool that gather information through many different modules. It has a nice web interface and generate graphs showing links between the different types of data. What I don&rsquo;t like about it is that it is thought as the magic tool finding everything for you, but no tool will ever replace you to know what you are looking for and analyze the results. Yes, you will have to do the research by yourself and read the results one by one, and SpiderFoot does not help much on that. Good work and nice interface tho.</li>
 </ul>
-
-<p><center>
-<figure>
-    <img src="/media/osint/spiderfoot.png" width="600"/> 
+<figure class="center">
+    <img src="/media/osint/spiderfoot.png"
+         alt="Screenshot of SpiderFoot (source: spiderfoot.net)" width="600"/> <figcaption>
+            <p>Screenshot of SpiderFoot (source: <a href="https://www.spiderfoot.net/">spiderfoot.net</a>)</p>
+        </figcaption>
 </figure>
-
-<i>Screenshot of SpiderFoot (source: <a href="https://www.spiderfoot.net/">spiderfoot.net</a>)</i>
-</center></p>
 
 <ul>
 <li><a href="https://bitbucket.org/LaNMaSteR53/recon-ng">recon-ng</a> is a nice CLI tool to query different platforms, social media or threat intelligence platforms. It is pretty close to what Harpoon does in fact. I don&rsquo;t use it because I already use Harpoon that fits my need and I don&rsquo;t really like the shell interface it offers.</li>
 <li><a href="https://inteltechniques.com/buscador/">Buscador</a> is a Linux Virtual Machine that embeds lots of different OSINT tools. I always prefer having my own customized systems but it is a nice way to try new tools without the burden of installing them one by one.</li>
 </ul>
-
-<h1 id="let-s-go">Let&rsquo;s Go!</h1>
-
+<h1 id="lets-go">Let&rsquo;s Go!</h1>
 <p>Let&rsquo;s now enter in the real topic: what can help you in OSINT investigations?</p>
-
 <h2 id="technical-infrastructure">Technical Infrastructure</h2>
-
 <p>Analysis of the technical infrastructure is at the crossroad between threat intelligence and open source intelligence, but it is definitely an important part of investigations in some context.</p>
-
 <p>Here is what you should look for:</p>
-
 <ul>
 <li><strong>IP and domains:</strong> there are many different tools for that but I find <a href="https://community.riskiq.com/https://community.riskiq.com/">Passive Total</a> (now called RiskIQ) to be one of the best source of information. Free access gives you 15 query per day through the web interface and 15 through the API. I rely mostly on it but <a href="https://www.robtex.com/">Robtex</a>, <a href="https://hackertarget.com/reverse-dns-lookup/">HackerTarget</a> and <a href="https://securitytrails.com">Security Trails</a> are other good options.</li>
 <li><strong>Certificates:</strong> <a href="https://censys.io/">Censys</a> is a great tool, but the less known and less fancy <a href="https://crt.sh/">crt.sh</a> is also a very good certificate transparency database</li>
@@ -253,13 +200,9 @@
 <li><strong>Subdomains:</strong> there are many different ways to find a list of subdomains for a domain, from Google search (<em>site:DOMAIN</em>) to searching in alternate domains in certificates. <a href="https://community.riskiq.com">PassiveTotal</a> and <a href="https://www.binaryedge.io">BinaryEdge</a> implement this feature directly, so you can jus query them to have a first list.</li>
 <li><strong>Google analytics and social media</strong>: the last information that is really interesting, is to check if the same Google Analytics / Adsense id is used in several website. This technique was discovered in 2015 and well described <a href="https://www.bellingcat.com/resources/how-tos/2015/07/23/unveiling-hidden-connections-with-google-analytics-ids/">here by Bellingcat</a>. To look for these connections, I mostly use <a href="https://community.riskiq.com/https://community.riskiq.com/">Passive Total</a>, <a href="http://spyonweb.com/">SpyOnWeb</a> and <a href="https://nerdydata.com/">NerdyData</a> (<a href="https://publicwww.com">publicwww</a> is another non-free alternative).</li>
 </ul>
-
 <h2 id="search-engines">Search Engines</h2>
-
 <p>Depending on the context, you may want to use a different search engine during an investigation. I mostly rely on Google and Bing (for Europe or North America), Baidu (for Asia) and Yandex (for Russia and Eastern Europe).</p>
-
 <p>Of course, the first investigation tool is search operators. You will find a complete list of these operators for Google <a href="http://www.googleguide.com/advanced_operators_reference.html">here</a>, here is an extract of the most interesting one:</p>
-
 <ul>
 <li>You can use the following boolean logical operators to combine queries: <code>AND</code>, <code>OR</code>, <code>+</code> and <code>-</code></li>
 <li><code>filetype:</code> allows to search for specific file extensions</li>
@@ -267,99 +210,67 @@
 <li><code>intitle:</code> and <code>inurl:</code> will filter on the title or the url</li>
 <li><code>link:</code>: find webpages having a link to a specific url (deprecated in 2017, but still partially work)</li>
 </ul>
-
 <p>Some examples:</p>
-
 <ul>
 <li><code>NAME + CV + filetype:pdf</code> can help you find someone CV</li>
 <li><code>DOMAIN - site:DOMAIN</code> may help you find subdomains of a website</li>
 <li><code>SENTENCE - site:ORIGINDOMAIN</code> may help you find website that plagiarized or copied an article</li>
 </ul>
-
 <p>Additional readings:</p>
-
 <ul>
 <li><a href="https://moz.com/blog/mastering-google-search-operators-in-67-steps">Mastering Google Search Operators in 67 Easy Steps</a></li>
 <li><a href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database</a></li>
 </ul>
-
 <h2 id="images">Images</h2>
-
 <p>For images, there are two things you want to know: how to find any additional information on an image and how to find similar images.</p>
-
 <p>To find additional information, the first step is to look at <strong>exif data</strong>. Exif data are data embedded into an image when the image is created and it often contains interesting information on the creation date, the camera used, sometimes GPS data etc. To check it, I like using the command line <a href="http://owl.phy.queensu.ca/~phil/exiftool/">ExifTool</a> but the Exif Viewer extension (for <a href="https://chrome.google.com/webstore/detail/exif-viewer/nafpfdcmppffipmhcpkbplhkoiekndck">Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/exif-viewer/">Firefox</a>) is also really handy. Additionally, you can use this amazing <strong><a href="https://29a.ch/photo-forensics/">Photo Forensic website</a></strong> that has many interesting features. (Other alternatives are <a href="http://exif.regex.info/exif.cgi">exif.regex.info</a> and <a href="https://fotoforensics.com">Foto Forensics</a>).</p>
-
 <p>To find similar images, you can use either <a href="https://images.google.com/?hl=fr">Google Images</a>, <a href="https://www.bing.com/images/">Bing Images</a>, <a href="https://yandex.com/images/">Yandex Images</a> or <a href="https://tineye.com">TinyEye</a>. TinyEye has a useful API (see <a href="http://www.automatingosint.com/blog/2015/11/osint-youtube-tineye-reverse-image-search/">here</a> how to use it) and Bing has a very useful feature letting you search for a <a href="https://www.cnet.com/news/bing-visual-search-within-images/">specific part of an image</a>. To get better results, it can be helpful to remove the background of the image, <a href="https://www.remove.bg">remove.bg</a> is an interesting tool for that.</p>
-
 <p>There is no easy way to analyse the content of an image and find its location for instance. You will have to look for specific items in the image that let you guess in which country it can be, and then do online research and compare with Satelite images. I would suggest to read some good investigations by Bellingcat to learn more about it, like <a href="https://www.bellingcat.com/resources/case-studies/2015/03/03/stunt-geolocation-verifying-the-unverifiable/">this one</a> or <a href="https://www.bellingcat.com/resources/case-studies/2014/07/18/identifying-the-location-of-the-mh17-linked-missile-launcher-from-one-photograph/">this one</a>.</p>
-
 <p>Additional readings:</p>
-
 <ul>
 <li><a href="https://www.bellingcat.com/resources/how-tos/2015/04/24/metadata-metauseful-metacreepy/">Metadata: MetaUseful &amp; MetaCreepy</a> by Bellingcat</li>
 <li><a href="https://firstdraftnews.org/wp-content/uploads/2017/03/FDN_verificationguide_photos.pdf?x40896">The Visual Verification Guide</a> by First Draft news</li>
 </ul>
-
 <h2 id="social-networks">Social Networks</h2>
-
 <p>For social network, there are many tools available, but they are strongly platform dependent. Here is a short extract of interesting tools and tricks:</p>
-
 <ul>
 <li><strong>Twitter:</strong> the API gives you the exact creation time and tool used to publish tweets. x0rz&rsquo; <a href="https://github.com/x0rz/tweets_analyzer">tweets_analyzer</a> is a great way to have an overview of the activity of an account. There are ways to find a Twitter id from an email address but they are <a href="https://booleanstrings.com/2018/05/02/how-to-find-the-twitter-id-from-an-email-address/">a bit tricky</a>.</li>
 <li><strong>Facebook:</strong> the best resource for Facebook investigation is <a href="https://inteltechniques.com/">Michael Bazzell&rsquo;s website</a>, especially his <a href="https://inteltechniques.com/osint/facebook.html">custom FB tool&rsquo;s page</a></li>
 <li><strong>LinkedIn:</strong> the most useful trick I have found in LinkedIn is how to find a <a href="https://inteltechniques.com/blog/2018/04/25/linkedin-profiles-by-email/">LinkedIn profile based on an email address</a>.</li>
 </ul>
-
 <h2 id="cache-platforms">Cache Platforms</h2>
-
 <p>There are several platforms caching websites that can be a great source of information during an investigation, either because a website is down or to analyse historical evolution of the website. These platforms are either caching websites automatically or caching the website on demand.</p>
-
 <p><strong>Search Engines:</strong> most search engines are caching websites content when they crawl them. It is really useful and many websites are available that way but keep in mind that you cannot control when it was cached last (very often less than a week ago) and it will likely be deleted soon, so if you find anything interesting there, think about saving the cached page quickly. I use the following search engines cache in my investigations: <a href="https://support.google.com/websearch/answer/1687222?hl=en">Google</a>, <a href="https://yandex.com/support/browser/personal-data-protection/cache-memory.html">Yandex</a> and Bing</p>
-
 <p><strong>Internet Archive:</strong> the <a href="https://archive.org/">Internet Archive</a> is a great project that aims at saving everything published on Internet, which include crawling automatically webpages and saving their evolution into a huge database. They offer a web portal called <a href="https://web.archive.org/">Internet Archive Wayback Machine</a>, which is an amazing resource to analyze evolutions of a website. One important thing to know is that the Internet Archive is removing content on demand (they did it for instance for the <a href="https://motherboard.vice.com/en_us/article/nekzzq/wayback-machine-deleting-evidence-flexispy">Stalkerware company Flexispy</a>), so you have to save content that need to be archived somewhere else.</p>
-
 <p><strong>Other manual caching platforms:</strong> I really like <a href="https://archive.fo/">archive.today</a> that allows to save snapshot of webpages and look for snapshots done by other people. I mostly rely on it in my investigations. <a href="https://perma.cc/">perma.cc</a> is good but offer only 10 links per months for free accounts, the platform is mostly dedicated to libraries and universities. Their code is <a href="https://github.com/harvard-lil/perma">open-source</a> tho, so if I had to host my own caching platform, I would definitely consider using this software.</p>
-
 <p>Sometimes it is annoying to manually query all these platforms to check if a webpage was cached or not. I have implemeted a simple command in Harpoon to do that:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#e6db74">/2016/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#e6db74">/
-</span><span style="color:#e6db74">Google: FOUND https://webcache.googleusercontent.com/se</span>arch?q<span style="color:#f92672">=</span>cache<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#66d9ef">Ahttps</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>A<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fcitizenlab</span><span style="color:#f92672">.</span>ca<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F2016</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F11</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fparliament</span><span style="color:#f92672">-</span>keyboy<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">&amp;</span>num<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span>strip<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&amp;</span>vwsrc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
+<span style="color:#e6db74">Google</span>: <span style="color:#66d9ef">FOUND</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>webcache<span style="color:#f92672">.</span>googleusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>search?q<span style="color:#f92672">=</span>cache<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#66d9ef">Ahttps</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>A<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fcitizenlab</span><span style="color:#f92672">.</span>ca<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F2016</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F11</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fparliament</span><span style="color:#f92672">-</span>keyboy<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">&amp;</span>num<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span>strip<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&amp;</span>vwsrc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 <span style="color:#e6db74">Yandex</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
 <span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>is: <span style="color:#66d9ef">TIME</span> <span style="color:#66d9ef">OUT</span>
 <span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>org: <span style="color:#66d9ef">FOUND</span>
-<span style="color:#f92672">-</span><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">26</span>: <span style="color:#e6db74">http</span>:<span style="color:#e6db74">//</span>web<span style="color:#f92672">.</span>archive<span style="color:#f92672">.</span>org<span style="color:#e6db74">/web/</span><span style="color:#ae81ff">20181202140726</span><span style="color:#f92672">/</span><span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#e6db74">/2016/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#e6db74">/
-</span><span style="color:#e6db74">Bing: NOT FOUND</span></code></pre></div>
-<p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
-
+<span style="color:#f92672">-</span><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">26</span>: <span style="color:#e6db74">http</span>:<span style="color:#e6db74">//</span>web<span style="color:#f92672">.</span>archive<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>web<span style="color:#f92672">/</span><span style="color:#ae81ff">20181202140726</span><span style="color:#f92672">/</span><span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
+<span style="color:#e6db74">Bing</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
+</code></pre></div><p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
 <h2 id="capturing-evidences">Capturing Evidences</h2>
-
 <p>Which bring us to the next point: capturing evidences. Capturing evidences is a key part of any investigation, especially if it is likely gonna be a long one. You will definitely be lost into the amount of data you found several times, web pages will change, Twitter accounts will disappear etc.</p>
-
-<p><center>
-<figure>
+<figure class="center">
     <img src="/media/osint/save.jpg" width="400"/> 
 </figure>
 
-</center></p>
-
 <p>Things to keep in mind:</p>
-
 <ul>
 <li>You cannot rely on the Internet Archive, use other cache platforms and if possible on local copies</li>
 <li>Save images, documents etc.</li>
 <li>Take screenshots</li>
 <li>Save data about social media accounts, they can be deleted anytime. (For Twitter accounts, Harpoon has a command to save the tweets and user infos in a JSON file)</li>
 </ul>
-
 <p>Additional readings:</p>
-
 <ul>
 <li><a href="https://www.bellingcat.com/resources/how-tos/2018/02/22/archive-open-source-materials/">How to Archive Open Source Materials</a> by Aric Toler from Bellingcat</li>
 </ul>
-
 <h2 id="url-shorteners">URL shorteners</h2>
-
 <p>URl shorteners can provide very interesting information when used, here is a summary on how to find stats information for different providers:</p>
-
 <ul>
 <li><strong>bit.ly:</strong> add a <code>+</code> at the end of the url, like <a href="https://bitly.com/aa+">https://bitly.com/aa+</a></li>
 <li><strong>goo.gl:</strong> (soon deprecated), add a <code>+</code> at the tend which redirects you to a url like <code>https://goo.gl/#analytics/goo.gl/[ID HERE]/all_time</code></li>
@@ -370,28 +281,19 @@
 <li><strong>adf.ly</strong> is offering to make money by showing ads when redirecting to the link. They use a lot of other subdomains like <code>j.gs</code> or <code>q.gs</code> and do not show public stats</li>
 <li><strong>tickurl.com:</strong> Access stats with + like <code>https://tickurl.com/i9zkh+</code></li>
 </ul>
-
 <p>Some url shorteners are using incremental ids, in that case it is possible enumerate them in order to find similar urls created around the same time. Check this <a href="https://citizenlab.ca/2017/05/tainted-leaks-disinformation-phish/">good report</a> to see an example of this idea.</p>
-
 <h2 id="company-information">Company Information</h2>
-
 <p>Several databases are available to search for information on a company. The main one is <a href="https://opencorporates.com/">Open Corporates</a> and <a href="https://data.occrp.org">OCCRP database of leaks and public records</a>. Then you will have to rely on per country databases, in France <a href="https://www.societe.com">societe.com</a> is a good one, in the US you should check <a href="https://www.sec.gov/edgar/searchedgar/webusers.htm">EDGAR</a> and in UK, <a href="https://beta.companieshouse.gov.uk">Company House</a> (more information on it <a href="ttps://www.bellingcat.com/resources/how-tos/2017/06/23/companies-house-short-guide/">here</a>).</p>
-
 <h1 id="resources">Resources</h1>
-
 <p>Here are some interesting resources to learn more about OSINT:</p>
-
 <ul>
 <li>Bellingcat amazing resources: <a href="https://www.bellingcat.com/category/resources/how-tos/">the guides</a> and the community built <a href="https://docs.google.com/document/d/1BfLPJpRtyq4RFtHJoNpvWQjmGnyVkfE2HYoICKOGguA/edit">list of resources</a></li>
 <li>The Github repository <a href="https://github.com/jivoi/awesome-osint">Awesome OSINT</a></li>
 <li>The <a href="https://osintframework.com/">OSINT framework</a></li>
 <li><a href="http://osint.link/">osint.link</a></li>
 </ul>
-
 <p>That&rsquo;s all folks, thanks for taking the time to read this post. Please feel free to help me complete that list by contacting me on <a href="https://twitter.com/tenacioustek">Twitter</a>.</p>
-
 <p>This blog post was written mainly while listening to <a href="https://www.youtube.com/watch?v=izhGLGPmvIU">Nils Frahm</a>.</p>
-
 <p>Update 1: Add <a href="https://yandex.com/images/">Yandex Images</a>, <a href="https://www.remove.bg">remove Background</a> and <a href="https://29a.ch/photo-forensics/#forensic-magnifier">Photo Forensic</a>. Thanks to <a href="https://twitter.com/manhack/status/1081945710638059523">Jean-Marc Manach</a> and <a href="https://twitter.com/fo0_">fo0</a> for their tips.</p>
 
               

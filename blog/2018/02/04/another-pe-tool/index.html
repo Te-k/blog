@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
     <title>Another PE tool</title>
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.68.2" />
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -94,22 +94,15 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              
-
-<p>Analyzing PE files is a basic task in reverse engineering in order to understand their structure, look for anything interesting before going more in depth into the reverse engineering in itself. There are countless tools to do that, on Windows I use <a href="https://www.winitor.com/">PeStudio</a>, <a href="http://wjradburn.com/software/">PEView</a> and <a href="http://www.angusj.com/resourcehacker/">Resource Hacker</a>. But most of the time I want to have a first view of the file before starting my Virtual Machine, so I was looking for a CLI tool on Linux. There is of course <a href="https://github.com/Te-k/analyst-scripts/blob/master/pe/pescanner.py">PEScanner</a> published by Michael Ligh with the good <a href="https://www.wiley.com/en-us/Malware+Analyst%27s+Cookbook+and+DVD%3A+Tools+and+Techniques+for+Fighting+Malicious+Code-p-9780470613030">Malware Analyst&rsquo;s Cookbook</a> but it is a bit outdated (python2 only) and I like to write my own tools to be sure I understand how they work and what are their limits.</p>
-
+              <p>Analyzing PE files is a basic task in reverse engineering in order to understand their structure, look for anything interesting before going more in depth into the reverse engineering in itself. There are countless tools to do that, on Windows I use <a href="https://www.winitor.com/">PeStudio</a>, <a href="http://wjradburn.com/software/">PEView</a> and <a href="http://www.angusj.com/resourcehacker/">Resource Hacker</a>. But most of the time I want to have a first view of the file before starting my Virtual Machine, so I was looking for a CLI tool on Linux. There is of course <a href="https://github.com/Te-k/analyst-scripts/blob/master/pe/pescanner.py">PEScanner</a> published by Michael Ligh with the good <a href="https://www.wiley.com/en-us/Malware+Analyst%27s+Cookbook+and+DVD%3A+Tools+and+Techniques+for+Fighting+Malicious+Code-p-9780470613030">Malware Analyst&rsquo;s Cookbook</a> but it is a bit outdated (python2 only) and I like to write my own tools to be sure I understand how they work and what are their limits.</p>
 <p>So I wrote a CLI tool plainly called PE, it is written in python 3 and published on <a href="https://github.com/Te-k/pe">github</a> under GPLv3. It is using the good <a href="https://github.com/erocarrera/pefile">pefile</a> and has a plugin architecture so it is easy to write new commands.</p>
-
 <h2 id="installation">Installation</h2>
-
 <p>The tool is not published under PyPI (yet?), but it is packaged for pip, so pretty easy to install :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:Te-k/pe.git
 cd pe
-pip install .</code></pre></div>
-<h2 id="plugins">Plugins</h2>
-
+pip install .
+</code></pre></div><h2 id="plugins">Plugins</h2>
 <p>For now, there are 7 different commands:</p>
-
 <ul>
 <li><strong>info</strong> : Extract info from the PE file</li>
 <li><strong>dump</strong> : Dump resource or section of the file</li>
@@ -118,7 +111,6 @@ pip install .</code></pre></div>
 <li><strong>check</strong> :  Check for weird stuff in the PE file</li>
 <li><strong>shell</strong> : Launch ipython shell to analyze the PE file</li>
 </ul>
-
 <h2 id="example">Example</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe info playlib.exe
 Metadata
@@ -128,21 +120,21 @@ SHA1:          2ab43fc90a1928684b8590375643da52285b8625
 SHA256:        f5967a8f3db4f4f33e89976e39914fceff46401bd2243b29162e1ddeb61f8dd3
 Imphash:       25c0914e1e7dc7c3bb957d88e787a155
 Size:          <span style="color:#ae81ff">6445256</span> bytes
-Type:          PE32 executable <span style="color:#f92672">(</span>GUI<span style="color:#f92672">)</span> Intel <span style="color:#ae81ff">80386</span>, <span style="color:#66d9ef">for</span> MS Windows
-Compile Time:  <span style="color:#ae81ff">2013</span>-12-23 <span style="color:#ae81ff">11</span>:44:26 <span style="color:#f92672">(</span>UTC - 0x52B8221A<span style="color:#f92672">)</span>
+Type:          PE32 executable <span style="color:#f92672">(</span>GUI<span style="color:#f92672">)</span> Intel 80386, <span style="color:#66d9ef">for</span> MS Windows
+Compile Time:  2013-12-23 11:44:26 <span style="color:#f92672">(</span>UTC - 0x52B8221A<span style="color:#f92672">)</span>
 Entry point:   0x40666e <span style="color:#f92672">(</span>section .text<span style="color:#f92672">)</span>
 TLS Callback: 0x446bb0 <span style="color:#f92672">(</span>section .enigma2<span style="color:#f92672">)</span>
 
 Sections
 <span style="color:#f92672">================================================================================</span>
 Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
-.text      0x6d11    0x1000    0x400     0x6e00    <span style="color:#ae81ff">6</span>.0193   5eaee28e37a09d2102eb51e78b45b0c1
-.rdata     0x8602    0x8000    0x7200    0x8800    <span style="color:#ae81ff">5</span>.5164   21bdbc2bf27fd551101d72b710e7f597
-.data      0x8ac     0x11000   0xfa00    0x400     <span style="color:#ae81ff">3</span>.7505   9279c174353928a592cd4a7e75ed6b3b
-.rsrc      0x1b4     0x12000   0xfe00    0x200     <span style="color:#ae81ff">5</span>.0920   81ed975a2d7b4836ff8515ef97ac2232
-.reloc     0x1730    0x13000   0x10000   0x1800    <span style="color:#ae81ff">6</span>.2184   ce4be3ea2acc52c8fbefcde69e516b47
-.enigma1   0x1000    0x15000   0x11800   0x5d4000  <span style="color:#ae81ff">7</span>.9314   a7a0284d8da4c85adbc23b8c600fe15f
-.enigma2   0x40000   0x16000   0x5e5800  0x40000   <span style="color:#ae81ff">6</span>.0038   9314fd6d5c987f829f9f84d4acad0812
+.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
+.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
+.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
+.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
+.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
+.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
+.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
 
 
 Imports
@@ -161,29 +153,30 @@ kernel32.dll
 Resources:
 <span style="color:#f92672">================================================================================</span>
 Id           Name    Size      Lang           Sublang           Type           MD5
-<span style="color:#ae81ff">24</span>-1-1033    None    <span style="color:#ae81ff">346</span> B     LANG_ENGLISH   SUBLANG_ENGLISH_US ASCII text, with CRLF line terminators 24d3b502e1846356b0263f945ddd5529</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe check playlib.exe
+24-1-1033    None    <span style="color:#ae81ff">346</span> B     LANG_ENGLISH   SUBLANG_ENGLISH_US ASCII text, with CRLF line terminators 24d3b502e1846356b0263f945ddd5529
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe check playlib.exe
 Running checks on playlib.exe:
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Abnormal section names: .enigma1 .enigma2
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Suspicious section<span style="color:#960050;background-color:#1e0010">&#39;</span>s entropy: .enigma1 - <span style="color:#ae81ff">7</span>.931
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Suspicious section<span style="color:#960050;background-color:#1e0010">&#39;</span>s entropy: .enigma1 - 7.931
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known malicious sections
 	-.enigma1: Enigma Virtual Box protector
 	-.enigma2: Enigma Virtual Box protector
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> <span style="color:#ae81ff">200</span> extra bytes in the file
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> TLS Callback: 0x446bb0
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PE header in sections .enigma2
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known suspicious import hash: Enigma VirtualBox</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe checksize playlib.exe
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known suspicious import hash: Enigma VirtualBox
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe checksize playlib.exe
 Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
-.text      0x6d11    0x1000    0x400     0x6e00    <span style="color:#ae81ff">6</span>.0193   5eaee28e37a09d2102eb51e78b45b0c1
-.rdata     0x8602    0x8000    0x7200    0x8800    <span style="color:#ae81ff">5</span>.5164   21bdbc2bf27fd551101d72b710e7f597
-.data      0x8ac     0x11000   0xfa00    0x400     <span style="color:#ae81ff">3</span>.7505   9279c174353928a592cd4a7e75ed6b3b
-.rsrc      0x1b4     0x12000   0xfe00    0x200     <span style="color:#ae81ff">5</span>.0920   81ed975a2d7b4836ff8515ef97ac2232
-.reloc     0x1730    0x13000   0x10000   0x1800    <span style="color:#ae81ff">6</span>.2184   ce4be3ea2acc52c8fbefcde69e516b47
-.enigma1   0x1000    0x15000   0x11800   0x5d4000  <span style="color:#ae81ff">7</span>.9314   a7a0284d8da4c85adbc23b8c600fe15f
-.enigma2   0x40000   0x16000   0x5e5800  0x40000   <span style="color:#ae81ff">6</span>.0038   9314fd6d5c987f829f9f84d4acad0812
+.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
+.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
+.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
+.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
+.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
+.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
+.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
 
-<span style="color:#ae81ff">200</span> bytes of extra data <span style="color:#f92672">(</span><span style="color:#ae81ff">6445256</span> <span style="color:#66d9ef">while</span> it should be <span style="color:#ae81ff">6445056</span><span style="color:#f92672">)</span></code></pre></div>
-<h2 id="creating-a-new-command">Creating a new command</h2>
-
+<span style="color:#ae81ff">200</span> bytes of extra data <span style="color:#f92672">(</span><span style="color:#ae81ff">6445256</span> <span style="color:#66d9ef">while</span> it should be 6445056<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="creating-a-new-command">Creating a new command</h2>
 <p>As it is based on a plugin model, it is pretty easy to extend with new commands. You need to create a new file in pe/plugin having the following model :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#! /usr/bin/env python</span>
 <span style="color:#f92672">from</span> pe.plugins.base <span style="color:#f92672">import</span> Plugin
@@ -198,8 +191,8 @@ Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
 	parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;INFORMATION&#39;</span>)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, args, pe, data):
-	<span style="color:#75715e"># Code here</span></code></pre></div>
-<p>Feel free to open <a href="https://github.com/Te-k/pe/issues">issues</a> and propose <a href="https://github.com/Te-k/pe/pulls">Pull Requests</a>.</p>
+	<span style="color:#75715e"># Code here</span>
+</code></pre></div><p>Feel free to open <a href="https://github.com/Te-k/pe/issues">issues</a> and propose <a href="https://github.com/Te-k/pe/pulls">Pull Requests</a>.</p>
 
               
             </div>

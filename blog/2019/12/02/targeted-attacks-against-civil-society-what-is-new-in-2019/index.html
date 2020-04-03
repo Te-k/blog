@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
     <title>Targeted Attacks Against Civil Society : What is New in 2019?</title>
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.68.2" />
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -92,170 +92,116 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              
-
-<h3 id="tl-dr">TL;DR</h3>
-
+              <h3 id="tldr">TL;DR</h3>
 <p>New trends in targeted attacks against civil society in 2019 :</p>
-
 <ul>
 <li>More attacks against smartphones, some attacks are using 0-days and we don&rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android</li>
 <li>Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA</li>
 <li>OAuth attacks are still there and will likely be there for some time. As they bypass many protections against phishing, people need to be aware of them and check their OAuth access regularly.</li>
 </ul>
-
-<h3 id="targeted-attacks-against-civil-society-what-is-new-in-2019">Targeted Attacks Against Civil Society : What is New in 2019?</h3>
-
+<h3 id="targeted-attacks-against-civil-society--what-is-new-in-2019">Targeted Attacks Against Civil Society : What is New in 2019?</h3>
 <p>10 years ago, the <a href="http://www.nartv.org/mirror/ghostnet.pdf">GhostNet report</a> published by the Citizen Lab made quite a buzz; it described an important coordinated effort of compromising computers over the world, from the embassy of India in the US to PetroVietnam. It was one of the first times that an attack campaign of that scale was revealed, but what made it especially important is that this campaign was discovered when researchers identified attacks against the Tibetan community in exile, and more specifically against the Office of the Dalai Lama.</p>
-
-<p><center>
-<figure>
+<figure class="center">
     <img src="/media/phishing/ghostnet.png" width="90%"/> 
 </figure>
 
-</center></p>
-
 <p>We have now a way better understanding of these attacks against civil society, with multiple examples in different regions and using different techniques, mostly thanks to the work of few research labs and non profit organisations like <a href="https://citizenlab.ca/">the Citizen Lab</a>, <a href="https://www.amnesty.org/en/">Amnesty International</a> or <a href="https://www.eff.org/">the EFF</a>, but also from the security industry, often covering attacks targeting the industry at the same time (you can find a list of these reports currated by Claudio Guarnieri <a href="https://securitywithoutborders.org/resources/targeted-surveillance-reports.html">here</a>).</p>
-
 <p>The digital landscape has changed quite a bit in the last ten years. There are now more groups supporting civil society and Human Rights Defenders at the intersection of technology and security, with security trainings, collaborative maintenance of civil society websites, events to talk about technology and human rights. Yet, there is still a gap between security researchers precisely following the moving landscape of targeted attacks and people supporting civil society with trainings and technical support. I hope that this blog post can help bridge this gap by summarizing important changes in targeted attacks over the past year.</p>
-
 <h2 id="more-attacks-against-mobile-phones">More Attacks Against Mobile Phones</h2>
-
 <p>This year, we have seen confirmation that there are increasingly more attacks targeting smartphones today than there used to be, mostly in connection with three important events :</p>
-
 <ul>
 <li>In August 2019, Google Project Zero published <a href="https://googleprojectzero.blogspot.com/2019/08/a-very-deep-dive-into-ios-exploit.html">an article</a> describing the utilization of iPhone 0-days in watering hole attacks on compromised <a href="https://techcrunch.com/2019/08/31/china-google-iphone-uyghur/">Uyghur-related</a> websites. It is the first time we have seen 0-days used in watering hole attacks, which forces us to reconsider our view of <a href="https://www.eff.org/deeplinks/2019/09/watering-holes-and-million-dollar-dissidents-changing-economics-digital">0-days used only in very targeted attacks</a>. It appears that the same attack framework was used against <a href="https://citizenlab.ca/2019/09/poison-carp-tibetan-groups-targeted-with-1-click-mobile-exploits/">Tibetan groups</a> at the same time using only old days exploits.</li>
 <li>In October 2019, Amnesty International published <a href="https://www.amnesty.org/en/latest/research/2019/10/morocco-human-rights-defenders-targeted-with-nso-groups-spyware/">a report describing attacks against Moroccan Human Right Defenders</a> using text messages containing NSO-related links that would use 0-days to exploit the browser on click as <a href="https://citizenlab.ca/2016/08/million-dollar-dissident-iphone-zero-day-nso-group-uae/">it was seen before</a>, but also by injecting malicious code into the mobile phone traffic. This network injection allows to do a no-click exploitation of the smartphone.</li>
 <li>We have more examples of 0-days attacks done by NSO groups, showing that some of these attacks are exploiting chat applications such as <a href="https://www.forbes.com/sites/zakdoffman/2019/05/14/whatsapps-cybersecurity-breach-phones-hit-with-israeli-spyware-over-voice-calls/#34d992bc5549">WhatsApp</a> or <a href="https://www.wired.com/story/imessage-interactionless-hacks-google-project-zero/">iMessage</a>, but also exploits in <a href="https://arstechnica.com/information-technology/2019/10/attackers-exploit-0day-vulnerability-that-gives-full-control-of-android-phones/">Linux kernel</a> to exploit Android phones. The WhatsApp bug exploited in May 2019 by NSO Group prompted a strong reaction by WhatsApp: first <a href="https://www.washingtonpost.com/opinions/2019/10/29/why-whatsapp-is-pushing-back-nso-group-hacking/">suing NSO Group</a> for this attack, and also informing all the people targeted, which led to discover attacks against activists in <a href="https://www.newslaundry.com/2019/10/31/breaking-bela-bhatia-anand-teltumbde-among-indians-snooped-on-using-israeli-spyware">India</a>, <a href="https://www.courtlistener.com/recap/gov.uscourts.cand.350613/gov.uscourts.cand.350613.1.1.pdf">Ghana</a> and <a href="https://www.ft.com/content/67a5b442-f971-11e9-a354-36acbbb0d9b6">Rwanda</a> (among the more than <a href="https://citizenlab.ca/2019/10/nso-q-cyber-technologies-100-new-abuse-cases/">100 human rights defenders and journalists</a>).</li>
 </ul>
-
-<p><center>
-<figure>
-    <img src="/media/phishing/morocco1.jpg" width="80%"/> 
+<figure class="center">
+    <img src="/media/phishing/morocco1.jpg"
+         alt="Example of attacks against Maati Monjib, a Moroccan Human Right Defender (Source: Amnesty)" width="80%"/> <figcaption>
+            <p>Example of attacks against Maati Monjib, a Moroccan Human Right Defender (Source: <a href="https://www.amnesty.org/en/latest/research/2019/10/morocco-human-rights-defenders-targeted-with-nso-groups-spyware/">Amnesty</a>)</p>
+        </figcaption>
 </figure>
-
-<i>Example of attacks against Maati Monjib, a Moroccan Human Right Defender (Source: <a href="https://www.amnesty.org/en/latest/research/2019/10/morocco-human-rights-defenders-targeted-with-nso-groups-spyware/">Amnesty</a>)</i>
-</center></p>
 
 <h3 id="mobile-phone-0-days-are-there-and-we-have-no-good-ways-to-be-protected-against-them">Mobile phone 0-days are there and we have no good ways to be protected against them</h3>
-
 <p>There are 0-days attacks against smartphone using one click (a message with a link that the target need to click on) or 0-click (no action needed from the targets) attacks available to dedicated groups with sufficient funds. There is no easy way to be protected against them. We either have to limit the attack surface available for these tools (for instance, by <a href="https://support.apple.com/en-us/HT203042">disabling iMessage on iPhone</a> if you do not need it, or by using fewer chat applications), or assume that some devices are compromised if these types of attacks are in our threat model.</p>
-
 <p>This topic is definitely an important one that we have to work on collectively, but we should not forget that most attacks today do not need to use 0-day to be successful, and keep in mind that attacks using known vulnerabilities are <a href="https://targetedthreats.net/">far more common against civil society</a>.</p>
-
-<h3 id="in-most-cases-0-days-won-t-be-needed-to-compromise-a-smartphone">In most cases, 0-days won&rsquo;t be needed to compromise a smartphone</h3>
-
+<h3 id="in-most-cases-0-days-wont-be-needed-to-compromise-a-smartphone">In most cases, 0-days won&rsquo;t be needed to compromise a smartphone</h3>
 <p>All the discussion about 0-day should not make us forget that most attacks are technically really simple. And they work. This is also true for attacks against smartphones. For anyone buying a random android phone today, the chances are high that the phone is not freshly updated and may not have updates available (this depends on the country of purchase, and the price range of the phone, which creates an important <a href="https://nex.sx/blog/2019/11/11/the-economic-inequality-of-mobile-security.html">inequality on smartphone security</a>).</p>
-
 <p>Attackers understand this, <a href="https://citizenlab.ca/2019/09/poison-carp-tibetan-groups-targeted-with-1-click-mobile-exploits/">Tibetan groups</a> were targeted this year by an attack framework that was <em>only relying on fixed old-day vulnerabilities</em>, one for iOS and 8 for Android. In most cases, the attackers only had to get the exploit code from the Chrome bug tracker and adapt it to be able to exploit it in the wild.</p>
-
-<p><center>
-<figure>
-    <img src="/media/phishing/Missing-Link-Fig-3.png" width="80%"/> 
+<figure class="center">
+    <img src="/media/phishing/Missing-Link-Fig-3.png"
+         alt="Example of attack against Tibetan human right organization (Source: Citizen Lab)" width="80%"/> <figcaption>
+            <p>Example of attack against Tibetan human right organization (Source: <a href="https://citizenlab.ca/2019/09/poison-carp-tibetan-groups-targeted-with-1-click-mobile-exploits/">Citizen Lab</a>)</p>
+        </figcaption>
 </figure>
 
-<i>Example of attack against Tibetan human right organization (Source: <a href="https://citizenlab.ca/2019/09/poison-carp-tibetan-groups-targeted-with-1-click-mobile-exploits/">Citizen Lab</a>)</i>
-</center></p>
-
-<h3 id="what-can-we-do">What can we do ?</h3>
-
+<h3 id="what-can-we-do-">What can we do ?</h3>
 <p>There are a few things we can do against this threat :</p>
-
 <ul>
 <li>Secure our smartphones as much as possible : ensure that system and critical apps (such as browsers and chat applications are updated, and reduce the attack surface as much as possible (<a href="https://support.apple.com/en-us/HT203042">by disabling iMessage</a>, limiting the number of chat applications, avoiding using SIM if possible and using a VPN on insecure networks)</li>
 <li>Consider that smartphones can be compromised : in cases where there are suspicions that 0-day could be used, considering that smartphones can be compromised and take it into account in the threat model can allow to limit the impact of the attack</li>
 <li>Connect people at risk of being targeted by these attacks with research groups like <a href="https://citizenlab.ca/">Citizen Lab</a> or <a href="https://twitter.com/amnestytech">Amnesty Technology</a> : there are few people in the world targeted by these attacks and few people who know enough to be able to analyse them and find solutions, we have to make sure these people work together (ping me if you don&rsquo;t know who to contact)</li>
 </ul>
-
 <p>References :</p>
-
 <ul>
 <li>Sept 2019 : <a href="https://citizenlab.ca/2019/09/poison-carp-tibetan-groups-targeted-with-1-click-mobile-exploits/">Missing Link - Tibetan Groups Targeted with 1-Click Mobile Exploits</a> by the Citizen Lab</li>
 <li>Oct 2019 : <a href="https://www.amnesty.org/en/latest/research/2019/10/morocco-human-rights-defenders-targeted-with-nso-groups-spyware/">Morocco: Human Rights Defenders Targeted with NSO Group’s Spyware</a> by Amnesty International</li>
 </ul>
-
 <h2 id="phishing-kits-supporting-2fa-bypass-are-common">Phishing Kits supporting 2FA Bypass are Common</h2>
-
 <p>For many years, one of the main solution against phishing has been to recommend the use of 2 Factor Authentication. 2 Factor Authentication (2FA) is using secondary means of authentication in addition to the password. There are three common ways to do 2FA (ranking from the least secure to the most secure) :</p>
-
 <ul>
 <li>Temporary code sent by text message (SMS have a lot of security issues)</li>
 <li>Temporary code given by an app on a smartphone (such as <a href="https://freeotp.github.io/">FreeOTP</a>)</li>
 <li>Hardware token like <a href="https://www.yubico.com/products/yubikey-hardware/">Yubikeys</a></li>
 </ul>
-
 <p>In 2019, we received confirmation that attackers are now commonly using phishing kits that are bypassing all forms of 2FA except hardware keys :</p>
-
 <ul>
 <li>In December 2018, Amnesty International described <a href="https://www.amnesty.org/en/latest/research/2018/12/when-best-practice-is-not-good-enough/">an attack campaign in Middle-East</a> supporting 2FA bypass</li>
 <li>There are now also several open-source phishing kits supporting bypassing some forms of 2FA available online such as <a href="https://github.com/drk1wi/Modlishka">Modlishka</a> or <a href="https://www.fireeye.com/blog/threat-research/2018/02/reelphish-real-time-two-factor-phishing-tool.html">ReelPhishing</a>; they were extensively covered by technical press <a href="https://www.zdnet.com/article/new-tool-automates-phishing-attacks-that-bypass-2fa/">in January 2019</a></li>
 </ul>
-
 <p>All of these phishing kits are bypassing all forms of second factor authentication except hardware keys. Hardware keys are more robust and not vulnerable to these attacks; the key provides the temporary code to the domain through the browser but only after confirming that the current domain matches the previously registered domain. Therefore, classic techniques, like using a domain similar to a real one (<code>gooogle.com</code> instead of <code>google.com</code>, for example) are completely ineffective with it.</p>
-
-<p><center>
-<figure>
+<figure class="center">
     <img src="/media/advancedprotection/yubikey.png" width="25%"/> 
 </figure>
 
-</center></p>
-
 <p>We have to expect that all phishing kits will support bypassing most forms of 2FA in the future, and promote and provide hardware security keys to human rights defenders.</p>
-
 <p>References :</p>
-
 <ul>
 <li>Dec 2018 : <a href="https://www.amnesty.org/en/latest/research/2018/12/when-best-practice-is-not-good-enough/">When Best Practice Isn’t Good Enough: Large Campaigns of Phishing Attacks in Middle East and North Africa Target Privacy-Conscious Users</a> by Amnesty International</li>
 <li>Open-source phishing kits supporting 2FA bypass : <a href="https://github.com/drk1wi/Modlishka">Modlishka</a>, <a href="https://www.fireeye.com/blog/threat-research/2018/02/reelphish-real-time-two-factor-phishing-tool.html">ReelPhishing</a></li>
 </ul>
-
 <h2 id="oauth-attacks-are-still-there">OAuth Attacks are Still There</h2>
-
 <p>Open Authentication (OAuth) is a protocol designed for access delegation and has become a popular way for major platforms (Facebook, Google, Twitter, etc.) to permit sharing of account information with third party applications. For some years now it has also been used in phishing campaigns against civil society: first by groups with a high technical level such as <a href="https://blog.trendmicro.com/trendlabs-security-intelligence/pawn-storm-abuses-open-authentication-advanced-social-engineering-attacks/">APT28</a>, then by groups with significant <a href="https://citizenlab.ca/2018/01/spying-on-a-budget-inside-a-phishing-operation-with-targets-in-the-tibetan-community/">lower technical skills</a>.</p>
-
 <p>OAuth phishing is a rather basic technique but it is very effective for one reason : it defeats most recommendations given to users against phishing websites. Most trainings advise to check the domain name or the content of the page, but with OAuth phishing an actual Google page is shown to the user to request access to their account. If the user has never heard about OAuth, it is quite easy to misunderstand what is happening and fall into it. Two Factor Authentication does not help with OAuth phishing either as the user should be legitimately logged with their Google account.</p>
-
-<p><br/></p>
-
-<p><center>
-<figure>
-    <img src="/media/phishing/oauth1.png" width="60%"/> 
+<!-- raw HTML omitted -->
+<figure class="center">
+    <img src="/media/phishing/oauth1.png"
+         alt="Example of OAuth phishing attacks targeting Tibetan activists in 2018 (Source: Citizen Lab)" width="60%"/> <figcaption>
+            <p>Example of OAuth phishing attacks targeting Tibetan activists in 2018 (Source: <a href="https://citizenlab.ca/2018/01/spying-on-a-budget-inside-a-phishing-operation-with-targets-in-the-tibetan-community/">Citizen Lab</a>)</p>
+        </figcaption>
 </figure>
 
-</center>
-<i>Example of OAuth phishing attacks targeting Tibetan activists in 2018 (Source: <a href="https://citizenlab.ca/2018/01/spying-on-a-budget-inside-a-phishing-operation-with-targets-in-the-tibetan-community/">Citizen Lab</a>)</i></p>
-
-<p><br/></p>
-
+<!-- raw HTML omitted -->
 <p>When these attacks appeared, Google (in likely addition to other major platforms) started to take measures to make these attacks more difficult, by adding <a href="https://support.google.com/cloud/answer/7454865?hl=en">a verification process</a> to OAuth applications requesting sensitive scopes, and initiating some threat investigatons to block malicious applications. Google has also added an <a href="https://www.randhome.io/blog/2017/11/05/google-advanced-protection/">Advanced Protection feature</a> that disables OAuth access to email and documents.</p>
-
 <p>For quite some time, I thought we would see a drop of OAuth phishing in 2019. It turns out I was wrong. Many examples of OAuth phishing  this year shows that Oauth phishing is still regularly used against civil society and that, more importantly, these attackers are using new tricks to bypass Google protections. <a href="https://www.amnesty.org/en/latest/research/2019/08/evolving-phishing-attacks-targeting-journalists-and-human-rights-defenders-from-the-middle-east-and-north-africa/">An Amnesty International report</a> from Summer 2019 describes OAuth phishing attacks requesting targets to give access to a legitimate third party application, and used social engineering to try to convince them to share the access key with the attacker. While the technique may not be especially effective, it is clever and shows that attackers are still exploring new ways to abuse OAuth access.</p>
-
-<p><center>
-<figure>
-    <img src="/media/phishing/oauth2.png" width="60%"/> 
+<figure class="center">
+    <img src="/media/phishing/oauth2.png"
+         alt="Example of Outlook OAuth phishing attack targeting MENA journalists in 2019 (Source: Amnesty)" width="60%"/> <figcaption>
+            <p>Example of Outlook OAuth phishing attack targeting MENA journalists in 2019 (Source: <a href="https://www.amnesty.org/en/latest/research/2019/08/evolving-phishing-attacks-targeting-journalists-and-human-rights-defenders-from-the-middle-east-and-north-africa/">Amnesty</a>)</p>
+        </figcaption>
 </figure>
-
-</center>
-<i>Example of Outlook OAuth phishing attack targeting MENA journalists in 2019 (Source: <a href="https://www.amnesty.org/en/latest/research/2019/08/evolving-phishing-attacks-targeting-journalists-and-human-rights-defenders-from-the-middle-east-and-north-africa/">Amnesty</a>)</i></p>
 
 <p>So OAuth phishing is still here and it will likely be for some time. There are a few things we can do against these attacks :</p>
-
 <ul>
 <li>Add OAuth phishing examples to security trainings</li>
 <li>Regularly check third party OAuth access (<a href="https://myaccount.google.com/permissions">here for Google</a>)</li>
 <li><a href="https://www.randhome.io/blog/2017/11/05/google-advanced-protection/">Google Advanced Protection</a> can be a good solution but can be tricky to set-up</li>
 </ul>
-
 <p>References :</p>
-
 <ul>
 <li>Jan 2018 : <a href="https://citizenlab.ca/2018/01/spying-on-a-budget-inside-a-phishing-operation-with-targets-in-the-tibetan-community/">Spying on a Budget - Inside a Phishing Operation with Targets in the Tibetan Community</a> by the Citizen Lab</li>
 <li>Aug 2019 : <a href="https://www.amnesty.org/en/latest/research/2019/08/evolving-phishing-attacks-targeting-journalists-and-human-rights-defenders-from-the-middle-east-and-north-africa/">Evolving Phishing Attacks Targeting Journalists and Human Rights Defenders from the Middle-East and North Africa</a> by Amnesty International</li>
 </ul>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>2019 is almost over, and it has been an interesting and challenging year. I hope this blog post helped you better understand the threats that Human Rights Defenders face today. If you have any questions or comments, or if you think you are being targeted by a possible government-sponsored attack as an activist, feel free to send me an email (tek AT randhome.io).</p>
 
               

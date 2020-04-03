@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Tek&#39;s blog</title>
@@ -6,57 +6,58 @@
     <description>Recent content in Categories on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://www.randhome.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Flexispy</title>
-      <link>https://www.randhome.io/categories/flexispy/</link>
-      <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
-      
-      <guid>https://www.randhome.io/categories/flexispy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Google</title>
-      <link>https://www.randhome.io/categories/google/</link>
-      <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      
-      <guid>https://www.randhome.io/categories/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://www.randhome.io/categories/linux/</link>
-      <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
-      
-      <guid>https://www.randhome.io/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>https://www.randhome.io/categories/machine-learning/</link>
-      <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      
-      <guid>https://www.randhome.io/categories/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Malware</title>
+      <title>malware</title>
       <link>https://www.randhome.io/categories/malware/</link>
-      <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
       
       <guid>https://www.randhome.io/categories/malware/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Osint</title>
+      <title>miasm</title>
+      <link>https://www.randhome.io/categories/miasm/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/miasm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reverse</title>
+      <link>https://www.randhome.io/categories/reverse/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/reverse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://www.randhome.io/categories/security/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shellcode</title>
+      <link>https://www.randhome.io/categories/shellcode/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>osint</title>
       <link>https://www.randhome.io/categories/osint/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
       
@@ -65,16 +66,16 @@
     </item>
     
     <item>
-      <title>Php</title>
-      <link>https://www.randhome.io/categories/php/</link>
-      <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
+      <title>tools</title>
+      <link>https://www.randhome.io/categories/tools/</link>
+      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
-      <guid>https://www.randhome.io/categories/php/</guid>
+      <guid>https://www.randhome.io/categories/tools/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Reverse Engineering</title>
+      <title>reverse-engineering</title>
       <link>https://www.randhome.io/categories/reverse-engineering/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
       
@@ -83,16 +84,25 @@
     </item>
     
     <item>
-      <title>Security</title>
-      <link>https://www.randhome.io/categories/security/</link>
+      <title>google</title>
+      <link>https://www.randhome.io/categories/google/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
       
-      <guid>https://www.randhome.io/categories/security/</guid>
+      <guid>https://www.randhome.io/categories/google/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Surveillance</title>
+      <title>flexispy</title>
+      <link>https://www.randhome.io/categories/flexispy/</link>
+      <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
+      
+      <guid>https://www.randhome.io/categories/flexispy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>surveillance</title>
       <link>https://www.randhome.io/categories/surveillance/</link>
       <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
       
@@ -101,11 +111,29 @@
     </item>
     
     <item>
-      <title>Tools</title>
-      <link>https://www.randhome.io/categories/tools/</link>
-      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
+      <title>linux</title>
+      <link>https://www.randhome.io/categories/linux/</link>
+      <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
       
-      <guid>https://www.randhome.io/categories/tools/</guid>
+      <guid>https://www.randhome.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://www.randhome.io/categories/machine-learning/</link>
+      <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://www.randhome.io/categories/php/</link>
+      <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/categories/php/</guid>
       <description></description>
     </item>
     

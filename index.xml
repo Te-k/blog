@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homepage on Tek&#39;s blog</title>
@@ -10,6 +10,16 @@
     
 	<atom:link href="https://www.randhome.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
+      <link>https://www.randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</guid>
+      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the the first presentation at STTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.
+Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
+    </item>
     
     <item>
       <title>Targeted Attacks Against Civil Society : What is New in 2019?</title>
@@ -37,7 +47,7 @@ Methodology The classic OSINT methodology you will find everywhere is strait-for
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
       <guid>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issuesand propose Pull Requests.
 Install and config:
 pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
@@ -87,7 +97,6 @@ pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm
       <guid>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
       <description>Olà,
 Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
-   
 Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
     
@@ -110,8 +119,7 @@ Machine Learning and Classification So the idea of machine learning is to let th
       <guid>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
       <description>Hi there!
 I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.
-ClamAV 
-ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
+ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
     </item>
     
     <item>
@@ -122,8 +130,8 @@ ClamAV is an open-source antivirus developed for different platform, but also on
       <guid>https://www.randhome.io/references/</guid>
       <description>Here is a list of references regarding security topics and hacktivism:
 Political Organizations Here are several awesome organization regarding online freedom:
- EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
- Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites  Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
+  EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
+ Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites    Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
     </item>
     
     <item>

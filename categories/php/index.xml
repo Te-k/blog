@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Php on Tek&#39;s blog</title>
+    <title>php on Tek&#39;s blog</title>
     <link>https://www.randhome.io/categories/php/</link>
-    <description>Recent content in Php on Tek&#39;s blog</description>
+    <description>Recent content in php on Tek&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate>
@@ -19,8 +19,7 @@
       <guid>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
       <description>Hi there!
 I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.
-ClamAV 
-ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
+ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
     </item>
     
   </channel>
