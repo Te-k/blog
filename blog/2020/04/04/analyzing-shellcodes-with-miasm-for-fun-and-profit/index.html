@@ -100,7 +100,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="blogpost">
-              <p>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use <a href="https://github.com/cea-sec/miasm">miasm</a> for a long time (since I saw the the first presentation at STTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.</p>
+              <p>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use <a href="https://github.com/cea-sec/miasm">miasm</a> for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.</p>
 <h2 id="linux-shellcode">Linux shellcode</h2>
 <p>Let&rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</p>
 <pre><code>msfvenom -p linux/x86/exec CMD=/bin/ls -a x86 --platform linux -f raw &gt; sc_linux1
