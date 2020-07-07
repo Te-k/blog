@@ -3,117 +3,161 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</loc>
+    <loc>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</loc>
     <lastmod>2019-01-27T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/post/</loc>
+    <loc>https://randhome.io/fr/post/</loc>
     <lastmod>2019-01-27T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/post/"
+                href="https://randhome.io/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/post/"
+                href="https://randhome.io/fr/post/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/categories/</loc>
+    <loc>https://randhome.io/fr/tags/securite/</loc>
+    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/tags/</loc>
+    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/tags/google/</loc>
     <lastmod>2018-10-08T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/categories/"
+                href="https://randhome.io/tags/google/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/categories/"
+                href="https://randhome.io/fr/tags/google/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</loc>
+    <loc>https://randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</loc>
     <lastmod>2018-10-08T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/categories/s%C3%A9curit%C3%A9/</loc>
-    <lastmod>2018-10-08T00:00:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.randhome.io/fr/categories/blog/</loc>
+    <loc>https://randhome.io/fr/tags/blog/</loc>
     <lastmod>2018-10-07T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</loc>
+    <loc>https://randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</loc>
     <lastmod>2018-10-07T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/resources/</loc>
+    <loc>https://randhome.io/fr/resources/</loc>
     <lastmod>2016-05-05T01:07:16+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/resources/"
+                href="https://randhome.io/resources/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/resources/"
+                href="https://randhome.io/fr/resources/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/about/</loc>
+    <loc>https://randhome.io/fr/about/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/about/"
+                href="https://randhome.io/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/about/"
+                href="https://randhome.io/fr/about/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/projects/</loc>
+    <loc>https://randhome.io/fr/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/projects/"
+                href="https://randhome.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/projects/"
+                href="https://randhome.io/fr/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/fr/</loc>
+    <loc>https://randhome.io/fr/contact/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/"
+                href="https://randhome.io/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/"
+                href="https://randhome.io/fr/contact/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/projects/</loc>
+    <lastmod>2016-04-29T14:51:26+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/projects/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/categories/"
                 />
   </url>
   

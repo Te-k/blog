@@ -3,222 +3,262 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</loc>
-    <lastmod>2020-04-04T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.randhome.io/categories/</loc>
+    <loc>https://randhome.io/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/categories/"
+                href="https://randhome.io/fr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/categories/"
+                href="https://randhome.io/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/malware/</loc>
+    <loc>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/miasm/</loc>
+    <loc>https://randhome.io/tags/malware/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/post/</loc>
+    <loc>https://randhome.io/tags/miasm/</loc>
+    <lastmod>2020-04-04T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/post/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/post/"
+                href="https://randhome.io/fr/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/post/"
+                href="https://randhome.io/post/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/reverse/</loc>
+    <loc>https://randhome.io/tags/reverse/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/security/</loc>
+    <loc>https://randhome.io/tags/security/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/shellcode/</loc>
+    <loc>https://randhome.io/tags/shellcode/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</loc>
+    <loc>https://randhome.io/tags/</loc>
+    <lastmod>2020-04-04T00:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</loc>
     <lastmod>2019-12-02T00:00:02-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2019/01/05/2019-osint-guide/</loc>
+    <loc>https://randhome.io/blog/2019/01/05/2019-osint-guide/</loc>
     <lastmod>2019-01-05T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/osint/</loc>
+    <loc>https://randhome.io/tags/osint/</loc>
     <lastmod>2019-01-05T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</loc>
+    <loc>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</loc>
     <lastmod>2018-02-23T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/tools/</loc>
+    <loc>https://randhome.io/tags/tools/</loc>
     <lastmod>2018-02-23T00:00:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2018/02/04/another-pe-tool/</loc>
+    <loc>https://randhome.io/blog/2018/02/04/another-pe-tool/</loc>
     <lastmod>2018-02-04T17:08:02-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/reverse-engineering/</loc>
+    <loc>https://randhome.io/tags/reverse-engineering/</loc>
     <lastmod>2018-02-04T17:08:02-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/google/</loc>
+    <loc>https://randhome.io/tags/google/</loc>
+    <lastmod>2017-11-05T00:00:42-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/google/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/google/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/blog/2017/11/05/google-advanced-protection/</loc>
     <lastmod>2017-11-05T00:00:42-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2017/11/05/google-advanced-protection/</loc>
-    <lastmod>2017-11-05T00:00:42-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.randhome.io/categories/flexispy/</loc>
+    <loc>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</loc>
     <lastmod>2017-04-23T22:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</loc>
+    <loc>https://randhome.io/tags/stalkerware/</loc>
     <lastmod>2017-04-23T22:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/surveillance/</loc>
-    <lastmod>2017-04-23T22:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.randhome.io/privacy/</loc>
+    <loc>https://randhome.io/privacy/</loc>
     <lastmod>2016-08-15T21:21:05+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/linux/</loc>
+    <loc>https://randhome.io/categories/</loc>
+    <lastmod>2016-08-01T14:53:42+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/categories/linux/</loc>
     <lastmod>2016-08-01T14:53:42+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</loc>
+    <loc>https://randhome.io/categories/malware/</loc>
     <lastmod>2016-08-01T14:53:42+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/machine-learning/</loc>
+    <loc>https://randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</loc>
+    <lastmod>2016-08-01T14:53:42+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/machine-learning/</loc>
     <lastmod>2016-07-16T12:52:42+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</loc>
+    <loc>https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</loc>
     <lastmod>2016-07-16T12:52:42+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/blog/2016/05/14/comparison-of-php-scanners/</loc>
+    <loc>https://randhome.io/blog/2016/05/14/comparison-of-php-scanners/</loc>
     <lastmod>2016-05-14T17:44:19+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/categories/php/</loc>
+    <loc>https://randhome.io/tags/php/</loc>
     <lastmod>2016-05-14T17:44:19+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/references/</loc>
+    <loc>https://randhome.io/references/</loc>
     <lastmod>2016-05-05T01:07:16+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.randhome.io/resources/</loc>
+    <loc>https://randhome.io/resources/</loc>
     <lastmod>2016-05-05T01:07:16+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/resources/"
+                href="https://randhome.io/fr/resources/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/resources/"
+                href="https://randhome.io/resources/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/about/</loc>
+    <loc>https://randhome.io/about/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/about/"
+                href="https://randhome.io/fr/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/about/"
+                href="https://randhome.io/about/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/projects/</loc>
+    <loc>https://randhome.io/contact/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/projects/"
+                href="https://randhome.io/fr/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/projects/"
+                href="https://randhome.io/contact/"
                 />
   </url>
   
   <url>
-    <loc>https://www.randhome.io/</loc>
+    <loc>https://randhome.io/projects/</loc>
     <lastmod>2016-04-29T14:51:26+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.randhome.io/fr/"
+                href="https://randhome.io/fr/projects/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.randhome.io/"
+                href="https://randhome.io/projects/"
                 />
   </url>
   

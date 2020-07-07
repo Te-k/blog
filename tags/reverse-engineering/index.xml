@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse-engineering on </title>
+    <link>https://randhome.io/tags/reverse-engineering/</link>
+    <description>Recent content in reverse-engineering on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Sun, 04 Feb 2018 17:08:02 -0500</lastBuildDate>
+    
+	<atom:link href="https://randhome.io/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Another PE tool</title>
+      <link>https://randhome.io/blog/2018/02/04/another-pe-tool/</link>
+      <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
+      
+      <guid>https://randhome.io/blog/2018/02/04/another-pe-tool/</guid>
+      <description>Analyzing PE files is a basic task in reverse engineering in order to understand their structure, look for anything interesting before going more in depth into the reverse engineering in itself. There are countless tools to do that, on Windows I use PeStudio, PEView and Resource Hacker. But most of the time I want to have a first view of the file before starting my Virtual Machine, so I was looking for a CLI tool on Linux.</description>
+    </item>
+    
+  </channel>
+</rss>

