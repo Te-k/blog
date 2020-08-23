@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://randhome.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</title>
+      <link>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
+      
+      <guid>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
+      <description>A few years ago, I wrote about Flexispy after the company got hacked and some data was released. It was the first time I encountered stalkerware in my work. Since then, I have had many discussions about this creepy market and more generally technology used in intimate partner violence (IPV) with researchers and activists. I think it is the right time to reflect on what we know about stalkerware and what needs to be done on this topic.</description>
+    </item>
     
     <item>
       <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
@@ -175,7 +184,7 @@ I enjoy listening and playing music, learning about popular education and politi
       
       <guid>https://randhome.io/projects/</guid>
       <description>Here are some personal projects I have been working on:
-   Drawing by Matt Dixon     Tools  Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Some scripts that may be useful for security analysts  Guides  I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa  </description>
+   Drawing by Matt Dixon     Tools  Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Some scripts that may be useful for security analysts  Guides  I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa  Research  I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib  </description>
     </item>
     
   </channel>

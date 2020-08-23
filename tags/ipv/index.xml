@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>stalkerware on </title>
-    <link>https://randhome.io/tags/stalkerware/</link>
-    <description>Recent content in stalkerware on </description>
+    <title>IPV on </title>
+    <link>https://randhome.io/tags/ipv/</link>
+    <description>Recent content in IPV on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 00:00:00 -0500</lastBuildDate>
     
-	<atom:link href="https://randhome.io/tags/stalkerware/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://randhome.io/tags/ipv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
       <description>A few years ago, I wrote about Flexispy after the company got hacked and some data was released. It was the first time I encountered stalkerware in my work. Since then, I have had many discussions about this creepy market and more generally technology used in intimate partner violence (IPV) with researchers and activists. I think it is the right time to reflect on what we know about stalkerware and what needs to be done on this topic.</description>
-    </item>
-    
-    <item>
-      <title>Let&#39;s Talk About FlexiSpy</title>
-      <link>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</link>
-      <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
-      
-      <guid>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</guid>
-      <description>Introduction: I started this blog post to explain the context of FlexiSpy leaks and show some information I have found during my analysis. This information is incomplete and there is still plenty analysis of source code or binaries to be done. I have uploaded the source code and binaries on github so that everyone can help with it. I will try to report in this articles the publications I have seen on it, but feel free to ping me on Twitter if you see new information or have any question.</description>
     </item>
     
   </channel>
