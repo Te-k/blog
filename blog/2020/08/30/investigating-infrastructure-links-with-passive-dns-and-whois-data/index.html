@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Investigating Infrastructure Links with Passive DNS and Whois Data | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Investigating Infrastructure Links with Passive DNS and Whois Data" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.21eb6e3468d53804c2b0e8ddaba4e2b2370255bdc46c2829b696d5134c017ad5.css" integrity="sha256-IetuNGjVOATCsOjdq6TisjcCVb3EbCgptpbVE0wBetU="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2020\/08\/30\/investigating-infrastructure-links-with-passive-dns-and-whois-data\/",
+      "name": "Investigating Infrastructure Links with Passive DNS and Whois Data",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Investigating Infrastructure Links with Passive DNS and Whois Data</h1>
+            <time datetime="2020-08-30 00:00:00 -0500 -0500" class="post__date">30 Aug 2020   &middot; 7 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p><em>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the <a href="https://citizenevidence.org/2020/06/26/investigating-infrastructure-links-with-passive-dns-and-whois-data/">Amnesty Citizen Evidence Lab website</a>.</em></p>
+<hr>
+<p>Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign. This is one of the tools we use in our investigations at <a href="https://www.amnesty.org/en/tech/">Amnesty Tech</a>.</p>
+<p>In this guide we will look at how the Domain Name System (DNS), Passive DNS and Whois data are used to investigate an infrastructure.</p>
+<h1 id="understanding-dns-and-whois">Understanding DNS and Whois</h1>
+<h2 id="the-domain-name-system">The Domain Name System<a class="anchor" href="#the-domain-name-system">#</a></h2>
+<p>DNS is one of the core components of the Internet.  It allows a computer to translate a domain name (like amnesty.org) into an IP address (like 123.45.67.89). Computer networks use IP addresses to communicate; any message on the network has a source and destination IP address and the network knows how to route the messages from the sender to the recipient. Because it would be difficult to remember an IP address, DNS was invented so that users can access information through easily-recognised domain names, which are then translated into the IP addresses that enable communication.</p>
+<p>Let’s do a DNS resolution on amnesty.org. For this example, the Linux command host is being used, but you can use nslookup on Windows or an online tool like <a href="https://centralops.net/co/">CentralOps</a>.</p>
+<figure>
+    <img src="/media/osint/osint1.png" style="max-width:500px"/>
+   
+</figure>
+
+<p>We can see here that the domain amnesty.org is hosted on a server with the IP address 52.178.214.89. Once we know the IP address, we can use tools like <a href="https://centralops.net/co/">CentralOps</a> or <a href="https://ipinfo.io/">ipinfo.io</a> to find out who owns the server (in this case, Microsoft).</p>
+<figure>
+    <img src="/media/osint/osint2.png" style="max-width:600px"/>
+   
+</figure>
+
+<p>Note that we are only using the IPv4 DNS record type here, which is a type of record called “A” in the DNS protocol, but there are many other types available, such as MX for mail servers or AAAA for IPv6. You can find a full list <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types">on Wikipedia</a>.</p>
+<h2 id="passive-dns">Passive DNS<a class="anchor" href="#passive-dns">#</a></h2>
+<p>DNS requests only give us the current link between the domain and the IP. We cannot easily find out which domains are hosted on a particular server, or see where a domain was hosted in the past. That’s where Passive DNS databases can help.</p>
+<p>Passive DNS databases are based on passive records of DNS resolution over time. Different databases have been built specifically to gather that information, mostly (but not only) by commercial companies. For instance, <a href="https://en.wikipedia.org/wiki/OpenDNS">OpenDNS</a> is a company offering free DNS servers, and records the DNS resolutions in order to resell this information (they were acquired by Cisco in 2015).</p>
+<p>Put simply, a passive DNS database is a large list of the historical links between domains and IP addresses.</p>
+<p>Here is a list of some Passive DNS data providers that provide free, but often limited, access:</p>
+<ul>
+<li><a href="https://community.riskiq.com/home">RiskIQ:</a> commercial service that offers community accounts limited to 15 queries a day (this is the service we are going to use in the example below)</li>
+<li><a href="https://securitytrails.com/">Security Trails:</a> commercial service offering 50 queries a month for free</li>
+<li><a href="https://www.robtex.com/">Robtex:</a> free service (but quite limited)</li>
+<li><a href="https://www.farsightsecurity.com/dnsdb-community-edition/">Farsight DNSdb:</a> provides access to community edition (programmatic API only, searches only cover the previous 90 days)</li>
+</ul>
+<h2 id="whois-data">Whois Data<a class="anchor" href="#whois-data">#</a></h2>
+<p>When you register a domain name, you are asked to provide personal information, including an email address, a name, a phone number and a physical address. In the early days of the internet, this information was completely open, so that everyone could see who owned a domain name. With development over time, and an increasing awareness of privacy and security issues, this data has become more and more incomplete or hidden, either because users have provided fake information, or because it started to be protected The introduction of the General Data Protection Regulation (GDPR) in Europe has prohibited companies from publishing information that identifies individuals, making Whois data largely obsolete.</p>
+<p>Going back to the Amnesty.org example, you can see the Whois data using CentralOps:</p>
+<figure>
+    <img src="/media/osint/osint3.png" style="max-width:600px"/>
+   
+</figure>
+
+<p>Whois data is still an interesting source of information for two reasons:</p>
+<ol>
+<li>It gives us an idea of when a domain was created, which is useful in creating a timeline of events. For example, we see above that amnesty.org was registered in 1992.</li>
+<li>Some Passive DNS providers include historical Whois information, and this often provides some interesting information for older domains such as name, address, phone number or email address. For instance, in RiskIQ we can see the Whois records of amnesty.org from 2013, which includes the Amnesty admin email address, and physical address:</li>
+</ol>
+<figure>
+    <img src="/media/osint/osint4.png" style="max-width:400px"/>
+   
+</figure>
+
+<h1 id="how-to-use-passive-dns-investigation">How to use passive DNS investigation</h1>
+<p>Let’s see how to use Passive DNS data with an example from the malware and phishing campaign that <a href="https://www.amnesty.org/en/latest/research/2020/03/targeted-surveillance-attacks-in-uzbekistan-an-old-threat-with-new-techniques/">targeted Human Rights Defenders from Uzbekistan in 2019</a>. We are going reproduce here some of the steps we took during the investigation, using the community access to <a href="https://community.riskiq.com/home">RiskIQ</a>.</p>
+<p>(Please note that the example here is just a small part of the infrastructure of this campaign as the operator used more than 70 domains and 20 servers.)</p>
+<p>During the investigation we identified a domain (<em>google-activity[.]pw</em>) that we thought was related to the campaign. Let’s have a look at it in RiskIQ:</p>
+<figure>
+    <img src="/media/osint/osint5.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>We can see that the domain first appeared in July 2019, and was hosted on two servers: 134.209.86[.]7 (a DigitalOcean server) and 194.58.112[.]174, which is actually a parking page for the reg.ru registrar. The latter IP is not very interesting as it would host a lot of parked domains not related to our investigation, but the first IP shows us more domains related to the same campaign:</p>
+<figure>
+    <img src="/media/osint/osint6.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>We can see from the timeline of the domains that this server was likely to have had three different owners:</p>
+<ol>
+<li>Someone in March 2019, likely not related to our campaign (<em>zedefilter1.64-b.it</em> etc.) as the domains do not seem linked to any malicious activity and happened before our campaign started</li>
+<li>The campaign we are tracking is between July 2019 and likely August 2019 (<em>check-activity.com[.]ru</em> is still hosted on the server, but likely because it was not removed by the operator)</li>
+<li>A new owner from August 2019 (<em>feed.livingfurn[.]nl</em> and later <em>eantool.livingfurn[.]nl</em>)</li>
+</ol>
+<p>Based on this analysis, we can identify 12 new domains related to this campaign:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">check-activity.com<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>ru                2019-07-25     2020-05-05
+mail-auth<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>online                     2019-07-16     2019-09-15
+fedortest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-08-10
+accounts.check-activity<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com.ru       2019-08-02     2019-08-02
+www.adservice.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz      2019-07-30     2019-07-30
+www.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                2019-07-30     2019-07-30
+consent.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz            2019-07-30     2019-07-30
+dokerest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                         2019-07-12     2019-07-27
+dokertest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-07-22
+frostdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                        2019-07-15     2019-07-16
+frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                         2019-07-15     2019-07-15
+</code></pre></div><p>Some of these domains seem to be domains to test their attacks (like <em>dokertest[.]xyz</em>), but during the investigation, we discovered that <em>frostdank[.]com</em> was hosting a copy of the FrostBank website:</p>
+<figure>
+    <img src="/media/osint/osint7.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Searching more in that direction, we see that this domain was later hosted on a second Digital Ocean server, 134.209.193[.]198 :</p>
+<figure>
+    <img src="/media/osint/osint8.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>This server was also hosting some suspicious domains likely related to this campaign, as they also impersonate bank domains.</p>
+<figure>
+    <img src="/media/osint/osint9.png" style="max-width:700px"/>
+   
+</figure>
+
+<p><em>nitroqensports[.]eu</em> is interesting, because even if it did not ring a bell at first, we realized that it was hosting a copy of nitrogensports.eu, an online sport gambling website in June 2019:</p>
+<figure>
+    <img src="/media/osint/osint10.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Seeing fake banks and online sport gambling website used in the campaign was a surprise to us, as we only saw fake email websites before, very likely used for digital surveillance. We think that this group may also have been involved in cyber-criminal activity, which would explain the banks and online gambling websites as targets.</p>
+<p>We can summarize the links we found in a graph using <a href="https://www.maltego.com/">Maltego</a>:</p>
+<figure>
+    <img src="/media/osint/osint11.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>All of these domains were registered between May and August 2019, so too recently to find anything interesting in Whois information, but the creation date we get in Whois confirms that it fits in the timeline of this campaign. It would be possible to have a more precise timeline of the utilization of these domains by looking at the certificates created for these domains on Certificate Transparency platforms such as <a href="https://censys.io/">censys.io</a> or <a href="https://crt.sh/">crt.sh</a>.</p>
+<h2 id="going-further">Going further<a class="anchor" href="#going-further">#</a></h2>
+<p>We have seen an example of how to use passive DNS to map an infrastructure. The example used here was a phishing attack, but the same technique can easily be used to map links between fake media running a coordinated disinformation campaign or to identify the owner of a website. If you want to go further on infrastructure analysis, you should become familiar with Certificate Transparency databases (like <a href="https://censys.io/">censys.io</a> or <a href="https://crt.sh/">crt.sh</a> mentioned above) and also with how to identify shared analytic ids between websites (you can read <a href="https://www.bellingcat.com/resources/how-tos/2015/07/23/unveiling-hidden-connections-with-google-analytics-ids/">this good Bellingcat article</a> on this topic).</p>
+<p>Have fun and stay safe!</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/osint/">osint</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/guide/">guide</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2020</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>

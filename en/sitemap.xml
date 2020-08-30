@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://randhome.io/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -18,13 +18,23 @@
   </url>
   
   <url>
-    <loc>https://randhome.io/tags/ipv/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+    <loc>https://randhome.io/tags/guide/</loc>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</loc>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/osint/</loc>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://randhome.io/post/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -38,18 +48,8 @@
   </url>
   
   <url>
-    <loc>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://randhome.io/tags/stalkerware/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://randhome.io/tags/</loc>
-    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -60,6 +60,21 @@
                 hreflang="en"
                 href="https://randhome.io/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/ipv/</loc>
+    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</loc>
+    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/stalkerware/</loc>
+    <lastmod>2020-08-23T00:00:00-05:00</lastmod>
   </url>
   
   <url>
@@ -99,11 +114,6 @@
   
   <url>
     <loc>https://randhome.io/blog/2019/01/05/2019-osint-guide/</loc>
-    <lastmod>2019-01-05T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://randhome.io/tags/osint/</loc>
     <lastmod>2019-01-05T00:00:00+02:00</lastmod>
   </url>
   
