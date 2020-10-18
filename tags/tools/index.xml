@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate>
-    
-	<atom:link href="https://randhome.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate><atom:link href="https://randhome.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Harpoon: an OSINT / Threat Intelligence tool</title>
       <link>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>

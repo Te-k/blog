@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 -0500</lastBuildDate>
-    
-	<atom:link href="https://randhome.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 -0500</lastBuildDate><atom:link href="https://randhome.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Investigating Infrastructure Links with Passive DNS and Whois Data</title>
       <link>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</link>
