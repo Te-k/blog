@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://randhome.io/</loc>
-    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -15,6 +15,51 @@
                 hreflang="en"
                 href="https://randhome.io/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</loc>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/malware/</loc>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/post/</loc>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/</loc>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/tags/threatintel/</loc>
+    <lastmod>2020-12-20T00:00:00-05:00</lastmod>
   </url>
   
   <url>
@@ -30,36 +75,6 @@
   <url>
     <loc>https://randhome.io/tags/osint/</loc>
     <lastmod>2020-08-30T00:00:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://randhome.io/post/</loc>
-    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://randhome.io/fr/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://randhome.io/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://randhome.io/tags/</loc>
-    <lastmod>2020-08-30T00:00:00-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://randhome.io/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://randhome.io/tags/"
-                />
   </url>
   
   <url>
@@ -79,11 +94,6 @@
   
   <url>
     <loc>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</loc>
-    <lastmod>2020-04-04T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://randhome.io/tags/malware/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url>
   
