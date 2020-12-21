@@ -162,7 +162,8 @@
 Domain: 78.152.61.71
 Resolved IP: 78.152.61.71
 JARM: 07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1
-</code></pre><h2 id="getting-a-cobalt-strike-payload">Getting a Cobalt Strike Payload<a class="anchor" href="#getting-a-cobalt-strike-payload">#</a></h2>
+</code></pre><p>(This JARM signature is actually a signature of the Java Web server and specific to the JAVA 11 stack, so it includes other tools not related to Cobalt Strike (like Burp Suite) and does not include Cobalt Strike using different Java versions. Cobalt Strike recently wrote <a href="https://blog.cobaltstrike.com/2020/12/08/a-red-teamer-plays-with-jarm/">a blog post about this question</a>.)</p>
+<h2 id="getting-a-cobalt-strike-payload">Getting a Cobalt Strike Payload<a class="anchor" href="#getting-a-cobalt-strike-payload">#</a></h2>
 <p>Cobalt Strike uses a checksum of the url using an algorithm called checksum8 to serve the 32b or 64b version of the payload (in the same way as the <a href="https://github.com/rapid7/metasploit-framework/blob/85a9accbeec063f52406621f124a7f82ad63dcba/lib/rex/payloads/meterpreter/uri_checksum.rb">metasploit server</a>). The decompiled code of Cobalt Strike has been published several times on GitHub or elsewhere, it provides information on this checksum:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">checksum8</span><span style="color:#f92672">(</span>String text<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 4<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -475,6 +476,7 @@ x86_64: Payload not found
 <li><a href="https://talos-intelligence-site.s3.amazonaws.com/production/document_files/files/000/095/031/original/Talos_Cobalt_Strike.pdf">The art and science of detecting Cobalt Strike</a> by Talos</li>
 </ul>
 <p><em>This blog post was mostly written while listening to <a href="https://www.youtube.com/watch?v=uA1Rvgo5ipo">Susumu Yokota</a>.</em></p>
+<p><em>Edit 1: adding link to Cobalt Strike JARM analysis (thanks <a href="https://twitter.com/AZobec">@AZobec</a>)</em></p>
 
 
               
