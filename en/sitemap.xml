@@ -75,6 +75,16 @@
   <url>
     <loc>https://randhome.io/tags/osint/</loc>
     <lastmod>2020-08-30T00:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/osint/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/osint/"
+                />
   </url>
   
   <url>

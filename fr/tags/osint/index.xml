@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>osint on </title>
+    <link>https://randhome.io/fr/tags/osint/</link>
+    <description>Recent content in osint on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/fr/tags/osint/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</title>
+      <link>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</guid>
+      <description>Il y a eu un développement assez impressionnant ces dernières années de l&amp;rsquo;OSINT (Open Source Intelligence, c&amp;rsquo;est à dire des investigations à partir de données accessibles publiquement en ligne) dans des enquêtes journalistiques ou sur des abus de droits humains. Il faut bien sur citer l&amp;rsquo;excellent travail de Bellingcat qui a ouvert de nouvelles perspectives pour les journalistes suivi ensuite par des médis comme chez Mediapart ou BBC Africa pour n&amp;rsquo;en citer que deux.</description>
+    </item>
+    
+  </channel>
+</rss>

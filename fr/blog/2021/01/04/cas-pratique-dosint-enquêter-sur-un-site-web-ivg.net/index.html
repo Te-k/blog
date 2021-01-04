@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.fa484ab922e9a8493c20c7c99bdee718683ffe5168d646affc25dbbf7bf3a03f.css" integrity="sha256-&#43;khKuSLpqEk8IMfJm97nGGg//lFo1kav/CXbv3vzoD8="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/fr\/blog\/2021\/01\/04\/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net\/",
+      "name": "Cas Pratique d\u0027OSINT : enquêter sur un site web - ivg.net",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/fr/">accueil</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/fr/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/fr/projects/">projets</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/fr/resources/">ressources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/fr/about/">à propos</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/fr/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+            <a href="/en" lang="en" class="no-translation">EN</a>
+        
+        
+        
+        FR
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</h1>
+            <time datetime="2021-01-04 00:00:00 &#43;0100 CET" class="post__date">4 Jan 2021   &middot; 8 minutes de lecture </time>
+          </header>
+          <article class="post__content">
+              
+<p>Il y a eu un développement assez impressionnant ces dernières années de l&rsquo;OSINT (<a href="https://fr.wikipedia.org/wiki/Renseignement_d%27origine_source_ouverte"><em>Open Source Intelligence</em></a>, c&rsquo;est à dire des investigations à partir de données accessibles publiquement en ligne) dans des enquêtes journalistiques ou sur des abus de droits humains. Il faut bien sur citer l&rsquo;excellent travail de <a href="https://www.bellingcat.com/">Bellingcat</a> qui a ouvert de nouvelles perspectives pour les journalistes suivi ensuite par des médis comme chez <a href="https://www.mediapart.fr/journal/international/101220/des-militaires-francais-compromettent-la-securite-de-leurs-operations-sur-les-reseaux-sociaux">Mediapart</a> ou <a href="https://www.youtube.com/watch?v=XbnLkc6r3yc">BBC Africa</a> pour n&rsquo;en citer que deux. Mais également le développement de l&rsquo;OSINT pour documenter des abus de droits humains, comme par exemple le travail fait par le <a href="https://citizenevidence.org/">Citizen Evidence Lab</a> d&rsquo;Amnesty International ou la publication du récent <a href="https://humanrights.berkeley.edu/programs-projects/tech-human-rights-program/berkeley-protocol-digital-open-source-investigations">Berkeley Protocol on Open Source Investigations</a>. Même s&rsquo;il faut réfléchir aux potentiels effets nocifs de ce développement (je pense notamment aux questions éthiques vis-à-vis du doxing, ou au fait d&rsquo;avoir moins d&rsquo;investigateurs-trices sur le terrain), je suis convaincu qu&rsquo;ils vont avoir des effets positives dans ces deux domaines, et nous devons essayer de fournir plus de contenu accessibles à des journalistes et/ou chercheur-euses sur les droits humains.</p>
+<p>Dans la lignée du <a href="https://www.randhome.io/blog/2019/01/05/2019-osint-guide/">guide d&rsquo;OSINT</a> que j&rsquo;ai publié il y a deux ans, j&rsquo;ai participé l&rsquo;été dernier au début d&rsquo;un guide d&rsquo;OSINT en français à destination de journalistes avec <a href="http://nothing2hide.org/">Nothing2Hide</a>. Je republie ici (un peu réécrit) <a href="https://wiki.nothing2hide.org/doku.php?id=osint:caspratiques1">un cas pratique</a> sur l&rsquo;investigation d&rsquo;infrastructure d&rsquo;un site web, en l&rsquo;occurrence <code>ivg.net</code>.</p>
+<h2 id="ivg-point-net">IVG POINT NET<a class="anchor" href="#ivg-point-net">#</a></h2>
+<p><code>ivg.net</code> est un site web assez ancien et très problématique : sous une apparence de site d’information sur l’interruption volontaire de grossesse, il s’agit en réalité d’un site anti-avortement maintenu par un groupe de militants catholiques qui tente de dissuader des femmes d’interrompre leur grossesse. Au fil des années, il est parvenu à être très bien référencé par les moteurs de recherche et a même mis en place un numéro d&rsquo;appel gratuit.</p>
+<figure>
+    <img src="/media/osint2/ivg.png" style="max-width:600px"/>
+   
+</figure>
+
+<p>Il s&rsquo;est retrouvé sous le feu des projecteurs en 2017 après plusieurs enquêtes de journalistes basés sur des témoignages de femmes qui ont été en contact avec cette organisation. Le gouvernement français a fini par mettre en place un délit d’entrave à l’interruption volontaire de grossesse sur Internet ainsi <a href="https://ivg.gouv.fr/">qu&rsquo;un portail officiel d&rsquo;information sur les méthodes d&rsquo;interruption volontaire de grossesse</a> et un numéro vert national (le 0 800 08 11 11). Le Monde avait alors fait <a href="https://www.lemonde.fr/les-decodeurs/article/2016/12/07/ivg-net-le-site-tres-oriente-d-un-couple-de-militants-catholiques_5044551_4355770.html">une analyse des personnes derrière ce site</a> en utilisant les données Whois. Je propose ici de reprendre cet exemple pour pousser un peu plus cette enquête, en utilisant principalement la plateforme <a href="https://community.riskiq.com/home">RiskIQ</a>.</p>
+<h2 id="données-techniques-sur-un-site-web-en-bref">Données techniques sur un site web (en bref)<a class="anchor" href="#données-techniques-sur-un-site-web-en-bref">#</a></h2>
+<p>Il existe plusieurs façons pour trouver des informations sur un site web :</p>
+<ul>
+<li>Bien évidemment, <strong>consulter le site</strong>, regarder les mentions légales, analyser le contenu etc. (nous n&rsquo;allons pas nous attarder là dessus dans cet article car cela varie fortement d&rsquo;un site à l&rsquo;autre).</li>
+<li>Consulter <strong>les données <a href="https://fr.wikipedia.org/wiki/Whois">Whois</a></strong>, il s&rsquo;agit d&rsquo;informations obligatoires lors de l&rsquo;enregistrement d&rsquo;un nom de domaine. Depuis la mise en oeuvre du RGPD, elles sont très souvent masquées, mais elles peuvent être une source intéressante de données pour des sites enregistrés il y a longtemps.</li>
+<li>Consulter des <strong>bases de passive DNS</strong> (<em>historiques DNS</em> en français même si le terme anglais est le plus souvent utilisé), il s&rsquo;agit de bases faisant un historique de liens entre des noms de domaines et des adresses IPs. Cela permet de trouver des domaines hébergés sur un même serveur et donc potentiellement utilisés par les mêmes personnes.</li>
+<li>Identifier des liens entres des sites webs partageant des <strong>identifiants d&rsquo;analytics ou de pubs</strong> comme Google Analytics ou Google AdSense.</li>
+</ul>
+<p>Pour plus d&rsquo;informations sur les données Whois ou les historiques DNS, vous pouvez lire <a href="https://citizenevidence.org/2020/06/26/investigating-infrastructure-links-with-passive-dns-and-whois-data/">ce tutoriel</a> que j&rsquo;ai publié l&rsquo;été dernier sur le site du Citizen Evidence Lab d&rsquo;Amnesty (en anglais). Sur les identifiants de publicité ou d&rsquo;analytics, vous pouvez voir <a href="https://www.bellingcat.com/resources/how-tos/2015/07/23/unveiling-hidden-connections-with-google-analytics-ids/">cet excellent article de Bellingcat</a> (en anglais également).</p>
+<p>Beaucoup de plateformes offrent à la fois un historique DNS et des données Whois même si la plupart d&rsquo;entre elles sont payantes. En voici une liste des principales plateformes (probablement incomplète) :</p>
+<ul>
+<li><a href="https://community.riskiq.com/home">RiskIQ</a> : plateforme payante combinant données Whois, historiques DNS, scans de serveurs et identifiants de pubs ou d&rsquo;analytics. Elle offre un accès gratuit qui est depuis récemment limité dans l&rsquo;historique (voir ci dessous)</li>
+<li><a href="https://www.farsightsecurity.com/solutions/dnsdb/">Farsight DNS DB</a> : plateforme payante qui offre un accès gratuit pour tester pendant 30 jours</li>
+<li><a href="https://zetalytics.com/">Zetalytics</a> : plateforme commerciale</li>
+<li><a href="https://www.domaintools.com/">DomainTools</a> :  plateforme commerciale</li>
+<li><a href="https://www.robtex.com/">Robtex</a> : service gratuit mais assez limité</li>
+<li><a href="https://securitytrails.com/">Security Trails</a> : plateforme commerciale proposant un accès gratuit et limité en nombre de requêtes.</li>
+<li><a href="https://domainbigdata.com/">Domain Big Data</a> : plateforme gratuite mais limitée</li>
+</ul>
+<p>Pendant longtemps, j&rsquo;ai conseillé d&rsquo;utiliser l&rsquo;accès gratuit de <a href="https://community.riskiq.com/home">RiskIQ</a> pour des investigations parce que leur base de données est très complète et ils proposaient un accès gratuit de 25 requêtes par jour. RiskIQ a récemment limité l&rsquo;historique des données pour les comptes gratuits, le rendant nettement moins utile sans accès professionnel. Ce tutoriel est basé sur l&rsquo;accès professionnel à RiskIQ (les données datent d&rsquo;Août 2020), mais je conseille aujourd&rsquo;hui plutôt d&rsquo;utiliser les plateformes Domain Big Data, Security Trails ou Farsight DNS Db si vous ne possédez pas d&rsquo;accès professionnel à ces plateformes.</p>
+<h2 id="données-passive-dns">Données Passive DNS<a class="anchor" href="#données-passive-dns">#</a></h2>
+<p>Commençons par chercher ivg.net dans RiskIQ, et regarder les données passive DNS :</p>
+<figure>
+    <img src="/media/osint2/passivedns.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>On voit que le domaine est hébergé sur un serveur OVH <code>213.186.33.19</code> depuis 2009, et a été hébergé sur un autre serveur OVH <code>46.105.174.38</code> entre 2015 et 2016.</p>
+<p>Regardons plus précisément quels domaines sont hébergés sur ces serveurs, d’abord sur <code>46.105.174.38</code> :</p>
+<figure>
+    <img src="/media/osint2/passivedns2.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>On voit que ce serveur a hébergé au moins 249 domaines différents, qui ne semblent pas en rapport avec ivg.net. Il s’agit probablement d’un hébergement sur un serveur partagé entre plusieurs clients, peut-être fourni par OVH directement. Même en cherchant dans les domaines hébergés en 2015 et 2016, rien de semble relié à ivg.net.</p>
+<p>Regardons le second serveur, <code>213.186.33.19</code> :</p>
+<figure>
+    <img src="/media/osint2/passivedns3.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Même chose ici, plus de 1000 domaines sur ce serveur, rien ne semble en rapport en regardant rapidement. Donc rien de très intéressant côté passive DNS.</p>
+<h2 id="données-whois">Données Whois<a class="anchor" href="#données-whois">#</a></h2>
+<p>Regardons maintenant les données Whois :</p>
+<figure>
+    <img src="/media/osint2/whois1.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Comme prévu les informations récentes sont masquées par le fournisseur de domaine, mais on voit que le domaine a été créé en 1997, et que RiskIQ possède 6 enregistrements des données Whois depuis 2011, donc il est probable que nous allons trouver des informations intéressantes dans les données whois plus anciennes. Regardons la plus ancienne de 2011 :</p>
+<figure>
+    <img src="/media/osint2/whois2.png" style="max-width:700px"/>
+   
+</figure>
+
+<p><em>(Par respect pour la vie privée plus que pour les gens derrière ivg.net, j&rsquo;ai masqué les noms de famille des personnes impliquées, mais vous pouvez lire l&rsquo;article <a href="https://www.lemonde.fr/les-decodeurs/article/2016/12/07/ivg-net-le-site-tres-oriente-d-un-couple-de-militants-catholiques_5044551_4355770.html">du Monde</a> qui fournit plus de détails)</em></p>
+<p>Bingo, on tombe sur le nom de la créatrice, Marie, mentionnée dans l’article du Monde, ainsi que de son numéro de téléphone. Faire une recherche dans RiskIQ sur ce numéro de téléphone donne plus de 1000 sites apparemment sans rapport avec ivg.net. Il s&rsquo;agit sans doute du numéro de téléphone d’une autre personne impliquée dans la création du site web. Une recherche sur le nom dans les whois, ne donne rien. Regardons donc les coordonnées whois de 2014 :</p>
+<figure>
+    <img src="/media/osint2/whois3.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>On voit qu’entre 2011 et 2014, l’association SOS Détresse (également mentionnée par le Monde) devient propriétaire du domaine en plus de Marie sa créatrice. Cela nous donne plusieurs informations sur lesquelles pivoter, le nom de l’association, mais aussi l’adresse ainsi que deux nouveaux numéros de téléphone. Commençons par regarder les autres domains enregistrés par SOS Détresse :</p>
+<figure>
+    <img src="/media/osint2/whois4.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>On voit plusieurs domaines en rapport avec l’IVG, comme <code>ivg-paris.com</code> ou <code>ivg-par-aspiration.net</code>, mais également deux domaines qui imitent clairement un site gouvernemental <code>ivg-gouv.com</code> et <code>ivg-gouv.net</code>. Ces domaines n&rsquo;ont jamais été utilisés à ma connaissance, mais le fait de les avoir enregistrés pose beaucoup de questions éthiques et légales.</p>
+<p>Le premier numéro de téléphone nous renvoi à une liste de plusieurs milliers de domaines, mais le second semble bien être rattaché à SOS Détresse, et nous donne une liste plus étendue des domaines utilisés à ce moment là :</p>
+<figure>
+    <img src="/media/osint2/whois5.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>On voit un troisième site imitant un site gouvernemental <code>ivg-gouv.org</code>. Voici la liste complète des domaines identifiés :</p>
+<pre><code>ravif.re    	        2018-09-20	2019-11-01
+ivg-75.com	        2014-04-11	2018-06-30
+ivg-gouv.net	        2018-06-30	2018-06-30
+ivg-paris.net	        2014-08-10	2018-06-29
+ivg-par-aspiration.net	2014-07-15	2018-06-29
+ivg-gouv.com	        2014-07-27	2018-06-29
+ivg-medicamenteuse.com	2014-07-26	2018-06-16
+ivg-infos.net	        2014-08-10	2018-04-01
+avortement.net	        2014-08-05	2017-10-13
+methode-billings.net	2014-08-05	2017-10-12
+sos-ivg.com	        2014-08-11	2017-09-26
+ivg-infos.com	        2014-07-26	2017-09-25
+ivg-lyon.com	        2014-07-24	2017-03-29
+ivg-paris.com	        2014-08-12	2016-04-23
+ivg-par-aspiration.com  2014-07-24	2015-01-09
+ivg-par-aspiration.info	2014-02-26	2015-02-26
+ivg-par-aspiration.biz	2014-02-26	2015-02-25
+ivg-par-aspiration.org	2014-02-26	2015-02-26
+ivg-gouv.org	        2014-04-27	2014-04-27
+ivg-paris.org	        2014-04-26	2016-03-30
+ivg-paris.info	        2014-04-21	2020-07-24
+methode-billings.fr	1970-01-01	2020-11-19
+ivg-paris.biz	        2014-04-17	2018-05-01
+avortement.tel	        2016-03-28	2017-12-13
+avortement.pro	        2014-04-17	2017-11-01
+methode-billings.biz	2014-04-18	2017-10-27
+ivg-infos.biz	        2014-04-17	2017-10-27
+methode-billings.org	2014-04-26	2017-10-19
+ivg-infos.org	        2014-04-25	2017-10-19
+ivg-infos.info	        2014-04-21	2017-10-17
+</code></pre><p>Une enquête exhaustive demanderait de regarder un par un tous ces domaines, les données whois ainsi que les données passive DNS pour avoir une vue exhaustive des activités de cette association, ainsi que potentiellement d’autres personnes derrière elle.</p>
+<h2 id="identifiants-de-publicité-ou-danalytics">Identifiants de publicité ou d&rsquo;analytics<a class="anchor" href="#identifiants-de-publicité-ou-danalytics">#</a></h2>
+<p>Une dernière étape intéressante est de regarder les traqueurs (type publicités ou analytics) présents sur le site et voir s&rsquo;ils sont partagés. Une visite sur le site et une recherche dans le code source de la page nous montre l’identifiant Google Analytics : UA-5670446</p>
+<figure>
+    <img src="/media/osint2/ua1.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Nous pouvons maintenant utiliser plusieurs moteurs de recherche pour trouver des sites utilisant ce même identifiant Google Analytics, comme <a href="https://community.riskiq.com/home">RiskIQ</a>, <a href="https://spyonweb.com/">SpyOnWeb</a> (un peu vieux et mal maintenu à jour), <a href="https://www.nerdydata.com/">NerdyData</a> ou encore <a href="https://dnslytics.com/reverse-analytics">DNSLytics</a>.</p>
+<p>Une vérifications sur RiskIQ montre qu’a priori seul cet identifiant a été utilisé sur le site :</p>
+<figure>
+    <img src="/media/osint2/ua2.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Idem sur SpyOnWeb :</p>
+<figure>
+    <img src="/media/osint2/ua3.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Ainsi que sur DNSLytics :</p>
+<figure>
+    <img src="/media/osint2/ua4.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Rien non plus de côté.</p>
+<h2 id="cest-tout-pour-moi-merci">C&rsquo;est tout pour moi, merci<a class="anchor" href="#cest-tout-pour-moi-merci">#</a></h2>
+<p>On a vu rapidement avec cet exemple comment investiguer sur l&rsquo;infrastructure technique derrière un site web. N&rsquo;hésitez pas à me contacter par <a href="http://localhost:1313/fr/contact/">email</a> ou sur <a href="https://twitter.com/tenacioustek">Twitter</a> si vous avez des questions ou suggestions d&rsquo;améliorations pour cet article. Si vous êtes journalistes et avez des questions sur l&rsquo;OSINT, n&rsquo;hésitez pas à me contacter, je serai ravi d&rsquo;essayer d&rsquo;y répondre.</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/fr/tags/osint/">osint</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Journalisme et navigation privée</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>

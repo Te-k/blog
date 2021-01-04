@@ -3,13 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</loc>
-    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+    <loc>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</loc>
+    <lastmod>2021-01-04T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/tags/osint/</loc>
+    <lastmod>2021-01-04T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/osint/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/osint/"
+                />
   </url>
   
   <url>
     <loc>https://randhome.io/fr/post/</loc>
-    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+    <lastmod>2021-01-04T00:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -23,13 +38,8 @@
   </url>
   
   <url>
-    <loc>https://randhome.io/fr/tags/securite/</loc>
-    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://randhome.io/fr/tags/</loc>
-    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+    <lastmod>2021-01-04T00:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -40,6 +50,16 @@
                 hreflang="fr"
                 href="https://randhome.io/fr/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</loc>
+    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://randhome.io/fr/tags/securite/</loc>
+    <lastmod>2019-01-27T00:00:00-05:00</lastmod>
   </url>
   
   <url>
