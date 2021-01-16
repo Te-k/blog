@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 -0500</lastBuildDate><atom:link href="https://randhome.io/tags/stalkerware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/tags/stalkerware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Check if an Android Phone has a Stalkerware Installed?</title>
+      <link>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</guid>
+      <description>Stalkerwares are malware used in abusive relationships to spy on someone&amp;rsquo;s partner. I have talked quite a bit about it already, see my previous blog posts for more background information on stalkerware.
+There are different ways to check if a stalkerware is installed on a phone. At Echap, we have written a guide to check for configuration settings on an Android phone (in French). We think it is the easiest way for non-tech people and quite reliable.</description>
+    </item>
+    
     <item>
       <title>Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</title>
       <link>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>

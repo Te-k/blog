@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>How to Check if an Android Phone has a Stalkerware Installed? | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How to Check if an Android Phone has a Stalkerware Installed?" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.fa484ab922e9a8493c20c7c99bdee718683ffe5168d646affc25dbbf7bf3a03f.css" integrity="sha256-&#43;khKuSLpqEk8IMfJm97nGGg//lFo1kav/CXbv3vzoD8="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2021\/01\/16\/how-to-check-if-an-android-phone-has-a-stalkerware-installed\/",
+      "name": "How to Check if an Android Phone has a Stalkerware Installed?",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">How to Check if an Android Phone has a Stalkerware Installed?</h1>
+            <time datetime="2021-01-16 00:00:00 &#43;0100 CET" class="post__date">16 Jan 2021   &middot; 9 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p>Stalkerwares are malware used in abusive relationships to spy on someone&rsquo;s partner. I have talked quite a bit about it already, see my <a href="https://www.randhome.io/blog/2017/04/23/lets-talk-about-flexispy/">previous</a> <a href="https://www.randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/">blog posts</a> for more background information on stalkerware.</p>
+<p>There are different ways to check if a stalkerware is installed on a phone. At <a href="https://echap.eu.org/">Echap</a>, we have written a guide <a href="https://echap.eu.org/ressources/guides/guide-identifier-des-signes-de-la-presence-dun-logiciel-espion-sur-android/">to check for configuration settings</a> on an Android phone (in French). We think it is the easiest way for non-tech people and quite reliable. The <a href="https://www.ceta.tech.cornell.edu/">Clinic to End Tech Abuse</a> has developed a tool called <a href="https://github.com/stopipv/isdi">ISDi</a> to look for stalkerware based on package names on Android and iOS. More recently, Felix Aimé has released a tool called <a href="https://github.com/KasperskyLab/TinyCheck">TinyCheck</a> to analyze network traffic from a smartphone, which can be used to identify stalkerware traffic.</p>
+<p>In this blog post, I suggest another methodology to detect stalkerware applications on Android phones, based on <a href="https://github.com/Te-k/stalkerware-indicators">indicators for stalkerware</a> I have been aggregating. It is intended for a technical audience, mostly tech people who support organizations working with survivors, as it requires some technical knowledge to use the different command-line tools. (I have tested these tools only on Linux, it should work on Mac OS, but no guarantee).</p>
+<p>Note: as I have written <a href="https://www.randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/">before</a>, I think we should make sure we are considering all technology-related threats in intimate partner abuses, and not only stalkerware. Both because it does not make sense to draw an arbitrary line on stalkerware as the important issue and because the research done by the <a href="https://www.ceta.tech.cornell.edu/">CETA</a> seems to show that in many cases survivors think they have a stalkerware installed while the issue is another form of digital surveillance.</p>
+<h2 id="methodology">Methodology<a class="anchor" href="#methodology">#</a></h2>
+<p>Here is the methodology I suggest:</p>
+<ul>
+<li>Enabling USB debugging on the Android device</li>
+<li>Extracting APKs from the phone using <a href="">snoopdroid</a></li>
+<li>Checking APKs based on <a href="https://github.com/Te-k/stalkerware-indicators">public stalkerware indicators</a></li>
+<li>Digging more into APKs using <a href="https://github.com/Te-k/sdanalyzer">sdanalyzer</a></li>
+</ul>
+<h2 id="enabling-usb-debugging">Enabling USB debugging<a class="anchor" href="#enabling-usb-debugging">#</a></h2>
+<p>You first need to enable USB Debugging on the phone. To do so, you can follow the <a href="https://developer.android.com/studio/debug/dev-options#enable">official Android documentation</a>, here is the interesting part of it:</p>
+<p>On Android 4.1 and lower, the <strong>Developer options</strong> screen is available by default. On Android 4.2 and higher, you must enable this screen. To enable developer options, tap the <strong>Build Number option 7 times</strong>. You can find this option in one of the following locations, depending on your Android version:</p>
+<ul>
+<li>Android 9 (API level 28) and higher: <strong>Settings &gt; About Phone &gt; Build Number</strong>
+#* Android 8.0.0 (API level 26) and Android 8.1.0 (API level 26): **Settings &gt; System &gt; About Phone &gt; Build Number**</li>
+<li>Android 7.1 (API level 25) and lower: <strong>Settings &gt; About Phone &gt; Build Number</strong></li>
+</ul>
+<p>At the top of the Developer options screen, you can toggle the options on and off (figure 1). You probably want to keep this on. When off, most options are disabled except those that don&rsquo;t require communication between the device and your development computer.</p>
+<p>Before you can use the debugger and other tools, you need to enable USB debugging, which allows Android Studio and other SDK tools to recognize your device when connected via USB. To enable USB debugging, toggle the USB debugging option in the Developer Options menu. You can find this option in one of the following locations, depending on your Android version:</p>
+<ul>
+<li>Android 9 (API level 28) and higher: <strong>Settings &gt; System &gt; Advanced &gt; Developer Options &gt; USB debugging</strong></li>
+<li>Android 8.0.0 (API level 26) and Android 8.1.0 (API level 26): <strong>Settings &gt; System &gt; Developer Options &gt; USB debugging</strong></li>
+<li>Android 7.1 (API level 25) and lower: <strong>Settings &gt; Developer Options &gt; USB debugging</strong></li>
+</ul>
+<p>Once it is done, connect the Android phone to your computer with an USB cable. Make sure that <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/">adb is installed</a> and check that device is available with the command <code>adb devices</code> :</p>
+<pre><code>&gt; adb devices
+List of devices attached
+RF2F722NU0C    device
+</code></pre><p>You can test that the access to the device works using the command <code>adb shell</code>. Once you have confirmed that the adb connection is working, kill the adb server with <code>adb kill-server</code>.</p>
+<h2 id="extracting-apks-using-snoopdroid">Extracting APKs using Snoopdroid<a class="anchor" href="#extracting-apks-using-snoopdroid">#</a></h2>
+<p>Follow the instructions to install <a href="https://github.com/botherder/snoopdroid#installation-on-debian-gnulinux">snoopdroid</a>.</p>
+<p>Then launch the extraction:</p>
+<pre><code>$ snoopdroid --storage apks
+                                   _           _     _
+                                  | |         (_)   | |
+   ___ _ __   ___   ___  _ __   __| |_ __ ___  _  __| |
+  / __| '_ \ / _ \ / _ \| '_ \ / _` | '__/ _ \| |/ _` |
+  \__ \ | | | (_) | (_) | |_) | (_| | | | (_) | | (_| |
+  |___/_| |_|\___/ \___/| .__/ \__,_|_|  \___/|_|\__,_|
+                        | |
+                        |_|                    v2.3
+
+*** Retrieving package names ...
+*** There are 285 packages installed on the device. I selected 208 for inspection.
+
+*** Starting acquisition at folder apks/2021-01-12T210901
+
+*** Downloading packages from device. This might take some time ...
+
+[1/208] Package: com.samsung.android.provider.filterprovider
+Downloading /system/app/FilterProvider/FilterProvider.apk ...
+100%|██████████████████████████████████████████████████████| 381k/381k [00:00&lt;00:00, 2.91MB/s]
+
+[2/208] Package: com.sec.android.app.DataCreate
+Downloading /system/app/AutomationTest_FB/AutomationTest_FB.apk ...
+100%|██████████████████████████████████████████████████████| 348k/348k [00:00&lt;00:00, 3.16MB/s]
+
+[3/208] Package: com.sec.android.widgetapp.samsungapps
+Downloading /system/priv-app/GalaxyAppsWidget_Phone_Dream/GalaxyAppsWidget_Phone_Dream.apk ...
+100%|██████████████████████████████████████████████████████| 797k/797k [00:00&lt;00:00, 3.48MB/s]
+
+[...]
+</code></pre><p>This process will extract all the APKs installed on the phone in a folder, it should take a little while.</p>
+<h2 id="checking-the-apks">Checking the APKs<a class="anchor" href="#checking-the-apks">#</a></h2>
+<p>I maintain a list of <a href="https://github.com/Te-k/stalkerware-indicators">indicators for stalkerware</a> that include package ids, certificates, hashes, network domains, and IPs, and since recently yara rules. I have developed <a href="https://github.com/Te-k/stalkerware-indicators/blob/master/check_apk.py">a python script</a> that checks an APK or a folder of APKs based on the associated indicators.</p>
+<p>First, download the repository, either through git (<code>git clone https://github.com/Te-k/stalkerware-indicators.git</code>) or by downloading the <a href="https://github.com/Te-k/stalkerware-indicators/archive/master.zip">ZIP archive</a>. Then you need to install the required libraries with <code>pip install -r requirements.txt</code>. And finally, launch the script on the folder containing the apks:</p>
+<pre><code>$ python check_apk.py apks/2021-01-12T210901/apks/
+Loaded 76 app ids, 55 certificates, 221 network indicators and 1881 hashes
+com.sec.android.mimage.photoretouching.apk : OK
+com.samsung.android.net.wifi.wifiguider.apk : OK
+com.sec.android.CarrierCodeChanger.apk : OK
+com.samsung.android.themestore.apk : OK
+com.samsung.android.themecenter.apk : OK
+com.sec.android.easyMover.Agent.apk : OK
+com.google.android.gms.policy_sidecar_aps.apk : OK
+com.samsung.safetyinformation.apk : OK
+com.samsung.android.setting.multisound.apk : OK
+com.sec.usbsettings.apk : OK
+com.android.dreams.phototable.apk : OK
+[...]
+com.google.android.apps.tachyon_split_config.en.apk : OK
+com.android.traceur.apk : OK
+
+
+1 suspicious applications identified:
+- com.android.core.mngp_base.apk : Known stalkerware package id: Snoopza
+</code></pre><p>Here one stalkerware was identified from the Snoopza family.</p>
+<h2 id="analyzing-further-apks-with-sdanalyzer">Analyzing Further APKs with SDAnalyzer<a class="anchor" href="#analyzing-further-apks-with-sdanalyzer">#</a></h2>
+<p>This first check is only as good as the indicators are, and there are definitely stalkerware products out there not listed yet in the indicator list. So it is worth analyzing manually the APKs to see if we find anything suspicious. I have developed a tool called <a href="https://github.com/Te-k/sdanalyzer">SDAnalyzer</a> specifically for that purpose. It extracts most useful information from all the APKs and gives you a nice interface to analyze them.</p>
+<p>You install sdanalyzer easily with <code>pip install sdanalyze</code>.</p>
+<p>Then you need to import the APKs into a device. First, create a device with SDanalyzer:</p>
+<pre><code>$ sdanalyzer phones --create &quot;Germain's Phone&quot;
+1	Germain's Phone	None
+</code></pre><p>Then import all the APKs in the folder in the device with the corresponding id (1 here above):</p>
+<pre><code>$ sdanalyzer import --phone 1 .
+Importing ./com.sec.android.mimage.photoretouching.apk
+APK ./com.sec.android.mimage.photoretouching.apk added to the phone
+Importing ./com.samsung.android.net.wifi.wifiguider.apk
+APK ./com.samsung.android.net.wifi.wifiguider.apk added to the phone
+Importing ./com.sec.android.CarrierCodeChanger.apk
+APK ./com.sec.android.CarrierCodeChanger.apk added to the phone
+Importing ./com.samsung.android.themestore.apk
+APK ./com.samsung.android.themestore.apk added to the phone
+Importing ./com.samsung.android.themecenter.apk
+APK ./com.samsung.android.themecenter.apk added to the phone
+Importing ./com.sec.android.easyMover.Agent.apk
+APK ./com.sec.android.easyMover.Agent.apk added to the phone
+Importing ./com.google.android.gms.policy_sidecar_aps.apk
+It looks like that no app name is set for the main activity!
+APK ./com.google.android.gms.policy_sidecar_aps.apk added to the phone
+[...]
+</code></pre><p>The import will take 5 to 10 minutes depending on the number of APKs. You have to wait until the end of the import before doing the analysis (due to the impossibility to do concurrent access to the SQLite database).</p>
+<p>Then you can launch the web interface with <code>sdanalyzer serve</code>. It will open the interface directly in your browser:</p>
+<figure>
+    <img src="/media/stalkerware2/sdanalyzer1.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>Select the phone you just created to see the list of APKs:</p>
+<figure>
+    <img src="/media/stalkerware2/sdanalyzer2.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>In this table you see several useful information:</p>
+<ul>
+<li>The package id</li>
+<li>The App Name</li>
+<li>The Certificate, including a green tick if I consider this certificate trusted</li>
+<li>The number of sensitive permissions the app is requiring (malicious apps like stalkerware always require a lot of permissions)</li>
+<li>A marker (called frosting) if the app was downloaded from the Google Play Store</li>
+<li>The result of the Virus Total analysis (currently not working due to a bug in <a href="https://isc.sans.edu/forums/diary/Headsup+VirusTotal+Functionality+in+Sysinternals+Tools+Not+Working/26906/">Virus Total platform</a>)</li>
+<li>A threat level evaluated based on all the information (take it just as a hint and not as something very reliable)</li>
+</ul>
+<p>You can click on any application, and have a more detailed view of it:</p>
+<figure>
+    <img src="/media/stalkerware2/sdanalyzer3.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>On that page, you have different information and links:</p>
+<ul>
+<li>Information on the package</li>
+<li>Links to check for the app in <a href="https://www.virustotal.com/gui/">VirusTotal</a>, <a href="https://koodous.com/">Koodous</a> and <a href="https://www.apklab.io/">APKLab</a></li>
+<li>The certificate that signed the app</li>
+<li>The full list of permissions required (with the sensitive one in bold)</li>
+<li>The full manifest</li>
+<li>A list of urls extracted from the DEX files</li>
+<li>A list of strings extracted from the DEX files</li>
+</ul>
+<p>It can be a lot of information at first and very time-consuming to process everything. Here are some hints of what you should look in priority:</p>
+<ul>
+<li>Check the VirusTotal result (when it will be fixed by VT). Any app with more than 5 detections is clearly suspicious. Between 1 and 5, it can be a false positive, you should check the app in detail. If it is unknown, it is unusual (but happens for some system packages), you should check the app in detail</li>
+<li>You can safely discard the apps marked as having a legitimate certificate (check before the VT results of those just in case).</li>
+<li>Check the number of permissions, stalkerware apps usually require more than 15, including most of the sensitive one (SMS, calls, etc.).</li>
+<li>Most stalkerware apps are installed outside of the market, so there should not be frosting (but as it can be added manually without changing the signature, it is not fully reliable).</li>
+</ul>
+<p>When you have looked at an application, you can mark it as suspicious or legitimate in the web interface and hide the apps already checked in the main list, so that you can only see what is still to be analyzed. If you have doubts about an application, it can be useful to search for other applications signed with the same certificate on VT, Koodous, or APKLab and see if they look legitimate or suspicious.</p>
+<p>This process more time-consuming and less reliable than using indicators. Take some time to understand what every field means, the first phone will be a bit hard with so much data, but you will soon get used to the process and able to identify suspicious apps quickly.</p>
+<p>Once you have finished the analysis, you can delete the data extracted with <code>sdanalyzer flush</code>.</p>
+<h1 id="thats-all-folks">That&rsquo;s all, Folks!</h1>
+<p>I have used that methodology several times to search for malware and it is quite reliable and quick after some practice. The challenge here is to build a solid stalkerware database, to avoid spending too much time in SDAnalyzer, so feel free to contribute to <a href="https://github.com/Te-k/stalkerware-indicators">the stalkerware indicators</a>.</p>
+<p>If you have any comments, feedback, or thoughts on this process, or if you are working with organizations supporting victims of domestic violence, feel free to get in touch <a href="https://www.randhome.io/contact/">by email</a> or by <a href="https://twitter.com/tenacioustek">Twitter DM</a>.</p>
+<p><em>This blog post was mostly written while listening to <a href="https://kokoroko.bandcamp.com/album/kokoroko">KOKOROKO</a></em></p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/stalkerware/">stalkerware</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Analyzing Cobalt Strike for Fun and Profit</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>
