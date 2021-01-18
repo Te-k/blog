@@ -299,7 +299,7 @@ i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><sp
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;a.out&#34;</span>, <span style="color:#e6db74">&#34;wb+&#34;</span>) <span style="color:#66d9ef">as</span> f:
     f<span style="color:#f92672">.</span>write(res)
 </code></pre></div><p>We get a PE file : <a href="https://www.virustotal.com/gui/file/3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab/detection">3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab</a>.</p>
-<p>It is surprising to see a PE file directly there because it is directly executed by the last call. The trick is that the PE file is actually modified to be at the same time a valid PE file and executable directly (something Cobalt Strike calls <a href="https://blog.cobaltstrike.com/2016/06/15/what-is-a-stageless-payload-artifact/">stageless payload</a>). We see here the MZ header being executed:</p>
+<p>It is surprising to see a PE file directly there because it is directly executed by the last call. The trick is that the PE file is actually modified to be at the same time a valid PE file and executable directly (something Cobalt Strike calls <a href="https://blog.cobaltstrike.com/2016/06/15/what-is-a-stageless-payload-artifact/">raw stageless payload artifact</a>). We see here the MZ header being executed:</p>
 <figure>
     <img src="/media/cobaltstrike/peheader.png" style="max-width:600px"/>
    
