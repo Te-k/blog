@@ -305,7 +305,7 @@ i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><sp
    
 </figure>
 
-<p>The DOS header is modified to include valid instructions that jump to the address 0x8157 in the binary. This address is the address of the exported <code>_ReflectiveLoader@4</code> function, a function based on the <a href="https://github.com/stephenfewer/ReflectiveDLLInjection">RefelctiveDLLInection</a> software that is in charge of reproducing a simple PE loader to load and map import functions before calling the entry point.</p>
+<p>The DOS header is modified to include valid instructions that jump to the address 0x8157 in the binary. This address is the address of the exported <code>_ReflectiveLoader@4</code> function, a function based on the <a href="https://github.com/stephenfewer/ReflectiveDLLInjection">ReflectiveDLLInjection</a> software that is in charge of reproducing a simple PE loader to load and map import functions before calling the entry point.</p>
 <p>(Note that this is only optional in Cobalt Strike, many Cobalt Strike payloads do not have a PE file format but the payload directly in a shellcode-like format).</p>
 <h2 id="extracting-the-configuration">Extracting the Configuration<a class="anchor" href="#extracting-the-configuration">#</a></h2>
 <p>The Cobalt Strike configuration is encrypted within the payload, with a different key depending on the Cobalt Strike version, either 0x23 or 0x69. Once decoded, the configuration is stored in the format type-length-value :</p>
