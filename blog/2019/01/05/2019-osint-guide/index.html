@@ -35,7 +35,7 @@
 
   
     
-    <link rel="stylesheet" href="/css/post.min.a0cc38240cf70273eb11de857cd55c451ee90d88fad21f0e52d9ff1d0982ded2.css" integrity="sha256-oMw4JAz3AnPrEd6FfNVcRR7pDYj60h8OUtn/HQmC3tI="/>
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
   
     
     <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
@@ -150,8 +150,7 @@
 <li>Pivoting &amp; Reporting: Either define new requirements by pivoting on data just gathered or end the investigation and write the report.</li>
 </ul>
 <p>This methodology is pretty intuitive and may not help much, but I think it is still important to go back to it regularly, and take the time to make an interation of the loop. Very often during investigations, we get lost into the amount of data gathered, and it is hard to have a view of what direction should the investigation take. In that case, I think it is helpful to take a break and go back to step 3 and 4: analyze and summarize what you have found, list what could help you pivoting and define new (or more precise) questions that still need answers.</p>
-<figure class="center">
-    <img src="/media/osint/charlie-red-string.jpg" width="400"/> 
+<figure class="center"><img src="/media/osint/charlie-red-string.jpg" width="400"/>
 </figure>
 
 <p>The other advices I would give are:</p>
@@ -161,9 +160,8 @@
 <li><strong>Timelines are good:</strong> in forensic, timeline and pivoting on events happening in the same time is key. It is definitely not as important in OSINT but still a very interesting tool to organize your data. When was the website created? When was the FB account created? When was the last blog post done? Having all this in a table often give me a good view of what I am looking for.</li>
 </ul>
 <p>Then there are two other methods I find useful. The first one are flowcharts to describe the workflow to search for more information based on a type of data (like an email). The best one I have seen are the one done by Michael Bazzell at <a href="https://inteltechniques.com/blog/2018/03/06/updated-osint-flowcharts/">IntelTechniques.com</a>. For instance here is Michael Bazzell workflow when researching  information on an email address:</p>
-<figure class="center">
-    <img src="/media/osint/workflow_email.png"
-         alt="Email OSINT WorkFlow by Michael Bazzell" width="500"/> <figcaption>
+<figure class="center"><img src="/media/osint/workflow_email.png"
+         alt="Email OSINT WorkFlow by Michael Bazzell" width="500"/><figcaption>
             <p>Email OSINT WorkFlow by Michael Bazzell</p>
         </figcaption>
 </figure>
@@ -194,18 +192,16 @@
 <h2 id="hunchly">Hunchly<a class="anchor" href="#hunchly">#</a></h2>
 <p>I recently started to use <a href="https://hunch.ly/">Hunchly</a> and it is a great tool. Hunchly is a Chrome extensions that allows to save, tag and search all the web data you find during investigation. Basically, you just have to click on &ldquo;Capture&rdquo; in the extension when you start an investigation, and Hunchly will save all the webpages you visit in a database, allowing you to add notes and tags to them.</p>
 <p>It costs USD130 / year, which is not that much considering how helpful it is.</p>
-<figure class="center">
-    <img src="/media/osint/hunchly.png"
-         alt="Screenshot of the Hunchly Dashboard" width="600"/> <figcaption>
+<figure class="center"><img src="/media/osint/hunchly.png"
+         alt="Screenshot of the Hunchly Dashboard" width="600"/><figcaption>
             <p>Screenshot of the Hunchly Dashboard</p>
         </figcaption>
 </figure>
 
 <h2 id="maltego">Maltego<a class="anchor" href="#maltego">#</a></h2>
 <p><a href="https://www.maltego.com/">Maltego</a> is more a threat intelligence tool than an OSINT tool and has many limitations, but a graph is often the best way to represent and analyze investigation data and Maltego is good for that. Basically Maltego offer an GUI to represent graphs, and transforms to find new data in the graph (for instance, domains linked to an IP address from a Passive DNS database). It is a bit <a href="https://www.maltego.com/pricing-plans/">expensive</a> (USD999 / year the first year, then USD499 / year for renewal) and may only be worth it if you are also doing threat intelligence or a lot of infrastructure analysis. You can also use the <a href="https://www.maltego.com/products/">Maltego Community Edition</a> which limit the utilization of transform and the size of graph, but it should be largely enough for small investigations.</p>
-<figure class="center">
-    <img src="/media/osint/maltego.jpg"
-         alt="Screenshot of Maltego (source: Paterva)" width="600"/> <figcaption>
+<figure class="center"><img src="/media/osint/maltego.jpg"
+         alt="Screenshot of Maltego (source: Paterva)" width="600"/><figcaption>
             <p>Screenshot of Maltego (source: Paterva)</p>
         </figcaption>
 </figure>
@@ -213,7 +209,7 @@
 <h2 id="harpoon">Harpoon<a class="anchor" href="#harpoon">#</a></h2>
 <p>I have developed a command-line tool called <a href="https://github.com/Te-k/harpoon">Harpoon</a> (see the blog post <a href="https://www.randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/">here</a> for more details). It started as a threat Intelligence tool but I have added many commands for OSINT. It is working with python3 on Linux (but MacOS and Windows should work too) and open source.</p>
 <p>For instance, you can use Harpoon to search for a PGP key on key servers:</p>
-<pre><code>$ harpoon pgp search tek@randhome.io
+<pre tabindex="0"><code>$ harpoon pgp search tek@randhome.io
 [+] 0xDCB55433A1EA7CAB  2016-05-30      Tek__ tek@randhome.io
 </code></pre><p>There is a long list of <a href="https://github.com/Te-k/harpoon">plugins</a>, feel free to suggest or develop more or to create <a href="https://github.com/Te-k/harpoon/issues">issues</a> for new interesting features.</p>
 <h2 id="python">Python<a class="anchor" href="#python">#</a></h2>
@@ -224,9 +220,8 @@
 <ul>
 <li><a href="https://www.spiderfoot.net/">SpiderFoot</a> is a reconnaissance tool that gather information through many different modules. It has a nice web interface and generate graphs showing links between the different types of data. What I don&rsquo;t like about it is that it is thought as the magic tool finding everything for you, but no tool will ever replace you to know what you are looking for and analyze the results. Yes, you will have to do the research by yourself and read the results one by one, and SpiderFoot does not help much on that. Good work and nice interface tho.</li>
 </ul>
-<figure class="center">
-    <img src="/media/osint/spiderfoot.png"
-         alt="Screenshot of SpiderFoot (source: spiderfoot.net)" width="600"/> <figcaption>
+<figure class="center"><img src="/media/osint/spiderfoot.png"
+         alt="Screenshot of SpiderFoot (source: spiderfoot.net)" width="600"/><figcaption>
             <p>Screenshot of SpiderFoot (source: <a href="https://www.spiderfoot.net/">spiderfoot.net</a>)</p>
         </figcaption>
 </figure>
@@ -292,7 +287,7 @@
 <p><strong>Internet Archive:</strong> the <a href="https://archive.org/">Internet Archive</a> is a great project that aims at saving everything published on Internet, which include crawling automatically webpages and saving their evolution into a huge database. They offer a web portal called <a href="https://web.archive.org/">Internet Archive Wayback Machine</a>, which is an amazing resource to analyze evolutions of a website. One important thing to know is that the Internet Archive is removing content on demand (they did it for instance for the <a href="https://motherboard.vice.com/en_us/article/nekzzq/wayback-machine-deleting-evidence-flexispy">Stalkerware company Flexispy</a>), so you have to save content that need to be archived somewhere else.</p>
 <p><strong>Other manual caching platforms:</strong> I really like <a href="https://archive.fo/">archive.today</a> that allows to save snapshot of webpages and look for snapshots done by other people. I mostly rely on it in my investigations. <a href="https://perma.cc/">perma.cc</a> is good but offer only 10 links per months for free accounts, the platform is mostly dedicated to libraries and universities. Their code is <a href="https://github.com/harvard-lil/perma">open-source</a> tho, so if I had to host my own caching platform, I would definitely consider using this software.</p>
 <p>Sometimes it is annoying to manually query all these platforms to check if a webpage was cached or not. I have implemeted a simple command in Harpoon to do that:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
 <span style="color:#e6db74">Google</span>: <span style="color:#66d9ef">FOUND</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>webcache<span style="color:#f92672">.</span>googleusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>search?q<span style="color:#f92672">=</span>cache<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#66d9ef">Ahttps</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>A<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fcitizenlab</span><span style="color:#f92672">.</span>ca<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F2016</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F11</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fparliament</span><span style="color:#f92672">-</span>keyboy<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">&amp;</span>num<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span>strip<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&amp;</span>vwsrc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 <span style="color:#e6db74">Yandex</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
 <span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>is: <span style="color:#66d9ef">TIME</span> <span style="color:#66d9ef">OUT</span>
@@ -302,8 +297,7 @@
 </code></pre></div><p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
 <h2 id="capturing-evidences">Capturing Evidences<a class="anchor" href="#capturing-evidences">#</a></h2>
 <p>Which bring us to the next point: capturing evidences. Capturing evidences is a key part of any investigation, especially if it is likely gonna be a long one. You will definitely be lost into the amount of data you found several times, web pages will change, Twitter accounts will disappear etc.</p>
-<figure class="center">
-    <img src="/media/osint/save.jpg" width="400"/> 
+<figure class="center"><img src="/media/osint/save.jpg" width="400"/>
 </figure>
 
 <p>Things to keep in mind:</p>

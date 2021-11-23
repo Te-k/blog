@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Analyzing US Media Blocking of EU Visitors | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="media">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Analyzing US Media Blocking of EU Visitors" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2021\/11\/24\/analyzing-us-media-blocking-of-eu-visitors\/",
+      "name": "Analyzing US Media Blocking of EU Visitors",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+        <a  href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Analyzing US Media Blocking of EU Visitors</h1>
+            <time datetime="2021-11-24 00:00:00 &#43;0200 &#43;0200" class="post__date">24 Nov 2021   &middot; 5 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p>I have been working and studying technology for over 10 years now, and the one thing I really love  is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how <a href="https://www.washingtonpost.com/news/morning-mix/wp/2016/08/10/lawsuit-how-a-quiet-kansas-home-wound-up-with-600-million-ip-addresses-and-a-world-of-trouble/">bad geolocation of IP addresses turned the life of a Kansas family into hell</a> or how to <a href="https://dictatoralert.org/">track dictator&rsquo;s aircraft from open flight information</a>.</p>
+<p>Among them, I discovered last year that the HTTP code <code>HTTP 451 Unavailable For Legal Reasons</code> was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation. The code <a href="https://en.wikipedia.org/wiki/HTTP_451">451</a> is actually a reference to Ray Bradbury&rsquo;s book Fahrenheit 451.</p>
+<p><img src="https://http.cat/451" alt=""></p>
+<p><em><a href="https://http.cat/">Cat version of HTTP code 451</a>, because Internet</em></p>
+<p>I wondered how many media in the US are actually implementing restrictions for EU visitors due to GDPR and how many of them actually use HTTP 451 for that purpose. Here is a quick summary of what I found and how I found it.</p>
+<figure>
+    <img src="/media/gdpr/blocked2.png" style="max-width:700px"/>
+   
+</figure>
+
+<h2 id="gdpr-obligations">GDPR Obligations<a class="anchor" href="#gdpr-obligations">#</a></h2>
+<p>The <a href="https://gdpr-info.eu/">General Data Protection Regulation</a> (GDPR) is a European regulation on privacy that came into effect in 2018. Among other restrictions, it requires to have informed consent from users to access their data and to detail how data are being handled by a website. It clearly makes online tracking for advertisement harder, so <a href="https://www.nytimes.com/2018/05/25/business/media/europe-privacy-gdpr-us.html">several US media companies</a> decided it was not worth the effort and started blocking European visitors.</p>
+<h2 id="finding-a-list-of-us-media">Finding a list of US media<a class="anchor" href="#finding-a-list-of-us-media">#</a></h2>
+<p>The first step needed was to find a list of US media websites. I know two main resources to get a list of US media, the first one is the old <a href="http://www.abyznewslinks.com/">ABYZ News Link</a> website that gathers lists of media from different countries. For the US, it classifies them <a href="http://www.abyznewslinks.com/unite.htm">as national and regional media</a>. I don&rsquo;t know how updated this website is, but it has tens of thousands of media sources, so it is a good list to have. The second one is the amazing <a href="https://mediacloud.org/">MediaCloud</a> project made by a consortium of US institutions. It allows downloading <a href="https://sources.mediacloud.org/#/collections/34412234">US national</a> and <a href="https://sources.mediacloud.org/#/collections/38379429">US State &amp; Local media</a> from their <a href="https://sources.mediacloud.org/#/home">Source Manager</a>.</p>
+<p>I wrote a basic python scraper for ABYZ News Link and downloaded the lists from MediaCloud Source Manager. When we merge these two lists and do some cleaning, we have 266 national media and 9772 regional media.</p>
+<h2 id="checking-http-answers">Checking HTTP answers<a class="anchor" href="#checking-http-answers">#</a></h2>
+<p>We can easily write a python script that takes a list of domains as input, do an http / https request to them, and check the HTTP result code. After some manual testing, I realized that several websites are also blocking EU visitors with 200 HTTP code and specific error messages such as &ldquo;We are currently unavailable in your region&rdquo; or &ldquo;our website is currently unavailable in most European countries&rdquo;, so I have also added a few checks for these text in webpages. This check is not totally reliable as some websites can have a custom blocking page that does not use these sentences but it seems good enough to catch many of them.</p>
+<figure>
+    <img src="/media/gdpr/blocked.png" style="max-width:700px"/>
+   
+</figure>
+
+<p>Here is the python script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_gdpr_block</span>(res):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Detect if the page is blocked due to GDPR
+</span><span style="color:#e6db74">    returns True if it is blocked
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">451</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;We are currently unavailable in your region&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;our website is currently unavailable in most European countries&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">403</span>:
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;You don&#39;t have permission to access&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No&#34;</span>
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Scans domains looking for HTTP 451 which is GDPR restrictions&#39;</span>)
+    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;DOMAINS&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Files listing domains&#34;</span>)
+    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--output&#39;</span>, <span style="color:#e6db74">&#39;-o&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Output file&#34;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;output.csv&#34;</span>)
+    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+
+    <span style="color:#75715e"># Important to have a clean UA bc some websites block requests UA</span>
+    headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;user-agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#39;</span>}
+
+    <span style="color:#66d9ef">with</span> open(args<span style="color:#f92672">.</span>DOMAINS, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+        sites <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+
+    fout <span style="color:#f92672">=</span> open(args<span style="color:#f92672">.</span>output, <span style="color:#e6db74">&#39;a+&#39;</span>)
+    csvout <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(fout, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>, quotechar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;&#39;</span>)
+    csvout<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#34;Domain&#34;</span>, <span style="color:#e6db74">&#34;Accessible&#34;</span>, <span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;Status Code&#34;</span>, <span style="color:#e6db74">&#34;Redirect to another domain&#34;</span>, <span style="color:#e6db74">&#34;HTML Size&#34;</span>, <span style="color:#e6db74">&#34;GDPR blocking&#34;</span>])
+
+    <span style="color:#66d9ef">for</span> site <span style="color:#f92672">in</span> sites:
+        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+            <span style="color:#66d9ef">continue</span>
+        print(<span style="color:#e6db74">&#34;Domain: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(site<span style="color:#f92672">.</span>strip()))
+        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;http&#39;</span>):
+            url <span style="color:#f92672">=</span> site
+        <span style="color:#66d9ef">else</span>:
+            url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">/&#34;</span><span style="color:#f92672">.</span>format(site)
+        <span style="color:#66d9ef">try</span>:
+            r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+        <span style="color:#66d9ef">except</span> (requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ConnectionError, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>TooManyRedirects, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ReadTimeout, urllib3<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>LocationParseError):
+            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
+            print(<span style="color:#e6db74">&#34;Not accessible&#34;</span>)
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">UnicodeError</span>:
+            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
+            print(<span style="color:#e6db74">&#34;Bug with the URL&#34;</span>)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">if</span> site <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>url:
+                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No&#34;</span>
+            <span style="color:#66d9ef">else</span>:
+                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+            gdpr <span style="color:#f92672">=</span> detect_gdpr_block(r)
+            print(<span style="color:#e6db74">&#34;Status code: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / redirect </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / GDPR blocked </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(r<span style="color:#f92672">.</span>status_code, redir, gdpr))
+            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;Yes&#34;</span>, r<span style="color:#f92672">.</span>url, r<span style="color:#f92672">.</span>status_code, redir, len(r<span style="color:#f92672">.</span>text), gdpr])
+</code></pre></div><h2 id="results">Results<a class="anchor" href="#results">#</a></h2>
+<p>To have an accurate view of how common it is, I have removed from these results all the domains that did not resolve, giving us a total of 248 National media and 9042 regional and state media.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Total</th>
+<th>Blocked</th>
+<th> Blocked with HTTP 451</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US National</td>
+<td>248</td>
+<td>12 (4.8%)</td>
+<td>6 (2.4%)</td>
+</tr>
+<tr>
+<td>US Regional</td>
+<td>9042</td>
+<td>1343 (14.8%)</td>
+<td>1269 (14%)</td>
+</tr>
+<tr>
+<td> Total</td>
+<td>9290</td>
+<td>1355 (14.6%)</td>
+<td>1275 (13.7%)</td>
+</tr>
+</tbody>
+</table>
+<p>So almost 15% of US websites are blocking European visitors, including several national media like the <a href="http://www.baltimoresun.com">Baltimore Sun</a> or <a href="http://www.buffalonews.com">BuffaloNews</a>. Overall, HTTP Code 451 is the main way to answer when blocking visitors from Europe. I am not sure Ray Bradbury would have appreciated the irony of blocking access to knowledge with a reference to his book.</p>
+<p>You can find the data and source code used in this article on <a href="https://github.com/Te-k/gdpr_us_media">github</a>.</p>
+<p><em>This blog post was written while listening to <a href="https://www.youtube.com/watch?v=0Ak_7tTxZrk">Beethoven Sonata n°23 &ldquo;Appassionata&rdquo;</a></em></p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/media/">media</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">How to Check if an Android Phone has a Stalkerware Installed?</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2021</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>

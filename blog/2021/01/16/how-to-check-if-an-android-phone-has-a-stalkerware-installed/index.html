@@ -35,7 +35,7 @@
 
   
     
-    <link rel="stylesheet" href="/css/post.min.a0cc38240cf70273eb11de857cd55c451ee90d88fad21f0e52d9ff1d0982ded2.css" integrity="sha256-oMw4JAz3AnPrEd6FfNVcRR7pDYj60h8OUtn/HQmC3tI="/>
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
   
     
     <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
@@ -168,14 +168,14 @@
 <li>Android 7.1 (API level 25) and lower: <strong>Settings &gt; Developer Options &gt; USB debugging</strong></li>
 </ul>
 <p>Once it is done, connect the Android phone to your computer with an USB cable. Make sure that <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/">adb is installed</a> and check that device is available with the command <code>adb devices</code> :</p>
-<pre><code>&gt; adb devices
+<pre tabindex="0"><code>&gt; adb devices
 List of devices attached
 RF2F722NU0C    device
 </code></pre><p>You can test that the access to the device works using the command <code>adb shell</code>. Once you have confirmed that the adb connection is working, kill the adb server with <code>adb kill-server</code>.</p>
 <h2 id="extracting-apks-using-snoopdroid">Extracting APKs using Snoopdroid<a class="anchor" href="#extracting-apks-using-snoopdroid">#</a></h2>
 <p>Follow the instructions to install <a href="https://github.com/botherder/snoopdroid#installation-on-debian-gnulinux">snoopdroid</a>.</p>
 <p>Then launch the extraction:</p>
-<pre><code>$ snoopdroid --storage apks
+<pre tabindex="0"><code>$ snoopdroid --storage apks
                                    _           _     _
                                   | |         (_)   | |
    ___ _ __   ___   ___  _ __   __| |_ __ ___  _  __| |
@@ -209,7 +209,7 @@ Downloading /system/priv-app/GalaxyAppsWidget_Phone_Dream/GalaxyAppsWidget_Phone
 <h2 id="checking-the-apks">Checking the APKs<a class="anchor" href="#checking-the-apks">#</a></h2>
 <p>I maintain a list of <a href="https://github.com/Te-k/stalkerware-indicators">indicators for stalkerware</a> that include package ids, certificates, hashes, network domains, and IPs, and since recently yara rules. I have developed <a href="https://github.com/Te-k/stalkerware-indicators/blob/master/check_apk.py">a python script</a> that checks an APK or a folder of APKs based on the associated indicators.</p>
 <p>First, download the repository, either through git (<code>git clone https://github.com/Te-k/stalkerware-indicators.git</code>) or by downloading the <a href="https://github.com/Te-k/stalkerware-indicators/archive/master.zip">ZIP archive</a>. Then you need to install the required libraries with <code>pip install -r requirements.txt</code>. And finally, launch the script on the folder containing the apks:</p>
-<pre><code>$ python check_apk.py apks/2021-01-12T210901/apks/
+<pre tabindex="0"><code>$ python check_apk.py apks/2021-01-12T210901/apks/
 Loaded 76 app ids, 55 certificates, 221 network indicators and 1881 hashes
 com.sec.android.mimage.photoretouching.apk : OK
 com.samsung.android.net.wifi.wifiguider.apk : OK
@@ -234,10 +234,10 @@ com.android.traceur.apk : OK
 <p>This first check is only as good as the indicators are, and there are definitely stalkerware products out there not listed yet in the indicator list. So it is worth analyzing manually the APKs to see if we find anything suspicious. I have developed a tool called <a href="https://github.com/Te-k/sdanalyzer">SDAnalyzer</a> specifically for that purpose. It extracts most useful information from all the APKs and gives you a nice interface to analyze them.</p>
 <p>You install sdanalyzer easily with <code>pip install sdanalyzer</code>.</p>
 <p>Then you need to import the APKs into a device. First, create a device with SDanalyzer:</p>
-<pre><code>$ sdanalyzer phones --create &quot;Germain's Phone&quot;
+<pre tabindex="0"><code>$ sdanalyzer phones --create &quot;Germain's Phone&quot;
 1	Germain's Phone	None
 </code></pre><p>Then import all the APKs in the folder in the device with the corresponding id (1 here above):</p>
-<pre><code>$ sdanalyzer import --phone 1 .
+<pre tabindex="0"><code>$ sdanalyzer import --phone 1 .
 Importing ./com.sec.android.mimage.photoretouching.apk
 APK ./com.sec.android.mimage.photoretouching.apk added to the phone
 Importing ./com.samsung.android.net.wifi.wifiguider.apk
@@ -327,6 +327,11 @@ APK ./com.google.android.gms.policy_sidecar_aps.apk added to the phone
     </a>
   
 
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Analyzing US Media Blocking of EU Visitors</a>
+    </a>
   
 </div>
 

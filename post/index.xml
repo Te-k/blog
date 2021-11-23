@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0200</lastBuildDate><atom:link href="https://randhome.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analyzing US Media Blocking of EU Visitors</title>
+      <link>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</link>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0200</pubDate>
+      
+      <guid>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</guid>
+      <description>I have been working and studying technology for over 10 years now, and the one thing I really love is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how bad geolocation of IP addresses turned the life of a Kansas family into hell or how to track dictator&amp;rsquo;s aircraft from open flight information.
+Among them, I discovered last year that the HTTP code HTTP 451 Unavailable For Legal Reasons was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation.</description>
+    </item>
+    
     <item>
       <title>How to Check if an Android Phone has a Stalkerware Installed?</title>
       <link>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</link>

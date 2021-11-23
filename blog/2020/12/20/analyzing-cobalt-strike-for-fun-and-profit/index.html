@@ -35,7 +35,7 @@
 
   
     
-    <link rel="stylesheet" href="/css/post.min.a0cc38240cf70273eb11de857cd55c451ee90d88fad21f0e52d9ff1d0982ded2.css" integrity="sha256-oMw4JAz3AnPrEd6FfNVcRR7pDYj60h8OUtn/HQmC3tI="/>
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
   
     
     <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
@@ -158,14 +158,14 @@
 
 <p>Shodan has identified 5623 IP with this JARM fingerprint Cobalt Strike servers, mostly on Amazon and Digital Ocean. If we limit to port 443, we get 3423 IPs.</p>
 <p>We can easily confirm that Cobalt Strike is still running on port 443 of the first IP using JARM:</p>
-<pre><code>$ python jarm.py 78.152.61.71
+<pre tabindex="0"><code>$ python jarm.py 78.152.61.71
 Domain: 78.152.61.71
 Resolved IP: 78.152.61.71
 JARM: 07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1
 </code></pre><p>(This JARM signature is actually a signature of the Java Web server and specific to the JAVA 11 stack, so it includes other tools not related to Cobalt Strike (like Burp Suite) and does not include Cobalt Strike using different Java versions. Cobalt Strike recently wrote <a href="https://blog.cobaltstrike.com/2020/12/08/a-red-teamer-plays-with-jarm/">a blog post about this question</a>.)</p>
 <h2 id="getting-a-cobalt-strike-payload">Getting a Cobalt Strike Payload<a class="anchor" href="#getting-a-cobalt-strike-payload">#</a></h2>
 <p>Cobalt Strike uses a checksum of the url using an algorithm called checksum8 to serve the 32b or 64b version of the payload (in the same way as the <a href="https://github.com/rapid7/metasploit-framework/blob/85a9accbeec063f52406621f124a7f82ad63dcba/lib/rex/payloads/meterpreter/uri_checksum.rb">metasploit server</a>). The decompiled code of Cobalt Strike has been published several times on GitHub or elsewhere, it provides information on this checksum:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">checksum8</span><span style="color:#f92672">(</span>String text<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">checksum8</span><span style="color:#f92672">(</span>String text<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 4<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">return</span> 0L<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
@@ -186,7 +186,7 @@ JARM: 07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1
     <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>checksum8<span style="color:#f92672">(</span>uri<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 93L <span style="color:#f92672">&amp;&amp;</span> uri<span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/[A-Za-z0-9]{4}&#34;</span><span style="color:#f92672">));</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>We can easily bruteforce the algorithm to find urls that match it in python:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
 <span style="color:#f92672">import</span> string
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">checksum8</span>(strr):
@@ -204,10 +204,10 @@ to_attempt <span style="color:#f92672">=</span> product(chars, repeat<span style
     word <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(attempt)
     r <span style="color:#f92672">=</span> checksum8(word)
     <span style="color:#66d9ef">if</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">92</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;{:30} - 32b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
+        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 32b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
     <span style="color:#66d9ef">elif</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">93</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;{:30} - 64b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
-</code></pre></div><pre><code>$ python bf_checksum8.py
+        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 64b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
+</code></pre></div><pre tabindex="0"><code>$ python bf_checksum8.py
 aaa9                           - 32b checksum
 aab8                           - 32b checksum
 aab9                           - 64b checksum
@@ -217,7 +217,7 @@ aad6                           - 32b checksum
 aad7                           - 64b checksum
 [...]
 </code></pre><p>So <code>/aaa9</code> should return the 32 bits beacon (if available) and <code>/aab9</code> should return the 64 bits beacon (if available). Let&rsquo;s test that on one of the Cobalt Strike servers from the Shodan list, <code>103.39.18.184</code> (AS136800 - ICIDC NETWORK - China) (one thing to know is that the Cobalt Strike server blocks unusual user agents).</p>
-<pre><code>$ wget --no-check-certificate https://103.39.18.184/aaa9
+<pre tabindex="0"><code>$ wget --no-check-certificate https://103.39.18.184/aaa9
 --2020-12-19 17:44:32--  https://103.39.18.184/aaa9
 Connecting to 103.39.18.184:443... connected.
 WARNING: cannot verify 103.39.18.184's certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
@@ -262,7 +262,7 @@ aab9                    100%[============================&gt;] 254.57K   872KB/s
 </ul>
 <h2 id="decrypting-cobalt-strike-beacons">Decrypting Cobalt Strike Beacons<a class="anchor" href="#decrypting-cobalt-strike-beacons">#</a></h2>
 <p>The files returned by the server are actually not PE file:</p>
-<pre><code>$ file *
+<pre tabindex="0"><code>$ file *
 aaa9:     data
 aab9:     data
 </code></pre><p>During the execution of a Cobalt Strike exploit, it downloads this beacon and run it directly in memory. So this file is a blob of data containing a shellcode at the beginning that decodes and executes the beacon.</p>
@@ -274,7 +274,7 @@ aab9:     data
 
 <p>The first JMP goes to a call right before the encryption key and encrypted beacon. The call goes back to the shellcode and the next <code>POP EDX</code> gets the address of the key. The code in <code>loc_f</code> gets the key in EBX, the length of the payload in EAX, and store on the address of the final beacon on the stack. The loop in <code>loc_1d</code> goes through the beacon and xor it with the key.</p>
 <p>We can easily reproduce it in python, the challenge is to find the base address. Here the <code>loc_47</code> is the address of the call just before the key, length, and encrypted payload, so the base address is 0x47 + 5 (the length of the call instruction). The base address changes with different payloads but it is possible to find it easily by searching the last call instruction.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> struct
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> struct
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">xor</span>(a, b):
     <span style="color:#66d9ef">return</span> bytearray([a[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">1</span>], a[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">2</span>], a[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">3</span>]])
@@ -284,9 +284,9 @@ aab9:     data
 
 ba <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x4c</span>
 key <span style="color:#f92672">=</span> data[ba:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Key : {}&#34;</span><span style="color:#f92672">.</span>format(key))
+print(<span style="color:#e6db74">&#34;Key : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key))
 size <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;I&#34;</span>, xor(key, data[ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>]))[<span style="color:#ae81ff">0</span>]
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Size : {}&#34;</span><span style="color:#f92672">.</span>format(size))
+print(<span style="color:#e6db74">&#34;Size : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(size))
 
 res <span style="color:#f92672">=</span> bytearray()
 i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>
@@ -316,7 +316,7 @@ i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><sp
 </ul>
 <p>To find the start address of the configuration, we can look for the encoded value of the first key, which is 1 (DNS/SSL), 1 (Short), 2 (2 bytes), which is encoded to <code>ihihik</code> with the key 0x69 or <code>././.,</code> with the key 0x2E.</p>
 <p>We can then decode the configuration of the beacon:</p>
-<pre><code>dns                            False
+<pre tabindex="0"><code>dns                            False
 ssl                            True
 port                           443
 .sleeptime                     60000
@@ -364,7 +364,7 @@ process-inject-execute
 process-inject-allocation-method 0
 </code></pre><h2 id="putting-everything-together">Putting Everything Together<a class="anchor" href="#putting-everything-together">#</a></h2>
 <p>Now that we have decoded everything, it is quite easy to do the request, extract the beacon and the configuration directly. I have put all this in a script available on <a href="https://github.com/Te-k/cobaltstrike">this github repository</a>:</p>
-<pre><code>$ python scan.py https://103.39.18.184/
+<pre tabindex="0"><code>$ python scan.py https://103.39.18.184/
 Checking https://103.39.18.184/
 Unknown config command 55
 Configuration of the x86 payload

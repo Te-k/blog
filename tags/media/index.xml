@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>media on </title>
+    <link>https://randhome.io/tags/media/</link>
+    <description>Recent content in media on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0200</lastBuildDate><atom:link href="https://randhome.io/tags/media/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analyzing US Media Blocking of EU Visitors</title>
+      <link>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</link>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0200</pubDate>
+      
+      <guid>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</guid>
+      <description>I have been working and studying technology for over 10 years now, and the one thing I really love is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how bad geolocation of IP addresses turned the life of a Kansas family into hell or how to track dictator&amp;rsquo;s aircraft from open flight information.
+Among them, I discovered last year that the HTTP code HTTP 451 Unavailable For Legal Reasons was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation.</description>
+    </item>
+    
+  </channel>
+</rss>
