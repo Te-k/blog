@@ -198,9 +198,8 @@ Political Organizations Here are several awesome organization regarding online f
       
       <guid>https://randhome.io/about/</guid>
       <description>I am Etienne &amp;ldquo;tek&amp;rdquo; Maynier, an activist, security analyst and researcher.
-  I am currently working as a Technologist in the Technology program of Amnesty International on analyzing digital surveillance of Human Rights Defenders. I am also a research fellow at the Citizen Lab.
-I am also member of Nothing2Hide and Echap. I was a Mozilla Open Web Fellow in 2016 - 2017.
-I enjoy listening and playing music, learning about popular education and political history and theory.</description>
+  I am currently working as a Technologist in the Technology program of Amnesty International on analyzing digital surveillance of Human Rights Defenders.
+I am also an active member of Echap where I develop resources and trainings for women shelters, and developer of several tools. I was a Mozilla Open Web Fellow in 2016 - 2017, and a research fellow at the the Citizen Lab until April 2021.</description>
     </item>
     
     <item>
@@ -220,7 +219,7 @@ I enjoy listening and playing music, learning about popular education and politi
       
       <guid>https://randhome.io/projects/</guid>
       <description>Here are some personal projects I have been working on:
-   Drawing by Matt Dixon     Tools  Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Some scripts that may be useful for security analysts  Guides  I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa  Research  I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib  </description>
+   Drawing by Matt Dixon     Tools  Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Several libraries for threat intelligence such as pysafebrowsing or pycrtsh Some scripts that may be useful for security analysts  Guides  I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa I have helped write several security guides for women shelters with the Echap non-profit (in French)  Research  I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib  </description>
     </item>
     
   </channel>

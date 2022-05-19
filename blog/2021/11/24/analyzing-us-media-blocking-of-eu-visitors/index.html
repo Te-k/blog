@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -163,65 +169,65 @@
 </figure>
 
 <p>Here is the python script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_gdpr_block</span>(res):
-    <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">    Detect if the page is blocked due to GDPR
-</span><span style="color:#e6db74">    returns True if it is blocked
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-    <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">451</span>:
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
-    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
-        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;We are currently unavailable in your region&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;our website is currently unavailable in most European countries&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
-    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">403</span>:
-        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;You don&#39;t have permission to access&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
-            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No&#34;</span>
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Scans domains looking for HTTP 451 which is GDPR restrictions&#39;</span>)
-    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;DOMAINS&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Files listing domains&#34;</span>)
-    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--output&#39;</span>, <span style="color:#e6db74">&#39;-o&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Output file&#34;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;output.csv&#34;</span>)
-    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
-
-    <span style="color:#75715e"># Important to have a clean UA bc some websites block requests UA</span>
-    headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;user-agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#39;</span>}
-
-    <span style="color:#66d9ef">with</span> open(args<span style="color:#f92672">.</span>DOMAINS, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
-        sites <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
-
-    fout <span style="color:#f92672">=</span> open(args<span style="color:#f92672">.</span>output, <span style="color:#e6db74">&#39;a+&#39;</span>)
-    csvout <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(fout, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>, quotechar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;&#39;</span>)
-    csvout<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#34;Domain&#34;</span>, <span style="color:#e6db74">&#34;Accessible&#34;</span>, <span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;Status Code&#34;</span>, <span style="color:#e6db74">&#34;Redirect to another domain&#34;</span>, <span style="color:#e6db74">&#34;HTML Size&#34;</span>, <span style="color:#e6db74">&#34;GDPR blocking&#34;</span>])
-
-    <span style="color:#66d9ef">for</span> site <span style="color:#f92672">in</span> sites:
-        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
-            <span style="color:#66d9ef">continue</span>
-        print(<span style="color:#e6db74">&#34;Domain: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(site<span style="color:#f92672">.</span>strip()))
-        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;http&#39;</span>):
-            url <span style="color:#f92672">=</span> site
-        <span style="color:#66d9ef">else</span>:
-            url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">/&#34;</span><span style="color:#f92672">.</span>format(site)
-        <span style="color:#66d9ef">try</span>:
-            r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
-        <span style="color:#66d9ef">except</span> (requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ConnectionError, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>TooManyRedirects, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ReadTimeout, urllib3<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>LocationParseError):
-            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
-            print(<span style="color:#e6db74">&#34;Not accessible&#34;</span>)
-        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">UnicodeError</span>:
-            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
-            print(<span style="color:#e6db74">&#34;Bug with the URL&#34;</span>)
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">if</span> site <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>url:
-                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No&#34;</span>
-            <span style="color:#66d9ef">else</span>:
-                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
-            gdpr <span style="color:#f92672">=</span> detect_gdpr_block(r)
-            print(<span style="color:#e6db74">&#34;Status code: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / redirect </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / GDPR blocked </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(r<span style="color:#f92672">.</span>status_code, redir, gdpr))
-            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;Yes&#34;</span>, r<span style="color:#f92672">.</span>url, r<span style="color:#f92672">.</span>status_code, redir, len(r<span style="color:#f92672">.</span>text), gdpr])
-</code></pre></div><h2 id="results">Results<a class="anchor" href="#results">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_gdpr_block</span>(res):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Detect if the page is blocked due to GDPR
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    returns True if it is blocked
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">451</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;We are currently unavailable in your region&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;our website is currently unavailable in most European countries&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">403</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;You don&#39;t have permission to access&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Scans domains looking for HTTP 451 which is GDPR restrictions&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;DOMAINS&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Files listing domains&#34;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--output&#39;</span>, <span style="color:#e6db74">&#39;-o&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Output file&#34;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;output.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Important to have a clean UA bc some websites block requests UA</span>
+</span></span><span style="display:flex;"><span>    headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;user-agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(args<span style="color:#f92672">.</span>DOMAINS, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        sites <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fout <span style="color:#f92672">=</span> open(args<span style="color:#f92672">.</span>output, <span style="color:#e6db74">&#39;a+&#39;</span>)
+</span></span><span style="display:flex;"><span>    csvout <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(fout, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>, quotechar<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#34;&#39;</span>)
+</span></span><span style="display:flex;"><span>    csvout<span style="color:#f92672">.</span>writerow([<span style="color:#e6db74">&#34;Domain&#34;</span>, <span style="color:#e6db74">&#34;Accessible&#34;</span>, <span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;Status Code&#34;</span>, <span style="color:#e6db74">&#34;Redirect to another domain&#34;</span>, <span style="color:#e6db74">&#34;HTML Size&#34;</span>, <span style="color:#e6db74">&#34;GDPR blocking&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> site <span style="color:#f92672">in</span> sites:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Domain: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(site<span style="color:#f92672">.</span>strip()))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> site<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;http&#39;</span>):
+</span></span><span style="display:flex;"><span>            url <span style="color:#f92672">=</span> site
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">/&#34;</span><span style="color:#f92672">.</span>format(site)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> (requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ConnectionError, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>TooManyRedirects, requests<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>ReadTimeout, urllib3<span style="color:#f92672">.</span>exceptions<span style="color:#f92672">.</span>LocationParseError):
+</span></span><span style="display:flex;"><span>            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Not accessible&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">UnicodeError</span>:
+</span></span><span style="display:flex;"><span>            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;No&#34;</span>, url, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>])
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Bug with the URL&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> site <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>url:
+</span></span><span style="display:flex;"><span>                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                redir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yes&#34;</span>
+</span></span><span style="display:flex;"><span>            gdpr <span style="color:#f92672">=</span> detect_gdpr_block(r)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Status code: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / redirect </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> / GDPR blocked </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(r<span style="color:#f92672">.</span>status_code, redir, gdpr))
+</span></span><span style="display:flex;"><span>            csvout<span style="color:#f92672">.</span>writerow([site, <span style="color:#e6db74">&#34;Yes&#34;</span>, r<span style="color:#f92672">.</span>url, r<span style="color:#f92672">.</span>status_code, redir, len(r<span style="color:#f92672">.</span>text), gdpr])
+</span></span></code></pre></div><h2 id="results">Results<a class="anchor" href="#results">#</a></h2>
 <p>To have an accurate view of how common it is, I have removed from these results all the domains that did not resolve, giving us a total of 248 National media and 9042 regional and state media.</p>
 <table>
 <thead>
@@ -306,6 +312,15 @@
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -330,7 +345,7 @@
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -343,7 +358,7 @@
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 

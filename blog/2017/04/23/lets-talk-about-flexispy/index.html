@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -172,7 +178,7 @@
 <li>They started a sister company called &ldquo;RaySoft&rdquo; selling to Law Enforcement agencies, and then a partnership with Gamma in 2011 on this market</li>
 <li>Around 130 000 people had an account on Retina-X or Flexispy platforms</li>
 <li>The hack was apparently quite easy and exploited a bug in the API</li>
-<li>The hacker called Leopard Boy (a reference to the classic <a href="https://en.wikipedia.org/wiki/Hackers_(film)">1995 Hacker Movie</a>) is apparently gonna continue targeting companies doing this business : <em>&ldquo;It&rsquo;s the beginning of a reign of terror across this entire industry. I&rsquo;m going to burn them to the ground, and leave absolutely nowhere for any of them to hide.&quot;</em></li>
+<li>The hacker called Leopard Boy (a reference to the classic <a href="https://en.wikipedia.org/wiki/Hackers_(film)">1995 Hacker Movie</a>) is apparently gonna continue targeting companies doing this business : <em>&ldquo;It&rsquo;s the beginning of a reign of terror across this entire industry. I&rsquo;m going to burn them to the ground, and leave absolutely nowhere for any of them to hide.&rdquo;</em></li>
 </ul>
 <figure><img src="/media/finspy/victims.png"/><figcaption>
             <h4>Map of compromised smartphones with FlexiSpy (motherboard - 2017)</h4>
@@ -270,7 +276,7 @@
 </li>
 </ul>
 <p>Please note that all the URLs in the code are in HTTP and not HTTPs :D :</p>
-<pre tabindex="0"><code>$ find . -iname &quot;*.java&quot; -exec fgrep -iHn &quot;https://&quot; {} \; | wc -l
+<pre tabindex="0"><code>$ find . -iname &#34;*.java&#34; -exec fgrep -iHn &#34;https://&#34; {} \; | wc -l
 0
 </code></pre><p><a href="https://twitter.com/ben_ra">@ben_ra</a> started an analysis of the Android source code and binaries here : <a href="http://www.cybermerchantsofdeath.com/blog/2017/04/23/FlexiSpy.html">Part 1</a> and <a href="http://www.cybermerchantsofdeath.com/blog/2017/04/23/FlexiSpy-pt2.html">Part 2</a>.</p>
 <p>According to <a href="https://twitter.com/PaulWebSec">@PaulWebSec</a>, they achieve persistence by mounting /system as read/write and installing the spyware in the system folder (code is <a href="https://github.com/Te-k/flexidie/blob/master/Cyclops%20-1.00.4/application-main/src/com/fx/InstallingService.java">here</a>):</p>
@@ -353,6 +359,15 @@ Subject: C=LB, L=Beirut, O=Cyan Engineering Services SAL (offshore), CN=Cyan Eng
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -377,7 +392,7 @@ Subject: C=LB, L=Beirut, O=Cyan Engineering Services SAL (offshore), CN=Cyan Eng
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -390,7 +405,7 @@ Subject: C=LB, L=Beirut, O=Cyan Engineering Services SAL (offshore), CN=Cyan Eng
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 

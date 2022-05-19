@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -211,18 +217,18 @@
 <li>A new owner from August 2019 (<em>feed.livingfurn[.]nl</em> and later <em>eantool.livingfurn[.]nl</em>)</li>
 </ol>
 <p>Based on this analysis, we can identify 12 new domains related to this campaign:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">check-activity.com<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>ru                2019-07-25     2020-05-05
-mail-auth<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>online                     2019-07-16     2019-09-15
-fedortest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-08-10
-accounts.check-activity<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com.ru       2019-08-02     2019-08-02
-www.adservice.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz      2019-07-30     2019-07-30
-www.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                2019-07-30     2019-07-30
-consent.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz            2019-07-30     2019-07-30
-dokerest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                         2019-07-12     2019-07-27
-dokertest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-07-22
-frostdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                        2019-07-15     2019-07-16
-frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                         2019-07-15     2019-07-15
-</code></pre></div><p>Some of these domains seem to be domains to test their attacks (like <em>dokertest[.]xyz</em>), but during the investigation, we discovered that <em>frostdank[.]com</em> was hosting a copy of the FrostBank website:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>check-activity.com<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>ru                2019-07-25     2020-05-05
+</span></span><span style="display:flex;"><span>mail-auth<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>online                     2019-07-16     2019-09-15
+</span></span><span style="display:flex;"><span>fedortest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-08-10
+</span></span><span style="display:flex;"><span>accounts.check-activity<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com.ru       2019-08-02     2019-08-02
+</span></span><span style="display:flex;"><span>www.adservice.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz      2019-07-30     2019-07-30
+</span></span><span style="display:flex;"><span>www.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                2019-07-30     2019-07-30
+</span></span><span style="display:flex;"><span>consent.alexandr01299<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz            2019-07-30     2019-07-30
+</span></span><span style="display:flex;"><span>dokerest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                         2019-07-12     2019-07-27
+</span></span><span style="display:flex;"><span>dokertest<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>xyz                        2019-07-12     2019-07-22
+</span></span><span style="display:flex;"><span>frostdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                        2019-07-15     2019-07-16
+</span></span><span style="display:flex;"><span>frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span>com                         2019-07-15     2019-07-15
+</span></span></code></pre></div><p>Some of these domains seem to be domains to test their attacks (like <em>dokertest[.]xyz</em>), but during the investigation, we discovered that <em>frostdank[.]com</em> was hosting a copy of the FrostBank website:</p>
 <figure>
     <img src="/media/osint/osint7.png" style="max-width:700px"/>
    
@@ -315,6 +321,15 @@ frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -339,7 +354,7 @@ frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -352,7 +367,7 @@ frosdank<span style="color:#f92672">[</span>.<span style="color:#f92672">]</span
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 

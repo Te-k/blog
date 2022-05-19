@@ -68,9 +68,8 @@ N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
       
       <guid>https://randhome.io/fr/about/</guid>
       <description>Je suis Etienne &amp;ldquo;tek&amp;rdquo; Maynier, un militant, analyste et chercheur en sécurité.
-  Je travaille actuellement comme Technologiste dans le programme sur la Technologie d&amp;rsquo;Amnesty International, plus précisément sur de l&amp;rsquo;analyse d&amp;rsquo;attaques informatiques ciblant des défendeur·se·s des droits humains. Je suis également un &amp;ldquo;research fellow&amp;rdquo; au Citizen Lab.
-Je suis membre des associations Nothing2Hide et Echap. J&amp;rsquo;étais précédemment un Mozilla Open Web Fellow entre 2016 et 2017.
-J&amp;rsquo;aime également écouter et jouer de la musique et je suis intéressé par l&amp;rsquo;éducation populaire et l&amp;rsquo;histoire et la théorie politique.</description>
+  Je travaille actuellement comme Technologiste dans le programme sur la Technologie d&amp;rsquo;Amnesty International, plus précisément sur de l&amp;rsquo;analyse d&amp;rsquo;attaques informatiques ciblant des défendeur·se·s des droits humains.
+Je suis membre actif de l&amp;rsquo;association Echap où je développe des ressources et formations pour des associatons accueillant des personnes victimes de violences conjugales. Je développe et maintiens des outils. J&amp;rsquo;étais précédemment un Mozilla Open Web Fellow entre 2016 et 2017, et &amp;ldquo;research fellow&amp;rdquo; au Citizen Lab jusqu&amp;rsquo;en Avril 2021.</description>
     </item>
     
     <item>
@@ -90,7 +89,7 @@ J&amp;rsquo;aime également écouter et jouer de la musique et je suis intéress
       
       <guid>https://randhome.io/fr/projects/</guid>
       <description>Voici une liste de projets personnels sur lesquels j&amp;rsquo;ai travaillé :
-   Dessin par Matt Dixon     Outils  Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Des scripts qui peuvent être utiles pour des analystes en sécurité  Guides  Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
+   Dessin par Matt Dixon     Outils  Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Plusieurs librairies pour faire de la threat intelligence comme pysafebrowsing ou pycrtsh Des scripts qui peuvent être utiles pour des analystes en sécurité  Guides  Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
     </item>
     
   </channel>

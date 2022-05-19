@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -277,7 +283,7 @@
 <h2 id="social-networks">Social Networks<a class="anchor" href="#social-networks">#</a></h2>
 <p>For social network, there are many tools available, but they are strongly platform dependent. Here is a short extract of interesting tools and tricks:</p>
 <ul>
-<li><strong>Twitter:</strong> the API gives you the exact creation time and tool used to publish tweets. x0rz' <a href="https://github.com/x0rz/tweets_analyzer">tweets_analyzer</a> is a great way to have an overview of the activity of an account. There are ways to find a Twitter id from an email address but they are <a href="https://booleanstrings.com/2018/05/02/how-to-find-the-twitter-id-from-an-email-address/">a bit tricky</a>.</li>
+<li><strong>Twitter:</strong> the API gives you the exact creation time and tool used to publish tweets. x0rz&rsquo; <a href="https://github.com/x0rz/tweets_analyzer">tweets_analyzer</a> is a great way to have an overview of the activity of an account. There are ways to find a Twitter id from an email address but they are <a href="https://booleanstrings.com/2018/05/02/how-to-find-the-twitter-id-from-an-email-address/">a bit tricky</a>.</li>
 <li><strong>Facebook:</strong> the best resource for Facebook investigation is <a href="https://inteltechniques.com/">Michael Bazzell&rsquo;s website</a>, especially his <a href="https://inteltechniques.com/osint/facebook.html">custom FB tool&rsquo;s page</a></li>
 <li><strong>LinkedIn:</strong> the most useful trick I have found in LinkedIn is how to find a <a href="https://inteltechniques.com/blog/2018/04/25/linkedin-profiles-by-email/">LinkedIn profile based on an email address</a>.</li>
 </ul>
@@ -287,14 +293,14 @@
 <p><strong>Internet Archive:</strong> the <a href="https://archive.org/">Internet Archive</a> is a great project that aims at saving everything published on Internet, which include crawling automatically webpages and saving their evolution into a huge database. They offer a web portal called <a href="https://web.archive.org/">Internet Archive Wayback Machine</a>, which is an amazing resource to analyze evolutions of a website. One important thing to know is that the Internet Archive is removing content on demand (they did it for instance for the <a href="https://motherboard.vice.com/en_us/article/nekzzq/wayback-machine-deleting-evidence-flexispy">Stalkerware company Flexispy</a>), so you have to save content that need to be archived somewhere else.</p>
 <p><strong>Other manual caching platforms:</strong> I really like <a href="https://archive.fo/">archive.today</a> that allows to save snapshot of webpages and look for snapshots done by other people. I mostly rely on it in my investigations. <a href="https://perma.cc/">perma.cc</a> is good but offer only 10 links per months for free accounts, the platform is mostly dedicated to libraries and universities. Their code is <a href="https://github.com/harvard-lil/perma">open-source</a> tho, so if I had to host my own caching platform, I would definitely consider using this software.</p>
 <p>Sometimes it is annoying to manually query all these platforms to check if a webpage was cached or not. I have implemeted a simple command in Harpoon to do that:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
-<span style="color:#e6db74">Google</span>: <span style="color:#66d9ef">FOUND</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>webcache<span style="color:#f92672">.</span>googleusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>search?q<span style="color:#f92672">=</span>cache<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#66d9ef">Ahttps</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>A<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fcitizenlab</span><span style="color:#f92672">.</span>ca<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F2016</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F11</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fparliament</span><span style="color:#f92672">-</span>keyboy<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">&amp;</span>num<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span>strip<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&amp;</span>vwsrc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-<span style="color:#e6db74">Yandex</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
-<span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>is: <span style="color:#66d9ef">TIME</span> <span style="color:#66d9ef">OUT</span>
-<span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>org: <span style="color:#66d9ef">FOUND</span>
-<span style="color:#f92672">-</span><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">26</span>: <span style="color:#e6db74">http</span>:<span style="color:#e6db74">//</span>web<span style="color:#f92672">.</span>archive<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>web<span style="color:#f92672">/</span><span style="color:#ae81ff">20181202140726</span><span style="color:#f92672">/</span><span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
-<span style="color:#e6db74">Bing</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
-</code></pre></div><p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> harpoon cache <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">Google</span>: <span style="color:#66d9ef">FOUND</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>webcache<span style="color:#f92672">.</span>googleusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>search?q<span style="color:#f92672">=</span>cache<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#66d9ef">Ahttps</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>A<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fcitizenlab</span><span style="color:#f92672">.</span>ca<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F2016</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">F11</span><span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">Fparliament</span><span style="color:#f92672">-</span>keyboy<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>F<span style="color:#f92672">&amp;</span>num<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span>strip<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&amp;</span>vwsrc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">Yandex</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>is: <span style="color:#66d9ef">TIME</span> <span style="color:#66d9ef">OUT</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Archive</span><span style="color:#f92672">.</span>org: <span style="color:#66d9ef">FOUND</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">26</span>: <span style="color:#e6db74">http</span>:<span style="color:#e6db74">//</span>web<span style="color:#f92672">.</span>archive<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>web<span style="color:#f92672">/</span><span style="color:#ae81ff">20181202140726</span><span style="color:#f92672">/</span><span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>citizenlab<span style="color:#f92672">.</span>ca<span style="color:#f92672">/</span><span style="color:#ae81ff">2016</span><span style="color:#f92672">/</span><span style="color:#ae81ff">11</span><span style="color:#f92672">/</span>parliament<span style="color:#f92672">-</span>keyboy<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">Bing</span>: <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span>
+</span></span></code></pre></div><p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
 <h2 id="capturing-evidences">Capturing Evidences<a class="anchor" href="#capturing-evidences">#</a></h2>
 <p>Which bring us to the next point: capturing evidences. Capturing evidences is a key part of any investigation, especially if it is likely gonna be a long one. You will definitely be lost into the amount of data you found several times, web pages will change, Twitter accounts will disappear etc.</p>
 <figure class="center"><img src="/media/osint/save.jpg" width="400"/>
@@ -392,6 +398,15 @@
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -416,7 +431,7 @@
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -429,7 +444,7 @@
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 

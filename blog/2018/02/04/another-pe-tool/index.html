@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -144,10 +150,10 @@
 <p>So I wrote a CLI tool plainly called PE, it is written in python 3 and published on <a href="https://github.com/Te-k/pe">github</a> under GPLv3. It is using the good <a href="https://github.com/erocarrera/pefile">pefile</a> and has a plugin architecture so it is easy to write new commands.</p>
 <h2 id="installation">Installation<a class="anchor" href="#installation">#</a></h2>
 <p>The tool is not published under PyPI (yet?), but it is packaged for pip, so pretty easy to install :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:Te-k/pe.git
-cd pe
-pip install .
-</code></pre></div><h2 id="plugins">Plugins<a class="anchor" href="#plugins">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git@github.com:Te-k/pe.git
+</span></span><span style="display:flex;"><span>cd pe
+</span></span><span style="display:flex;"><span>pip install .
+</span></span></code></pre></div><h2 id="plugins">Plugins<a class="anchor" href="#plugins">#</a></h2>
 <p>For now, there are 7 different commands:</p>
 <ul>
 <li><strong>info</strong> : Extract info from the PE file</li>
@@ -158,87 +164,87 @@ pip install .
 <li><strong>shell</strong> : Launch ipython shell to analyze the PE file</li>
 </ul>
 <h2 id="example">Example<a class="anchor" href="#example">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe info playlib.exe
-Metadata
-<span style="color:#f92672">================================================================================</span>
-MD5:           0963bee29e797ea7481be5f18f354029
-SHA1:          2ab43fc90a1928684b8590375643da52285b8625
-SHA256:        f5967a8f3db4f4f33e89976e39914fceff46401bd2243b29162e1ddeb61f8dd3
-Imphash:       25c0914e1e7dc7c3bb957d88e787a155
-Size:          <span style="color:#ae81ff">6445256</span> bytes
-Type:          PE32 executable <span style="color:#f92672">(</span>GUI<span style="color:#f92672">)</span> Intel 80386, <span style="color:#66d9ef">for</span> MS Windows
-Compile Time:  2013-12-23 11:44:26 <span style="color:#f92672">(</span>UTC - 0x52B8221A<span style="color:#f92672">)</span>
-Entry point:   0x40666e <span style="color:#f92672">(</span>section .text<span style="color:#f92672">)</span>
-TLS Callback: 0x446bb0 <span style="color:#f92672">(</span>section .enigma2<span style="color:#f92672">)</span>
-
-Sections
-<span style="color:#f92672">================================================================================</span>
-Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
-.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
-.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
-.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
-.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
-.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
-.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
-.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
-
-
-Imports
-<span style="color:#f92672">================================================================================</span>
-kernel32.dll
-	0x44b168 DeleteCriticalSection
-	0x44b16c LeaveCriticalSection
-	0x44b170 EnterCriticalSection
-	0x44b174 InitializeCriticalSection
-	0x44b178 VirtualFree
-	0x44b17c VirtualAlloc
-	0x44b180 LocalFree
-<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>
-
-
-Resources:
-<span style="color:#f92672">================================================================================</span>
-Id           Name    Size      Lang           Sublang           Type           MD5
-24-1-1033    None    <span style="color:#ae81ff">346</span> B     LANG_ENGLISH   SUBLANG_ENGLISH_US ASCII text, with CRLF line terminators 24d3b502e1846356b0263f945ddd5529
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe check playlib.exe
-Running checks on playlib.exe:
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Abnormal section names: .enigma1 .enigma2
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Suspicious section<span style="color:#960050;background-color:#1e0010">&#39;</span>s entropy: .enigma1 - 7.931
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known malicious sections
-	-.enigma1: Enigma Virtual Box protector
-	-.enigma2: Enigma Virtual Box protector
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> <span style="color:#ae81ff">200</span> extra bytes in the file
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> TLS Callback: 0x446bb0
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PE header in sections .enigma2
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known suspicious import hash: Enigma VirtualBox
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pe checksize playlib.exe
-Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
-.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
-.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
-.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
-.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
-.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
-.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
-.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
-
-<span style="color:#ae81ff">200</span> bytes of extra data <span style="color:#f92672">(</span><span style="color:#ae81ff">6445256</span> <span style="color:#66d9ef">while</span> it should be 6445056<span style="color:#f92672">)</span>
-</code></pre></div><h2 id="creating-a-new-command">Creating a new command<a class="anchor" href="#creating-a-new-command">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pe info playlib.exe
+</span></span><span style="display:flex;"><span>Metadata
+</span></span><span style="display:flex;"><span><span style="color:#f92672">================================================================================</span>
+</span></span><span style="display:flex;"><span>MD5:           0963bee29e797ea7481be5f18f354029
+</span></span><span style="display:flex;"><span>SHA1:          2ab43fc90a1928684b8590375643da52285b8625
+</span></span><span style="display:flex;"><span>SHA256:        f5967a8f3db4f4f33e89976e39914fceff46401bd2243b29162e1ddeb61f8dd3
+</span></span><span style="display:flex;"><span>Imphash:       25c0914e1e7dc7c3bb957d88e787a155
+</span></span><span style="display:flex;"><span>Size:          <span style="color:#ae81ff">6445256</span> bytes
+</span></span><span style="display:flex;"><span>Type:          PE32 executable <span style="color:#f92672">(</span>GUI<span style="color:#f92672">)</span> Intel 80386, <span style="color:#66d9ef">for</span> MS Windows
+</span></span><span style="display:flex;"><span>Compile Time:  2013-12-23 11:44:26 <span style="color:#f92672">(</span>UTC - 0x52B8221A<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Entry point:   0x40666e <span style="color:#f92672">(</span>section .text<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>TLS Callback: 0x446bb0 <span style="color:#f92672">(</span>section .enigma2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sections
+</span></span><span style="display:flex;"><span><span style="color:#f92672">================================================================================</span>
+</span></span><span style="display:flex;"><span>Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
+</span></span><span style="display:flex;"><span>.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
+</span></span><span style="display:flex;"><span>.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
+</span></span><span style="display:flex;"><span>.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
+</span></span><span style="display:flex;"><span>.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
+</span></span><span style="display:flex;"><span>.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
+</span></span><span style="display:flex;"><span>.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
+</span></span><span style="display:flex;"><span>.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Imports
+</span></span><span style="display:flex;"><span><span style="color:#f92672">================================================================================</span>
+</span></span><span style="display:flex;"><span>kernel32.dll
+</span></span><span style="display:flex;"><span>	0x44b168 DeleteCriticalSection
+</span></span><span style="display:flex;"><span>	0x44b16c LeaveCriticalSection
+</span></span><span style="display:flex;"><span>	0x44b170 EnterCriticalSection
+</span></span><span style="display:flex;"><span>	0x44b174 InitializeCriticalSection
+</span></span><span style="display:flex;"><span>	0x44b178 VirtualFree
+</span></span><span style="display:flex;"><span>	0x44b17c VirtualAlloc
+</span></span><span style="display:flex;"><span>	0x44b180 LocalFree
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Resources:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">================================================================================</span>
+</span></span><span style="display:flex;"><span>Id           Name    Size      Lang           Sublang           Type           MD5
+</span></span><span style="display:flex;"><span>24-1-1033    None    <span style="color:#ae81ff">346</span> B     LANG_ENGLISH   SUBLANG_ENGLISH_US ASCII text, with CRLF line terminators 24d3b502e1846356b0263f945ddd5529
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pe check playlib.exe
+</span></span><span style="display:flex;"><span>Running checks on playlib.exe:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Abnormal section names: .enigma1 .enigma2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Suspicious section<span style="color:#960050;background-color:#1e0010">&#39;</span>s entropy: .enigma1 - 7.931
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known malicious sections
+</span></span><span style="display:flex;"><span>	-.enigma1: Enigma Virtual Box protector
+</span></span><span style="display:flex;"><span>	-.enigma2: Enigma Virtual Box protector
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> <span style="color:#ae81ff">200</span> extra bytes in the file
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> TLS Callback: 0x446bb0
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> PE header in sections .enigma2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Known suspicious import hash: Enigma VirtualBox
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pe checksize playlib.exe
+</span></span><span style="display:flex;"><span>Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
+</span></span><span style="display:flex;"><span>.text      0x6d11    0x1000    0x400     0x6e00    6.0193   5eaee28e37a09d2102eb51e78b45b0c1
+</span></span><span style="display:flex;"><span>.rdata     0x8602    0x8000    0x7200    0x8800    5.5164   21bdbc2bf27fd551101d72b710e7f597
+</span></span><span style="display:flex;"><span>.data      0x8ac     0x11000   0xfa00    0x400     3.7505   9279c174353928a592cd4a7e75ed6b3b
+</span></span><span style="display:flex;"><span>.rsrc      0x1b4     0x12000   0xfe00    0x200     5.0920   81ed975a2d7b4836ff8515ef97ac2232
+</span></span><span style="display:flex;"><span>.reloc     0x1730    0x13000   0x10000   0x1800    6.2184   ce4be3ea2acc52c8fbefcde69e516b47
+</span></span><span style="display:flex;"><span>.enigma1   0x1000    0x15000   0x11800   0x5d4000  7.9314   a7a0284d8da4c85adbc23b8c600fe15f
+</span></span><span style="display:flex;"><span>.enigma2   0x40000   0x16000   0x5e5800  0x40000   6.0038   9314fd6d5c987f829f9f84d4acad0812
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span> bytes of extra data <span style="color:#f92672">(</span><span style="color:#ae81ff">6445256</span> <span style="color:#66d9ef">while</span> it should be 6445056<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h2 id="creating-a-new-command">Creating a new command<a class="anchor" href="#creating-a-new-command">#</a></h2>
 <p>As it is based on a plugin model, it is pretty easy to extend with new commands. You need to create a new file in pe/plugin having the following model :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#! /usr/bin/env python</span>
-<span style="color:#f92672">from</span> pe.plugins.base <span style="color:#f92672">import</span> Plugin
-
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PluginLambda</span>(Plugin):
-    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lambda&#34;</span>
-    description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Description of the plugin here&#34;</span>
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_arguments</span>(self, parser):
-	<span style="color:#75715e"># Add argparse arguments</span>
-	parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;INFORMATION&#39;</span>)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, args, pe, data):
-	<span style="color:#75715e"># Code here</span>
-</code></pre></div><p>Feel free to open <a href="https://github.com/Te-k/pe/issues">issues</a> and propose <a href="https://github.com/Te-k/pe/pulls">Pull Requests</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#! /usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pe.plugins.base <span style="color:#f92672">import</span> Plugin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PluginLambda</span>(Plugin):
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lambda&#34;</span>
+</span></span><span style="display:flex;"><span>    description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Description of the plugin here&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_arguments</span>(self, parser):
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Add argparse arguments</span>
+</span></span><span style="display:flex;"><span>	parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;INFORMATION&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, args, pe, data):
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Code here</span>
+</span></span></code></pre></div><p>Feel free to open <a href="https://github.com/Te-k/pe/issues">issues</a> and propose <a href="https://github.com/Te-k/pe/pulls">Pull Requests</a>.</p>
 
 
               
@@ -297,6 +303,15 @@ Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -321,7 +336,7 @@ Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -334,7 +349,7 @@ Name       VirtSize  VirtAddr  RawSize   RawAddr   Entropy  md5
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 

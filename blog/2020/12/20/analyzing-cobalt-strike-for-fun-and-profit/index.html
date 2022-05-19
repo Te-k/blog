@@ -79,10 +79,12 @@
       <li>
           
           
-        <a  href="/">home</a>
+          
+        <a  class="active" href="/">home</a>
       </li>
     
       <li>
+          
           
           
         <a  class="active" href="/post/">blog</a>
@@ -91,10 +93,12 @@
       <li>
           
           
+          
         <a  href="/projects/">projects</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/resources/">resources</a>
@@ -103,10 +107,12 @@
       <li>
           
           
+          
         <a  href="/about/">about</a>
       </li>
     
       <li>
+          
           
           
         <a  href="/contact/">contact</a>
@@ -165,49 +171,49 @@ JARM: 07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1
 </code></pre><p>(This JARM signature is actually a signature of the Java Web server and specific to the JAVA 11 stack, so it includes other tools not related to Cobalt Strike (like Burp Suite) and does not include Cobalt Strike using different Java versions. Cobalt Strike recently wrote <a href="https://blog.cobaltstrike.com/2020/12/08/a-red-teamer-plays-with-jarm/">a blog post about this question</a>.)</p>
 <h2 id="getting-a-cobalt-strike-payload">Getting a Cobalt Strike Payload<a class="anchor" href="#getting-a-cobalt-strike-payload">#</a></h2>
 <p>Cobalt Strike uses a checksum of the url using an algorithm called checksum8 to serve the 32b or 64b version of the payload (in the same way as the <a href="https://github.com/rapid7/metasploit-framework/blob/85a9accbeec063f52406621f124a7f82ad63dcba/lib/rex/payloads/meterpreter/uri_checksum.rb">metasploit server</a>). The decompiled code of Cobalt Strike has been published several times on GitHub or elsewhere, it provides information on this checksum:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">checksum8</span><span style="color:#f92672">(</span>String text<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 4<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> 0L<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">long</span> sum <span style="color:#f92672">=</span> 0L<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-        sum <span style="color:#f92672">+=</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>x<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">return</span> sum <span style="color:#f92672">%</span> 256L<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isStager</span><span style="color:#f92672">(</span>String uri<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>checksum8<span style="color:#f92672">(</span>uri<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 92L<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isStagerX64</span><span style="color:#f92672">(</span>String uri<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>checksum8<span style="color:#f92672">(</span>uri<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 93L <span style="color:#f92672">&amp;&amp;</span> uri<span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/[A-Za-z0-9]{4}&#34;</span><span style="color:#f92672">));</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>We can easily bruteforce the algorithm to find urls that match it in python:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
-<span style="color:#f92672">import</span> string
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">checksum8</span>(strr):
-    j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">if</span> len(strr) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>:
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-    strr <span style="color:#f92672">=</span> strr<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-    <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> strr:
-        j <span style="color:#f92672">+=</span> ord(c)
-    <span style="color:#66d9ef">return</span> j <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>
-
-chars <span style="color:#f92672">=</span> string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits
-to_attempt <span style="color:#f92672">=</span> product(chars, repeat<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
-<span style="color:#66d9ef">for</span> attempt <span style="color:#f92672">in</span> to_attempt:
-    word <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(attempt)
-    r <span style="color:#f92672">=</span> checksum8(word)
-    <span style="color:#66d9ef">if</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">92</span>:
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 32b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
-    <span style="color:#66d9ef">elif</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">93</span>:
-        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 64b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
-</code></pre></div><pre tabindex="0"><code>$ python bf_checksum8.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">checksum8</span><span style="color:#f92672">(</span>String text<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 4<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 0L<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> sum <span style="color:#f92672">=</span> 0L<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> x <span style="color:#f92672">&lt;</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> x<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        sum <span style="color:#f92672">+=</span> text<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>x<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sum <span style="color:#f92672">%</span> 256L<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isStager</span><span style="color:#f92672">(</span>String uri<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>checksum8<span style="color:#f92672">(</span>uri<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 92L<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isStagerX64</span><span style="color:#f92672">(</span>String uri<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>checksum8<span style="color:#f92672">(</span>uri<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 93L <span style="color:#f92672">&amp;&amp;</span> uri<span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/[A-Za-z0-9]{4}&#34;</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>We can easily bruteforce the algorithm to find urls that match it in python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">checksum8</span>(strr):
+</span></span><span style="display:flex;"><span>    j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(strr) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    strr <span style="color:#f92672">=</span> strr<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> strr:
+</span></span><span style="display:flex;"><span>        j <span style="color:#f92672">+=</span> ord(c)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> j <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chars <span style="color:#f92672">=</span> string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits
+</span></span><span style="display:flex;"><span>to_attempt <span style="color:#f92672">=</span> product(chars, repeat<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> attempt <span style="color:#f92672">in</span> to_attempt:
+</span></span><span style="display:flex;"><span>    word <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(attempt)
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> checksum8(word)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">92</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 32b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">93</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:30}</span><span style="color:#e6db74"> - 64b checksum&#34;</span><span style="color:#f92672">.</span>format(word))
+</span></span></code></pre></div><pre tabindex="0"><code>$ python bf_checksum8.py
 aaa9                           - 32b checksum
 aab8                           - 32b checksum
 aab9                           - 64b checksum
@@ -220,19 +226,19 @@ aad7                           - 64b checksum
 <pre tabindex="0"><code>$ wget --no-check-certificate https://103.39.18.184/aaa9
 --2020-12-19 17:44:32--  https://103.39.18.184/aaa9
 Connecting to 103.39.18.184:443... connected.
-WARNING: cannot verify 103.39.18.184's certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
+WARNING: cannot verify 103.39.18.184&#39;s certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
   Self-signed certificate encountered.
-    WARNING: certificate common name ‘gmail.com’ doesn't match requested host name ‘103.39.18.184’.
+    WARNING: certificate common name ‘gmail.com’ doesn&#39;t match requested host name ‘103.39.18.184’.
 HTTP request sent, awaiting response... 404 Not Found
 2020-12-19 17:44:33 ERROR 404: Not Found.
 
 
-$ wget --no-check-certificate --user-agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&quot; https://103.39.18.184/aaa9
+$ wget --no-check-certificate --user-agent=&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#34; https://103.39.18.184/aaa9
 --2020-12-19 17:44:52--  https://103.39.18.184/aaa9
 Connecting to 103.39.18.184:443... connected.
-WARNING: cannot verify 103.39.18.184's certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
+WARNING: cannot verify 103.39.18.184&#39;s certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
   Self-signed certificate encountered.
-    WARNING: certificate common name ‘gmail.com’ doesn't match requested host name ‘103.39.18.184’.
+    WARNING: certificate common name ‘gmail.com’ doesn&#39;t match requested host name ‘103.39.18.184’.
 HTTP request sent, awaiting response... 200 OK
 Length: 208980 (204K) [application/octet-stream]
 Saving to: ‘aaa9’
@@ -242,12 +248,12 @@ aaa9                    100%[============================&gt;] 204.08K   655KB/s
 2020-12-19 17:44:53 (655 KB/s) - ‘aaa9’ saved [208980/208980]
 
 
-$ wget --no-check-certificate --user-agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&quot; https://103.39.18.184/aab9
+$ wget --no-check-certificate --user-agent=&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36&#34; https://103.39.18.184/aab9
 --2020-12-19 17:44:58--  https://103.39.18.184/aab9
 Connecting to 103.39.18.184:443... connected.
-WARNING: cannot verify 103.39.18.184's certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
+WARNING: cannot verify 103.39.18.184&#39;s certificate, issued by ‘CN=gmail.com,OU=Google Mail,O=Google GMail,L=Mountain View,ST=CA,C=US’:
   Self-signed certificate encountered.
-    WARNING: certificate common name ‘gmail.com’ doesn't match requested host name ‘103.39.18.184’.
+    WARNING: certificate common name ‘gmail.com’ doesn&#39;t match requested host name ‘103.39.18.184’.
 HTTP request sent, awaiting response... 200 OK
 Length: 260679 (255K) [application/octet-stream]
 Saving to: ‘aab9’
@@ -274,31 +280,31 @@ aab9:     data
 
 <p>The first JMP goes to a call right before the encryption key and encrypted beacon. The call goes back to the shellcode and the next <code>POP EDX</code> gets the address of the key. The code in <code>loc_f</code> gets the key in EBX, the length of the payload in EAX, and store on the address of the final beacon on the stack. The loop in <code>loc_1d</code> goes through the beacon and xor it with the key.</p>
 <p>We can easily reproduce it in python, the challenge is to find the base address. Here the <code>loc_47</code> is the address of the call just before the key, length, and encrypted payload, so the base address is 0x47 + 5 (the length of the call instruction). The base address changes with different payloads but it is possible to find it easily by searching the last call instruction.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> struct
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">xor</span>(a, b):
-    <span style="color:#66d9ef">return</span> bytearray([a[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">1</span>], a[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">2</span>], a[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">3</span>]])
-
-<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;aaa9&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
-    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
-
-ba <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x4c</span>
-key <span style="color:#f92672">=</span> data[ba:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]
-print(<span style="color:#e6db74">&#34;Key : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key))
-size <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;I&#34;</span>, xor(key, data[ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>]))[<span style="color:#ae81ff">0</span>]
-print(<span style="color:#e6db74">&#34;Size : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(size))
-
-res <span style="color:#f92672">=</span> bytearray()
-i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>
-<span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> (len(data) <span style="color:#f92672">-</span> ba <span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span>):
-    d <span style="color:#f92672">=</span> data[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]
-    res <span style="color:#f92672">+=</span> xor(d, key)
-    key <span style="color:#f92672">=</span> d
-    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>
-
-<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;a.out&#34;</span>, <span style="color:#e6db74">&#34;wb+&#34;</span>) <span style="color:#66d9ef">as</span> f:
-    f<span style="color:#f92672">.</span>write(res)
-</code></pre></div><p>We get a PE file : <a href="https://www.virustotal.com/gui/file/3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab/detection">3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">xor</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> bytearray([a[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">1</span>], a[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">2</span>], a[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">^</span>b[<span style="color:#ae81ff">3</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;aaa9&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ba <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x4c</span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> data[ba:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Key : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key))
+</span></span><span style="display:flex;"><span>size <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;I&#34;</span>, xor(key, data[ba<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>:ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>]))[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Size : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(size))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> bytearray()
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> ba<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> (len(data) <span style="color:#f92672">-</span> ba <span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span>):
+</span></span><span style="display:flex;"><span>    d <span style="color:#f92672">=</span> data[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">+=</span> xor(d, key)
+</span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> d
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;a.out&#34;</span>, <span style="color:#e6db74">&#34;wb+&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    f<span style="color:#f92672">.</span>write(res)
+</span></span></code></pre></div><p>We get a PE file : <a href="https://www.virustotal.com/gui/file/3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab/detection">3c9a06b2477694919b1c77d3288984cb793a47dd328ef39e15132cd0cfb593ab</a>.</p>
 <p>It is surprising to see a PE file directly there because it is directly executed by the last call. The trick is that the PE file is actually modified to be at the same time a valid PE file and executable directly (something Cobalt Strike calls <a href="https://blog.cobaltstrike.com/2016/06/15/what-is-a-stageless-payload-artifact/">raw stageless payload artifact</a>). We see here the MZ header being executed:</p>
 <figure>
     <img src="/media/cobaltstrike/peheader.png" style="max-width:600px"/>
@@ -535,6 +541,15 @@ x86_64: Payload not found
   
     
     
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
       <a class="social-icons__icon" title="Email"
          style="background-image: url(/images/social/email.svg)"
          href="mailto:tek@randhome.io"
@@ -559,7 +574,7 @@ x86_64: Payload not found
   
 </div>
 
-            <p>© 2021</p>
+            <p>© 2022</p>
           </footer>
           </div>
       </div>
@@ -572,7 +587,7 @@ x86_64: Payload not found
    
 
   
-  <script src="/js/index.min.575dda8d49ee02639942c63564273e6da972ab531dda26a08800bdcb477cbd7f.js" integrity="sha256-V13ajUnuAmOZQsY1ZCc&#43;balyq1Md2iagiAC9y0d8vX8=" crossorigin="anonymous"></script>
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
   
   
 
