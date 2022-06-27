@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT" />
+  <meta name="twitter:description" content=""
+  />
+  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
+  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/fr\/blog\/2022\/06\/27\/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint\/",
+      "name": "Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l\u0027OSINT",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+          
+        <a  class="active" href="/fr/">accueil</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/fr/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/fr/projects/">projets</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/fr/resources/">ressources</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/fr/about/">à propos</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/fr/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+            <a href="/en" lang="en" class="no-translation">EN</a>
+        
+        
+        
+        FR
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</h1>
+            <time datetime="2022-06-27 01:00:00 &#43;0100 &#43;0100" class="post__date">27 Jun 2022   &middot; 10 minutes de lecture </time>
+          </header>
+          <article class="post__content">
+              
+<p>Il y a quelques mois, <a href="https://www.mediapart.fr/journal/france/080222/jean-castex-une-passion-immoderee-pour-les-jets-de-la-republique">Médiapart révélait</a> que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&rsquo;opposé des <a href="https://www.legifrance.gouv.fr/circulaire/id/45080?tab_selection=circ&amp;searchField=ALL&amp;query=*&amp;page=1&amp;init=true&amp;dateSignature">circulaires</a> rappelant l&rsquo;engagement de l&rsquo;état en faveur de l&rsquo;écologie, signées par Jean Castex lui-même.</p>
+<figure>
+    <img src="/media/castex/carte.png" style="max-width:700px"/>
+   
+    <center>
+        <small><i>
+        Carte des vols réalisés par Jean Castex (Source: Médiapart)
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Cette enquête a été réalisée par Médiapart en se basant sur les données de vol des escadrons de transport disponibles sur les plateformes <a href="https://www.radarbox.com/">Radarbox</a> et <a href="https://fr.flightaware.com/">FlightAware</a>. Il s&rsquo;agit donc d&rsquo;une enquête alliant des outils d&rsquo;OSINT à du journalisme plus classique comme nous en voyons de plus en plus avec plaisir <a href="https://www.mediapart.fr/journal/france/081221/neonazis-dans-l-armee-l-insupportable-laisser-faire-du-ministere">chez Médiapart</a> ou dans <a href="https://www.lemonde.fr/enquetes-video/">le Monde</a>. Cela nous fournit un excellent exercice d&rsquo;OSINT, partons donc à la recherche des vols de Jean Castex.</p>
+<h2 id="quels-avions-le-gouvernement-français-utilise-t-il">Quels avions le gouvernement français utilise-t-il?<a class="anchor" href="#quels-avions-le-gouvernement-français-utilise-t-il">#</a></h2>
+<p>Wikipedia fournit une liste assez exhaustive des <a href="https://fr.wikipedia.org/wiki/Transport_a%C3%A9rien_des_chefs_d%27%C3%89tat">transports aériens des chefs d&rsquo;État</a>, voici ce qu&rsquo;on y lit pour la France :</p>
+<p><em>En France, c&rsquo;est l&rsquo;escadron de transport 60, anciennement escadron de transport, d&rsquo;entraînement et de calibration (ETEC 65), unité de l&rsquo;Armée de l&rsquo;air, qui est chargé du transport du président de la République, du Premier ministre et des autres membres du gouvernement. Cette unité a remplacé le GLAM, Groupe de liaisons aériennes ministérielles, dissout en 1995.</em></p>
+<p><em>Depuis fin 2011, l&rsquo;escadron dispose de :</em></p>
+<ul>
+<li><em>1 Airbus A330-200 (F-RARF) ;</em></li>
+<li><em>2 Falcon 7X (F-RAFA et F-FAFB) ;</em></li>
+<li><em>2 Falcon 2000 (F-RAFC et F-FAFD);</em></li>
+<li><em>2 Falcon 900 (F-RAFP et F-RAFQ).</em></li>
+<li><em>Trois hélicoptères Super Puma (F-RAFU, F-RAFY et F-RAFZ).</em></li>
+</ul>
+<p>Nous avons donc une première liste de 7 avions avec leur code d&rsquo;enregistrement.</p>
+<figure>
+    <img src="/media/castex/FRAF.jpg" style="max-width:700px"/>
+   
+    <center>
+        <small><i>
+        Photo de l&#39;avion présidentiel (Source: Wikipedia)
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<h2 id="identifier-les-avions">Identifier les avions<a class="anchor" href="#identifier-les-avions">#</a></h2>
+<p>Les avions sont référencés à l&rsquo;aide de deux identifiants :</p>
+<ul>
+<li>L&rsquo;identifiant d&rsquo;enregistrement de l&rsquo;appareil qui est marqué directement sur l&rsquo;avion. Il s&rsquo;agit d&rsquo;une série alphanumérique dont la première lettre indique <a href="https://en.wikipedia.org/wiki/List_of_aircraft_registration_prefixes">le pays d&rsquo;enregistrement</a> (comme <code>F-RARF</code> ici).</li>
+<li>Un code hexadécimal de 24 bits donné par l&rsquo;Organisation de l’aviation civile internationale (OACI, ICAO en anglais). C&rsquo;est ce code qui est utilisé dans les transmissions aériennes.</li>
+</ul>
+<p>Les vols possèdent quant à eux un code unique utilisé notamment pour les identifier dans les aéroports.</p>
+<p>Plusieurs bases de données internationales d&rsquo;avions existent, elles sont souvent incomplètes notamment sur les avions militaires. Voici une liste non-exhaustive :</p>
+<ul>
+<li><a href="http://www.airframes.org/">Airframes</a></li>
+<li><a href="https://aerotransport.org/">Aerotransport</a></li>
+<li><a href="https://opensky-network.org/">OpenSkyNetwork</a></li>
+<li><a href="http://www.antonakis.co.uk/acars.php?page=registers">Spotters</a></li>
+</ul>
+<p>À ces bases de données s&rsquo;ajoutent des registres nationaux, qui parfois mettent ces informations à disposition publiquement. Par exemple pour les pays suivants :</p>
+<ul>
+<li>France – <a href="https://immat.aviation-civile.gouv.fr/">Direction Générale de l’Aviation Civile</a></li>
+<li>US – <a href="https://registry.faa.gov/aircraftinquiry/">Federal Aviation Administration</a></li>
+<li>Canada – <a href="https://open.canada.ca/data/en/dataset/935cf4d3-7e8d-4e9b-8dfd-c02643d4f782">Civil Aircraft Register Database</a></li>
+<li>Australia – <a href="http://www.casa.gov.au/aircraft-register">Civil Aviation Safety Authority</a></li>
+<li>United Kingdom – <a href="https://siteapps.caa.co.uk/g-info/">Civil Aviation Authority</a></li>
+</ul>
+<p>De maniète assez étonnante, la base de données publique de la DGAC (accessible en <a href="https://immat.aviation-civile.gouv.fr/immat/servlet/static/upload/export.csv">CSV</a> également) ne contient aucun des avions gouvernementaux. Il faut donc chercher dans d&rsquo;autres bases.</p>
+<p>Aerotransport contient bien certains de ces avions dans la base de données, mais sans fournir l&rsquo;identifiant ICAO qui nous intéresse. Il fournit par contre des images pour certains de ces avions identifiés sur le site <a href="https://www.airliners.net/">airliners.net</a>, comme par exemple <a href="https://www.airliners.net/photo/France-Air-Force/Airbus-A330-223/5923389/L">ici pour l&rsquo;avion présidentiel</a></p>
+<p>Le site <a href="https://opensky-network.org/">OpenSky Network</a> nous fournit lui des informations plus complètes sur ces avions, avec notamment leur numéro ICAO. Par exemple <a href="https://opensky-network.org/aircraft-profile?icao24=3b76ae">pour l&rsquo;avion présidentiel</a> :</p>
+<figure>
+    <img src="/media/castex/frarf.png" style="max-width:700px"/>
+   
+    <center>
+        <small><i>
+        Données sur l&#39;avion F-RAF dans la base de données OpenSky
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>On obtient donc la liste suivante:</p>
+<table>
+<thead>
+<tr>
+<th>Avion</th>
+<th>Enregistrement</th>
+<th>Code ICAO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Airbus A330-200</td>
+<td>F-RARF</td>
+<td>3b76ae</td>
+</tr>
+<tr>
+<td>Falcon 7X</td>
+<td>F-RAFA</td>
+<td>3b770d</td>
+</tr>
+<tr>
+<td>Falcon 7X</td>
+<td>F-FAFB</td>
+<td>3b76b3</td>
+</tr>
+<tr>
+<td>Falcon 2000</td>
+<td>F-RAFC</td>
+<td>3b76a5</td>
+</tr>
+<tr>
+<td>Falcon 2000</td>
+<td>F-RAFD</td>
+<td>3b76a4</td>
+</tr>
+<tr>
+<td>Falcon 900</td>
+<td>F-RAFP</td>
+<td>3b77e5</td>
+</tr>
+<tr>
+<td>Falcon 900</td>
+<td>F-RAFQ</td>
+<td>3b77e4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-des-vols">Identifier des vols<a class="anchor" href="#identifier-des-vols">#</a></h2>
+<p>Lors des vols, les avions émettent leur position et identifiant via un protocole appelé <a href="https://en.wikipedia.org/wiki/Automatic_dependent_surveillance_%E2%80%93_broadcast">ADS-B</a> afin notamment d&rsquo;éviter les collisions entre avions. Cette émission ayant une longue portée, il est possible de la capter avec des systèmes relativement simples. Des systèmes de ce type ont été déployés par des amateurs ou professionnels dans le monde, et il existe plusieurs bases de données répertoriant la position des avions, parfois en temps réel.</p>
+<p>Pour chacune de ces bases de données, il faut bien regarder :</p>
+<ul>
+<li>Leur accès : est-ce payant ? Faut-il déployer un système de captage ADS-B et leur envoyer les données pour y avoir accès ? La plupart des bases fournissent des données live assez facilement, mais il est plus compliqué (ou plus cher) d&rsquo;avoir accès aux données historiques.</li>
+<li>Leur couverture géographique : selon les capteurs disponibles, elle sera plus ou moins grande dans certaines régions du monde.</li>
+<li>Le filtrage : la plupart des sites filtrent automatiquement les avions militaires, et certains acceptent les requêtes pour supprimer des données de certains avions.</li>
+</ul>
+<p>Voici une liste non exhaustive de ces bases de données:</p>
+<ul>
+<li><a href="https://www.flightradar24.com/">Flightradar24</a> : probablement le site le plus connu, il s&rsquo;agit d&rsquo;une plateforme commerciale, qui fournit un accès payant aux données (35€ / ans pour avoir accès à un an d&rsquo;historique de données). Elle n&rsquo;enregistre pas les positions des avions militaires et accepte de supprimer les données des avions sur demande.</li>
+<li><a href="https://flightaware.com/">FlightAware</a> : une autre plateforme commerciale qui a une très bonne couverture ADS-B</li>
+<li><a href="https://www.adsbexchange.com/">ADS-B Exchange</a> : une plateforme communautaire qui ne filtre aucune donnée, y compris les avions militaires. Elle est une des sources les plus intéressante pour les journalistes, qui peuvent demander <a href="https://www.adsbexchange.com/contact/">un accès privilégié</a> à la base de données pour des besoins d&rsquo;investigations.</li>
+<li><a href="https://opensky-network.org/">OpenSky Network</a> est une association à but non lucratif basée en Suisse qui possède une base intéressante.</li>
+<li><a href="https://www.radarbox.com/">RadarBox</a> est une entreprise qui se base sur un réseau de bénévoles.</li>
+</ul>
+<h2 id="les-vols-de-jean-castex">Les vols de Jean Castex<a class="anchor" href="#les-vols-de-jean-castex">#</a></h2>
+<p>Médiapart mentionne plusieurs dizaines de vols que l&rsquo;on peut <a href="https://www.mediapart.fr/journal/france/080222/jean-castex-une-passion-immoderee-pour-les-jets-de-la-republique/prolonger">retrouver dans l&rsquo;annexe de l&rsquo;article</a>. Nous allons nous concentrer sur deux vols récents :</p>
+<ul>
+<li>Le 4 février 2022, un avion fait le trajet à vide depuis Paris pour venir chercher le Premier ministre à Dunkerque (où il s’est rendu en train) et le ramener à Paris.</li>
+<li>Le 21 janvier 2022, A/R à Nantes (pour la pose de la première pierre du CHU de Nantes).</li>
+</ul>
+<p>Médiapart indique que ces vols se sont fait avec un Falcon 7X, donc probablement F-RAFA ou F-RAFB (pour l&rsquo;anecdote, ces avions ont été achetés en 2000 par Jacques Chirac et Lionel Jospin pour rajeunir la flotte officielle, et ont été surnommés officieusement <a href="https://fr.wikipedia.org/wiki/Cotam_Deux">Chirac et Jospin</a> par les militaires chargés de les mettre en œuvre).</p>
+<figure>
+    <img src="/media/castex/FRAFA.jpg" style="max-width:600px"/>
+   
+    <center>
+        <small><i>
+        Photo de l&#39;avion F-RAFA (Source: Wikipedia)
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Médiapart a utilisé les bases de données <a href="">FlightAware</a> et <a href="https://www.radarbox.com/">RadarBox</a> pour cette enquête, mais testons ici plusieurs plateformes.</p>
+<h3 id="flightradar24">FlightRadar24<a class="anchor" href="#flightradar24">#</a></h3>
+<p>Tout d&rsquo;abord <a href="https://www.flightradar24.com/">FlightRadar24</a>, le site filtre normalement les vols militaires, mais ce n&rsquo;est pas clair s&rsquo;il filtre les vols gouvernementaux. Sur la page de <a href="https://www.flightradar24.com/data/aircraft/frafa">F-RAFA</a> ainsi que de <a href="https://www.flightradar24.com/data/aircraft/frafb">F-RAFB</a>, on ne voit aucun vols le 21 janvier ou le 4 février, même en ayant un accès Gold permettant un historique d&rsquo;un an. Ce n&rsquo;est pas clair s&rsquo;il s&rsquo;agit de données filtrées ou de problèmes de captage.</p>
+<figure>
+    <img src="/media/castex/flightradar24.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de FlightRadar24
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<h3 id="opensky-network">OpenSky Network<a class="anchor" href="#opensky-network">#</a></h3>
+<p><a href="https://opensky-network.org/">OpenSky Network</a> permet une recherche par code ICAO, <a href="https://opensky-network.org/aircraft-profile?icao24=3b770d">3b770d</a> pour F-RAFA et <a href="https://opensky-network.org/aircraft-profile?icao24=3b76b3">3b76b3</a> pour F-RAFB mais ne fournit un historique que de 21 jours via l&rsquo;interface Web. Il est possible de <a href="https://opensky-network.org/data/apply">demander un accès aux données historiques</a> pour des projets spécifiques.</p>
+<h3 id="flightaware">FlightAware<a class="anchor" href="#flightaware">#</a></h3>
+<p><a href="https://fr.flightaware.com/">FlightAware</a> permet de faire des recherches par avion et fournit par défaut un historique de vols sur les trois mois précédents. Pourtant, il n&rsquo;y a aucun vol les 21 janvier ou 4 février, ni pour <a href="https://fr.flightaware.com/live/flight/FRAFA/history">F-RAFA</a> ou <a href="https://fr.flightaware.com/live/flight/FRAFB/history">F-RAFB</a>.</p>
+<figure>
+    <img src="/media/castex/flightaware.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de FlightAware
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Il n&rsquo;est pas clair s&rsquo;il s&rsquo;agit ici d&rsquo;une limitation à cause du filtrage d&rsquo;avions gouvernementaux, ou d&rsquo;une limitation lors du captage des informations.</p>
+<h3 id="adsb-exchange">ADSB Exchange<a class="anchor" href="#adsb-exchange">#</a></h3>
+<p><a href="https://www.adsbexchange.com/">ADSB Exchange</a> fournit une interface de <a href="https://globe.adsbexchange.com/">recherche de vols</a> qui est intéressante mais pas très claire. La barre de recherche à droite permet de chercher le code ICAO d&rsquo;un avion, par exemple en cherchant <a href="https://globe.adsbexchange.com/?icao=3b76b3&amp;lat=46.819&amp;lon=1.918&amp;zoom=7.0&amp;showTrace=2022-02-19">3b76b3</a> (F-FAFB), on voit qu&rsquo;il a fait un aller-retour à Lyon lors de l&rsquo;écriture de cet article le 19 février.</p>
+<figure>
+    <img src="/media/castex/adsb1.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Le menu de gauche permet de faire une recherche historique des déplacements de l&rsquo;avion. Aucune donnée pour le 4 février par contre nous voyons bien <a href="https://globe.adsbexchange.com/?icao=3b76b3&amp;lat=47.728&amp;lon=-1.312&amp;zoom=7.0&amp;showTrace=2022-01-21">un déplacement à Nantes le 21 janvier</a> :</p>
+<figure>
+    <img src="/media/castex/adsb2.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Pour trouver le vol du 4 février, il suffit de regarder le traffic cette fois ci de F-FAFA (code 3b770d) et on peut effectivement voir <a href="https://globe.adsbexchange.com/?icao=3b770d&amp;lat=49.133&amp;lon=0.808&amp;zoom=7.0&amp;showTrace=2022-02-04">un vol Paris-Dunkerque</a> :</p>
+<figure>
+    <img src="/media/castex/adsb3.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<h3 id="radarbox">RadarBox<a class="anchor" href="#radarbox">#</a></h3>
+<p>RadarBox permet assez simplement de chercher des informations de vol sur un avion mais lorsque nous regardons des avions gouvernmentaux comme <a href="https://www.radarbox.com/data/registration/F-RAFA">F-RAFA</a> ou <a href="https://www.radarbox.com/data/registration/F-RAFB">F-RAFB</a>, une mention s&rsquo;affiche en bas &ldquo;This aircraft is present on our blocked aircraft list.&rdquo;.</p>
+<figure>
+    <img src="/media/castex/radarbox.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de RadarBox
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Mais même si cette page est bloquée, il est possible de lister les vols de ces appareils en utilisant les numéros de vols. Les numéros de vol de la flotte gouvernementale ont un identifiant type CTMXXXX, par exemple CTM0012 est un vol <a href="https://www.radarbox.com/data/flights/ctm12">Paris-Munich</a>. En cherchant différents numéros de vol sur RadarBox, il est possible de trouver les différents vols de la flotte gouvernementale, et la dernière date de ces vols.</p>
+<figure>
+    <img src="/media/castex/radarbox2.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de RadarBox
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<h2 id="les-votes-de-jean-castex">Les votes de Jean Castex<a class="anchor" href="#les-votes-de-jean-castex">#</a></h2>
+<p>La polémique sur l&rsquo;utilisation des avions gouvernementaux a continué pendant les élections présidentielles, lorsque Jean Castex <a href="https://www.huffingtonpost.fr/entry/jean-castex-sest-rendu-en-avion-pour-voter-rapidement-a-prades-une-regle-habituelle-selon-lui_fr_62551c19e4b06c2ea3224118">a utilisé un Falcon pour aller voter</a> dans sa commune de Prades en Pyrénées-Orientales. Suite aux critiques, il a décidé d&rsquo;utiliser <a href="https://www.liberation.fr/environnement/climat/apres-un-tolle-jean-castex-troque-le-falcon-contre-un-avion-classique-pour-voter-au-second-tour-20220422_PZQI5XS5PBCFDOPQDWRS7Y5KBY/">un vol commercial</a> pour voter au second tour.</p>
+<p>En regardant dans les données historiques d&rsquo;ADSB Exchange, on retrouve <a href="https://globe.adsbexchange.com/?icao=3b77e5&amp;lat=45.724&amp;lon=3.080&amp;zoom=6.3&amp;showTrace=2022-04-10">bien ce vol</a> utilisant le Falcon 900 F-RAFP.</p>
+<figure>
+    <img src="/media/castex/vote.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Effectivement, aucun vol similaire n&rsquo;a été effectué le 24 avril (date du second tour) par la flotte gouvernementale.</p>
+<h2 id="la-crise-ukrainienne">La crise ukrainienne<a class="anchor" href="#la-crise-ukrainienne">#</a></h2>
+<p>Profitons de cet exercice et de ADSB Exchange pour jeter un œil sur les déplacements de la flotte gouvernementale au début de la crise Ukrainienne en Février.</p>
+<p>Regardons déjà les déplacements de l&rsquo;avion présidentiel F-RARF. Le 3 février, nous voyons <a href="https://globe.adsbexchange.com/?icao=3b76ae&amp;lat=43.718&amp;lon=-7.048&amp;zoom=4.9&amp;showTrace=2022-02-03">un déplacement étrange</a> depuis Paris vers l&rsquo;île portuguaise <a href="https://fr.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo">Angra do Heroísmo</a>. Je n&rsquo;ai trouvé aucune visite officielle ce jour là, ce vol bien que curieux ne semble pas en rapport avec la crise Ukrainienne. Puis le 7 février, nous voyons <a href="https://globe.adsbexchange.com/?icao=3b76ae&amp;lat=49.650&amp;lon=13.798&amp;zoom=5.0&amp;showTrace=2022-02-07">un vol direct Paris-Moscou</a> :</p>
+<figure>
+    <img src="/media/castex/adsb4.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Le lendemain, nous voyons cette fois <a href="https://globe.adsbexchange.com/?icao=3b76ae&amp;lat=49.650&amp;lon=13.798&amp;zoom=5.0&amp;showTrace=2022-02-08">un vol retour</a>, avec une escale à Kiev et une escale à Berlin avant de rentrer à Paris :</p>
+<figure>
+    <img src="/media/castex/adsb5.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Sans doute en rapport avec cette crise, on retrouve ensuite le 10 janvier, <a href="https://globe.adsbexchange.com/?icao=3b76ae&amp;lat=42.183&amp;lon=-64.017&amp;zoom=3.4&amp;showTrace=2022-02-10">un vol depuis Paris vers la ville d&rsquo;Albuquerque</a> au Nouveau-Mexique. Ce vol ne constitue pas à ma connaissance une visite officielle, mais pourrait être en lien avec <a href="https://fr.wikipedia.org/wiki/Kirtland_Air_Force_Base">la base militaire importante</a> basée dans cette ville.</p>
+<figure>
+    <img src="/media/castex/adsb6.png" style="max-width:800px"/>
+   
+    <center>
+        <small><i>
+        Capture d&#39;écran de ADSB Exchange
+        
+            
+        
+            </i></small> 
+    </center>
+    
+</figure>
+
+<p>Côté F-RAFA, en dehors de la visite de Florence Parly au Niger le <a href="https://globe.adsbexchange.com/?icao=3b770d&amp;lat=47.718&amp;lon=20.354&amp;zoom=4.5&amp;showTrace=2022-02-03">3 février</a>, on peut voir un vol aller-retour à Berlin <a href="https://globe.adsbexchange.com/?icao=3b770d&amp;lat=47.718&amp;lon=20.354&amp;zoom=4.5&amp;showTrace=2022-02-08">le 8 février</a>. Pour F-RAFB, on voit qu&rsquo;il a accompagné le vol à Moscou <a href="https://globe.adsbexchange.com/?icao=3b76b3&amp;lat=47.155&amp;lon=13.015&amp;zoom=5.0&amp;showTrace=2022-02-07">le 7 février</a>, avant de suivre le même trajet Moscou-Kiev-Berlin-Paris, <a href="https://globe.adsbexchange.com/?icao=3b76b3&amp;lat=47.155&amp;lon=13.015&amp;zoom=5.0&amp;showTrace=2022-02-08">le 8 février</a>. Les autres avions semblent moins utilisés, on note tout de même <a href="https://globe.adsbexchange.com/?icao=3b76a4&amp;lat=47.929&amp;lon=9.904&amp;zoom=5.3&amp;showTrace=2022-02-02">un vol vers Kiev</a> le 2 Février de F-RAFD.</p>
+<h2 id="thats-all-folks">That&rsquo;s all folks<a class="anchor" href="#thats-all-folks">#</a></h2>
+<p>Le compte Twitter <a href="https://twitter.com/CotamFleet">COTAM Fleet &amp; co</a> publie les déplacements des avions de la flotte gouvernementale ainsi que sur des événements aériens en général.</p>
+<blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Atterrissage à <a href="https://twitter.com/hashtag/Nantes?src=hash&amp;ref_src=twsrc%5Etfw">#Nantes</a> 🇫🇷 🛬 où <a href="https://twitter.com/JeanCASTEX?ref_src=twsrc%5Etfw">@JeanCASTEX</a> posera la première pierre du nouveau CHU 🏥 ce vendredi 21 janvier 2022<br><br> <a href="https://twitter.com/hashtag/Hopitaux?src=hash&amp;ref_src=twsrc%5Etfw">#Hopitaux</a> <a href="https://twitter.com/hashtag/Sante?src=hash&amp;ref_src=twsrc%5Etfw">#Sante</a> <br><br>🇫🇷 République Française 🇫🇷 <br>21/1/2022 08:14:39<br> F-RAFB - CTM0003  - FA7X - 15525ft - 424knt (TAS)<a href="https://twitter.com/ADSBexchange?ref_src=twsrc%5Etfw">@ADSBExchange</a> map - <a href="https://t.co/ezlRAMxGOx">https://t.co/ezlRAMxGOx</a> <a href="https://t.co/lmXZ7cG1rL">pic.twitter.com/lmXZ7cG1rL</a></p>&mdash; COTAM Fleet &amp; co (@CotamFleet) <a href="https://twitter.com/CotamFleet/status/1484426740839690241?ref_src=twsrc%5Etfw">January 21, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>On retrouve plusieurs autres projets intéressants utilisant des données de vols, comme par exemple le projet <a href="https://dictatoralert.org/">Dictator Alert</a> d&rsquo;OCCRP, ou encore le compte Twitter <a href="https://twitter.com/ElonJet">ElonJet</a> qui suit l&rsquo;avion privé d&rsquo;Elon Musk. Il y a eu également d&rsquo;intéressantes utilisations de telles données pour identifier des avions de surveillance, comme par exemple par <a href="https://www.buzzfeednews.com/article/peteraldhous/spies-in-the-skies">Buzzfeed en 2016</a>.</p>
+<p><em>Cet article a été écrit en écoutant <a href="https://www.youtube.com/watch?v=rEGOihjqO9w">le concerto pour piano n°2 de Rachmaninov</a>. Merci à <a href="https://twitter.com/U039b">U+039b</a> pour son aide lors de la rédaction de cet article.</em></p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/fr/tags/osint/">osint</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/fr/tags/geoint/">geoint</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+      <a class="social-icons__icon" title="Twitter"
+         style="background-image: url(/images/social/twitter.svg)"
+         href="https://twitter.com/tenacioustek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2022</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>

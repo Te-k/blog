@@ -35,7 +35,7 @@ There are different ways to check if a stalkerware is installed on a phone. At E
       
       <guid>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
       <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.
-  Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
+Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@ There are different ways to check if a stalkerware is installed on a phone. At E
       
       <guid>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
       <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.
- Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
+Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less co
       
       <guid>https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</guid>
       <description>TL;DR New trends in targeted attacks against civil society in 2019 :
- More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
+More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ Methodology The classic OSINT methodology you will find everywhere is strait-for
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
       <guid>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issuesand propose Pull Requests.
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
 pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
@@ -132,7 +132,7 @@ pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm
       
       <guid>https://randhome.io/privacy/</guid>
       <description>There are now more and more privacy abuse everywhere, so even though we feel it, it&amp;rsquo;s often hard to understand the daily privacy demolition. To help me, I started a list of privacy abuse cases here (likely out of date, I have considered only cases by commercial companies for now, if you see additional cases, poke me on Twitter)
-2016  2016/08/06 The Internet of Dildos Is Watching You : Connected sextoys sending intensity settings and temperature to the manufacturer in real-time 2016/08/03 Comcast: ISPs should be able to sell your Web history to advertisers (Comcast only asked to the Federal Communications Commission, it&amp;rsquo;s apparently not done yet) 2016/08/02 Battery Status readout as a privacy risk 2016/07/21 France orders Microsoft to stop collecting excessive user data : MS started to process information an all the apps downloaded and installed by a user and the time spent on each one (linked to an email account now) 2016/05/04 Google given access to healthcare data of up to 1.</description>
+2016 2016/08/06 The Internet of Dildos Is Watching You : Connected sextoys sending intensity settings and temperature to the manufacturer in real-time 2016/08/03 Comcast: ISPs should be able to sell your Web history to advertisers (Comcast only asked to the Federal Communications Commission, it&amp;rsquo;s apparently not done yet) 2016/08/02 Battery Status readout as a privacy risk 2016/07/21 France orders Microsoft to stop collecting excessive user data : MS started to process information an all the apps downloaded and installed by a user and the time spent on each one (linked to an email account now) 2016/05/04 Google given access to healthcare data of up to 1.</description>
     </item>
     
     <item>
@@ -176,8 +176,8 @@ ClamAV ClamAV is an open-source antivirus developed for different platform, but 
       <guid>https://randhome.io/references/</guid>
       <description>Here is a list of references regarding security topics and hacktivism:
 Political Organizations Here are several awesome organization regarding online freedom:
-  EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
- Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites    Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
+EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
+Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
     </item>
     
     <item>
@@ -187,8 +187,8 @@ Political Organizations Here are several awesome organization regarding online f
       
       <guid>https://randhome.io/resources/</guid>
       <description>This page gathers some useful guides and resources on digital security.
-   Drawing by Matt Dixon     General Digital Security Guides The main resources on digital security are:
- Surveillance Self-Defense by EFF is the main reference, it is available in 11 languages and well maintained. Security Planner by the Citizen Lab is an easy to use platform to get practical recommendations Security In a Box is a very good resource, but not maintained anymore and many guides and articles are now outdated.</description>
+Drawing by Matt Dixon General Digital Security Guides The main resources on digital security are:
+Surveillance Self-Defense by EFF is the main reference, it is available in 11 languages and well maintained. Security Planner by the Citizen Lab is an easy to use platform to get practical recommendations Security In a Box is a very good resource, but not maintained anymore and many guides and articles are now outdated.</description>
     </item>
     
     <item>
@@ -198,7 +198,7 @@ Political Organizations Here are several awesome organization regarding online f
       
       <guid>https://randhome.io/about/</guid>
       <description>I am Etienne &amp;ldquo;tek&amp;rdquo; Maynier, an activist, security analyst and researcher.
-  I am currently working as a Technologist in the Technology program of Amnesty International on analyzing digital surveillance of Human Rights Defenders.
+I am currently working as a Technologist in the Technology program of Amnesty International on analyzing digital surveillance of Human Rights Defenders.
 I am also an active member of Echap where I develop resources and trainings for women shelters, and developer of several tools. I was a Mozilla Open Web Fellow in 2016 - 2017, and a research fellow at the Citizen Lab until April 2021.</description>
     </item>
     
@@ -209,7 +209,7 @@ I am also an active member of Echap where I develop resources and trainings for 
       
       <guid>https://randhome.io/contact/</guid>
       <description>You can contact me securely in the following ways:
-   Drawing by Matt Dixon      By email: you can contact me at tek AT randhome DOT io, if possible using this public GPG key (Fingerprint DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) By email: if you are using protonmail, you can send me an email at randomtek AT protonmail.com On Wire: @tekk On Signal/WhatsApp: the easiest way is likely to send me a DM on Twitter or an email, asking for my phone number and explaining briefly why  If you do not need a high level of security, you can still email me or send me a Twitter DM.</description>
+Drawing by Matt Dixon By email: you can contact me at tek AT randhome DOT io, if possible using this public GPG key (Fingerprint DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) By email: if you are using protonmail, you can send me an email at randomtek AT protonmail.com On Wire: @tekk On Signal/WhatsApp: the easiest way is likely to send me a DM on Twitter or an email, asking for my phone number and explaining briefly why If you do not need a high level of security, you can still email me or send me a Twitter DM.</description>
     </item>
     
     <item>
@@ -219,7 +219,7 @@ I am also an active member of Echap where I develop resources and trainings for 
       
       <guid>https://randhome.io/projects/</guid>
       <description>Here are some personal projects I have been working on:
-   Drawing by Matt Dixon     Tools  Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Several libraries for threat intelligence such as pysafebrowsing or pycrtsh Some scripts that may be useful for security analysts  Guides  I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa I have helped write several security guides for women shelters with the Echap non-profit (in French)  Research  I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib  </description>
+Drawing by Matt Dixon Tools Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Several libraries for threat intelligence such as pysafebrowsing or pycrtsh Some scripts that may be useful for security analysts Guides I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa I have helped write several security guides for women shelters with the Echap non-profit (in French) Research I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib </description>
     </item>
     
   </channel>

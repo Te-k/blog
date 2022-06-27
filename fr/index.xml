@@ -9,6 +9,15 @@
     <copyright>© {year}</copyright>
     <lastBuildDate>Fri, 29 Apr 2016 14:51:26 +0200</lastBuildDate><atom:link href="https://randhome.io/fr/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
+      <link>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
+      <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
+      <description>Il y a quelques mois, Médiapart révélait que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des circulaires rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.</description>
+    </item>
+    
+    <item>
       <title>Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</title>
       <link>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0100</pubDate>
@@ -25,8 +34,8 @@ Il y a eu un développement assez impressionnant ces dernières années de l&amp
       
       <guid>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</guid>
       <description>La communauté &amp;ldquo;InfoSec&amp;rdquo; et les erreurs des journalistes Une récente interview d&amp;rsquo;Hugo Clément (journaliste à Konbini) a conduit une partie de la communauté de sécurité informatique (information security en anglais, souvent appelée infosec rapidement) à se moquer ouvertement d&amp;rsquo;erreurs techniques dans cette interview.
- Un des tweet à l&amp;rsquo;origine de ce post
-  Si effectivement, il semble y avoir une incompréhension sur ce que fait et ne fait pas la navigation privée, je trouve que se moquer et couvrir de honte (shamer) un-e journaliste, est une pratique courante et problématique de notre communauté infosec.</description>
+Un des tweet à l&amp;rsquo;origine de ce post
+Si effectivement, il semble y avoir une incompréhension sur ce que fait et ne fait pas la navigation privée, je trouve que se moquer et couvrir de honte (shamer) un-e journaliste, est une pratique courante et problématique de notre communauté infosec.</description>
     </item>
     
     <item>
@@ -57,8 +66,8 @@ N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
       
       <guid>https://randhome.io/fr/resources/</guid>
       <description>Cette page réunit des ressources sur la sécurité numérique.
-   Dessin de Matt Dixon     Guides sur la Sécurité Numérique Les principaux guides en sécurité numérique sont :
- Surveillance Self-Defense par l&amp;rsquo;EFF est l e guide de référence, il est disponible en français (ainsi que 10 autres langues) et bien mai ntenu Le Security Planner par le Citizen Lab est une plateforme pour avoir facilement des recommandations pour sa sécurité numériq ue (malheuresement uniquement en anglais) Security In a Box est également une très bonne ressource sur ce sujet, mais n&amp;rsquo;est plus maintenu et les articles sont souvent obsolètes (en français) En Français, le Guide d&amp;rsquo;autodéfense numérique est un manuel en profondeur des questions de sécurité informatique (cela peut être dense et peu adapté si vous cherchez une solution rapide)  Sur le phishing et les attaques ciblées Si vous voulez mieux comprendre ce qu&amp;rsquo;est le phishing est les attaques par malware ciblées :</description>
+Dessin de Matt Dixon Guides sur la Sécurité Numérique Les principaux guides en sécurité numérique sont :
+Surveillance Self-Defense par l&amp;rsquo;EFF est l e guide de référence, il est disponible en français (ainsi que 10 autres langues) et bien mai ntenu Le Security Planner par le Citizen Lab est une plateforme pour avoir facilement des recommandations pour sa sécurité numériq ue (malheuresement uniquement en anglais) Security In a Box est également une très bonne ressource sur ce sujet, mais n&amp;rsquo;est plus maintenu et les articles sont souvent obsolètes (en français) En Français, le Guide d&amp;rsquo;autodéfense numérique est un manuel en profondeur des questions de sécurité informatique (cela peut être dense et peu adapté si vous cherchez une solution rapide) Sur le phishing et les attaques ciblées Si vous voulez mieux comprendre ce qu&amp;rsquo;est le phishing est les attaques par malware ciblées :</description>
     </item>
     
     <item>
@@ -68,7 +77,7 @@ N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
       
       <guid>https://randhome.io/fr/about/</guid>
       <description>Je suis Etienne &amp;ldquo;tek&amp;rdquo; Maynier, un militant, analyste et chercheur en sécurité.
-  Je travaille actuellement comme Technologiste dans le programme sur la Technologie d&amp;rsquo;Amnesty International, plus précisément sur de l&amp;rsquo;analyse d&amp;rsquo;attaques informatiques ciblant des défendeur·se·s des droits humains.
+Je travaille actuellement comme Technologiste dans le programme sur la Technologie d&amp;rsquo;Amnesty International, plus précisément sur de l&amp;rsquo;analyse d&amp;rsquo;attaques informatiques ciblant des défendeur·se·s des droits humains.
 Je suis membre actif de l&amp;rsquo;association Echap où je développe des ressources et formations pour des associatons accueillant des personnes victimes de violences conjugales. Je développe et maintiens des outils. J&amp;rsquo;étais précédemment un Mozilla Open Web Fellow entre 2016 et 2017, et &amp;ldquo;research fellow&amp;rdquo; au Citizen Lab jusqu&amp;rsquo;en Avril 2021.</description>
     </item>
     
@@ -79,7 +88,7 @@ Je suis membre actif de l&amp;rsquo;association Echap où je développe des ress
       
       <guid>https://randhome.io/fr/contact/</guid>
       <description>Vous pouvez me contacter de manière sécurisée:
-   Dessin de Matt Dixon      Par email : vous pouvez me contacter à tek A randhome POINT io, si possible en utilisant cette clé PGP (Empreinte DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) Par email : si vous utilisez protonmail, vous pouvez m&amp;rsquo;envoyer un email à randomtek A protonmail POINT com Sur Wire: @tekk Sur Signal/WhatsApp: le plus simple c&amp;rsquo;est de m&amp;rsquo;envoyer un email ou un DM sur Twitter, et de demander mon numéro de téléphone avec une explication rapide de la raison  Si vous souhaitez me contacter sans besoin de sécurité, mes emails et DM Twitter sont ouverts.</description>
+Dessin de Matt Dixon Par email : vous pouvez me contacter à tek A randhome POINT io, si possible en utilisant cette clé PGP (Empreinte DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) Par email : si vous utilisez protonmail, vous pouvez m&amp;rsquo;envoyer un email à randomtek A protonmail POINT com Sur Wire: @tekk Sur Signal/WhatsApp: le plus simple c&amp;rsquo;est de m&amp;rsquo;envoyer un email ou un DM sur Twitter, et de demander mon numéro de téléphone avec une explication rapide de la raison Si vous souhaitez me contacter sans besoin de sécurité, mes emails et DM Twitter sont ouverts.</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@ Je suis membre actif de l&amp;rsquo;association Echap où je développe des ress
       
       <guid>https://randhome.io/fr/projects/</guid>
       <description>Voici une liste de projets personnels sur lesquels j&amp;rsquo;ai travaillé :
-   Dessin par Matt Dixon     Outils  Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Plusieurs librairies pour faire de la threat intelligence comme pysafebrowsing ou pycrtsh Des scripts qui peuvent être utiles pour des analystes en sécurité  Guides  Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
+Dessin par Matt Dixon Outils Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Plusieurs librairies pour faire de la threat intelligence comme pysafebrowsing ou pycrtsh Des scripts qui peuvent être utiles pour des analystes en sécurité Guides Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
     </item>
     
   </channel>

@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/fr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/fr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>geoint</title>
+      <link>https://randhome.io/fr/tags/geoint/</link>
+      <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/fr/tags/geoint/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>osint</title>
       <link>https://randhome.io/fr/tags/osint/</link>
-      <pubDate>Mon, 04 Jan 2021 00:00:00 +0100</pubDate>
+      <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
       
       <guid>https://randhome.io/fr/tags/osint/</guid>
       <description></description>

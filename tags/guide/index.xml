@@ -15,7 +15,7 @@
       
       <guid>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
       <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.
- Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
+Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
     </item>
     
   </channel>

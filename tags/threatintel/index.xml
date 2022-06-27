@@ -15,7 +15,7 @@
       
       <guid>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
       <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.
-  Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
+Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
     </item>
     
   </channel>

@@ -14,7 +14,7 @@
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
       <guid>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issuesand propose Pull Requests.
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
 pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>

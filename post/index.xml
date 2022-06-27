@@ -35,7 +35,7 @@ There are different ways to check if a stalkerware is installed on a phone. At E
       
       <guid>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
       <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.
-  Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
+Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@ There are different ways to check if a stalkerware is installed on a phone. At E
       
       <guid>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
       <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.
- Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
+Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less co
       
       <guid>https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</guid>
       <description>TL;DR New trends in targeted attacks against civil society in 2019 :
- More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
+More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ Methodology The classic OSINT methodology you will find everywhere is strait-for
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       
       <guid>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issuesand propose Pull Requests.
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
 Install and config:
 pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
