@@ -2,6 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://randhome.io/fr/tags/censure/</loc>
+    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://randhome.io/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/</loc>
+    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/blog/2023/02/16/france-and-controlling-access-to-porn-websites/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/"
+                />
+  </url><url>
+    <loc>https://randhome.io/fr/tags/opinion/</loc>
+    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/opinion/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/opinion/"
+                />
+  </url><url>
+    <loc>https://randhome.io/fr/post/</loc>
+    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/post/"
+                />
+  </url><url>
+    <loc>https://randhome.io/fr/tags/</loc>
+    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/tags/"
+                />
+  </url><url>
     <loc>https://randhome.io/fr/tags/geoint/</loc>
     <lastmod>2022-06-27T01:00:00+01:00</lastmod>
   </url><url>
@@ -19,32 +74,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://randhome.io/fr/tags/osint/"
-                />
-  </url><url>
-    <loc>https://randhome.io/fr/post/</loc>
-    <lastmod>2022-06-27T01:00:00+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://randhome.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://randhome.io/fr/post/"
-                />
-  </url><url>
-    <loc>https://randhome.io/fr/tags/</loc>
-    <lastmod>2022-06-27T01:00:00+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://randhome.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://randhome.io/fr/tags/"
                 />
   </url><url>
     <loc>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</loc>
