@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Thu, 16 Feb 2023 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDPR</title>
+      <link>https://randhome.io/tags/gdpr/</link>
+      <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/tags/gdpr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>media</title>
+      <link>https://randhome.io/tags/media/</link>
+      <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
+      
+      <guid>https://randhome.io/tags/media/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>censorship</title>
       <link>https://randhome.io/tags/censorship/</link>
@@ -23,15 +41,6 @@
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
       
       <guid>https://randhome.io/tags/opinion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>media</title>
-      <link>https://randhome.io/tags/media/</link>
-      <pubDate>Wed, 24 Nov 2021 00:00:00 +0200</pubDate>
-      
-      <guid>https://randhome.io/tags/media/</guid>
       <description></description>
     </item>
     

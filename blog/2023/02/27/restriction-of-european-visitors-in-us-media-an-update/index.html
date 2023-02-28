@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Restriction of European Visitors in US media - an update | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/randhome.io\/blog\/2023\/02\/27\/restriction-of-european-visitors-in-us-media-an-update\/",
+      "name": "Restriction of European Visitors in US media - an update",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+          
+        <a  class="active" href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Restriction of European Visitors in US media - an update</h1>
+            <time datetime="2023-02-27 01:00:00 &#43;0100 &#43;0100" class="post__date">27 Feb 2023   &middot; One minute read </time>
+          </header>
+          <article class="post__content">
+              
+<p>In November 2021, I did <a href="blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/">some testing</a> to see how many US media were blocking European visitors to avoid complying with GDPR. To my surprise, most of them actually used the <a href="https://en.wikipedia.org/wiki/HTTP_451">HTTP 451 code</a> that was created in reference of Ray Bradbury&rsquo;s Fahrenheit 451 novel.</p>
+<figure class="center"><img src="/media/gdpr/451.png"
+         alt="Example of page blocked with HTTP 451 (Source: Wikipedia)"/><figcaption>
+            <p><em>Example of page blocked with HTTP 451 (Source: <a href="https://en.wikipedia.org/wiki/File:Status_code_451_example.png">Wikipedia</a>)</em></p>
+        </figcaption>
+</figure>
+
+<p>I recently found <a href="https://github.com/ercexpo/us-news-domains">a new list</a> of over 5000 US media domains established in 2021 by Clemm von Hohenberg, B., Menchen-Trevino, E., Casas, A., Wojcieszak, M., so I decided to run a new series of test based on this list.</p>
+<p>This list contains 5397 domains. After testing them, only 5009 gave a valid answer to my HTTP requests, which give us the following results (the test was done on February 13th):</p>
+<table>
+<thead>
+<tr>
+<th>Total</th>
+<th>Blocking European Visitors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5009</td>
+<td> 958 / 19.12%</td>
+</tr>
+</tbody>
+</table>
+<p>Overall, we get an even higher percentage than the one found in 2021, which is confirming that 15 to 20% of US media websites are blocking visitors from the EU.</p>
+<p>You can find the dataset <a href="https://github.com/Te-k/gdpr_us_media/2023_check">on GitHub</a>.</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/media/">media</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://randhome.io/tags/gdpr/">gdpr</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://randhome.io/blog/2023/02/16/france-and-controlling-access-to-porn-websites/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">France and Controlling Access to Porn Websites</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:tek@randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+            <p>© 2023</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>
