@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 
 <head>
   <title>Comparison of php scanners | </title>
@@ -195,7 +195,7 @@
 <li>HAS_BASE64DECODE : has a function base64_decode() or str_rot13()</li>
 </ul>
 <p>This approach is nice, but the problem is that the code is real mess with a long list of if/else. Have a look:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#39;.*=\s*&#34;http://[a-z0-9].*&#34;;&#39;</span>)<span style="color:#f92672">.</span>match(l) <span style="color:#f92672">or</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;.*=\s*&#39;http:.*&#39;;&#34;</span>)<span style="color:#f92672">.</span>match(l) :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#39;.*=\s*&#34;http://[a-z0-9].*&#34;;&#39;</span>)<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(l) <span style="color:#f92672">or</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;.*=\s*&#39;http:.*&#39;;&#34;</span>)<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(l) :
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> <span style="color:#e6db74">&#39;simpletest.org&#39;</span> <span style="color:#f92672">in</span> l <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> <span style="color:#e6db74">&#39;facebook.com&#39;</span> <span style="color:#f92672">in</span> l:
 </span></span><span style="display:flex;"><span>	has_var_http <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> has_var_http <span style="color:#f92672">and</span> (<span style="color:#e6db74">&#39;curl_exec&#39;</span> <span style="color:#f92672">in</span> l <span style="color:#f92672">or</span> <span style="color:#e6db74">&#39;xxxxxxxxxx&#39;</span> <span style="color:#f92672">in</span> l) <span style="color:#f92672">and</span> line_num <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">20</span>:
