@@ -7,17 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 16 Jul 2016 12:52:42 +0200</lastBuildDate><atom:link href="https://randhome.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Jul 2016 12:52:42 +0200</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Machine learning for malware detection</title>
       <link>https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</link>
       <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</guid>
-      <description>Plop,
-I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this awesome article or this one. This article was largely inspired by this one which analyze the Titanic data.
-Machine Learning and Classification So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions.</description>
+      <description>Plop,&#xA;I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this awesome article or this one. This article was largely inspired by this one which analyze the Titanic data.&#xA;Machine Learning and Classification So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions.</description>
     </item>
-    
   </channel>
 </rss>

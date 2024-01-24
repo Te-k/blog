@@ -7,240 +7,168 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate>
+    <atom:link href="https://randhome.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Restriction of European Visitors in US media - an update</title>
       <link>https://randhome.io/blog/2023/02/27/restriction-of-european-visitors-in-us-media-an-update/</link>
       <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/blog/2023/02/27/restriction-of-european-visitors-in-us-media-an-update/</guid>
-      <description>In November 2021, I did some testing to see how many US media were blocking European visitors to avoid complying with GDPR. To my surprise, most of them actually used the HTTP 451 code that was created in reference of Ray Bradbury&amp;rsquo;s Fahrenheit 451 novel.
-Example of page blocked with HTTP 451 (Source: Wikipedia)
-I recently found a new list of over 5000 US media domains established in 2021 by Clemm von Hohenberg, B.</description>
+      <description>In November 2021, I did some testing to see how many US media were blocking European visitors to avoid complying with GDPR. To my surprise, most of them actually used the HTTP 451 code that was created in reference of Ray Bradbury&amp;rsquo;s Fahrenheit 451 novel.&#xA;Example of page blocked with HTTP 451 (Source: Wikipedia)&#xA;I recently found a new list of over 5000 US media domains established in 2021 by Clemm von Hohenberg, B.</description>
     </item>
-    
     <item>
       <title>France and Controlling Access to Porn Websites</title>
       <link>https://randhome.io/blog/2023/02/16/france-and-controlling-access-to-porn-websites/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/blog/2023/02/16/france-and-controlling-access-to-porn-websites/</guid>
       <description>January 2023, and once again the question of limiting access to porn websites for people under the legal majority age is back in the media. It is a question as old as the World Wide Web that is coming back every year with a different angle. In 2020, the French Parliament even passed a law (article 227-24 of the criminal code) forcing pornography websites to use age filtering more efficient than a simple web form.</description>
     </item>
-    
     <item>
       <title>Analyzing US Media Blocking of EU Visitors</title>
       <link>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</link>
       <pubDate>Wed, 24 Nov 2021 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</guid>
-      <description>I have been working and studying technology for over 10 years now, and the one thing I really love is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how bad geolocation of IP addresses turned the life of a Kansas family into hell or how to track dictator&amp;rsquo;s aircraft from open flight information.
-Among them, I discovered last year that the HTTP code HTTP 451 Unavailable For Legal Reasons was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation.</description>
+      <description>I have been working and studying technology for over 10 years now, and the one thing I really love is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how bad geolocation of IP addresses turned the life of a Kansas family into hell or how to track dictator&amp;rsquo;s aircraft from open flight information.&#xA;Among them, I discovered last year that the HTTP code HTTP 451 Unavailable For Legal Reasons was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation.</description>
     </item>
-    
     <item>
       <title>How to Check if an Android Phone has a Stalkerware Installed?</title>
       <link>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</guid>
-      <description>Stalkerwares are malware used in abusive relationships to spy on someone&amp;rsquo;s partner. I have talked quite a bit about it already, see my previous blog posts for more background information on stalkerware.
-There are different ways to check if a stalkerware is installed on a phone. At Echap, we have written a guide to check for configuration settings on an Android phone (in French). We think it is the easiest way for non-tech people and quite reliable.</description>
+      <description>Stalkerwares are malware used in abusive relationships to spy on someone&amp;rsquo;s partner. I have talked quite a bit about it already, see my previous blog posts for more background information on stalkerware.&#xA;There are different ways to check if a stalkerware is installed on a phone. At Echap, we have written a guide to check for configuration settings on an Android phone (in French). We think it is the easiest way for non-tech people and quite reliable.</description>
     </item>
-    
     <item>
       <title>Analyzing Cobalt Strike for Fun and Profit</title>
       <link>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
-      <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.
-Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
+      <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.&#xA;Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
     </item>
-    
     <item>
       <title>Investigating Infrastructure Links with Passive DNS and Whois Data</title>
       <link>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
-      <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.
-Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
+      <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.&#xA;Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
     </item>
-    
     <item>
       <title>Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</title>
       <link>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
       <description>A few years ago, I wrote about Flexispy after the company got hacked and some data was released. It was the first time I encountered stalkerware in my work. Since then, I have had many discussions about this creepy market and more generally technology used in intimate partner violence (IPV) with researchers and activists. I think it is the right time to reflect on what we know about stalkerware and what needs to be done on this topic.</description>
     </item>
-    
     <item>
       <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
       <link>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</guid>
-      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.
-Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
+      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.&#xA;Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
     </item>
-    
     <item>
       <title>Targeted Attacks Against Civil Society : What is New in 2019?</title>
       <link>https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</link>
       <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</guid>
-      <description>TL;DR New trends in targeted attacks against civil society in 2019 :
-More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
+      <description>TL;DR New trends in targeted attacks against civil society in 2019 :&#xA;More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA OAuth attacks are still there and will likely be there for some time.</description>
     </item>
-    
     <item>
       <title>2019 OSINT Guide</title>
       <link>https://randhome.io/blog/2019/01/05/2019-osint-guide/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2019/01/05/2019-osint-guide/</guid>
-      <description>I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks
-Methodology The classic OSINT methodology you will find everywhere is strait-forward:</description>
+      <description>I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks&#xA;Methodology The classic OSINT methodology you will find everywhere is strait-forward:</description>
     </item>
-    
     <item>
       <title>Harpoon: an OSINT / Threat Intelligence tool</title>
       <link>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.
-Install and config:
-pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
+      <description>TL;DR Harpoon is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on Github, feel free to open issues and propose Pull Requests.&#xA;Install and config:&#xA;pip install git+ssh://git@github.com/Te-k/harpoon --process-dependency-links npm install -g phantomjs harpoon config -u harpoon config Then check how to use every module with harpoon help MODULE</description>
     </item>
-    
     <item>
       <title>Another PE tool</title>
       <link>https://randhome.io/blog/2018/02/04/another-pe-tool/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2018/02/04/another-pe-tool/</guid>
       <description>Analyzing PE files is a basic task in reverse engineering in order to understand their structure, look for anything interesting before going more in depth into the reverse engineering in itself. There are countless tools to do that, on Windows I use PeStudio, PEView and Resource Hacker. But most of the time I want to have a first view of the file before starting my Virtual Machine, so I was looking for a CLI tool on Linux.</description>
     </item>
-    
     <item>
       <title>Google Advanced Protection</title>
       <link>https://randhome.io/blog/2017/11/05/google-advanced-protection/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      
       <guid>https://randhome.io/blog/2017/11/05/google-advanced-protection/</guid>
       <description>Last week, Google has added a new set of security features in Gmail called &amp;ldquo;Advanced Protection&amp;rdquo;, specifically for high-risk users. It was widely covered the media (Wired, The Verge or Reuters) and quickly started a debate about whether Google is the most secure email provider on the planet or if ProtonMail can compete. The main point here to me (and it has been said by many other people everywhere) is whether you trust Google to keep your data or not, depending on your threat model and your opinion about privacy.</description>
     </item>
-    
     <item>
       <title>Let&#39;s Talk About FlexiSpy</title>
       <link>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</link>
       <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
-      
       <guid>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</guid>
       <description>Introduction: I started this blog post to explain the context of FlexiSpy leaks and show some information I have found during my analysis. This information is incomplete and there is still plenty analysis of source code or binaries to be done. I have uploaded the source code and binaries on github so that everyone can help with it. I will try to report in this articles the publications I have seen on it, but feel free to ping me on Twitter if you see new information or have any question.</description>
     </item>
-    
     <item>
       <title>#privacy</title>
       <link>https://randhome.io/privacy/</link>
       <pubDate>Mon, 15 Aug 2016 21:21:05 +0200</pubDate>
-      
       <guid>https://randhome.io/privacy/</guid>
-      <description>There are now more and more privacy abuse everywhere, so even though we feel it, it&amp;rsquo;s often hard to understand the daily privacy demolition. To help me, I started a list of privacy abuse cases here (likely out of date, I have considered only cases by commercial companies for now, if you see additional cases, poke me on Twitter)
-2016 2016/08/06 The Internet of Dildos Is Watching You : Connected sextoys sending intensity settings and temperature to the manufacturer in real-time 2016/08/03 Comcast: ISPs should be able to sell your Web history to advertisers (Comcast only asked to the Federal Communications Commission, it&amp;rsquo;s apparently not done yet) 2016/08/02 Battery Status readout as a privacy risk 2016/07/21 France orders Microsoft to stop collecting excessive user data : MS started to process information an all the apps downloaded and installed by a user and the time spent on each one (linked to an email account now) 2016/05/04 Google given access to healthcare data of up to 1.</description>
+      <description>There are now more and more privacy abuse everywhere, so even though we feel it, it&amp;rsquo;s often hard to understand the daily privacy demolition. To help me, I started a list of privacy abuse cases here (likely out of date, I have considered only cases by commercial companies for now, if you see additional cases, poke me on Twitter)&#xA;2016 2016/08/06 The Internet of Dildos Is Watching You : Connected sextoys sending intensity settings and temperature to the manufacturer in real-time 2016/08/03 Comcast: ISPs should be able to sell your Web history to advertisers (Comcast only asked to the Federal Communications Commission, it&amp;rsquo;s apparently not done yet) 2016/08/02 Battery Status readout as a privacy risk 2016/07/21 France orders Microsoft to stop collecting excessive user data : MS started to process information an all the apps downloaded and installed by a user and the time spent on each one (linked to an email account now) 2016/05/04 Google given access to healthcare data of up to 1.</description>
     </item>
-    
     <item>
       <title>Openssh backdoor used on compromised Linux servers</title>
       <link>https://randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</link>
       <pubDate>Mon, 01 Aug 2016 14:53:42 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2016/08/01/openssh-backdoor-used-on-compromised-linux-servers/</guid>
-      <description>Olà,
-Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).
-Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
+      <description>Olà,&#xA;Some times ago, I have installed honeypot services on one of my servers, in order to see what happens in the real outside world. I especially installed the cowrie ssh honeypot which simulate a Linux shell and gather binaries that people want to install on the server (this tool is awesome, check here to install it).&#xA;Cowrie ssh This honeypot is really fun, because it records everything done during an attack, and record the whole tty session which can be replayed.</description>
     </item>
-    
     <item>
       <title>Machine learning for malware detection</title>
       <link>https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</link>
       <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2016/07/16/machine-learning-for-malware-detection/</guid>
-      <description>Plop,
-I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this awesome article or this one. This article was largely inspired by this one which analyze the Titanic data.
-Machine Learning and Classification So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions.</description>
+      <description>Plop,&#xA;I have been reading many articles about Machine Learning recently, and it seems to be the new hype technology so I wanted to play a bit with these algorithms to better understand the principles behind it. If you don&amp;rsquo;t know machine learning, you should to read this awesome article or this one. This article was largely inspired by this one which analyze the Titanic data.&#xA;Machine Learning and Classification So the idea of machine learning is to let the algorithm learn by itself the best parameters from data in order to make good predictions.</description>
     </item>
-    
     <item>
       <title>Comparison of php scanners</title>
       <link>https://randhome.io/blog/2016/05/14/comparison-of-php-scanners/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
-      <description>Hi there!
-I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.
-ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
+      <description>Hi there!&#xA;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&#xA;ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
     </item>
-    
     <item>
       <title>#references</title>
       <link>https://randhome.io/references/</link>
       <pubDate>Thu, 05 May 2016 01:07:16 +0200</pubDate>
-      
       <guid>https://randhome.io/references/</guid>
-      <description>Here is a list of references regarding security topics and hacktivism:
-Political Organizations Here are several awesome organization regarding online freedom:
-EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:
-Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
+      <description>Here is a list of references regarding security topics and hacktivism:&#xA;Political Organizations Here are several awesome organization regarding online freedom:&#xA;EFF : The Electronic Frontier Foundation fights for digital freedom in many different ways (legal fights, press review, development of technical tools&amp;hellip;). See their website and their Twitter account. Here is a list of EFF projects I like:&#xA;Let&amp;rsquo;s Encrypt is a free certificate authority Privacy badger is a Chrome/Firefox extension to block spying ads and invisible trackers HTTPs Everywhere is a browser extension to use HTTPs by default on main websites Citizen Lab is a research group based in the University of Toronto which focus its researchs on human rights and digital surveillance.</description>
     </item>
-    
     <item>
       <title>Resources</title>
       <link>https://randhome.io/resources/</link>
       <pubDate>Thu, 05 May 2016 01:07:16 +0200</pubDate>
-      
       <guid>https://randhome.io/resources/</guid>
-      <description>This page gathers some useful guides and resources on digital security.
-Drawing by Matt Dixon General Digital Security Guides The main resources on digital security are:
-Surveillance Self-Defense by EFF is the main reference, it is available in 11 languages and well maintained. Security Planner by the Citizen Lab is an easy to use platform to get practical recommendations Security In a Box is a very good resource, but not maintained anymore and many guides and articles are now outdated.</description>
+      <description>This page gathers some useful guides and resources on digital security.&#xA;Drawing by Matt Dixon General Digital Security Guides The main resources on digital security are:&#xA;Surveillance Self-Defense by EFF is the main reference, it is available in 11 languages and well maintained. Security Planner by the Citizen Lab is an easy to use platform to get practical recommendations Security In a Box is a very good resource, but not maintained anymore and many guides and articles are now outdated.</description>
     </item>
-    
     <item>
       <title>About Me</title>
       <link>https://randhome.io/about/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      
       <guid>https://randhome.io/about/</guid>
-      <description>I am Etienne &amp;ldquo;tek&amp;rdquo; Maynier, an activist, security analyst and researcher.
-Drawing by _lila* I am currently working as a Technologist in the infosec team of Human Rights Watch to protect the organization against digital threats.
-I am also an active member of Echap where I develop resources and trainings for women shelters, and developer of several tools. I was a Mozilla Open Web Fellow in 2016 - 2017, a research fellow at the Citizen Lab until April 2021, and worked for Amnesty International from 2019 to 2023.</description>
+      <description>I am Etienne &amp;ldquo;tek&amp;rdquo; Maynier, an activist, security analyst and researcher.&#xA;Drawing by _lila* I am currently working as a Technologist in the infosec team of Human Rights Watch to protect the organization against digital threats.&#xA;I am also an active member of Echap where I develop resources and trainings for women shelters, and developer of several tools. I was a Mozilla Open Web Fellow in 2016 - 2017, a research fellow at the Citizen Lab until April 2021, and worked for Amnesty International from 2019 to 2023.</description>
     </item>
-    
     <item>
       <title>How to contact me?</title>
       <link>https://randhome.io/contact/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      
       <guid>https://randhome.io/contact/</guid>
-      <description>You can contact me securely in the following ways:
-Drawing by Matt Dixon By email: you can contact me at tek AT randhome DOT io, if possible using this public GPG key (Fingerprint DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) By email: if you are using protonmail, you can send me an email at randomtek AT protonmail.com On Wire: @tekk On Signal/WhatsApp: the easiest way is likely to send me a DM on Mastodon (@tek@todon.</description>
+      <description>You can contact me securely in the following ways:&#xA;Drawing by Matt Dixon By email: you can contact me at tek AT randhome DOT io, if possible using this public GPG key (Fingerprint DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) By email: if you are using protonmail, you can send me an email at randomtek AT protonmail.com On Wire: @tekk On Signal/WhatsApp: the easiest way is likely to send me a DM on Mastodon (@tek@todon.</description>
     </item>
-    
     <item>
       <title>Projects</title>
       <link>https://randhome.io/projects/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      
       <guid>https://randhome.io/projects/</guid>
-      <description>Here are some personal projects I have been working on:
-Drawing by Matt Dixon Tools Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Several libraries for threat intelligence such as pysafebrowsing or pycrtsh Some scripts that may be useful for security analysts Guides I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa I have helped write several security guides for women shelters with the Echap non-profit (in French) Research I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib </description>
+      <description>Here are some personal projects I have been working on:&#xA;Drawing by Matt Dixon Tools Harpoon is a python CLI tool to query OSINT and Threat Intelligence platforms (see this blog post about it) Indicators of stalkerware Some CLI tools to analyze PE Files or APK files Several libraries for threat intelligence such as pysafebrowsing or pycrtsh Some scripts that may be useful for security analysts Guides I am convinced that civil society would benefit from having more forensic knowledge, I have written a Guide to Quick Forensics with Claudio Guarnieri I have written an OSINT guide in 2019 that was translated in French by Eunomia and in Japanese by Tomohisa Ishikawa I have helped write several security guides for women shelters with the Echap non-profit (in French) Research I maintain an online bibliography on technology used in intimate partner violence, called IPVTechBib </description>
     </item>
-    
   </channel>
 </rss>

@@ -7,17 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate><atom:link href="https://randhome.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Comparison of php scanners</title>
       <link>https://randhome.io/blog/2016/05/14/comparison-of-php-scanners/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2016/05/14/comparison-of-php-scanners/</guid>
-      <description>Hi there!
-I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.
-ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
+      <description>Hi there!&#xA;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&#xA;ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
     </item>
-    
   </channel>
 </rss>

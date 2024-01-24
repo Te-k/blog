@@ -7,177 +7,140 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GDPR</title>
       <link>https://randhome.io/tags/gdpr/</link>
       <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/tags/gdpr/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>media</title>
       <link>https://randhome.io/tags/media/</link>
       <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/tags/media/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>censorship</title>
       <link>https://randhome.io/tags/censorship/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/tags/censorship/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>opinion</title>
       <link>https://randhome.io/tags/opinion/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/tags/opinion/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>stalkerware</title>
       <link>https://randhome.io/tags/stalkerware/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/tags/stalkerware/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>malware</title>
       <link>https://randhome.io/tags/malware/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/malware/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>threatintel</title>
       <link>https://randhome.io/tags/threatintel/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/threatintel/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>guide</title>
       <link>https://randhome.io/tags/guide/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/guide/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>osint</title>
       <link>https://randhome.io/tags/osint/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/osint/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>IPV</title>
       <link>https://randhome.io/tags/ipv/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/ipv/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>miasm</title>
       <link>https://randhome.io/tags/miasm/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/miasm/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>reverse</title>
       <link>https://randhome.io/tags/reverse/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/reverse/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>security</title>
       <link>https://randhome.io/tags/security/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/security/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>shellcode</title>
       <link>https://randhome.io/tags/shellcode/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/shellcode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>tools</title>
       <link>https://randhome.io/tags/tools/</link>
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/tools/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>reverse-engineering</title>
       <link>https://randhome.io/tags/reverse-engineering/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
-      
       <guid>https://randhome.io/tags/reverse-engineering/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>google</title>
       <link>https://randhome.io/tags/google/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      
       <guid>https://randhome.io/tags/google/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>machine learning</title>
       <link>https://randhome.io/tags/machine-learning/</link>
       <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/machine-learning/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>php</title>
       <link>https://randhome.io/tags/php/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
-      
       <guid>https://randhome.io/tags/php/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

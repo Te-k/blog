@@ -7,15 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate><atom:link href="https://randhome.io/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate>
+    <atom:link href="https://randhome.io/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
       <link>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      
       <guid>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
       <description>Il y a quelques mois, Médiapart révélait que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des circulaires rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.</description>
     </item>
-    
   </channel>
 </rss>

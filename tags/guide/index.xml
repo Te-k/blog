@@ -7,16 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 -0500</lastBuildDate><atom:link href="https://randhome.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 -0500</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Investigating Infrastructure Links with Passive DNS and Whois Data</title>
       <link>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      
       <guid>https://randhome.io/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
-      <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.
-Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
+      <description>I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the Amnesty Citizen Evidence Lab website.&#xA;Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign.</description>
     </item>
-    
   </channel>
 </rss>

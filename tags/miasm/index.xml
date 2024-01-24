@@ -7,16 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate><atom:link href="https://randhome.io/tags/miasm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/miasm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
       <link>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</guid>
-      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.
-Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
+      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.&#xA;Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
     </item>
-    
   </channel>
 </rss>

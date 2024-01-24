@@ -7,25 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate><atom:link href="https://randhome.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0200</lastBuildDate>
+    <atom:link href="https://randhome.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analyzing Shellcodes with Miasm for Fun and Profit</title>
       <link>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      
       <guid>https://randhome.io/blog/2020/04/04/analyzing-shellcodes-with-miasm-for-fun-and-profit/</guid>
-      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.
-Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
+      <description>Shellcodes are an interesting piece of software because they have to run with unusual constraints. They are also small enough to be used to learn new tools. I have been wanting to learn to use miasm for a long time (since I saw the first presentation at SSTIC some years ago), I finally used a few nights of confinement to learn that, here is a short summary.&#xA;Linux shellcode Let&amp;rsquo;s start with a Linux shellcode as they are less complex than Windows shellcodes.</description>
     </item>
-    
     <item>
       <title>Google Advanced Protection</title>
       <link>https://randhome.io/blog/2017/11/05/google-advanced-protection/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      
       <guid>https://randhome.io/blog/2017/11/05/google-advanced-protection/</guid>
       <description>Last week, Google has added a new set of security features in Gmail called &amp;ldquo;Advanced Protection&amp;rdquo;, specifically for high-risk users. It was widely covered the media (Wired, The Verge or Reuters) and quickly started a debate about whether Google is the most secure email provider on the planet or if ProtonMail can compete. The main point here to me (and it has been said by many other people everywhere) is whether you trust Google to keep your data or not, depending on your threat model and your opinion about privacy.</description>
     </item>
-    
   </channel>
 </rss>
