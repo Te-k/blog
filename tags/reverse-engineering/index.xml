@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>reverse-engineering on </title>
+    <title>Reverse-Engineering on </title>
     <link>https://randhome.io/tags/reverse-engineering/</link>
-    <description>Recent content in reverse-engineering on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Reverse-Engineering on </description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sun, 04 Feb 2018 17:08:02 -0500</lastBuildDate>

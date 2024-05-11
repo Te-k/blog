@@ -53,6 +53,8 @@
     }
   
   </script>
+
+
 </head>
 
 <body>
@@ -197,7 +199,7 @@ INT        0x80
 </span></span><span style="display:flex;"><span>mdis<span style="color:#f92672">.</span>dontdis_retcall <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> <span style="color:#75715e"># Don&#39;t disassemble after calls</span>
 </span></span><span style="display:flex;"><span>disasm <span style="color:#f92672">=</span> mdis<span style="color:#f92672">.</span>dis_multiblock(offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>open(<span style="color:#e6db74">&#39;bin_cfg.dot&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)<span style="color:#f92672">.</span>write(disasm<span style="color:#f92672">.</span>dot())
-</span></span></code></pre></div><figure class="center"><img src="/media/miasm/graph1.png" width="350"/>
+</span></span></code></pre></div><figure class="center"><img src="/media/miasm/graph1.png" width="350">
 </figure>
 
 <p>This is a bit more work to understand statically, so let&rsquo;s see if we can emulate it with miasm.</p>
@@ -288,7 +290,7 @@ Syscall: 102
 </span></span><span style="display:flex;"><span>next_addr <span style="color:#f92672">=</span> inst<span style="color:#f92672">.</span>offset <span style="color:#f92672">+</span> inst<span style="color:#f92672">.</span>l <span style="color:#75715e"># offset + size of the instruction</span>
 </span></span><span style="display:flex;"><span>disasm <span style="color:#f92672">=</span> mdis<span style="color:#f92672">.</span>dis_multiblock(offset<span style="color:#f92672">=</span>next_addr)
 </span></span><span style="display:flex;"><span>open(<span style="color:#e6db74">&#39;bin_cfg.dot&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)<span style="color:#f92672">.</span>write(disasm<span style="color:#f92672">.</span>dot())
-</span></span></code></pre></div><figure class="center"><img src="/media/miasm/graph3.png" width="350"/>
+</span></span></code></pre></div><figure class="center"><img src="/media/miasm/graph3.png" width="350">
 </figure>
 
 <p>Here we see that the shellcode is first looking for the address of kernel32 by following <code>PEB</code>, <code>PEB_LDR_DATA</code> and <code>LDR_DATA_TABLE_ENTRY</code> structures in memory. Let&rsquo;s emulate that :</p>

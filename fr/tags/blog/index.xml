@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog on </title>
+    <title>Blog on </title>
     <link>https://randhome.io/fr/tags/blog/</link>
-    <description>Recent content in blog on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Blog on </description>
+    <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sun, 07 Oct 2018 00:00:00 -0500</lastBuildDate>

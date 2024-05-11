@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php on </title>
+    <title>Php on </title>
     <link>https://randhome.io/tags/php/</link>
-    <description>Recent content in php on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Php on </description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate>

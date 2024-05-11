@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>machine learning on </title>
+    <title>Machine Learning on </title>
     <link>https://randhome.io/tags/machine-learning/</link>
-    <description>Recent content in machine learning on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Machine Learning on </description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sat, 16 Jul 2016 12:52:42 +0200</lastBuildDate>

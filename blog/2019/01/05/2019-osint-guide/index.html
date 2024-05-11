@@ -53,6 +53,8 @@
     }
   
   </script>
+
+
 </head>
 
 <body>
@@ -149,7 +151,7 @@
 <li>Pivoting &amp; Reporting: Either define new requirements by pivoting on data just gathered or end the investigation and write the report.</li>
 </ul>
 <p>This methodology is pretty intuitive and may not help much, but I think it is still important to go back to it regularly, and take the time to make an interation of the loop. Very often during investigations, we get lost into the amount of data gathered, and it is hard to have a view of what direction should the investigation take. In that case, I think it is helpful to take a break and go back to step 3 and 4: analyze and summarize what you have found, list what could help you pivoting and define new (or more precise) questions that still need answers.</p>
-<figure class="center"><img src="/media/osint/charlie-red-string.jpg" width="400"/>
+<figure class="center"><img src="/media/osint/charlie-red-string.jpg" width="400">
 </figure>
 
 <p>The other advices I would give are:</p>
@@ -160,9 +162,9 @@
 </ul>
 <p>Then there are two other methods I find useful. The first one are flowcharts to describe the workflow to search for more information based on a type of data (like an email). The best one I have seen are the one done by Michael Bazzell at <a href="https://inteltechniques.com/blog/2018/03/06/updated-osint-flowcharts/">IntelTechniques.com</a>. For instance here is Michael Bazzell workflow when researching  information on an email address:</p>
 <figure class="center"><img src="/media/osint/workflow_email.png"
-         alt="Email OSINT WorkFlow by Michael Bazzell" width="500"/><figcaption>
-            <p>Email OSINT WorkFlow by Michael Bazzell</p>
-        </figcaption>
+    alt="Email OSINT WorkFlow by Michael Bazzell" width="500"><figcaption>
+      <p>Email OSINT WorkFlow by Michael Bazzell</p>
+    </figcaption>
 </figure>
 
 <p>After some time, I think it is a good idea to start developing your own investigation workflow and slowly improve it over time with new tricks you find.</p>
@@ -192,17 +194,17 @@
 <p>I recently started to use <a href="https://hunch.ly/">Hunchly</a> and it is a great tool. Hunchly is a Chrome extensions that allows to save, tag and search all the web data you find during investigation. Basically, you just have to click on &ldquo;Capture&rdquo; in the extension when you start an investigation, and Hunchly will save all the webpages you visit in a database, allowing you to add notes and tags to them.</p>
 <p>It costs USD130 / year, which is not that much considering how helpful it is.</p>
 <figure class="center"><img src="/media/osint/hunchly.png"
-         alt="Screenshot of the Hunchly Dashboard" width="600"/><figcaption>
-            <p>Screenshot of the Hunchly Dashboard</p>
-        </figcaption>
+    alt="Screenshot of the Hunchly Dashboard" width="600"><figcaption>
+      <p>Screenshot of the Hunchly Dashboard</p>
+    </figcaption>
 </figure>
 
 <h2 id="maltego">Maltego<a class="anchor" href="#maltego">#</a></h2>
 <p><a href="https://www.maltego.com/">Maltego</a> is more a threat intelligence tool than an OSINT tool and has many limitations, but a graph is often the best way to represent and analyze investigation data and Maltego is good for that. Basically Maltego offer an GUI to represent graphs, and transforms to find new data in the graph (for instance, domains linked to an IP address from a Passive DNS database). It is a bit <a href="https://www.maltego.com/pricing-plans/">expensive</a> (USD999 / year the first year, then USD499 / year for renewal) and may only be worth it if you are also doing threat intelligence or a lot of infrastructure analysis. You can also use the <a href="https://www.maltego.com/products/">Maltego Community Edition</a> which limit the utilization of transform and the size of graph, but it should be largely enough for small investigations.</p>
 <figure class="center"><img src="/media/osint/maltego.jpg"
-         alt="Screenshot of Maltego (source: Paterva)" width="600"/><figcaption>
-            <p>Screenshot of Maltego (source: Paterva)</p>
-        </figcaption>
+    alt="Screenshot of Maltego (source: Paterva)" width="600"><figcaption>
+      <p>Screenshot of Maltego (source: Paterva)</p>
+    </figcaption>
 </figure>
 
 <h2 id="harpoon">Harpoon<a class="anchor" href="#harpoon">#</a></h2>
@@ -220,9 +222,9 @@
 <li><a href="https://www.spiderfoot.net/">SpiderFoot</a> is a reconnaissance tool that gather information through many different modules. It has a nice web interface and generate graphs showing links between the different types of data. What I don&rsquo;t like about it is that it is thought as the magic tool finding everything for you, but no tool will ever replace you to know what you are looking for and analyze the results. Yes, you will have to do the research by yourself and read the results one by one, and SpiderFoot does not help much on that. Good work and nice interface tho.</li>
 </ul>
 <figure class="center"><img src="/media/osint/spiderfoot.png"
-         alt="Screenshot of SpiderFoot (source: spiderfoot.net)" width="600"/><figcaption>
-            <p>Screenshot of SpiderFoot (source: <a href="https://www.spiderfoot.net/">spiderfoot.net</a>)</p>
-        </figcaption>
+    alt="Screenshot of SpiderFoot (source: spiderfoot.net)" width="600"><figcaption>
+      <p>Screenshot of SpiderFoot (source: <a href="https://www.spiderfoot.net/">spiderfoot.net</a>)</p>
+    </figcaption>
 </figure>
 
 <ul>
@@ -296,7 +298,7 @@
 </span></span></code></pre></div><p>Also, keep in mind that <a href="https://hunch.ly">Hunchly</a> mentioned earlier automatically save a local archive of any page you visit when recording is enabled.</p>
 <h2 id="capturing-evidences">Capturing Evidences<a class="anchor" href="#capturing-evidences">#</a></h2>
 <p>Which bring us to the next point: capturing evidences. Capturing evidences is a key part of any investigation, especially if it is likely gonna be a long one. You will definitely be lost into the amount of data you found several times, web pages will change, Twitter accounts will disappear etc.</p>
-<figure class="center"><img src="/media/osint/save.jpg" width="400"/>
+<figure class="center"><img src="/media/osint/save.jpg" width="400">
 </figure>
 
 <p>Things to keep in mind:</p>

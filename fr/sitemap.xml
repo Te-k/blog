@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://randhome.io/fr/post/</loc>
+    <lastmod>2023-10-01T12:05:34+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://randhome.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://randhome.io/fr/post/"
+                />
+  </url><url>
     <loc>https://randhome.io/fr/tags/censure/</loc>
     <lastmod>2023-02-16T01:00:00+01:00</lastmod>
   </url><url>
@@ -29,19 +42,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://randhome.io/fr/tags/opinion/"
-                />
-  </url><url>
-    <loc>https://randhome.io/fr/post/</loc>
-    <lastmod>2023-02-16T01:00:00+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://randhome.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://randhome.io/fr/post/"
                 />
   </url><url>
     <loc>https://randhome.io/fr/tags/</loc>
