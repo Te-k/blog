@@ -2,144 +2,144 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>https://randhome.io/tags/</link>
+    <link>https://maynier.eu/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GDPR</title>
-      <link>https://randhome.io/tags/gdpr/</link>
+      <link>https://maynier.eu/tags/gdpr/</link>
       <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/tags/gdpr/</guid>
+      <guid>https://maynier.eu/tags/gdpr/</guid>
       <description></description>
     </item>
     <item>
       <title>Media</title>
-      <link>https://randhome.io/tags/media/</link>
+      <link>https://maynier.eu/tags/media/</link>
       <pubDate>Mon, 27 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/tags/media/</guid>
+      <guid>https://maynier.eu/tags/media/</guid>
       <description></description>
     </item>
     <item>
       <title>Censorship</title>
-      <link>https://randhome.io/tags/censorship/</link>
+      <link>https://maynier.eu/tags/censorship/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/tags/censorship/</guid>
+      <guid>https://maynier.eu/tags/censorship/</guid>
       <description></description>
     </item>
     <item>
       <title>Opinion</title>
-      <link>https://randhome.io/tags/opinion/</link>
+      <link>https://maynier.eu/tags/opinion/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/tags/opinion/</guid>
+      <guid>https://maynier.eu/tags/opinion/</guid>
       <description></description>
     </item>
     <item>
       <title>Stalkerware</title>
-      <link>https://randhome.io/tags/stalkerware/</link>
+      <link>https://maynier.eu/tags/stalkerware/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0100</pubDate>
-      <guid>https://randhome.io/tags/stalkerware/</guid>
+      <guid>https://maynier.eu/tags/stalkerware/</guid>
       <description></description>
     </item>
     <item>
       <title>Malware</title>
-      <link>https://randhome.io/tags/malware/</link>
+      <link>https://maynier.eu/tags/malware/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/malware/</guid>
+      <guid>https://maynier.eu/tags/malware/</guid>
       <description></description>
     </item>
     <item>
       <title>Threatintel</title>
-      <link>https://randhome.io/tags/threatintel/</link>
+      <link>https://maynier.eu/tags/threatintel/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/threatintel/</guid>
+      <guid>https://maynier.eu/tags/threatintel/</guid>
       <description></description>
     </item>
     <item>
       <title>Guide</title>
-      <link>https://randhome.io/tags/guide/</link>
+      <link>https://maynier.eu/tags/guide/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/guide/</guid>
+      <guid>https://maynier.eu/tags/guide/</guid>
       <description></description>
     </item>
     <item>
       <title>Osint</title>
-      <link>https://randhome.io/tags/osint/</link>
+      <link>https://maynier.eu/tags/osint/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/osint/</guid>
+      <guid>https://maynier.eu/tags/osint/</guid>
       <description></description>
     </item>
     <item>
       <title>IPV</title>
-      <link>https://randhome.io/tags/ipv/</link>
+      <link>https://maynier.eu/tags/ipv/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/ipv/</guid>
+      <guid>https://maynier.eu/tags/ipv/</guid>
       <description></description>
     </item>
     <item>
       <title>Miasm</title>
-      <link>https://randhome.io/tags/miasm/</link>
+      <link>https://maynier.eu/tags/miasm/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://randhome.io/tags/miasm/</guid>
+      <guid>https://maynier.eu/tags/miasm/</guid>
       <description></description>
     </item>
     <item>
       <title>Reverse</title>
-      <link>https://randhome.io/tags/reverse/</link>
+      <link>https://maynier.eu/tags/reverse/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://randhome.io/tags/reverse/</guid>
+      <guid>https://maynier.eu/tags/reverse/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>https://randhome.io/tags/security/</link>
+      <link>https://maynier.eu/tags/security/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://randhome.io/tags/security/</guid>
+      <guid>https://maynier.eu/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Shellcode</title>
-      <link>https://randhome.io/tags/shellcode/</link>
+      <link>https://maynier.eu/tags/shellcode/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://randhome.io/tags/shellcode/</guid>
+      <guid>https://maynier.eu/tags/shellcode/</guid>
       <description></description>
     </item>
     <item>
       <title>Tools</title>
-      <link>https://randhome.io/tags/tools/</link>
+      <link>https://maynier.eu/tags/tools/</link>
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/tags/tools/</guid>
+      <guid>https://maynier.eu/tags/tools/</guid>
       <description></description>
     </item>
     <item>
       <title>Reverse-Engineering</title>
-      <link>https://randhome.io/tags/reverse-engineering/</link>
+      <link>https://maynier.eu/tags/reverse-engineering/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
-      <guid>https://randhome.io/tags/reverse-engineering/</guid>
+      <guid>https://maynier.eu/tags/reverse-engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Google</title>
-      <link>https://randhome.io/tags/google/</link>
+      <link>https://maynier.eu/tags/google/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:42 -0400</pubDate>
-      <guid>https://randhome.io/tags/google/</guid>
+      <guid>https://maynier.eu/tags/google/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>https://randhome.io/tags/machine-learning/</link>
+      <link>https://maynier.eu/tags/machine-learning/</link>
       <pubDate>Sat, 16 Jul 2016 12:52:42 +0200</pubDate>
-      <guid>https://randhome.io/tags/machine-learning/</guid>
+      <guid>https://maynier.eu/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Php</title>
-      <link>https://randhome.io/tags/php/</link>
+      <link>https://maynier.eu/tags/php/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
-      <guid>https://randhome.io/tags/php/</guid>
+      <guid>https://maynier.eu/tags/php/</guid>
       <description></description>
     </item>
   </channel>

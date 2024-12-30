@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on </title>
-    <link>https://randhome.io/fr/tags/blog/</link>
+    <link>https://maynier.eu/fr/tags/blog/</link>
     <description>Recent content in Blog on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sun, 07 Oct 2018 00:00:00 -0500</lastBuildDate>
-    <atom:link href="https://randhome.io/fr/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/fr/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog en Français</title>
-      <link>https://randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</link>
+      <link>https://maynier.eu/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</guid>
+      <guid>https://maynier.eu/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</guid>
       <description>Bonjour à tous,&#xA;Après mon récent retour en France, j&amp;rsquo;ai décidé de passer ce blog en multilingue Anglais et Français, ce qui a également donné lieu a un petit redesign du blog (basé sur le thème Hugo sustain). L&amp;rsquo;objectif est de parler un peu plus des aspects politiques des technologies mais également de fournir des ressources sur la sécurité et la vie privée accessibles en Français.&#xA;N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
     </item>
   </channel>

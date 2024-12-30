@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stalkerware on </title>
-    <link>https://randhome.io/tags/stalkerware/</link>
+    <link>https://maynier.eu/tags/stalkerware/</link>
     <description>Recent content in Stalkerware on </description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/tags/stalkerware/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/tags/stalkerware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Check if an Android Phone has a Stalkerware Installed?</title>
-      <link>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</link>
+      <link>https://maynier.eu/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0100</pubDate>
-      <guid>https://randhome.io/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</guid>
+      <guid>https://maynier.eu/blog/2021/01/16/how-to-check-if-an-android-phone-has-a-stalkerware-installed/</guid>
       <description>Stalkerwares are malware used in abusive relationships to spy on someone&amp;rsquo;s partner. I have talked quite a bit about it already, see my previous blog posts for more background information on stalkerware.&#xA;There are different ways to check if a stalkerware is installed on a phone. At Echap, we have written a guide to check for configuration settings on an Android phone (in French). We think it is the easiest way for non-tech people and quite reliable.</description>
     </item>
     <item>
       <title>Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</title>
-      <link>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>
+      <link>https://maynier.eu/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
+      <guid>https://maynier.eu/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
       <description>A few years ago, I wrote about Flexispy after the company got hacked and some data was released. It was the first time I encountered stalkerware in my work. Since then, I have had many discussions about this creepy market and more generally technology used in intimate partner violence (IPV) with researchers and activists. I think it is the right time to reflect on what we know about stalkerware and what needs to be done on this topic.</description>
     </item>
     <item>
       <title>Let&#39;s Talk About FlexiSpy</title>
-      <link>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</link>
+      <link>https://maynier.eu/blog/2017/04/23/lets-talk-about-flexispy/</link>
       <pubDate>Sun, 23 Apr 2017 22:00:00 +0000</pubDate>
-      <guid>https://randhome.io/blog/2017/04/23/lets-talk-about-flexispy/</guid>
+      <guid>https://maynier.eu/blog/2017/04/23/lets-talk-about-flexispy/</guid>
       <description>Introduction: I started this blog post to explain the context of FlexiSpy leaks and show some information I have found during my analysis. This information is incomplete and there is still plenty analysis of source code or binaries to be done. I have uploaded the source code and binaries on github so that everyone can help with it. I will try to report in this articles the publications I have seen on it, but feel free to ping me on Twitter if you see new information or have any question.</description>
     </item>
   </channel>

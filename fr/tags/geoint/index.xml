@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Geoint on </title>
-    <link>https://randhome.io/fr/tags/geoint/</link>
+    <link>https://maynier.eu/fr/tags/geoint/</link>
     <description>Recent content in Geoint on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
-      <link>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
+      <link>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
+      <guid>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
       <description>Il y a quelques mois, Médiapart révélait que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des circulaires rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.</description>
     </item>
   </channel>

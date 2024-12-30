@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Threatintel on </title>
-    <link>https://randhome.io/tags/threatintel/</link>
+    <link>https://maynier.eu/tags/threatintel/</link>
     <description>Recent content in Threatintel on </description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Sun, 20 Dec 2020 00:00:00 -0500</lastBuildDate>
-    <atom:link href="https://randhome.io/tags/threatintel/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/tags/threatintel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analyzing Cobalt Strike for Fun and Profit</title>
-      <link>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</link>
+      <link>https://maynier.eu/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
+      <guid>https://maynier.eu/blog/2020/12/20/analyzing-cobalt-strike-for-fun-and-profit/</guid>
       <description>I am not sure what happened this year but it seems that Cobalt Strike is now the most used malware around the world, from APT41 to APT32, even the last SolarWinds supply chain attack involved Cobalt Strike. Without relaunching the heated debate on publishing offensive tools, this blog post intends to summarize what an analyst needs to know about Cobalt Strike to quickly identify and analyze it during incidents.&#xA;Finding Cobalt Strike Servers A few months ago, the Salesforce security team published a new active fingerprint tool called JARM.</description>
     </item>
   </channel>

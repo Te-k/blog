@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>https://randhome.io/fr/tags/</link>
+    <link>https://maynier.eu/fr/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Thu, 16 Feb 2023 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/fr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/fr/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Censure</title>
-      <link>https://randhome.io/fr/tags/censure/</link>
+      <link>https://maynier.eu/fr/tags/censure/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/tags/censure/</guid>
+      <guid>https://maynier.eu/fr/tags/censure/</guid>
       <description></description>
     </item>
     <item>
       <title>Opinion</title>
-      <link>https://randhome.io/fr/tags/opinion/</link>
+      <link>https://maynier.eu/fr/tags/opinion/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/tags/opinion/</guid>
+      <guid>https://maynier.eu/fr/tags/opinion/</guid>
       <description></description>
     </item>
     <item>
       <title>Geoint</title>
-      <link>https://randhome.io/fr/tags/geoint/</link>
+      <link>https://maynier.eu/fr/tags/geoint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/tags/geoint/</guid>
+      <guid>https://maynier.eu/fr/tags/geoint/</guid>
       <description></description>
     </item>
     <item>
       <title>Osint</title>
-      <link>https://randhome.io/fr/tags/osint/</link>
+      <link>https://maynier.eu/fr/tags/osint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/tags/osint/</guid>
+      <guid>https://maynier.eu/fr/tags/osint/</guid>
       <description></description>
     </item>
     <item>
       <title>Securite</title>
-      <link>https://randhome.io/fr/tags/securite/</link>
+      <link>https://maynier.eu/fr/tags/securite/</link>
       <pubDate>Sun, 27 Jan 2019 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/tags/securite/</guid>
+      <guid>https://maynier.eu/fr/tags/securite/</guid>
       <description></description>
     </item>
     <item>
       <title>Google</title>
-      <link>https://randhome.io/fr/tags/google/</link>
+      <link>https://maynier.eu/fr/tags/google/</link>
       <pubDate>Mon, 08 Oct 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/tags/google/</guid>
+      <guid>https://maynier.eu/fr/tags/google/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>https://randhome.io/fr/tags/blog/</link>
+      <link>https://maynier.eu/fr/tags/blog/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/tags/blog/</guid>
+      <guid>https://maynier.eu/fr/tags/blog/</guid>
       <description></description>
     </item>
   </channel>

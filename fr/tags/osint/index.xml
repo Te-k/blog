@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Osint on </title>
-    <link>https://randhome.io/fr/tags/osint/</link>
+    <link>https://maynier.eu/fr/tags/osint/</link>
     <description>Recent content in Osint on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/fr/tags/osint/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/fr/tags/osint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
-      <link>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
+      <link>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
+      <guid>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
       <description>Il y a quelques mois, Médiapart révélait que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des circulaires rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.</description>
     </item>
     <item>
       <title>Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</title>
-      <link>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
+      <link>https://maynier.eu/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</guid>
+      <guid>https://maynier.eu/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</guid>
       <description>/!\ Cet article parle d&amp;rsquo;avortement / Interruption Volontaire de Grossesse&#xA;Il y a eu un développement assez impressionnant ces dernières années de l&amp;rsquo;OSINT (Open Source Intelligence, c&amp;rsquo;est à dire des investigations à partir de données accessibles publiquement en ligne) dans des enquêtes journalistiques ou sur des abus de droits humains. Il faut bien sur citer l&amp;rsquo;excellent travail de Bellingcat qui a ouvert de nouvelles perspectives pour les journalistes suivi ensuite par des médias comme chez Mediapart ou BBC Africa pour n&amp;rsquo;en citer que deux.</description>
     </item>
   </channel>

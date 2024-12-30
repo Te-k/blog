@@ -2,82 +2,82 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Accueil on </title>
-    <link>https://randhome.io/fr/</link>
+    <link>https://maynier.eu/fr/</link>
     <description>Recent content in Accueil on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Thu, 16 Feb 2023 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://randhome.io/fr/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maynier.eu/fr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>La France et le contrôle d&#39;accès aux sites pornographiques</title>
-      <link>https://randhome.io/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/</link>
+      <link>https://maynier.eu/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/</link>
       <pubDate>Thu, 16 Feb 2023 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/</guid>
+      <guid>https://maynier.eu/fr/blog/2023/02/16/la-france-et-le-contr%C3%B4le-dacc%C3%A8s-aux-sites-pornographiques/</guid>
       <description>Janvier 2023 et encore une fois la question de limiter l&amp;rsquo;accès aux sites pornographiques pour les personnes mineures revient sur le devant de la scène médiatique. Il s&amp;rsquo;agit d&amp;rsquo;une question aussi ancienne que le World Wide Web qui revient chaque année sous un angle différent. En 2020, le Parlement a même voté une loi (article 227-24 du code pénal) obligeant les sites pornographiques à mettre en place un filtrage plus efficace qu&amp;rsquo;une simple demande.</description>
     </item>
     <item>
       <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
-      <link>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
+      <link>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
+      <guid>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
       <description>Il y a quelques mois, Médiapart révélait que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des circulaires rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.</description>
     </item>
     <item>
       <title>Cas Pratique d&#39;OSINT : enquêter sur un site web - ivg.net</title>
-      <link>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
+      <link>https://maynier.eu/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0100</pubDate>
-      <guid>https://randhome.io/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</guid>
+      <guid>https://maynier.eu/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</guid>
       <description>/!\ Cet article parle d&amp;rsquo;avortement / Interruption Volontaire de Grossesse&#xA;Il y a eu un développement assez impressionnant ces dernières années de l&amp;rsquo;OSINT (Open Source Intelligence, c&amp;rsquo;est à dire des investigations à partir de données accessibles publiquement en ligne) dans des enquêtes journalistiques ou sur des abus de droits humains. Il faut bien sur citer l&amp;rsquo;excellent travail de Bellingcat qui a ouvert de nouvelles perspectives pour les journalistes suivi ensuite par des médias comme chez Mediapart ou BBC Africa pour n&amp;rsquo;en citer que deux.</description>
     </item>
     <item>
       <title>Journalisme et navigation privée</title>
-      <link>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</link>
+      <link>https://maynier.eu/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</link>
       <pubDate>Sun, 27 Jan 2019 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</guid>
+      <guid>https://maynier.eu/fr/blog/2019/01/27/journalisme-et-navigation-priv%C3%A9e/</guid>
       <description>La communauté &amp;ldquo;InfoSec&amp;rdquo; et les erreurs des journalistes Une récente interview d&amp;rsquo;Hugo Clément (journaliste à Konbini) a conduit une partie de la communauté de sécurité informatique (information security en anglais, souvent appelée infosec rapidement) à se moquer ouvertement d&amp;rsquo;erreurs techniques dans cette interview.&#xA;Un des tweet à l&amp;rsquo;origine de ce post&#xA;Si effectivement, il semble y avoir une incompréhension sur ce que fait et ne fait pas la navigation privée, je trouve que se moquer et couvrir de honte (shamer) un-e journaliste, est une pratique courante et problématique de notre communauté infosec.</description>
     </item>
     <item>
       <title>Google Chrome vous mélange les pinceaux</title>
-      <link>https://randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</link>
+      <link>https://maynier.eu/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</link>
       <pubDate>Mon, 08 Oct 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</guid>
+      <guid>https://maynier.eu/fr/blog/2018/10/08/google-chrome-vous-m%C3%A9lange-les-pinceaux/</guid>
       <description>Vous en avez peut-être entendu parler récemment, Chrome a effectué un changement dans la gestion des logins qui faut beaucoup de bruit. Voici un petit résumé du problème.&#xA;Chrome et ses deux authentifications Depuis quelques années, Chrome embarque une fonctionnalité permettant de logger votre session Google dans Chrome, ce qui permet de synchroniser vos sessions Chrome (extensions, marque-pages, mots de passe etc.) entre plusieurs ordinateurs ou smartphones. Bien sur, cela donne également nettement plus d&amp;rsquo;informations personnelles à Google.</description>
     </item>
     <item>
       <title>Blog en Français</title>
-      <link>https://randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</link>
+      <link>https://maynier.eu/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 -0500</pubDate>
-      <guid>https://randhome.io/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</guid>
+      <guid>https://maynier.eu/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</guid>
       <description>Bonjour à tous,&#xA;Après mon récent retour en France, j&amp;rsquo;ai décidé de passer ce blog en multilingue Anglais et Français, ce qui a également donné lieu a un petit redesign du blog (basé sur le thème Hugo sustain). L&amp;rsquo;objectif est de parler un peu plus des aspects politiques des technologies mais également de fournir des ressources sur la sécurité et la vie privée accessibles en Français.&#xA;N&amp;rsquo;hésitez pas à me contacter à tek[AT]randhome.</description>
     </item>
     <item>
       <title>Ressources</title>
-      <link>https://randhome.io/fr/resources/</link>
+      <link>https://maynier.eu/fr/resources/</link>
       <pubDate>Thu, 05 May 2016 01:07:16 +0200</pubDate>
-      <guid>https://randhome.io/fr/resources/</guid>
-      <description>Cette page réunit des ressources sur la sécurité numérique.&#xA;Dessin de Matt Dixon Guides sur la Sécurité Numérique Les principaux guides en sécurité numérique sont :&#xA;Surveillance Self-Defense par l&amp;rsquo;EFF est l e guide de référence, il est disponible en français (ainsi que 10 autres langues) et bien mai ntenu Le Security Planner par le Citizen Lab est une plateforme pour avoir facilement des recommandations pour sa sécurité numériq ue (malheuresement uniquement en anglais) Security In a Box est également une très bonne ressource sur ce sujet, mais n&amp;rsquo;est plus maintenu et les articles sont souvent obsolètes (en français) En Français, le Guide d&amp;rsquo;autodéfense numérique est un manuel en profondeur des questions de sécurité informatique (cela peut être dense et peu adapté si vous cherchez une solution rapide) Sur le phishing et les attaques ciblées Si vous voulez mieux comprendre ce qu&amp;rsquo;est le phishing est les attaques par malware ciblées :</description>
+      <guid>https://maynier.eu/fr/resources/</guid>
+      <description>Cette page réunit des ressources sur la sécurité numérique.&#xA;Dessin de Matt Dixon Guides sur la Sécurité Numérique Les principaux guides en sécurité numérique sont :&#xA;Surveillance Self-Defense par l&amp;rsquo;EFF est le guide de référence, il est disponible en français (ainsi que 10 autres langues) et bien maintenu Le Security Planner par Consumer Reports est une plateforme pour avoir facilement des recommandations pour sa sécurité numérique (malheureusement uniquement en anglais) Security In a Box est également une très bonne ressource sur ce sujet, mais n&amp;rsquo;est plus maintenu et les articles sont souvent obsolètes (en français) En Français, le Guide d&amp;rsquo;autodéfense numérique est un manuel en profondeur des questions de sécurité informatique (cela peut être dense et peu adapté si vous cherchez une solution rapide) Sur le phishing et les attaques ciblées Si vous voulez mieux comprendre ce qu&amp;rsquo;est le phishing est les attaques par malware ciblées :</description>
     </item>
     <item>
       <title>A propos</title>
-      <link>https://randhome.io/fr/about/</link>
+      <link>https://maynier.eu/fr/about/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      <guid>https://randhome.io/fr/about/</guid>
+      <guid>https://maynier.eu/fr/about/</guid>
       <description>Je suis Etienne &amp;ldquo;tek&amp;rdquo; Maynier, un militant, analyste et chercheur en sécurité.&#xA;Dessin par _lila* Je travaille actuellement comme Technologiste dans l&amp;rsquo;équipe de sécurité informatique d&amp;rsquo;Human Rights Watch afin de protéger l&amp;rsquo;organisation d&amp;rsquo;attaques numériques.&#xA;Je suis membre actif de l&amp;rsquo;association Echap où je développe des ressources et formations pour des associatons accueillant des personnes victimes de violences conjugales. Je développe et maintiens des outils. J&amp;rsquo;étais précédemment un Mozilla Open Web Fellow entre 2016 et 2017, &amp;ldquo;research fellow&amp;rdquo; au Citizen Lab jusqu&amp;rsquo;en Avril 2021, et j&amp;rsquo;ai travaillé au sein d&amp;rsquo;Amnesty International de 2019 à 2023.</description>
     </item>
     <item>
       <title>Comment me contacter ?</title>
-      <link>https://randhome.io/fr/contact/</link>
+      <link>https://maynier.eu/fr/contact/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      <guid>https://randhome.io/fr/contact/</guid>
-      <description>Vous pouvez me contacter de manière sécurisée:&#xA;Dessin de Matt Dixon Par email : vous pouvez me contacter à tek A randhome POINT io, si possible en utilisant cette clé PGP (Empreinte DA0A 7FF5 519B 218C 37E7 A3E4 DCB5 5433 A1EA 7CAB ) Par email : si vous utilisez protonmail, vous pouvez m&amp;rsquo;envoyer un email à randomtek A protonmail POINT com Sur Wire: @tekk Sur Signal/WhatsApp: le plus simple c&amp;rsquo;est de m&amp;rsquo;envoyer un email ou un DM sur Mastodon (@tek@todon.</description>
+      <guid>https://maynier.eu/fr/contact/</guid>
+      <description>Vous pouvez me contacter de manière sécurisée:&#xA;Dessin de Matt Dixon Par email : vous pouvez me contacter à etienne AROBASE maynier POINT eu, si possible en utilisant cette clé PGP (Empreinte 6861 626E B4A8 74F5 D794 ED0C 5FC6 A564 4D8A E276) ou protonmail. Sur Wire: @tekk Sur Signal/WhatsApp: le plus simple c&amp;rsquo;est de m&amp;rsquo;envoyer un email ou un DM sur Mastodon (@tek@todon.eu), et de demander mon numéro de téléphone avec une explication rapide de la raison Si vous souhaitez me contacter sans besoin de sécurité, mes emails et DM Mastodon sont ouverts.</description>
     </item>
     <item>
       <title>Projets</title>
-      <link>https://randhome.io/fr/projects/</link>
+      <link>https://maynier.eu/fr/projects/</link>
       <pubDate>Fri, 29 Apr 2016 14:51:26 +0200</pubDate>
-      <guid>https://randhome.io/fr/projects/</guid>
-      <description>Voici une liste de projets personnels sur lesquels j&amp;rsquo;ai travaillé :&#xA;Dessin par Matt Dixon Outils Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Plusieurs librairies pour faire de la threat intelligence comme pysafebrowsing ou pycrtsh Des scripts qui peuvent être utiles pour des analystes en sécurité Guides Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
+      <guid>https://maynier.eu/fr/projects/</guid>
+      <description>Voici une liste de projets personnels sur lesquels j&amp;rsquo;ai travaillé :&#xA;Dessin par Matt Dixon Outils Je suis un des développeurs et mainteneur du MVT Toolkit qui permet de faire des analyses forensic de smartphones. Harpoon est un outil écrit en python en ligne de commande pour requêter facilement des plateformes d&amp;rsquo;OSINT ou de Threat Intelligence (plus d&amp;rsquo;informations dans cet article en anglais) Des indicateurs sur les stalkerware Des outils en ligne de commande pour analyser des fichiers PE ou des APK Plusieurs librairies pour faire de la threat intelligence comme pysafebrowsing ou pycrtsh Des scripts qui peuvent être utiles pour des analystes en sécurité Guides Je suis convaincu que la société civile gagnerait à avoir plus de connaissances en forensic.</description>
     </item>
   </channel>
 </rss>
