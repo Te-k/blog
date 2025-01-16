@@ -14,7 +14,7 @@
       <link>https://maynier.eu/blog/2016/05/14/comparison-of-php-scanners/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
       <guid>https://maynier.eu/blog/2016/05/14/comparison-of-php-scanners/</guid>
-      <description>Hi there!&#xA;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&#xA;ClamAV ClamAV is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux.</description>
+      <description>&lt;p&gt;Hi there!&lt;/p&gt;&#xA;&lt;p&gt;I have recently looked different compromised websites on github, mostly using outdated Wordpress/Joomla/Drupal versions. In these cases, I often have to go through many different files to find the malicious one, whether added on the website or added to legitimate files. Here is a short summary of the different tools to detect them.&lt;/p&gt;&#xA;&lt;h2 id=&#34;clamav&#34;&gt;ClamAV&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.clamav.net/&#34;&gt;ClamAV&lt;/a&gt; is an open-source antivirus developed for different platform, but also one of the seldom antivirus used on Linux. It has a complex signature format with many open signature provided by the community (more than 3 700 000 according to wikipedia). And the good news, is that &lt;a href=&#34;http://blog.clamav.net/2015/06/clamav-099b-meets-yara.html&#34;&gt;it supports Yara&lt;/a&gt; since last year!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

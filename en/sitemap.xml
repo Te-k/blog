@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://maynier.eu/</loc>
-    <lastmod>2024-08-23T00:00:00+02:00</lastmod>
+    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://maynier.eu/post/</loc>
-    <lastmod>2024-08-23T00:00:00+02:00</lastmod>
+    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -27,6 +27,9 @@
                 hreflang="en"
                 href="https://maynier.eu/post/"
                 />
+  </url><url>
+    <loc>https://maynier.eu/blog/2025/01/16/starting-2025-with-a-blog-post-and-new-resolutions/</loc>
+    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
   </url><url>
     <loc>https://maynier.eu/tags/gdpr/</loc>
     <lastmod>2023-02-27T01:00:00+01:00</lastmod>
