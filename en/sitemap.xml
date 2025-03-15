@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://maynier.eu/</loc>
-    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
+    <lastmod>2025-01-16T21:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://maynier.eu/post/</loc>
-    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
+    <lastmod>2025-01-16T21:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -28,20 +28,24 @@
                 href="https://maynier.eu/post/"
                 />
   </url><url>
+    <loc>https://maynier.eu/tags/blog/</loc>
+    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://maynier.eu/fr/tags/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maynier.eu/tags/blog/"
+                />
+  </url><url>
     <loc>https://maynier.eu/blog/2025/01/16/starting-2025-with-a-blog-post-and-new-resolutions/</loc>
     <lastmod>2025-01-16T20:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://maynier.eu/tags/gdpr/</loc>
-    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://maynier.eu/tags/media/</loc>
-    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://maynier.eu/blog/2023/02/27/restriction-of-european-visitors-in-us-media-an-update/</loc>
-    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://maynier.eu/tags/</loc>
-    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
+    <lastmod>2025-01-16T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -52,6 +56,15 @@
                 hreflang="en"
                 href="https://maynier.eu/tags/"
                 />
+  </url><url>
+    <loc>https://maynier.eu/tags/gdpr/</loc>
+    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://maynier.eu/tags/media/</loc>
+    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://maynier.eu/blog/2023/02/27/restriction-of-european-visitors-in-us-media-an-update/</loc>
+    <lastmod>2023-02-27T01:00:00+01:00</lastmod>
   </url><url>
     <loc>https://maynier.eu/tags/censorship/</loc>
     <lastmod>2023-02-16T01:00:00+01:00</lastmod>
@@ -140,6 +153,12 @@
     <loc>https://maynier.eu/tags/shellcode/</loc>
     <lastmod>2020-04-04T00:00:00+02:00</lastmod>
   </url><url>
+    <loc>https://maynier.eu/tags/phishing/</loc>
+    <lastmod>2019-12-02T00:00:02-05:00</lastmod>
+  </url><url>
+    <loc>https://maynier.eu/tags/spyware/</loc>
+    <lastmod>2019-12-02T00:00:02-05:00</lastmod>
+  </url><url>
     <loc>https://maynier.eu/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</loc>
     <lastmod>2019-12-02T00:00:02-05:00</lastmod>
   </url><url>
@@ -155,7 +174,7 @@
     <loc>https://maynier.eu/blog/2018/02/04/another-pe-tool/</loc>
     <lastmod>2018-02-04T17:08:02-05:00</lastmod>
   </url><url>
-    <loc>https://maynier.eu/tags/reverse-engineering/</loc>
+    <loc>https://maynier.eu/tags/tool/</loc>
     <lastmod>2018-02-04T17:08:02-05:00</lastmod>
   </url><url>
     <loc>https://maynier.eu/tags/google/</loc>

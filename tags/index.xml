@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Mon, 27 Feb 2023 01:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2025 20:00:00 +0000</lastBuildDate>
     <atom:link href="https://maynier.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://maynier.eu/tags/blog/</link>
+      <pubDate>Thu, 16 Jan 2025 20:00:00 +0000</pubDate>
+      <guid>https://maynier.eu/tags/blog/</guid>
+      <description></description>
+    </item>
     <item>
       <title>GDPR</title>
       <link>https://maynier.eu/tags/gdpr/</link>
@@ -108,6 +115,20 @@
       <description></description>
     </item>
     <item>
+      <title>Phishing</title>
+      <link>https://maynier.eu/tags/phishing/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
+      <guid>https://maynier.eu/tags/phishing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spyware</title>
+      <link>https://maynier.eu/tags/spyware/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
+      <guid>https://maynier.eu/tags/spyware/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Tools</title>
       <link>https://maynier.eu/tags/tools/</link>
       <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
@@ -115,10 +136,10 @@
       <description></description>
     </item>
     <item>
-      <title>Reverse-Engineering</title>
-      <link>https://maynier.eu/tags/reverse-engineering/</link>
+      <title>Tool</title>
+      <link>https://maynier.eu/tags/tool/</link>
       <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
-      <guid>https://maynier.eu/tags/reverse-engineering/</guid>
+      <guid>https://maynier.eu/tags/tool/</guid>
       <description></description>
     </item>
     <item>

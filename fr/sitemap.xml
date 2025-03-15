@@ -103,6 +103,16 @@
   </url><url>
     <loc>https://maynier.eu/fr/tags/blog/</loc>
     <lastmod>2018-10-07T00:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maynier.eu/tags/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://maynier.eu/fr/tags/blog/"
+                />
   </url><url>
     <loc>https://maynier.eu/fr/blog/2018/10/07/blog-en-fran%C3%A7ais/</loc>
     <lastmod>2018-10-07T00:00:00-05:00</lastmod>
