@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://maynier.eu/fr/post/</loc>
-    <lastmod>2023-10-01T12:05:34+02:00</lastmod>
+    <lastmod>2025-03-16T01:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -57,23 +57,23 @@
                 href="https://maynier.eu/fr/tags/"
                 />
   </url><url>
-    <loc>https://maynier.eu/fr/tags/geoint/</loc>
+    <loc>https://maynier.eu/fr/tags/flight-tracking/</loc>
     <lastmod>2022-06-27T01:00:00+01:00</lastmod>
   </url><url>
     <loc>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</loc>
     <lastmod>2022-06-27T01:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://maynier.eu/fr/tags/osint/</loc>
+    <loc>https://maynier.eu/fr/tags/osi/</loc>
     <lastmod>2022-06-27T01:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maynier.eu/tags/osint/"
+                href="https://maynier.eu/tags/osi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://maynier.eu/fr/tags/osint/"
+                href="https://maynier.eu/fr/tags/osi/"
                 />
   </url><url>
     <loc>https://maynier.eu/fr/blog/2021/01/04/cas-pratique-dosint-enqu%C3%AAter-sur-un-site-web-ivg.net/</loc>

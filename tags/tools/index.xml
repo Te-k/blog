@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Fri, 23 Feb 2018 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 14 May 2016 17:44:19 +0200</lastBuildDate>
     <atom:link href="https://maynier.eu/tags/tools/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Harpoon: an OSINT / Threat Intelligence tool</title>
-      <link>https://maynier.eu/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>
-      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
-      <guid>https://maynier.eu/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
-      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Harpoon&lt;/strong&gt; is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on &lt;a href=&#34;https://github.com/Te-k/harpoon&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;, feel free to open &lt;a href=&#34;https://github.com/Te-k/harpoon/issues&#34; target=&#34;_blank&#34;&gt;issues&lt;/a&gt; and propose &lt;a href=&#34;https://github.com/Te-k/harpoon/pulls&#34; target=&#34;_blank&#34;&gt;Pull Requests&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Install and config:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g phantomjs&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;harpoon config -u&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;harpoon config&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then check how to use every module with &lt;code&gt;harpoon help MODULE&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Comparison of php scanners</title>
       <link>https://maynier.eu/blog/2016/05/14/comparison-of-php-scanners/</link>

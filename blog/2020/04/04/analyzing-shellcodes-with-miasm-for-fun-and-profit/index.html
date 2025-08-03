@@ -28,7 +28,7 @@
 
   
     
-    <link rel="stylesheet" href="/css/post.min.b55e48a57c205580facfa82070761940c943e10b594ebdb023151ba0ff1d16cc.css" integrity="sha256-tV5IpXwgVYD6z6ggcHYZQMlD4QtZTr2wIxUboP8dFsw="/>
+    <link rel="stylesheet" href="/css/post.min.a37e0a4baf346423e1637350f2a31c69622c6d9cb0f81f78f5a90e5a04ba1795.css" integrity="sha256-o34KS680ZCPhY3NQ8qMcaWIsbZyw&#43;B949akOWgS6F5U="/>
   
     
     <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
@@ -345,7 +345,7 @@ RuntimeError: Cannot find address
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> miasm.analysis.sandbox <span style="color:#f92672">import</span> Sandbox_Win_x86_32
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Options</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>use_windows_structs <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>jitter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gcc&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">#self.singlestep = True</span>
@@ -353,7 +353,7 @@ RuntimeError: Cannot find address
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>load_hdr <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>loadbasedll <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getattr__(self, name):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__getattr__</span>(self, name):
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> Options()
@@ -476,12 +476,6 @@ socket_connect(fd, [AF_INET, 443, 192.168.56.1], 16)
     </li>
     <li class="tag__item">
         <a class="tag__link" href="https://maynier.eu/tags/reverse/">reverse</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://maynier.eu/tags/shellcode/">shellcode</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://maynier.eu/tags/miasm/">miasm</a>
     </li></ul>
 
  <div class="pagination">

@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
-    <lastBuildDate>Thu, 16 Jan 2025 20:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Aug 2025 20:00:00 +0000</lastBuildDate>
     <atom:link href="https://maynier.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OSI</title>
+      <link>https://maynier.eu/tags/osi/</link>
+      <pubDate>Sat, 02 Aug 2025 20:00:00 +0000</pubDate>
+      <guid>https://maynier.eu/tags/osi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social Media</title>
+      <link>https://maynier.eu/tags/social-media/</link>
+      <pubDate>Sat, 02 Aug 2025 20:00:00 +0000</pubDate>
+      <guid>https://maynier.eu/tags/social-media/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Blog</title>
       <link>https://maynier.eu/tags/blog/</link>
@@ -59,10 +73,10 @@
       <description></description>
     </item>
     <item>
-      <title>Threatintel</title>
-      <link>https://maynier.eu/tags/threatintel/</link>
+      <title>Threat-Tracking</title>
+      <link>https://maynier.eu/tags/threat-tracking/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 -0500</pubDate>
-      <guid>https://maynier.eu/tags/threatintel/</guid>
+      <guid>https://maynier.eu/tags/threat-tracking/</guid>
       <description></description>
     </item>
     <item>
@@ -73,24 +87,10 @@
       <description></description>
     </item>
     <item>
-      <title>Osint</title>
-      <link>https://maynier.eu/tags/osint/</link>
-      <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://maynier.eu/tags/osint/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IPV</title>
-      <link>https://maynier.eu/tags/ipv/</link>
+      <title>GBV</title>
+      <link>https://maynier.eu/tags/gbv/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
-      <guid>https://maynier.eu/tags/ipv/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Miasm</title>
-      <link>https://maynier.eu/tags/miasm/</link>
-      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://maynier.eu/tags/miasm/</guid>
+      <guid>https://maynier.eu/tags/gbv/</guid>
       <description></description>
     </item>
     <item>
@@ -108,13 +108,6 @@
       <description></description>
     </item>
     <item>
-      <title>Shellcode</title>
-      <link>https://maynier.eu/tags/shellcode/</link>
-      <pubDate>Sat, 04 Apr 2020 00:00:00 +0200</pubDate>
-      <guid>https://maynier.eu/tags/shellcode/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Phishing</title>
       <link>https://maynier.eu/tags/phishing/</link>
       <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
@@ -122,23 +115,9 @@
       <description></description>
     </item>
     <item>
-      <title>Spyware</title>
-      <link>https://maynier.eu/tags/spyware/</link>
-      <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
-      <guid>https://maynier.eu/tags/spyware/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tools</title>
-      <link>https://maynier.eu/tags/tools/</link>
-      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
-      <guid>https://maynier.eu/tags/tools/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Tool</title>
       <link>https://maynier.eu/tags/tool/</link>
-      <pubDate>Sun, 04 Feb 2018 17:08:02 -0500</pubDate>
+      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
       <guid>https://maynier.eu/tags/tool/</guid>
       <description></description>
     </item>
@@ -161,6 +140,13 @@
       <link>https://maynier.eu/tags/php/</link>
       <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
       <guid>https://maynier.eu/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tools</title>
+      <link>https://maynier.eu/tags/tools/</link>
+      <pubDate>Sat, 14 May 2016 17:44:19 +0200</pubDate>
+      <guid>https://maynier.eu/tags/tools/</guid>
       <description></description>
     </item>
   </channel>

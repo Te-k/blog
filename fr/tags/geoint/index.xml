@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Geoint on </title>
-    <link>https://maynier.eu/fr/tags/geoint/</link>
+    <link>http://localhost:1313/fr/tags/geoint/</link>
     <description>Recent content in Geoint on </description>
     <generator>Hugo</generator>
     <language>fr</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Mon, 27 Jun 2022 01:00:00 +0100</lastBuildDate>
-    <atom:link href="https://maynier.eu/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/fr/tags/geoint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mais ou est Jean Castex ? Suivre les vols du gouvernement avec de l&#39;OSINT</title>
-      <link>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
+      <link>http://localhost:1313/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</link>
       <pubDate>Mon, 27 Jun 2022 01:00:00 +0100</pubDate>
-      <guid>https://maynier.eu/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
+      <guid>http://localhost:1313/fr/blog/2022/06/27/mais-ou-est-jean-castex-suivre-les-vols-du-gouvernement-avec-de-losint/</guid>
       <description>&lt;p&gt;Il y a quelques mois, &lt;a href=&#34;https://www.mediapart.fr/journal/france/080222/jean-castex-une-passion-immoderee-pour-les-jets-de-la-republique&#34;&gt;Médiapart révélait&lt;/a&gt; que le Premier ministre Jean Castex avait tendance à prendre des jets privés de la flotte gouvernementale très régulièrement, y compris pour de courtes distances. Médiapart évoque par exemple des vols en jet pour faire Paris-Nantes (2h en TGV) ou encore Paris-Lyon (également 2h en TGV). A l&amp;rsquo;heure de la crise écologique, ces voyages posent forcément des questions éthiques, encore plus quand ils sont à l&amp;rsquo;opposé des &lt;a href=&#34;https://www.legifrance.gouv.fr/circulaire/id/45080?tab_selection=circ&amp;amp;searchField=ALL&amp;amp;query=*&amp;amp;page=1&amp;amp;init=true&amp;amp;dateSignature&#34;&gt;circulaires&lt;/a&gt; rappelant l&amp;rsquo;engagement de l&amp;rsquo;état en faveur de l&amp;rsquo;écologie, signées par Jean Castex lui-même.&lt;/p&gt;</description>
     </item>
   </channel>

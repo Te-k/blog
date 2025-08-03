@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OSI on </title>
+    <link>https://maynier.eu/tags/osi/</link>
+    <description>Recent content in OSI on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Sat, 02 Aug 2025 20:00:00 +0000</lastBuildDate>
+    <atom:link href="https://maynier.eu/tags/osi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Timestamps and LinkedIn</title>
+      <link>https://maynier.eu/blog/2025/08/02/timestamps-and-linkedin/</link>
+      <pubDate>Sat, 02 Aug 2025 20:00:00 +0000</pubDate>
+      <guid>https://maynier.eu/blog/2025/08/02/timestamps-and-linkedin/</guid>
+      <description>&lt;p&gt;I recently attended an interesting talk about the challenge of identifying the timestamp of social media publications and this made me look more in depth at LinkedIn timestamps.&lt;/p&gt;&#xA;&lt;h2 id=&#34;linkedin-timestamps&#34;&gt;LinkedIn Timestamps&lt;/h2&gt;&#xA;&lt;p&gt;LinkedIn is quite frustrating in Open Source Investigations as it only provides a rough estimation of when a post or comment was published, like here just with a &amp;ldquo;1d&amp;rdquo; which means &amp;ldquo;1 day ago&amp;rdquo;:&lt;/p&gt;&#xA;&lt;figure&gt;&#xA;    &lt;img src=&#34;https://maynier.eu/media/linkedin/linkedin1.png&#34; style=&#34;max-width:600px&#34;/&gt;&#xA;   &#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;That is of course not enough for investigations where the exact publication time is critical to establish a timeline of facts. Thankfully, &lt;a href=&#34;https://github.com/Ollie-Boyd&#34;&gt;Ollie Boyd&lt;/a&gt; made a really interesting discovery &lt;a href=&#34;https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/tree/main&#34;&gt;in the format of LinkedIn post&amp;rsquo;s URL&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Investigating Infrastructure Links with Passive DNS and Whois Data</title>
+      <link>https://maynier.eu/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</link>
+      <pubDate>Sun, 30 Aug 2020 00:00:00 -0500</pubDate>
+      <guid>https://maynier.eu/blog/2020/08/30/investigating-infrastructure-links-with-passive-dns-and-whois-data/</guid>
+      <description>&lt;p&gt;&lt;em&gt;I am republishing here the guide on using passive DNS and Whois data in investigation that I published earlier this year on the &lt;a href=&#34;https://citizenevidence.org/2020/06/26/investigating-infrastructure-links-with-passive-dns-and-whois-data/&#34;&gt;Amnesty Citizen Evidence Lab website&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Many disinformation or malware campaigns rely on a computer architecture based on several servers and domains, and even if they often try to hide the infrastructure, it has to be accessible online. Investigating these infrastructure links is often a good way to get a broader view of the campaign. This is one of the tools we use in our investigations at &lt;a href=&#34;https://www.amnesty.org/en/tech/&#34;&gt;Amnesty Tech&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2019 OSINT Guide</title>
+      <link>https://maynier.eu/blog/2019/01/05/2019-osint-guide/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
+      <guid>https://maynier.eu/blog/2019/01/05/2019-osint-guide/</guid>
+      <description>&lt;p&gt;I have been doing a lot of Open-Source Intelligence (OSINT) lately, so to celebrate 2019, I decided to summarize a lot of tips and tricks I have learned in this guide. Of course, it is not the perfect guide (no guide is), but I hope it will help beginners to learn, and experienced OSINT hackers to discover new tricks&lt;/p&gt;&#xA;&lt;h1 id=&#34;methodology&#34;&gt;Methodology&lt;/h1&gt;&#xA;&lt;p&gt;The classic OSINT methodology you will find everywhere is strait-forward:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Harpoon: an OSINT / Threat Intelligence tool</title>
+      <link>https://maynier.eu/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</link>
+      <pubDate>Fri, 23 Feb 2018 00:00:00 -0500</pubDate>
+      <guid>https://maynier.eu/blog/2018/02/23/harpoon-an-osint-/-threat-intelligence-tool/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Harpoon&lt;/strong&gt; is a tool to automate threat intelligence and open source intelligence tasks. It is written in Python 3 and organised in plugins so the idea is to have one plugin per platform or task. The code is on &lt;a href=&#34;https://github.com/Te-k/harpoon&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;, feel free to open &lt;a href=&#34;https://github.com/Te-k/harpoon/issues&#34; target=&#34;_blank&#34;&gt;issues&lt;/a&gt; and propose &lt;a href=&#34;https://github.com/Te-k/harpoon/pulls&#34; target=&#34;_blank&#34;&gt;Pull Requests&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Install and config:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install git+ssh://git@github.com/Te-k/harpoon  --process-dependency-links&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g phantomjs&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;harpoon config -u&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;harpoon config&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then check how to use every module with &lt;code&gt;harpoon help MODULE&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Timestamps and LinkedIn | </title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+  
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+  
+  
+    
+ 
+  
+  
+
+  
+
+  
+    
+    <link rel="stylesheet" href="/css/post.min.a37e0a4baf346423e1637350f2a31c69622c6d9cb0f81f78f5a90e5a04ba1795.css" integrity="sha256-o34KS680ZCPhY3NQ8qMcaWIsbZyw&#43;B949akOWgS6F5U="/>
+  
+    
+    <link rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+  
+
+  
+   
+    
+
+<script type="application/ld+json">
+  
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/maynier.eu\/blog\/2025\/08\/02\/timestamps-and-linkedin\/",
+      "name": "Timestamps and LinkedIn",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "description": ""
+    }
+  
+  </script>
+
+
+</head>
+
+<body>
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+
+
+  <nav class="nav" role="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+          
+          
+          
+        <a  class="active" href="/">home</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  class="active" href="/post/">blog</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/projects/">projects</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/resources/">resources</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/about/">about</a>
+      </li>
+    
+      <li>
+          
+          
+          
+        <a  href="/contact/">contact</a>
+      </li>
+    
+    <li></li>
+    <li>
+        
+        EN
+        
+        
+        
+            <a href="/fr" lang="fr" class="no-translation">FR</a>
+        
+        
+    </li>
+  </ul>
+</nav>
+
+
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+            <h1 id="post__title">Timestamps and LinkedIn</h1>
+            <time datetime="2025-08-02 20:00:00 &#43;0000 &#43;0000" class="post__date">2 Aug 2025   &middot; 4 minutes read </time>
+          </header>
+          <article class="post__content">
+              
+<p>I recently attended an interesting talk about the challenge of identifying the timestamp of social media publications and this made me look more in depth at LinkedIn timestamps.</p>
+<h2 id="linkedin-timestamps">LinkedIn Timestamps<a class="anchor" href="#linkedin-timestamps">#</a></h2>
+<p>LinkedIn is quite frustrating in Open Source Investigations as it only provides a rough estimation of when a post or comment was published, like here just with a &ldquo;1d&rdquo; which means &ldquo;1 day ago&rdquo;:</p>
+<figure>
+    <img src="/media/linkedin/linkedin1.png" style="max-width:600px"/>
+   
+</figure>
+
+<p>That is of course not enough for investigations where the exact publication time is critical to establish a timeline of facts. Thankfully, <a href="https://github.com/Ollie-Boyd">Ollie Boyd</a> made a really interesting discovery <a href="https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/tree/main">in the format of LinkedIn post&rsquo;s URL</a>.</p>
+<p>You can get the specific URL of a publication by clicking on it and selecting &ldquo;Copy Link to Post&rdquo;. This gives you a URL like <code>https://www.linkedin.com/posts/rightscon_the-call-for-proposals-for-rightscon-2026-activity-7357083005376458752-Lh8d/</code>. What Ollie Boyd realized is that the number at the end of this URL contains a timestamp: if you take that number, and keep only the first 41 bits of it, you will get a <a href="https://en.wikipedia.org/wiki/Unix_time">Unix format timestamp</a>. Let&rsquo;s try that in python based on the code <a href="https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/blob/main/extractor.py">he provides on his repository</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span>In [<span style="color:#ae81ff">1</span>]: <span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In [<span style="color:#ae81ff">2</span>]: _id <span style="color:#f92672">=</span> <span style="color:#ae81ff">7357083005376458752</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In [<span style="color:#ae81ff">3</span>]: first_41_bits <span style="color:#f92672">=</span> bin(_id)[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">43</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In [<span style="color:#ae81ff">4</span>]: timestamp_ms <span style="color:#f92672">=</span> int(first_41_bits, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In [<span style="color:#ae81ff">5</span>]: print(datetime<span style="color:#f92672">.</span>fromtimestamp(timestamp_ms<span style="color:#f92672">/</span><span style="color:#ae81ff">1000</span>))
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2025</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">18</span>:<span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">16.474000</span>
+</span></span></code></pre></div><p>This date is in local timezone and is around one day before the time at which I am writing this article.</p>
+<p>Ollie published code in <a href="https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/blob/main/extractor.py">python</a> and <a href="https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/blob/main/extractor.js">javascript</a> and even made <a href="https://ollie-boyd.github.io/Linkedin-post-timestamp-extractor/">a little tool</a> available to extract the timestamp from a URL:</p>
+<figure>
+    <img src="/media/linkedin/linkedin2.png" style="max-width:600px"/>
+   
+</figure>
+
+<h2 id="looking-at-linkedin-dom">Looking at LinkedIn DOM<a class="anchor" href="#looking-at-linkedin-dom">#</a></h2>
+<p>Now, it would be great to see if this date is available elsewhere than in the URL, let&rsquo;s look at LinkedIn DOM. First we see that the part that contains the time itself doesn&rsquo;t contain anything else than the mention of the relative date:</p>
+<figure>
+    <img src="/media/linkedin/linkedin3.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>But looking above at the publication structure, we can see that this timestamp is also available in the attributes of the publication:</p>
+<figure>
+    <img src="/media/linkedin/linkedin4.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>This is promising, we could maybe extract the data directly from there. After some testing (and some comments from the Bellingcat community), it turns out that this date is not always the publication date, but can also be date at which the post was republished by another account in the activity feed. The only way to be sure that it is the publication date is to be on a post page, and not in the activity feed. Sadly, I haven&rsquo;t yet found any workaround to help with that issue. Technically it should be possible to reconstruct the post URL in the same way than the LinkedIn app is doing, but it is still not clear to me if this URL is generated from local data loaded with the activity feed or through a GraphQL query.</p>
+<p>That said, we can also look at comments and see if they use the same kind of timestamp. Looking at a comment structure, we find here a pretty similar data parameter but that contains both the post id (that as seen above could be the republication time) and the comment id:</p>
+<figure>
+    <img src="/media/linkedin/linkedin5.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>As there is no way to republish a comment, this comment id always gives us the comment publication time.</p>
+<h2 id="adding-linkedin-to-uniform-timezone-extension">Adding LinkedIn to Uniform Timezone Extension<a class="anchor" href="#adding-linkedin-to-uniform-timezone-extension">#</a></h2>
+<p>Bellingcat has developed an interesting Chrome extension called <a href="https://github.com/bellingcat/uniform-timezone">Uniform Timezone</a> that allows to extract timestamps in an easy and precise way from social media applications. Based on the information above, I have added <a href="https://github.com/bellingcat/uniform-timezone/blob/main/source/js/timezone-fixers/linkedin.js">support for LinkedIn publications</a> (only in the publication page to avoid mistakes between publication and republication) and comments.</p>
+<p>The structure of the plugin is really neat as it already provides an easy to use structure called Fixer to select timestamp objects in the DOM and extract their value. I first added a Fixer for the publication page:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Publication Timestamp&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;span.update-components-actor__sub-description &gt; span&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">node</span> =&gt; <span style="color:#a6e22e">node</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">getPublicationTimestamp</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filterSelected</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">checkPostUrl</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;publication&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">_</span> =&gt; window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">origin</span> <span style="color:#f92672">+</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>,
+</span></span><span style="display:flex;"><span>},
+</span></span></code></pre></div><p>This Fixer will select the span element that contains the publication timestamp, and when the user hover over, it will run the <code>getPublicationTimestamp</code> code to extract the timestamp from the URL:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getPublicationTimestamp</span>(<span style="color:#a6e22e">_</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (document.<span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;https://www.linkedin.com/posts/&#39;</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">linkedinURL</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">URL</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(\d{19})/</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">postId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#a6e22e">linkedinURL</span>)<span style="color:#f92672">?</span>.<span style="color:#a6e22e">pop</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">postId</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">first41Bits</span> <span style="color:#f92672">=</span> Number.parseInt((Number.parseInt(<span style="color:#a6e22e">postId</span>, <span style="color:#ae81ff">10</span>)).<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">41</span>), <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">moment</span>.<span style="color:#a6e22e">unix</span>(<span style="color:#a6e22e">first41Bits</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In order to avoid mistakes between publication and republication time, I have limited this fixer to the publication page itself (and not the activity feed):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkPostUrl</span>(<span style="color:#a6e22e">_</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> document.<span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;https://www.linkedin.com/posts/&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For comments, the Fixer works in a similar way except this time I am extracting the timestamp from the DOM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Comment Timestamp&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;time.comments-comment-meta__data&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">node</span> =&gt; <span style="color:#a6e22e">node</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">getCommentTimestamp</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;comment&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">getCommentUrl</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span></code></pre></div><p>And the timestamp is extracted in the following function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getCommentTimestamp</span>(<span style="color:#a6e22e">node</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parnt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">closest</span>(<span style="color:#e6db74">&#39;.comments-comment-entity&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">parnt</span>.<span style="color:#a6e22e">getAttributeNames</span>().<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;data-id&#39;</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">_id</span> <span style="color:#f92672">=</span> Number.parseInt(<span style="color:#a6e22e">parnt</span>.<span style="color:#a6e22e">dataset</span>.<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;:&#39;</span>)[<span style="color:#ae81ff">4</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;,&#39;</span>)[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">first41Bits</span> <span style="color:#f92672">=</span> Number.parseInt((<span style="color:#a6e22e">_id</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">41</span>), <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">moment</span>.<span style="color:#a6e22e">unix</span>(<span style="color:#a6e22e">first41Bits</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>After some testing, it gives us this:</p>
+<figure>
+    <img src="/media/linkedin/linkedin6.png" style="max-width:800px"/>
+   
+</figure>
+
+<p>This code has been pushed to the Chrome extension repository, so you can install it directly there <a href="https://chromewebstore.google.com/detail/uniform-timezone-extensio/fhpdgikedeljapdckiegnjiendkhphlg">here</a>.</p>
+<p>Have fun!</p>
+
+
+              
+          </article>
+          
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://maynier.eu/tags/osi/">osi</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://maynier.eu/tags/social-media/">social-media</a>
+    </li></ul>
+
+ <div class="pagination">
+  
+    <a class="pagination__item" href="https://maynier.eu/blog/2025/01/16/starting-2025-with-a-blog-post-and-new-resolutions/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Starting 2025 with a blog post and new resolutions</span>
+    </a>
+  
+
+  
+</div>
+
+          
+          <footer class="post__footer">
+            
+
+
+<div class="social-icons">
+  
+    
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Mastodon"
+         style="background-image: url(/images/social/mastodon.svg)"
+         href="https://todon.eu/@tek"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="BlueSky"
+         style="background-image: url(/images/social/bluesky.svg)"
+         href="https://bsky.app/profile/tek.randhome.io"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="GitHub"
+         style="background-image: url(/images/social/github.svg)"
+         href="https://github.com/Te-k"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Rss"
+         style="background-image: url(/images/social/rss.svg)"
+         href="/index.xml"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+    
+    
+      <a class="social-icons__icon" title="Email"
+         style="background-image: url(/images/social/email.svg)"
+         href="mailto:etienne@maynier.eu"
+         target="_blank" rel="noopener">
+      </a>
+    
+  
+</div>
+
+            <p>© 2025</p>
+          </footer>
+          </div>
+      </div>
+      
+    </div>
+
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.301a8b0870381bf76b3b5182e8966d363a0474281183439beb024d8b8228fc66.js" integrity="sha256-MBqLCHA4G/drO1GC6JZtNjoEdCgRg0Ob6wJNi4Io/GY=" crossorigin="anonymous"></script>
+  
+  
+
+
+</body>
+
+</html>

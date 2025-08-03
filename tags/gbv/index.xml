@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GBV on </title>
+    <link>https://maynier.eu/tags/gbv/</link>
+    <description>Recent content in GBV on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 -0500</lastBuildDate>
+    <atom:link href="https://maynier.eu/tags/gbv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Some Thoughts About Stalkerware and Technology in Intimate Partner Violence</title>
+      <link>https://maynier.eu/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 -0500</pubDate>
+      <guid>https://maynier.eu/blog/2020/08/23/some-thoughts-about-stalkerware-and-technology-in-intimate-partner-violence/</guid>
+      <description>&lt;p&gt;A few years ago, I wrote about &lt;a href=&#34;https://www.randhome.io/blog/2017/04/23/lets-talk-about-flexispy/&#34;&gt;Flexispy&lt;/a&gt; after the company got hacked and some data was released. It was the first time I encountered stalkerware in my work. Since then, I have had many discussions about this creepy market and more generally technology used in intimate partner violence (IPV) with researchers and activists. I think it is the right time to reflect on what we know about stalkerware and what needs to be done on this topic.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

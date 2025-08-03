@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spyware on </title>
-    <link>https://maynier.eu/tags/spyware/</link>
+    <link>http://localhost:1313/tags/spyware/</link>
     <description>Recent content in Spyware on </description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© {year}</copyright>
     <lastBuildDate>Mon, 02 Dec 2019 00:00:02 -0500</lastBuildDate>
-    <atom:link href="https://maynier.eu/tags/spyware/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/spyware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Targeted Attacks Against Civil Society : What is New in 2019?</title>
-      <link>https://maynier.eu/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</link>
+      <link>http://localhost:1313/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</link>
       <pubDate>Mon, 02 Dec 2019 00:00:02 -0500</pubDate>
-      <guid>https://maynier.eu/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</guid>
+      <guid>http://localhost:1313/blog/2019/12/02/targeted-attacks-against-civil-society-what-is-new-in-2019/</guid>
       <description>&lt;h3 id=&#34;tldr&#34;&gt;TL;DR&lt;/h3&gt;&#xA;&lt;p&gt;New trends in targeted attacks against civil society in 2019 :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;More attacks against smartphones, some attacks are using 0-days and we don&amp;rsquo;t know how to be effectively protected against them, but many attacks are using exploits against fixed bugs in Android&lt;/li&gt;&#xA;&lt;li&gt;Phishing attacks bypassing 2 Factor Authentication solutions other than hardware keys are common now. We have to consider that most attacks will support that in the future, and move to hardware tokens for 2FA&lt;/li&gt;&#xA;&lt;li&gt;OAuth attacks are still there and will likely be there for some time. As they bypass many protections against phishing, people need to be aware of them and check their OAuth access regularly.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;targeted-attacks-against-civil-society--what-is-new-in-2019&#34;&gt;Targeted Attacks Against Civil Society : What is New in 2019?&lt;/h3&gt;&#xA;&lt;p&gt;10 years ago, the &lt;a href=&#34;http://www.nartv.org/mirror/ghostnet.pdf&#34;&gt;GhostNet report&lt;/a&gt; published by the Citizen Lab made quite a buzz; it described an important coordinated effort of compromising computers over the world, from the embassy of India in the US to PetroVietnam. It was one of the first times that an attack campaign of that scale was revealed, but what made it especially important is that this campaign was discovered when researchers identified attacks against the Tibetan community in exile, and more specifically against the Office of the Dalai Lama.&lt;/p&gt;</description>
     </item>
   </channel>

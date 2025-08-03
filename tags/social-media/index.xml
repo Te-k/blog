@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Social Media on </title>
+    <link>https://maynier.eu/tags/social-media/</link>
+    <description>Recent content in Social Media on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Sat, 02 Aug 2025 20:00:00 +0000</lastBuildDate>
+    <atom:link href="https://maynier.eu/tags/social-media/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Timestamps and LinkedIn</title>
+      <link>https://maynier.eu/blog/2025/08/02/timestamps-and-linkedin/</link>
+      <pubDate>Sat, 02 Aug 2025 20:00:00 +0000</pubDate>
+      <guid>https://maynier.eu/blog/2025/08/02/timestamps-and-linkedin/</guid>
+      <description>&lt;p&gt;I recently attended an interesting talk about the challenge of identifying the timestamp of social media publications and this made me look more in depth at LinkedIn timestamps.&lt;/p&gt;&#xA;&lt;h2 id=&#34;linkedin-timestamps&#34;&gt;LinkedIn Timestamps&lt;/h2&gt;&#xA;&lt;p&gt;LinkedIn is quite frustrating in Open Source Investigations as it only provides a rough estimation of when a post or comment was published, like here just with a &amp;ldquo;1d&amp;rdquo; which means &amp;ldquo;1 day ago&amp;rdquo;:&lt;/p&gt;&#xA;&lt;figure&gt;&#xA;    &lt;img src=&#34;https://maynier.eu/media/linkedin/linkedin1.png&#34; style=&#34;max-width:600px&#34;/&gt;&#xA;   &#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;That is of course not enough for investigations where the exact publication time is critical to establish a timeline of facts. Thankfully, &lt;a href=&#34;https://github.com/Ollie-Boyd&#34;&gt;Ollie Boyd&lt;/a&gt; made a really interesting discovery &lt;a href=&#34;https://github.com/Ollie-Boyd/Linkedin-post-timestamp-extractor/tree/main&#34;&gt;in the format of LinkedIn post&amp;rsquo;s URL&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

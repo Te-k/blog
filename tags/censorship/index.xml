@@ -16,5 +16,12 @@
       <guid>https://maynier.eu/blog/2023/02/16/france-and-controlling-access-to-porn-websites/</guid>
       <description>&lt;p&gt;January 2023, and once again the question of limiting access to porn websites for people under the legal majority age is back in the media. It is a question as old as the World Wide Web that is coming back every year with a different angle. In 2020, the French Parliament even passed a law (article &lt;a href=&#34;https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044394218/2021-12-02/&#34;&gt;227-24&lt;/a&gt; of the criminal code) forcing pornography websites to use age filtering more efficient than a simple web form. The problem is that there is currently no reliable and privacy-preserving solution to do that (without even saying that these websites want to limit any friction for their users).&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Analyzing US Media Blocking of EU Visitors</title>
+      <link>https://maynier.eu/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</link>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0200</pubDate>
+      <guid>https://maynier.eu/blog/2021/11/24/analyzing-us-media-blocking-of-eu-visitors/</guid>
+      <description>&lt;p&gt;I have been working and studying technology for over 10 years now, and the one thing I really love  is discovering weird technical quirks you can find on Internet, and what they tell us about society. Things like how &lt;a href=&#34;https://www.washingtonpost.com/news/morning-mix/wp/2016/08/10/lawsuit-how-a-quiet-kansas-home-wound-up-with-600-million-ip-addresses-and-a-world-of-trouble/&#34;&gt;bad geolocation of IP addresses turned the life of a Kansas family into hell&lt;/a&gt; or how to &lt;a href=&#34;https://dictatoralert.org/&#34;&gt;track dictator&amp;rsquo;s aircraft from open flight information&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Among them, I discovered last year that the HTTP code &lt;code&gt;HTTP 451 Unavailable For Legal Reasons&lt;/code&gt; was actually used by some US media to block European visitors as they do not want to comply with GDPR regulation. The code &lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_451&#34;&gt;451&lt;/a&gt; is actually a reference to Ray Bradbury&amp;rsquo;s book Fahrenheit 451.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
